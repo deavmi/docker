@@ -1,0 +1,22 @@
+services:
+  yggdrasil:
+    build:
+      context: ../../images/yggdrasil
+      dockerfile: Dockerfile
+      args:
+        - BRANCH=develop
+        - COMMIT=47818a1a7c475c3c214e3b25d961b77d55069086
+    container_name: yggdrasil
+    restart: always
+    network_mode: host # Adds tun adaptor to "host" network namespace (and not our container's)
+    volumes:
+     # Copy in configuration file to container
+     # - /path/to/myConf/myConf.conf:/etc/yggdrasil.conf:ro,z
+
+     # Access to TUN/TAP control device node
+     - /dev/net/tun:/dev/net/tun:z
+    cap_add:
+      # Add capability for performing needed network
+      # manipulation via the `/dev/tun` in order to
+      # open tun adaptor
+      - NET_ADMIN
