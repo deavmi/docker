@@ -8,6 +8,11 @@ networks:
         - subnet: fde4:492a:fc7f::/48
 
 services:
+  host-statistics:
+    extends:
+      file: ../../services/node_exporter/compose.yml
+      service: statistics
+
   yggdrasil:
     extends:
       file: ../../services/yggdrasil/compose.yml
