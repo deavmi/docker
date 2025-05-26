@@ -1,0 +1,12 @@
+services:
+  sshchat:
+    build:
+      context: ../../images/sshchat
+    container_name: sshchat
+    restart: unless-stopped
+    networks:
+     - mainNet
+    ports:
+      - "2000:2022"
+    volumes:
+      - "${SSHCHAT_CONF_DIR}:/home/sshchat:ro"
