@@ -14,7 +14,18 @@ Unbound can place its control socket there and be accessible on the host side.
 
 ### `unbound`
 
-You must have cloned the unbound source code into `unbound/`.
+Everything needed for the image is present. The image build is done via a local
+`Dockerfile` placed in `unbound/Dockerfile`.
+
+This directry also holds two other important files:
+
+1. `deavmi.conf`
+	* Zone configuration file
+	* This tells Unbound what zones to serve, interestingly enough you will see
+	that I serve them via a remoetly hosted file which Unbound will perform a
+	 remote HTTP fetch for.
+2 `config.conf`
+	* Unbound configuration file
 
 ### `unbound_statistics`
 
