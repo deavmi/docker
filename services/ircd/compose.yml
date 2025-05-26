@@ -1,7 +1,7 @@
 services:
   ircd:
     build:
-      context: ircd/.
+      context: ../../images/ircd/
       args:
         # Change these to the value of `id -u`
         # on your HOST
