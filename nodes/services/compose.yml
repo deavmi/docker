@@ -64,3 +64,14 @@ services:
       - mainNet
     ports:
       - "2000:2022/tcp"
+
+  matterbridge:
+    extends:
+      file: ../../services/matterbridge/compose.yml
+      service: matterbridge
+    depends_on:
+      - ircd
+      - sshchat
+    networks:
+      - mainNet
+    
