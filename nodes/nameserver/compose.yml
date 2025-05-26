@@ -33,7 +33,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
 
       # Directory containing control socket
-      - /tmp/unbnd:/ctl
+      - "${UNBOUND_CTL_DIR}:/ctl"
     ports:
       - "53:53/udp"
       - "53:53/tcp"
@@ -48,7 +48,7 @@ services:
       - mainNet
     volumes:
       # Control socket
-      - /tmp/unbnd/unbound.ctl:/unbound.ctl
+      - "${UNBOUND_CTL_DIR}/unbound.ctl:/unbound.ctl"
     command: -unbound.ca "" -unbound.cert "" -unbound.host "unix:///unbound.ctl"
     ports:
       # OpenTelemetry port
