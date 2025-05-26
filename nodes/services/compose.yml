@@ -1,0 +1,57 @@
+networks:
+  mainNet:
+    driver: bridge
+    name: mainNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492a:fc7f::/48
+
+services:
+  host-statistics:
+    extends:
+      file: ../../services/node_exporter/compose.yml
+      service: statistics
+
+  yggdrasil:
+    extends:
+      file: ../../services/yggdrasil/compose.yml
+      service: yggdrasil
+    volumes:
+      - "${CONFIGURATION_PATH}:/etc/yggdrasil.conf:ro,z"
+
+  i2pd:
+    extends:
+      file: ../../services/i2pd/compose.yml
+      service: i2pd
+    networks:
+      - mainNet
+    ports:
+      # SSU2
+      - "6245:6245/tcp"
+
+      # NTCP2
+      - "6246:6246/tcp"
+
+      # Web console
+      - "8182:8182/tcp"
+
+  ircd:
+    extends:
+      file: ../../services/ircd/compose.yml
+      service: ircd
+    networks:
+      - mainNet
+
+  webirc:
+    extends:
+      file: ../../services/webirc/compose.yml
+      service: webirc
+    depends_on:
+      - ircd
+    networks:
+      - mainNet
+    ports:
+      - "6667:6667/tcp"
+      - "6697:6697/tcp"
+      - "6900:6900/tcp"

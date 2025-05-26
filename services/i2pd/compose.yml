@@ -1,7 +1,7 @@
 services:
   i2pd:
     build:
-      context: i2pd/
+      context: ../../images/i2pd/
       args:
         # Change these to the value of `id -u`
         # on your HOST
