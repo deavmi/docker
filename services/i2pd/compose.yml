@@ -1,0 +1,29 @@
+services:
+  i2pd:
+    build:
+      context: i2pd/
+      args:
+        # Change these to the value of `id -u`
+        # on your HOST
+        - USER_UID=${USER_UID}
+        # Change these to the value of `id -g`
+        # on your HOST
+        - USER_GID=${USER_GID}
+    container_name: i2pd
+    restart: unless-stopped
+    volumes:
+      # i2pd configuration and data store
+      - "${I2PD_CONF_DIR}:/home/i2pd/.i2pd"
+
+      # Makes timezone and time information available
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      # SSU2
+      - "6245:6245/tcp"
+
+      # NTCP2
+      - "6246:6246/tcp"
+
+      # Web console
+      - "8182:8182/tcp"
