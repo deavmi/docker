@@ -1,0 +1,12 @@
+services:
+  webirc:
+    image: thelounge/thelounge:latest
+    container_name: webirc
+    restart: unless-stopped
+    volumes:
+      # Path to configuration file
+      - "${WEBIRC_CONF}:/var/opt/thelounge/config.js:ro"
+
+      # Makes timezone and time information available
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
