@@ -8,6 +8,12 @@ networks:
         - subnet: fde4:492a:fc7f::/48
 
 services:
+  yggdrasil:
+    extends:
+      file: ../../services/yggdrasil/compose.yml
+      service: yggdrasil
+    volumes:
+      - "${CONFIGURATION_PATH}:/etc/yggdrasil.conf:ro,z"
   
   unbound:
     build:
@@ -27,9 +33,18 @@ services:
       - "53:53/udp"
       - "53:53/tcp"
 
-  yggdrasil:
-    extends:
-      file: ../../services/yggdrasil/compose.yml
-      service: yggdrasil
+  unbound-statistics:
+    depends_on:
+      - unbound
+    build:
+      context: unbound_exporter
+    container_name: unbound_statistics
+    networks:
+      - mainNet
     volumes:
-      - "${CONFIGURATION_PATH}:/etc/yggdrasil.conf:ro,z"
+      # Control socket
+      - /tmp/unbnd/unbound.ctl:/unbound.ctl
+    command: -unbound.ca "" -unbound.cert "" -unbound.host "unix:///unbound.ctl"
+    ports:
+      # OpenTelemetry port
+      - "9167:9167/tcp"
