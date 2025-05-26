@@ -55,3 +55,12 @@ services:
       - "6667:6667/tcp"
       - "6697:6697/tcp"
       - "6900:6900/tcp"
+
+  sshchat:
+    extends:
+      file: ../../services/sshchat/compose.yml
+      service: sshchat
+    networks:
+      - mainNet
+    ports:
+      - "2000:2022/tcp"
