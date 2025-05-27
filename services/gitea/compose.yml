@@ -1,0 +1,15 @@
+services:
+  gitea:
+    image: docker.gitea.com/gitea:1.23.8
+    restart: unless-stopped
+    environment:
+      # For when creating files
+      - USER_UID=${USER_UID}
+      - USER_GID=${USER_GID}
+    volumes:
+      # Mount for repository data
+      - "${GITEA_DATA_PATH}:/data"
+      
+      # Makes timezone and time information available
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
