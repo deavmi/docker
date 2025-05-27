@@ -11,7 +11,7 @@ services:
     network_mode: host # Adds tun adaptor to "host" network namespace (and not our container's)
     volumes:
      # Copy in configuration file to container
-     # - /path/to/myConf/myConf.conf:/etc/yggdrasil.conf:ro,z
+     - "${YGGDRASIL_CONF_PATH}:/etc/yggdrasil.conf:ro,z"
 
      # Access to TUN/TAP control device node
      - /dev/net/tun:/dev/net/tun:z
