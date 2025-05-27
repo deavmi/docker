@@ -1,0 +1,136 @@
+global:
+  # If not specified per job then this will be
+  # the assumed default
+  scrape_interval: 15s
+
+  # Assume (even though this is default)
+  metrics_path: '/metrics'
+
+
+scrape_configs:
+  # Scrape prometheus itself
+  - job: 'prometheus'
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          server: monitor
+          name: "Monitor node"
+
+  # Gitea metrics
+  - job_name: 'Gitea'
+    scrape_interval: 5s
+    scheme: 'http'
+    metrics_path: '/git/metrics'
+    static_configs:
+      - targets: ['ygg.services.deavmi.assigned.network']
+        labels:
+          server: services
+          name: "Services node"
+    
+
+  # Docker
+  - job_name: 'Docker'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['ygg.ns1.deavmi.assigned.network:1234']
+        labels:
+          server: nameserver
+          name: 'Nameserver node'
+      - targets: ['ygg.home.deavmi.assigned.network:1234']
+        labels:
+          server: personal
+          name: 'Personal node'
+      - targets: ['ygg.services.deavmi.assigned.network:1234']
+        labels:
+          server: services
+          name: 'Services node'
+      - targets: ['ygg.rothbard.lab.networks.deavmi.assigned.network:1234']
+        labels:
+          server: rothbard
+          name: 'Rothbard node'
+      - targets: ['ygg.vinyl.lab.networks.deavmi.assigned.network:1234']
+        labels:
+          server: vinyl
+          name: 'VinylPi node'
+      # TODO: Add monitor of self (try with a UNIX domain socket?)
+
+  # Hosts
+  - job_name: 'Nodes'
+    scrape_interval: 30s
+    static_configs:
+      - targets: ['ygg.ns1.deavmi.assigned.network:9100']
+        labels:
+          server: nameserver
+          name: 'Nameserver node'
+      - targets: ['ygg.rothbard.lab.networks.deavmi.assigned.network:9100']
+        labels:
+          server: rothbard
+          name: 'Rothbard node'
+      - targets: ['ygg.home.deavmi.assigned.network:9100']
+        labels:
+          server: personal
+          name: 'Personal node'
+      - targets: ['ygg.vinyl.lab.networks.deavmi.assigned.network:9100']
+        labels:
+          server: vinyl
+          name: 'VinylPi node'
+      # TODO: Add monitor of self
+
+  # NGINX statistics
+  - job_name: 'NGINX'
+    scrape_interval: 5s
+    metrics_path: '/metrics'
+    static_configs:
+      # Personal node
+      - targets: ['nginx_agent_personal_web:9113']
+        labels:
+          server: personal
+          name: 'Personal website'
+
+      # Services node
+      - targets: ['nginx_agent_services:9113']
+        labels:
+          server: services
+          name: 'Services node'
+
+      # Nostr relays
+      - targets: ['nginx_agent_nostr_ephemeral:9113']
+        labels:
+          server: ephemeral_nostr
+          name: 'Ephemeral Nostr Relay'
+      - targets: ['nginx_agent_nostr_personal:9113']
+        labels:
+          server: personal_nostr
+          name: 'Personal Nostr Relay'
+      - targets: ['nginx_agent_nostr_homesteader:9113']
+        labels:
+          server: homesteader_nostr
+          name: 'Homesteader Nostr Relay'
+
+      # VinylPi
+      - targets: ['nginx_agent_vinyl:9113']
+        labels:
+          server: vinyl
+          name: 'VinylPi node'
+
+  # Unbound stats
+  - job_name: 'unbound'
+    scrape_interval: 5s
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['ygg.ns1.deavmi.assigned.network:9167']
+        labels:
+          server: nameserver
+          name: "Recursive DNS server and nameserver"
+
+  # IRC servers
+  - job_name: 'irc'
+    scrape_interval: 30s
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['irc_agent:9678']
+        labels:
+          server: pinewood
+          name: "Pinewood BNET"
