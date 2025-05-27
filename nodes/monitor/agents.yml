@@ -1,0 +1,77 @@
+######################################
+# Service definitions for Prometheus #
+# monitors                           #
+######################################
+
+services:
+  # Monitors IRC servers
+  irc_agent:
+    image: ghcr.io/dgl/ircd_exporter
+    container_name: irc_agent
+    restart: always
+    environment:
+      - PIE_IRC.SERVER=${AGENT_IRC_PINEWOOD}
+    networks:
+      - mainNet
+
+  # Monitors my Homesteader Nostr relay
+  nginx_agent_nostr_homesteader:
+    extends:
+      file: ../../services/nginx_agent/compose.yml
+      service: nginx_agent
+    container_name: nginx_agent_nostr_homesteader
+    networks:
+      - mainNet
+    command: '--nginx.scrape-uri=${AGENT_NOSTR_HOMESTEADER}/metrics'
+
+  # Monitors my Ephemeral Nostr relay
+  nginx_agent_nostr_ephemeral:
+    extends:
+      file: ../../services/nginx_agent/compose.yml
+      service: nginx_agent
+    container_name: nginx_agent_nostr_ephemeral
+    networks:
+      - mainNet
+    command: '--nginx.scrape-uri=${AGENT_NOSTR_EPHEMERAL}/metrics'
+
+  # Monitors my Personal Nostr relay
+  nginx_agent_nostr_personal:
+    extends:
+      file: ../../services/nginx_agent/compose.yml
+      service: nginx_agent
+    container_name: nginx_agent_nostr_personal
+    networks:
+      - mainNet
+    command: '--nginx.scrape-uri=${AGENT_NOSTR_PERSONAL}/metrics'
+
+  # Monitors my VinylPi
+  nginx_agent_vinyl:
+    extends:
+      file: ../../services/nginx_agent/compose.yml
+      service: nginx_agent
+    container_name: nginx_agent_vinyl
+    networks:
+      - mainNet
+    command: '--nginx.scrape-uri=${AGENT_VINYL}/metrics'
+
+  # Monitors my website
+  nginx_agent_personal_web:
+    extends:
+      file: ../../services/nginx_agent/compose.yml
+      service: nginx_agent
+    container_name: nginx_agent_personal_web
+    networks:
+      - mainNet
+    command: '--nginx.scrape-uri=${AGENT_PERSONAL}/metrics'
+
+  # Monitors the services node
+  nginx_agent_services:
+    extends:
+      file: ../../services/nginx_agent/compose.yml
+      service: nginx_agent
+    container_name: nginx_agent_services
+    networks:
+      - mainNet
+    command: '--nginx.scrape-uri=${AGENT_SERVICES}/metrics'
+
+
