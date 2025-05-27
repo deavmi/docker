@@ -7,6 +7,14 @@ networks:
       config:
         - subnet: fde4:492a:fc7f::/48
 
+  gitea_db_net:
+    driver: bridge
+    name: gitea_db_net
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492b:fc7f::/48
+
 services:
   host-statistics:
     extends:
@@ -17,8 +25,6 @@ services:
     extends:
       file: ../../services/yggdrasil/compose.yml
       service: yggdrasil
-    volumes:
-      - "${CONFIGURATION_PATH}:/etc/yggdrasil.conf:ro,z"
 
   i2pd:
     extends:
@@ -74,4 +80,36 @@ services:
       - sshchat
     networks:
       - mainNet
-    
+
+  gitea:
+    extends:
+      file: ../../services/gitea/compose.yml
+      service: gitea
+    depends_on:
+      - db-gitea
+    environment:
+      # Gitea DB configuraiton
+      - GITEA__database__DB_TYPE=postgres
+      - GITEA__database__HOST=db-gitea:5432
+      - GITEA__database__NAME=${GITEA_DB_NAME}
+      - GITEA__database__USER=${GITEA_DB_USER}
+      - GITEA__database__PASSWD=${GITEA_DB_PASS}
+    networks:
+      - mainNet
+      - gitea_db_net
+  
+  db-gitea:
+    extends:
+      file: ../../services/postgres/compose.yml
+      service: db
+    environment:
+      - POSTGRES_DB=${GITEA_DB_NAME}
+      - POSTGRES_USER=${GITEA_DB_USER}
+      - POSTGRES_PASSWORD=${GITEA_DB_PASS}
+
+    volumes:
+      # Path for Postgres to store data
+      - "${GITEA_POSTGRES_PATH}:/var/lib/postgresql/data"
+    networks:
+      - gitea_db_net
+  
