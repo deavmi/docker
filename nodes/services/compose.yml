@@ -112,4 +112,6 @@ services:
       - "${GITEA_POSTGRES_PATH}:/var/lib/postgresql/data"
     networks:
       - gitea_db_net
-  
+
+
+    
