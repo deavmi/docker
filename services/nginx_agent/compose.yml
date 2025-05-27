@@ -1,0 +1,4 @@
+services:
+  nginx_agent:
+    image: nginx/nginx-prometheus-exporter:1.4.2
+    restart: always 
