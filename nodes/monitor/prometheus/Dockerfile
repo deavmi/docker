@@ -3,4 +3,4 @@
 FROM prom/prometheus
 
 # Copy over configuration file
-COPY config.yaml /etc/prometheus/config.yaml
+COPY config.yaml /etc/prometheus/prometheus.yml
