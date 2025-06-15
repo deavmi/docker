@@ -3,13 +3,9 @@ global:
   # the assumed default
   scrape_interval: 15s
 
-  # Assume (even though this is default)
-  metrics_path: '/metrics'
-
-
 scrape_configs:
   # Scrape prometheus itself
-  - job: 'prometheus'
+  - job_name: 'prometheus'
     scrape_interval: 5s
 
     static_configs:
