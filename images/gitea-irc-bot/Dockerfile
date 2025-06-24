@@ -2,16 +2,16 @@
 # TODO: Switch to debian
 FROM ubuntu:noble AS build
 
+# Activate arguments provided as build parameters
+ARG BRANCH=master
+ARG COMMIT=c8b5403159cbb6077508048845732c457e2fd572
+
 # TODO: Set interactive shit and stuff
 RUN apt update -y
 
 RUN apt install git -y
 RUN apt install dub gcc -y
 RUN apt install libssl-dev zlib1g-dev -y
-
-# Activate arguments provided as build parameters
-ARG BRANCH=master
-ARG COMMIT=c8b5403159cbb6077508048845732c457e2fd572
 
 # TODO: Add build args for the branch and commit to checkout
 WORKDIR /tmp
