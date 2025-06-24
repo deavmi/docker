@@ -9,10 +9,15 @@ RUN apt install git -y
 RUN apt install dub gcc -y
 RUN apt install libssl-dev zlib1g-dev -y
 
+# Activate arguments provided as build parameters
+ARG BRANCH=master
+ARG COMMIT=c8b5403159cbb6077508048845732c457e2fd572
+
 # TODO: Add build args for the branch and commit to checkout
 WORKDIR /tmp
-RUN git clone https://deavmi.assigned.network/git/deavmi/gitea-irc-bot src/
+RUN git clone https://deavmi.assigned.network/git/deavmi/gitea-irc-bot --branch $BRANCH src/
 WORKDIR src/
+RUN git checkout $COMMIT
 RUN dub build
 
 # TODO: Pin image
