@@ -8,12 +8,7 @@ services:
     volumes:
       # Bot configuration
       - "${GITEA_IRC_BOT_CONFIG_PATH}:/config.json:z,ro"
-    # ports:
-      # Listening port
-      # - ${GITEA_IRC_BOT_LISTEN_PORT_EXTERNAL}:${GITEA_IRC_BOT_LISTEN_PORT_INTERNAL}/tcp
-    # TODO: Disable the below
     # Makes the configuration options in your `config.json`
     # easier with no need to push it through a custom
     # network
-    network_mode: host 
-      
+    network_mode: host
