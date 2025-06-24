@@ -2,7 +2,12 @@ services:
   gitea-irc-bot:
     build:
       context: ../../images/gitea-irc-bot/
-      # args: Add build arg
+      args:
+        # Branch to use
+        - BRANCH=master
+        
+        # Commit hash to checkout
+        - COMMIT=c8b5403159cbb6077508048845732c457e2fd572
     container_name: gitea-irc-bot
     restart: unless-stopped
     volumes:
