@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Activate arguments provided as build parameters
 ARG BRANCH=master
-ARG COMMIT=a527faaf40e4268142d823309189fbaa1ff07e09
+ARG COMMIT=1383a956c83ba6dd8f63a6a4f4e065ad51ed09e2
 
 RUN apt update -y
 
