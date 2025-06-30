@@ -1,0 +1,70 @@
+networks:
+  mainNet:
+    driver: bridge
+    name: mainNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:493b:fc7f::/48
+
+include:
+  - quassel.yml
+
+services:
+  host-statistics:
+    extends:
+      file: ../../services/node_exporter/compose.yml
+      service: statistics
+    container_name: host_statistics
+
+  yggdrasil:
+    extends:
+      file: ../../services/yggdrasil/compose.yml
+      service: yggdrasil
+    container_name: yggdrasil
+
+  # TODO: caddy definition and let us copy our caddy file
+  # over using a custom image rather. This will allow us
+  # to rebuild with a new configuration then and not
+  # have to maintain it within a mount-point.
+  web:
+    container_name: web
+    build:
+      context: web/
+    # depends_on:
+      # - prometheus
+      # - grafana
+    networks:
+      - mainNet
+    ports:
+      - "[::]:80:80/tcp"
+      - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
+      - "[::]:443:443/tcp"
+      - "[::]:443:443/udp"
+      - "[::]:2019:2019/tcp" # TODO: Remove this it is FULL ADMIN PORT (only prometheus must be accessing this)
+
+  gitea-irc-bot:
+    extends:
+      file: ../../services/gitea-irc-bot/compose.yml
+      service: gitea-irc-bot
+    container_name: gitea-irc-bot
+    networks:
+      - mainNet
+    environment:
+      # Webhook configuration
+      - WEBHOOK__BINDADDRESS=0.0.0.0
+      - WEBHOOK__PORT=80
+      
+      # IRC server
+      - IRC__HOST=pinewood.irc.bnet.eu.org
+      - IRC__PORT=6667
+      - IRC__NICKNAME=GiteaBot
+      - IRC__REALNAME=A Gitea bot written by deavmi
+      - IRC__CHANNELS=tlang:#tlang;birchwood:#birchwood;libsnooze:#libsnooze;gitea-irc-bot:#dsource;jstruct:#dsource;guillotine:#dsource;botty:#dsource;river:#dsource;libpb:#dsource;gogga:#dsource;loadshedd:#dsource;renaissance:#dsource;dante:#dsource;davinci:#dsource;eventy:#dsource;dlog:#dsource;libtun:#dsource;homepage:#dsource;bformat:#dsource;doap:#dsource;niknaks:#dsource;qix:#dsource;docker:#networking;bcm2835-d:#dsource;yggdrasil-go:#yggdrasil
+      - IRC__USERNAME=tbot
+      
+      # Ntfy.sh
+      # - NTFY__ENDPOINT="http://ntfy.sh"
+      # - NTFY__TOPIC="tlang_dev"
+    ports:
+      - "[::]:6969:80/tcp"
