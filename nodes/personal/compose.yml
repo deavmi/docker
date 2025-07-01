@@ -51,8 +51,8 @@ services:
     networks:
       - mainNet
     environment:
-      # Webhook configuration
-      - WEBHOOK__BINDADDRESS=0.0.0.0
+      # Webhook configuration (TODO: `::` is what we need but we can't express that in yaml)
+      # - WEBHOOK__BINDADDRESS=[::]
       - WEBHOOK__PORT=80
       
       # IRC server
