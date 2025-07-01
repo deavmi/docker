@@ -7,6 +7,6 @@ services:
         - BRANCH=master
         
         # Commit hash to checkout
-        - COMMIT=1383a956c83ba6dd8f63a6a4f4e065ad51ed09e2
+        - COMMIT=a6c1041208ca156e054aa1af9d72b3968cb9e093
     container_name: gitea-irc-bot
     restart: unless-stopped
