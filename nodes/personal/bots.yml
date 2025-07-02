@@ -1,0 +1,26 @@
+services:
+  gitea-irc-bot:
+    extends:
+      file: ../../services/gitea-irc-bot/compose.yml
+      service: gitea-irc-bot
+    container_name: gitea-irc-bot
+    networks:
+      - mainNet
+    environment:
+      # Webhook configuration
+      - "WEBHOOK__BINDADDRESS=::"
+      - WEBHOOK__PORT=80
+      
+      # IRC server
+      - IRC__HOST=pinewood.irc.bnet.eu.org
+      - IRC__PORT=6667
+      - IRC__NICKNAME=GiteaBot
+      - IRC__REALNAME=A Gitea bot written by deavmi
+      - IRC__CHANNELS=tlang:#tlang;birchwood:#birchwood;libsnooze:#libsnooze;gitea-irc-bot:#dsource;jstruct:#dsource;guillotine:#dsource;botty:#dsource;river:#dsource;libpb:#dsource;gogga:#dsource;loadshedd:#dsource;renaissance:#dsource;dante:#dsource;davinci:#dsource;eventy:#dsource;dlog:#dsource;libtun:#dsource;homepage:#dsource;bformat:#dsource;doap:#dsource;niknaks:#dsource;qix:#dsource;docker:#networking;bcm2835-d:#dsource;yggdrasil-go:#yggdrasil
+      - IRC__USERNAME=gitbot
+      
+      # Ntfy.sh
+      # - NTFY__ENDPOINT="http://ntfy.sh"
+      # - NTFY__TOPIC="tlang_dev"
+    ports:
+      - "[::]:6969:80/tcp"
