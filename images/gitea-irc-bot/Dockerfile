@@ -19,7 +19,7 @@ RUN apt install libssl-dev zlib1g-dev -y
 # and checkout to the correct commit,
 # finally perform the build
 WORKDIR /tmp
-RUN git clone https://deavmi.assigned.network/git/deavmi/gitea-irc-bot --branch $BRANCH src/ --depth 1
+RUN git clone https://deavmi.assigned.network/git/deavmi/gitea-irc-bot --branch $BRANCH src/
 WORKDIR src/
 RUN git checkout $COMMIT
 RUN dub build
