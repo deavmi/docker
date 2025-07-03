@@ -16,7 +16,9 @@
 
 
 
-:80, :443 {
+# Domain name for automatic SSL
+# :80, :443 {
+deavmi.assigned.network:80, deavmi.assigned.network:443 {
 
 	# respond "Hello there"
 
