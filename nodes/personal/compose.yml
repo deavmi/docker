@@ -37,6 +37,10 @@ services:
       # - grafana
     networks:
       - mainNet
+    volumes:
+      # Data directory to serve static site files
+      # from
+      - /mnt/datadisk/volumes/web:/webroot:z
     ports:
       - "[::]:80:80/tcp"
       - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
