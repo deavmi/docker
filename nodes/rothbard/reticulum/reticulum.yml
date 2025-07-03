@@ -1,0 +1,62 @@
+networks:
+  retNet:
+    driver: bridge
+    name: retNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492b:fc7f::/48
+
+services:
+  lxmd:
+    container_name: lxmd
+    restart: unless-stopped
+    depends_on:
+      - reticulum
+    build:
+      context: lxmd/
+    volumes:
+      # Configuration and storage for lxmd
+      - /mnt/datadisk/volumes/lxmd/:/data
+
+      # Makes timezone and time information available
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - retNet
+
+  reticulum:
+    container_name: reticulum
+    restart: unless-stopped
+    image: reticulum_base
+    build:
+      context: reticulum/
+      args:
+        - USER_UID=1000
+        - USER_GID=1003
+
+        # This platform cannot use
+        # the crypto library, hence
+        # we must use the `rnspure`
+        # package
+        - PURE_INSTALL=false
+
+        # If IPv6 should be preferred
+        # whenever getaddrinfo() is
+        # used
+        - GAI_PREFER_IPV6=true
+    volumes:
+      # Reticulum configuration and storage directory
+      - /mnt/datadisk/volumes/reticulum/:/data
+
+      # Makes timezone and time information available
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    devices:
+      # Add RNode devices here
+      - /dev/ttyACM0:/dev/rnode1:rwm
+    networks:
+      - retNet
+    ports:
+      - :::4242:4242/tcp # TCP server interface port
+      - :::4242:4242/udp # UDP server interface port
