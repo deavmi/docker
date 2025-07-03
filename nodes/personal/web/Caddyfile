@@ -1,0 +1,44 @@
+
+{
+	http_port "80"
+	https_port "443"
+
+	log default {
+			output stdout
+			level DEBUG
+	}
+
+	# Enable metrics on admin server at /metrics
+	metrics /metrics
+
+	admin [::]:2019
+}
+
+
+
+:80, :443 {
+
+	# respond "Hello there"
+
+	# Serve index.html's on any path
+	# and with a root of files from
+	# /webroot
+	root * /webroot
+
+	
+	# If you hit this then display
+	# an HTML file browser
+	handle /files* {
+		file_server browse
+	}
+
+	# TODO: sub-path or reqwrite thing may be neede idk
+	handle /quassel* {
+		reverse_proxy quassel-web:64080
+	}
+
+	# Gitea service
+	handle /git* {
+		reverse_proxy services.deavmi.assigned.network
+	}
+}
