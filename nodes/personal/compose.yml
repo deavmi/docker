@@ -41,6 +41,8 @@ services:
       # Data directory to serve static site files
       # from
       - /mnt/datadisk/volumes/web:/webroot:z
+    environment:
+      - DOMAIN=deavmi.assigned.network
     ports:
       - "[::]:80:80/tcp"
       - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
