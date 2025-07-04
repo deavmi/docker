@@ -1,0 +1,5 @@
+services:
+  registry:
+    image: registry:2
+    container_name: registry
+    restart: always
