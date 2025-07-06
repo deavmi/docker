@@ -1,0 +1,35 @@
+
+{
+	http_port "80"
+	https_port "443"
+
+	log default {
+			output stdout
+			level DEBUG
+	}
+}
+
+# :80, :443 {
+{$DOMAIN}:80, {$DOMAIN}:443 {
+
+    # Handle metrics
+	handle /metrics {
+	    metrics
+	}
+
+	respond "Hello there"
+
+	route /files* {
+		respond "crinpoesge"
+	}
+
+	# Grafana web interface
+	handle /grafana* {
+		reverse_proxy grafana:3000
+	}	
+
+	# Prometheus web interface
+	handle /prometheus* {
+		reverse_proxy prometheus:9090
+	}
+}
