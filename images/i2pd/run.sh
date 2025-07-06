@@ -63,6 +63,18 @@ fi
 # Set tunnels directory to `/tunnels`
 CMD="$CMD --tunnelsdir /tunnels"
 
+# Configure web console
+if [ $CONSOLE__BIND_ADDR && $CONSOLE__BIND_PORT ]
+then
+    if [ ! $CONSOLE__ROOT ]
+    then
+        CHOSEN_CONSOLE_ROOT="/"
+    else
+        CHOSEN_CONSOLE_ROOT = $CONSOLE__ROOT
+    fi
+
+    CMD="$CMD --http.enabled 1 --http.address $CONSOLE__BIND_ADDR --http.port $CONSOLE__BIND_PORT --http.strictheaders 0 --http.webroot $CHOSEN_CONSOLE_ROOT"
+fi
 
 
 # Start

@@ -15,6 +15,11 @@ services:
       # Enable IPv6
       - ENABLE_IPV6=yes
 
+      # HTTP web console
+      - "CONSOLE__BIND_ADDR=::"
+      - CONSOLE__BIND_PORT=7070
+      - CONSOLE__ROOT=/i2pd
+      
       # Makes timezone and time information available
       # - /etc/timezone:/etc/timezone:ro
       # - /etc/localtime:/etc/localtime:ro
