@@ -52,6 +52,10 @@ services:
       
       # Config base
       - CONFIG_BASE_DIR=/conf
+      
+      # Yggdrasil address (TODO: Change this)
+      - MESH_YGGDRASIL_ADDR=202:dd5:84ca:46b4:acb9:a981:5dba:34e8
+    # network_mode: host
     networks:
       - mainNet
       # TODO: For Yggdrasil we mayneed to place
@@ -66,6 +70,9 @@ services:
       
       # Configuration base path
       - /mnt/datadisk/volumes/i2pd/config/:/conf:z
+      
+      # Tunnel key files
+      - /mnt/datadisk/volumes/i2pd/keys:/keys:z
     ports:
       # SSU2
       - "6245:6245/tcp"
