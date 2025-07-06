@@ -7,13 +7,7 @@
 			output stdout
 			level DEBUG
 	}
-
-	# Enable metrics on admin server at /metrics
-	# metrics /metrics
-
-	# admin [::]:2019
 }
-
 
 
 # Domain name for automatic SSL
