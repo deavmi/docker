@@ -81,8 +81,8 @@ services:
       service: webirc
     build:
       context: webirc/
-    # depends_on:
-      # - ircd
+    depends_on:
+      - ircd
     networks:
       - mainNet
 
@@ -111,6 +111,7 @@ services:
       context: web/
     depends_on:
       - gitea
+      - webirc
     networks:
       - mainNet
     environment:
