@@ -32,7 +32,7 @@ services:
       - "6667:6667/tcp"
 
       # Secure port
-      - "6697:6697"
+      - "6697:6697/tcp"
 
       # Server-to-server peering port
-      - "6900:6900"
+      - "6900:6900/tcp"
