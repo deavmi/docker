@@ -9,16 +9,21 @@
 	}
 
 	# Enable metrics on admin server at /metrics
-	metrics /metrics
+	# metrics /metrics
 
-	admin [::]:2019
+	# admin [::1]:2019
 }
 
 
 # Domain name for automatic SSL
-# :80, :443 {
-{$DOMAIN}:80, {$DOMAIN}:443 {
+:80, :443 {
+# {$DOMAIN}:80, {$DOMAIN}:443 {
 	respond "Hello there"
+
+	# Handle metrics
+	handle /metrics {
+	    metrics
+	}
 	
 	# Gitea service
 	handle /git* {

@@ -100,4 +100,3 @@ services:
       - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
       - "[::]:443:443/tcp"
       - "[::]:443:443/udp"
-      - "[::]:2019:2019/tcp" # TODO: Remove this it is FULL ADMIN PORT (only prometheus must be accessing this)
