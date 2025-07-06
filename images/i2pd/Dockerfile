@@ -58,11 +58,12 @@ COPY run.sh /
 RUN chmod +x run.sh
 RUN chown i2pd:i2pd run.sh
 
+# Create directory for tunnel configuration
+# and hen copy across tunnel files
 RUN mkdir /tunnels
 COPY --from=tunnelsconfig * /tunnels
 RUN chown i2pd:i2pd /tunnels -R -v
 RUN ls -la /tunnels && sleep 3
-
 
 # Switch to i2pd user
 USER i2pd
