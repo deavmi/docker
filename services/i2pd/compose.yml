@@ -14,12 +14,6 @@ services:
     environment:
       # Enable IPv6
       - ENABLE_IPV6=yes
-      
-      
-      # Disable IPv4
-    # volumes:
-      # i2pd configuration and data store
-      # - "${I2PD_CONF_DIR}:/home/i2pd/.i2pd"
 
       # Makes timezone and time information available
       # - /etc/timezone:/etc/timezone:ro
@@ -30,6 +24,3 @@ services:
 
       # NTCP2
       - "6246:6246/tcp"
-
-      # Web console
-      - "8182:8182/tcp"
