@@ -9,9 +9,9 @@
 	}
 
 	# Enable metrics on admin server at /metrics
-	metrics /metrics
+	# metrics /metrics
 
-	admin [::]:2019
+	# admin [::]:2019
 }
 
 
@@ -21,6 +21,11 @@
 {$DOMAIN}:80, {$DOMAIN}:443 {
 
 	# respond "Hello there"
+
+	# Handle metrics
+	handle /metrics {
+	    metrics
+	}
 
 	# Serve index.html's on any path
 	# and with a root of files from
