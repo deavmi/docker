@@ -16,8 +16,8 @@
 
 
 # Domain name for automatic SSL
-# :80, :443 {
-services.deavmi.assigned.network:80, services.deavmi.assigned.network:443 {
+:80, :443 {
+# {$DOMAIN}:80, {$DOMAIN}:443 {
 	respond "Hello there"
 	
 	# Gitea service
@@ -26,9 +26,25 @@ services.deavmi.assigned.network:80, services.deavmi.assigned.network:443 {
 		reverse_proxy gitea:3000
 	}
 
-	# Miio web console (currently just for Gitea)
+	# Minio web console (currently just for Gitea)
 	handle /minio* {
 		uri strip_prefix /minio
 		reverse_proxy minio-gitea:9001
 	}
+	
+	# i2pd console
+	handle /i2pd* {
+	    reverse_proxy i2pd:7070
+	}
+	
+	# WebIRC (FIXME: Look at websocket stuff)
+	handle /irc {
+        redir /irc* /irc/
+	}
+	handle /irc/*  {
+	    uri strip_prefix /irc
+	    reverse_proxy webirc:9000
+	}
+	
+	
 }
