@@ -1,0 +1,22 @@
+{
+  http_port "80"
+  https_port "443"
+
+  log default {
+		output stdout
+    level DEBUG
+	}
+}
+
+# Domain name for automatic SSL
+:80, :443 {
+# {$DOMAIN}:80, {$DOMAIN}:443 {
+
+	# Handle metrics
+	handle /metrics {
+  	metrics
+  }
+
+	# Reverse proxy
+	reverse_proxy streamer:8000
+}
