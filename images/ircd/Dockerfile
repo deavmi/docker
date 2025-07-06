@@ -49,14 +49,13 @@ RUN ./Config -quick
 RUN make -j4
 RUN make install
 
-# Clear up all build-related things
+# Copy across build artefacts
+# into a new layer
 FROM build AS unrealircd
-USER root
-RUN apt remove git gcc make -y
-RUN apt remove libssl-dev -y
-RUN apt autoremove -y
+COPY --from=build /home/unreal/ircd /home/unreal/ircd
+
+# Switch to the unreal user
 USER unreal
-RUN rm -rfv /home/unreal/unrealircd
 
 # Change to directory we shall run from
 # and start
