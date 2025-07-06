@@ -7,11 +7,6 @@
 			output stdout
 			level DEBUG
 	}
-
-	# Enable metrics on admin server at /metrics
-	# metrics /metrics
-
-	# admin [::1]:2019
 }
 
 
