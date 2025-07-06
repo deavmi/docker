@@ -22,11 +22,11 @@ services:
       - mainNet
     volumes:
       # Path to configuration directory
-      - "${IRCD_CONFIG_DIR}:/home/unreal/ircd/conf/"
+      - "${IRCD_CONFIG_DIR}:/home/unreal/ircd/conf/:z"
       
       # Makes timezone and time information available
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     ports:
       # Insecure port
       - "6667:6667/tcp"
