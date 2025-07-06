@@ -11,13 +11,19 @@ services:
         - USER_GID=${USER_GID}
     container_name: i2pd
     restart: unless-stopped
-    volumes:
+    environment:
+      # Enable IPv6
+      - ENABLE_IPV6=yes
+      
+      
+      # Disable IPv4
+    # volumes:
       # i2pd configuration and data store
-      - "${I2PD_CONF_DIR}:/home/i2pd/.i2pd"
+      # - "${I2PD_CONF_DIR}:/home/i2pd/.i2pd"
 
       # Makes timezone and time information available
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     ports:
       # SSU2
       - "6245:6245/tcp"
