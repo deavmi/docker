@@ -34,7 +34,7 @@
 	
 	# i2pd console
 	handle /i2pd* {
-	    reverse_proxy i2pd:7070
+	    reverse_proxy i2pd:8182
 	}
 	
 	# WebIRC
