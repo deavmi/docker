@@ -77,6 +77,7 @@ CMD="$CMD --tunnelsdir /tunnels"
     CMD="$CMD --http.enabled 1 --http.address $CONSOLE__BIND_ADDR --http.port $CONSOLE__BIND_PORT --http.strictheaders 0 --http.webroot $CHOSEN_CONSOLE_ROOT"
 # fi
 
+# TODO: Still to do, setting auth
 
 # Start
 echo "Running with args: '$CMD'"
