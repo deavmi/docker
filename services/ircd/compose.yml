@@ -18,8 +18,6 @@ services:
         - COMMIT=30b9f66f716e69e0734620c9b356d66443de0d4d
     container_name: ircd
     restart: unless-stopped
-    networks:
-      - mainNet
     volumes:
       # Path to configuration directory
       - "${IRCD_CONFIG_DIR}:/home/unreal/ircd/conf/:z"
