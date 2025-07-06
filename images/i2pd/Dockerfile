@@ -53,9 +53,20 @@ RUN useradd -m i2pd -u $USER_UID -g $USER_GID
 RUN chmod +x /bin/i2pd
 RUN chown i2pd:i2pd /bin/i2pd
 
+# Copy across run script
+COPY run.sh /
+RUN chmod +x run.sh
+RUN chown i2pd:i2pd run.sh
+
+RUN mkdir /tunnels
+COPY --from=tunnelsconfig * /tunnels
+RUN chown i2pd:i2pd /tunnels -R -v
+RUN ls -la /tunnels && sleep 3
+
+
 # Switch to i2pd user
 USER i2pd
 WORKDIR /home/i2pd
 
 # Run i2pd daemon
-CMD ["i2pd"]
+CMD /run.sh
