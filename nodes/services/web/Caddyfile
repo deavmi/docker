@@ -37,7 +37,7 @@
 	    reverse_proxy i2pd:7070
 	}
 	
-	# WebIRC (FIXME: Look at websocket stuff)
+	# WebIRC
 	handle /irc {
         redir /irc* /irc/
 	}
@@ -45,6 +45,4 @@
 	    uri strip_prefix /irc
 	    reverse_proxy webirc:9000
 	}
-	
-	
 }
