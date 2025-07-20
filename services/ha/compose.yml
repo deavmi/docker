@@ -11,6 +11,11 @@ services:
 
     # TODO: Do volumes
     volumes:
+
+     # Access to the directory where DBUS places
+     # the socket to the bus
+     - /run/dbus:/run/dbus:ro,z
+     
      # Copy in configuration file to container
      - "${YGGDRASIL_CONF_PATH}:/etc/yggdrasil.conf:ro,z"
 
