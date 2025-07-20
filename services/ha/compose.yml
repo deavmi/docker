@@ -21,7 +21,7 @@ services:
      - /run/dbus:/run/dbus:ro,z
      
      # Copy in configuration file to container
-     - "${HOME_ASSISTANT_CONF_PATH}:/config:ro,z"
+     - "${HOME_ASSISTANT_CONF_PATH}:/config:z"
 
     # TODO: Do any caps (like for USB Zigbee)
     # cap_add:
