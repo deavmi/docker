@@ -1,0 +1,25 @@
+services:
+  home-assistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: home-assistant
+    restart: always
+
+    # In order for us to detect devices over WiFi,
+    # thread ec. we need to be placed onto the host
+    # LAN
+    network_mode: host
+
+    # TODO: Do volumes
+    volumes:
+     # Copy in configuration file to container
+     - "${YGGDRASIL_CONF_PATH}:/etc/yggdrasil.conf:ro,z"
+
+     # Access to TUN/TAP control device node
+     - /dev/net/tun:/dev/net/tun:z
+
+    # TODO: Do any caps (like for USB Zigbee)
+    cap_add:
+      # Add capability for performing needed network
+      # manipulation via the `/dev/tun` in order to
+      # open tun adaptor
+      - NET_ADMIN
