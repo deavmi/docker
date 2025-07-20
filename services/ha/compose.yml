@@ -9,6 +9,10 @@ services:
     # LAN
     network_mode: host
 
+    # TODO: Add missing env var for timezone
+    # TODO: Add privaleged mode (why?)
+    # See: https://www.home-assistant.io/installation/linux
+
     # TODO: Do volumes
     volumes:
 
@@ -17,14 +21,11 @@ services:
      - /run/dbus:/run/dbus:ro,z
      
      # Copy in configuration file to container
-     - "${YGGDRASIL_CONF_PATH}:/etc/yggdrasil.conf:ro,z"
-
-     # Access to TUN/TAP control device node
-     - /dev/net/tun:/dev/net/tun:z
+     - "${HOME_ASSISTANT_CONF_PATH}:/config:ro,z"
 
     # TODO: Do any caps (like for USB Zigbee)
-    cap_add:
+    # cap_add:
       # Add capability for performing needed network
       # manipulation via the `/dev/tun` in order to
       # open tun adaptor
-      - NET_ADMIN
+      # - NET_ADMIN
