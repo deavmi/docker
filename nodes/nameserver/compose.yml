@@ -18,7 +18,7 @@ services:
       file: ../../services/yggdrasil/compose.yml
       service: yggdrasil
     volumes:
-      - "${CONFIGURATION_PATH}:/etc/yggdrasil.conf:ro,z"
+      - "${YGGDRASIL_CONF_PATH}:/etc/yggdrasil.conf:ro,z"
   
   unbound:
     build:
