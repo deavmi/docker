@@ -7,8 +7,14 @@ This is the deployment file for my nameserver and recursive-resolver ("DNS serve
 
 ### `unbound`
 
-You must mount `/tmp/unbnd` into `/ctl` on the container side. This is so that
+You must mount `/ctl/unbnd` into `/ctl` on the container side. This is so that
 Unbound can place its control socket there and be accessible on the host side.
+
+Ensure that, on the host side, you create `/ctl/unbnd`:
+
+```bash
+sudo mkdir /ctl/unbnd
+```
 
 ## Requirements
 
