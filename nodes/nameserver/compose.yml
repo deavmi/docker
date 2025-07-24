@@ -49,8 +49,8 @@ services:
       - mainNet
     volumes:
       # Control socket
-      - "${UNBOUND_CTL_DIR}/unbound.ctl:/unbound.ctl"
-    command: -unbound.ca "" -unbound.cert "" -unbound.host "unix:///unbound.ctl"
+      - "${UNBOUND_CTL_DIR}/unbound.ctl:/unbd/unbound.ctl"
+    command: -unbound.ca "" -unbound.cert "" -unbound.host "unix:///unbd/unbound.ctl"
     ports:
       # OpenTelemetry port
       - "9167:9167/tcp"
