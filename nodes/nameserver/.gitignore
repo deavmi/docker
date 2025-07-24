@@ -1,0 +1,3 @@
+# Don't include the repository which will be cloned
+# on the machine that this is being deployed to
+unbound_exporter/
