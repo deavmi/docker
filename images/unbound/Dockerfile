@@ -14,11 +14,13 @@ RUN apt install unbound -y
 
 # Copy my configuration
 WORKDIR /etc/unbound
-COPY --from=configs *.conf .
+COPY --from=configs * /etc/unbound
+RUN ls . -la && sleep 10
 
 # Setup zones
 RUN mkdir zones
-COPY --from=zones * zones/
+COPY --from=zones * /etc/unbound/zones/
+RUN ls zones/ -la && sleep 10
 
 # Start unbound
 CMD ["unbound", "-d"]
