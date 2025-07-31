@@ -15,7 +15,7 @@ RUN apt install unbound -y
 # Copy my configuration
 WORKDIR /etc/unbound
 # TODO: Note this in README.md that only a single config may be present
-COPY --from=configs/config.config /etc/unbound/unbound.conf
+COPY --from=configs config.conf /etc/unbound/unbound.conf
 RUN ls . -la && sleep 10
 
 # Setup zones
