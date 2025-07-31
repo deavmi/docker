@@ -21,8 +21,13 @@ services:
       - "${YGGDRASIL_CONF_PATH}:/etc/yggdrasil.conf:ro,z"
   
   unbound:
+    extends:
+      file: ../../images/unbound/compose.yml
+      service: unbound
     build:
-      context: unbound/
+      additional_contexts:
+        zones: unbound/zones
+        configs: unbound/configs
     container_name: unbound
     restart: unless-stopped
     networks:
