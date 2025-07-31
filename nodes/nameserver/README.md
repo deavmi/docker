@@ -3,6 +3,24 @@ Nameserver
 
 This is the deployment file for my nameserver and recursive-resolver ("DNS server").
 
+## Additional contexts
+
+I have provided two of the required additional contexts in
+the `build` section of the configuration:
+
+```yaml
+build:
+  additional_contexts:
+    zones: unbound/zones
+    configs: unbound/configs
+```
+
+## Interpolation variables
+
+I have set the interpolation variable `UNBOUND_CTL_DIR`
+to `/ctl/unbnd`. (*The usage of this is explained in
+the next section)
+
 ## Mounts
 
 ### `unbound`
