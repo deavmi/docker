@@ -1,0 +1,57 @@
+networks:
+  mainNet:
+    driver: bridge
+    name: mainNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492a:fc7f::/48
+
+services:
+  # host-statistics:
+    # extends:
+      # file: ../../services/node_exporter/compose.yml
+      # service: statistics
+
+  # TODO: Enable this
+  # yggdrasil:
+    # extends:
+      # file: ../../services/yggdrasil/compose.yml
+      # service: yggdrasil
+
+  meshtastic_mqtt:
+    extends:
+      file: ../../services/mqtt/compose.yml
+      service: mqtt
+    container_name: mmqtt
+    build:
+      context: meshtastic/mqtt
+    networks:
+      - mainNet
+    ports:
+      # TODO: Add others via the ports listed here: https://test.mosquitto.org/
+      - "1883:1883/tcp"
+
+  # home-assistant:
+    # extends:
+      # file: ../../services/ha/compose.yml
+      # service: home-assistant
+    # restart: unless-stopped
+
+  # TODO: Add caddy and caddy config here
+  # web:
+    # container_name: web
+    # build:
+      # context: web/
+    # depends_on:
+      # - streamer
+    # restart: unless-stopped
+    # networks:
+      # - mainNet
+    # environment:
+      # - DOMAIN=vinyl.deavmi.assigned.network
+    # ports:
+      # - "[::]:80:80/tcp"
+      # - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
+      # - "[::]:443:443/tcp"
+      # - "[::]:443:443/udp"
