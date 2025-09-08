@@ -3,10 +3,3 @@ services:
     build: clipse-mosquitto
     container_name: mqtt
     restart: unless-stopped
-
-    # TODO: See https://test.mosquitto.org/
-    # for common ports
-    # ports:
-      # - "1883:1883/tcp"
-    # volumes:
-      # - "${SSHCHAT_CONF_DIR}:/home/sshchat:ro"
