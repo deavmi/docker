@@ -30,7 +30,7 @@ services:
       - mainNet
     ports:
       # TODO: Add others via the ports listed here: https://test.mosquitto.org/
-      - "1883:1883/tcp"
+      - "1893:1883/tcp"
 
   # home-assistant:
     # extends:
