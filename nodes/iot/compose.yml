@@ -7,6 +7,9 @@ networks:
       config:
         - subnet: fde4:492a:fc7f::/48
 
+volumes:
+  meshtastic_mqtt_data:
+
 services:
   host-statistics:
     extends:
@@ -26,6 +29,8 @@ services:
     container_name: meshtastic_mqtt
     build:
       context: meshtastic/mqtt
+    volumes:
+      - meshtastic_mqtt_data:/data
     networks:
       - mainNet
     ports:

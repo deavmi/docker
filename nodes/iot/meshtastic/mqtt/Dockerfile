@@ -1,4 +1,4 @@
 FROM eclipse-mosquitto
 
-# Copy accross configuration file
+# Copy across configuration file
 COPY config /mosquitto/config/mosquitto.conf
