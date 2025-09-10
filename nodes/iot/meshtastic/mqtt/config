@@ -1,3 +1,5 @@
+# See this for more information: https://mosquitto.org/man/mosquitto-conf-5.html
+
 # Where to save stuff
 persistence true
 persistenece_location /data
