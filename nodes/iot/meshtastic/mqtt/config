@@ -2,13 +2,13 @@
 
 # Where to save stuff
 persistence true
-persistenece_location /data
+persistence_location /data
 
 # Logging configuration
 log_dest stdout
 log_type all # TODO: Change later
 
 # Listener config
-# listener 1883 0.0.0.0
-listener 1883 ::
+listener 1883 0.0.0.0
+# listener 1883 ::
 allow_anonymous true # Allow non-auth connections
