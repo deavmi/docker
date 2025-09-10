@@ -1,3 +1,4 @@
+# Use mosquitto
 FROM eclipse-mosquitto
 
 # Copy across configuration file
