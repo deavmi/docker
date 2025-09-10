@@ -8,10 +8,10 @@ networks:
         - subnet: fde4:492a:fc7f::/48
 
 services:
-  # host-statistics:
-    # extends:
-      # file: ../../services/node_exporter/compose.yml
-      # service: statistics
+  host-statistics:
+    extends:
+      file: ../../services/node_exporter/compose.yml
+      service: statistics
 
   # TODO: Enable this
   # yggdrasil:
@@ -23,7 +23,7 @@ services:
     extends:
       file: ../../services/mqtt/compose.yml
       service: mqtt
-    container_name: mmqtt
+    container_name: meshtastic_mqtt
     build:
       context: meshtastic/mqtt
     networks:
