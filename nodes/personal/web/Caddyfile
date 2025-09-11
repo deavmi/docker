@@ -30,6 +30,10 @@
 	# for files (with relative paths)
 	root * /webroot
 
+	# Serve root
+	handle * {
+		file_server
+	}
 	
 	# If you hit this then display
 	# an HTML file browser
