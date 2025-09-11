@@ -30,8 +30,7 @@ services:
     build:
       context: web/
     # depends_on:
-      # - prometheus
-      # - grafana
+      # - quassel-web
     networks:
       - mainNet
     volumes:

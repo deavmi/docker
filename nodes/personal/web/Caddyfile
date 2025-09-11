@@ -12,6 +12,7 @@
 
 # Domain name for automatic SSL
 :80, {$DOMAIN}:443 {
+
 	# Handle metrics
 	handle /metrics {
 	    metrics
