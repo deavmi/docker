@@ -1,0 +1,9 @@
+services:
+  builder:
+    extends:
+      file: ../../services/builder/compose.yml
+      service: builder
+    container_name: builder
+    restart: unless-stopped
+    networks:
+      - mainNet
