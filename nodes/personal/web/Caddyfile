@@ -7,21 +7,11 @@
 			output stdout
 			level DEBUG
 	}
-
-	default_sni fde4:493b:fc7f::2
 }
 
 
 # Domain name for automatic SSL
-# :80 {
-# :80, :443 {
 :80, {$DOMAIN}:443 {
-
-	# TODO: test
-	# tls {
-		# issuer internal
-	# }
-
 	# Handle metrics
 	handle /metrics {
 	    metrics
