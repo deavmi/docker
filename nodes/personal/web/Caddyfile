@@ -8,9 +8,7 @@
 			level DEBUG
 	}
 
-	servers {
-		trusted_proxies static fde4:493b:fc7f::/48
-	}
+	default_sni {$DOMAIN}
 }
 
 
