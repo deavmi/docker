@@ -53,6 +53,9 @@ WORKDIR script/
 # We start here
 FROM base AS builder
 
+# User switched?
+USER builder
+
 # Copy run script
 COPY run.sh .
 RUN ls -la && sleep 10
