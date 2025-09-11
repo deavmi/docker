@@ -38,6 +38,8 @@ services:
       # Data directory to serve static site files
       # from
       - /mnt/datadisk/volumes/web:/webroot:z
+    command:
+      - "-H X-Forwarded-For"
     environment:
       - "DOMAIN=${CADDY_DOMAIN}"
     ports:
