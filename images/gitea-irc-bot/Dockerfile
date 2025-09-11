@@ -9,7 +9,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG BRANCH=master
 ARG COMMIT=a6c1041208ca156e054aa1af9d72b3968cb9e093
 
-RUN apt update -y
+RUN apt update
 
 RUN apt install git -y
 RUN apt install dub gcc -y
