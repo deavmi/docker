@@ -8,7 +8,9 @@
 			level DEBUG
 	}
 
-	trusted_proxies static fde4:493b:fc7f::/48
+	servers {
+		trusted_proxies static fde4:493b:fc7f::/48
+	}
 }
 
 
