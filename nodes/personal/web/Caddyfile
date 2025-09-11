@@ -17,6 +17,10 @@
 # :80, :443 {
 :80, {$DOMAIN}:443 {
 
+	tls {
+		issuer internal
+	}
+
 	# Handle metrics
 	handle /metrics {
 	    metrics
