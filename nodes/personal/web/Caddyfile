@@ -25,12 +25,19 @@
 	# Serve index.html's on any path
 	# and with a root of files from
 	# /webroot
+
+	# Sets the root of where we look
+	# for files (with relative paths)
 	root * /webroot
 
 	
 	# If you hit this then display
 	# an HTML file browser
 	handle /files* {
+		file_server browse
+	}
+
+	handle /kaka* {
 		file_server browse
 	}
 
