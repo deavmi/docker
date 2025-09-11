@@ -25,7 +25,7 @@ services:
       # TODO: Place to on-disk path
       # - quassel_core_data:/config
       # Configuration data
-      - "${QUASSEL_CORE_DATA_PATH}":/config:z
+      - "${QUASSEL_CORE_DATA_PATH}:/config:z"
     networks:
       - mainNet
       - quassel_db_net
