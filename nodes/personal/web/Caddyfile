@@ -8,7 +8,7 @@
 			level DEBUG
 	}
 
-	# default_sni {$DOMAIN}
+	default_sni fde4:493b:fc7f::2
 }
 
 
@@ -18,9 +18,9 @@
 :80, {$DOMAIN}:443 {
 
 	# TODO: test
-	tls {
-		issuer internal
-	}
+	# tls {
+		# issuer internal
+	# }
 
 	# Handle metrics
 	handle /metrics {
