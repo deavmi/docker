@@ -17,14 +17,20 @@ services:
     image: kalaksi/quassel
     container_name: quassel-core
     restart: unless-stopped
+
+    # Command-line arguments to give
+    # to entrypoint (TODO: check but I believe this is it)
+    command:
+      - "--config-from-environment" # Use environment variables as config parameters
+      - "--port=4242" # container-side port to listen on
     environment:
       - PUID=1000
       - PGID=1003
       - TZ=Etc/UTC
 
 
-
       # Database-related
+      - DB_BACKEND=PostgreSQL
       - DB_PGSQL_USER=quassel_user
       - DB_PGSQL_PASSWORD=quassel_pass
       - DB_PGSQL_DB=quassel
