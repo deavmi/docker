@@ -28,5 +28,3 @@ services:
       # Makes timezone and time information available
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-    networks:
-      - mainNet
