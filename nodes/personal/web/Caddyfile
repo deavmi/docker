@@ -8,14 +8,14 @@
 			level DEBUG
 	}
 
-	default_sni {$DOMAIN}
+	# default_sni {$DOMAIN}
 }
 
 
 # Domain name for automatic SSL
 # :80 {
 # :80, :443 {
-{$DOMAIN}:80, {$DOMAIN}:443 {
+:80, {$DOMAIN}:443 {
 
 	# Handle metrics
 	handle /metrics {
