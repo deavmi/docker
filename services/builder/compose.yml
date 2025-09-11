@@ -1,0 +1,32 @@
+services:
+  builder:
+    container_name: builder
+    build:
+      context: ../../images/builder/.
+      args:
+        # Change these to the value of `id -u`
+        # on your HOST
+        - "USER_UID=${USER_UID}"
+        # Change these to the value of `id -g`
+        # on your HOST
+        - "USER_GID=${USER_GID}"
+    restart: unless-stopped
+    environment:
+      # Verification of who is sending us the command
+      - "GITEA_WEBHOOK_AUTH=${BUILDER_GITEA_WEBHOOK_AUTH}""
+
+      # Fixes issue with the Python babel package
+      # used by mkdocs
+      - TZ=UTC
+    volumes:
+      # Where the generated websites our output to
+      - "${BUILDER_OUTPUT}:/home/builder/dump"
+
+      # Source to build websites from
+      - "${BUILDER_SOURCE}:/home/builder/src"
+
+      # Makes timezone and time information available
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - mainNet
