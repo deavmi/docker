@@ -25,10 +25,7 @@
 	# Serve index.html's on any path
 	# and with a root of files from
 	# /webroot
-	# root * /webroot
-	handle * {
-		file_server 
-	}
+	root * /webroot
 
 	
 	# If you hit this then display
