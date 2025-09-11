@@ -21,6 +21,15 @@ services:
       - PUID=1000
       - PGID=1003
       - TZ=Etc/UTC
+
+
+
+      # Database-related
+      - DB_PGSQL_USER=quassel_user
+      - DB_PGSQL_PASSWORD=quassel_pass
+      - DB_PGSQL_DB=quassel
+      - DB_PGSQL_HOSTNAME=quassel-db
+      - DB_PGSQL_PORT=5432
     volumes:
       # TODO: Place to on-disk path
       # - quassel_core_data:/config
@@ -57,9 +66,9 @@ services:
     image: postgres
     container_name: quassel-db
     environment:
-      - POSTGRES_USER=grafana
-      - POSTGRES_PASSWORD=grafana
-      - POSTGRES_DB=grafana
+      - POSTGRES_USER=quassel_user
+      - POSTGRES_PASSWORD=quassel_pass
+      - POSTGRES_DB=quassel
     volumes:
       # TODO: Fill this up with an env var
       - "${QUASSEL_CORE_DB_PATH}:/var/lib/postgresql/data:z:z"
