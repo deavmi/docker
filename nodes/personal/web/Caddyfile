@@ -11,7 +11,8 @@
 
 
 # Domain name for automatic SSL
-:80, :443 {
+:80 {
+# :80, :443 {
 # {$DOMAIN}:80, {$DOMAIN}:443 {
 
 	# respond "Hello there"
