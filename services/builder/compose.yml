@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
     environment:
       # Verification of who is sending us the command
-      - "GITEA_WEBHOOK_AUTH=${BUILDER_GITEA_WEBHOOK_AUTH}""
+      - "GITEA_WEBHOOK_AUTH=${BUILDER_GITEA_WEBHOOK_AUTH}"
 
       # Fixes issue with the Python babel package
       # used by mkdocs
