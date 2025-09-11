@@ -24,10 +24,6 @@ services:
       service: yggdrasil
     container_name: yggdrasil
 
-  # TODO: caddy definition and let us copy our caddy file
-  # over using a custom image rather. This will allow us
-  # to rebuild with a new configuration then and not
-  # have to maintain it within a mount-point.
   web:
     container_name: web
     build:

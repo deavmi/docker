@@ -1,0 +1,67 @@
+networks:
+  quassel_db_net:
+    driver: bridge
+    name: quassel_db_net
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:498b:fc7f::/48
+
+volumes:
+  quassel_core_data:
+  quassel_db_data:
+  quassel_web_data:
+
+services:
+  quassel-core:
+    image: lscr.io/linuxserver/quassel-core:latest
+    container_name: quassel-core
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1003
+      - TZ=Etc/UTC
+    volumes:
+      # TODO: Place to on-disk path
+      - quassel_core_data:/config
+      # Configuration data
+      # - "${QUASSEL_CORE_DATA_PATH}":/config:z
+    networks:
+      - mainNet
+      - quassel_db_net
+    ports:
+      - 4242:4242
+
+  quassel-web:
+    image: lscr.io/linuxserver/quassel-web:latest
+    container_name: quassel-web
+    restart: unless-stopped
+    depends_on:
+      - quassel-core
+    environment:
+      - PUID=1000
+      - PGID=1003
+      - TZ=Etc/UTC
+      - QUASSEL_CORE=quassel-core
+      - QUASSEL_PORT=4242
+      - URL_BASE=/quassel
+    volumes:
+      # TODO: Place to on-disk path
+      - quassel_web_data:/config
+      # Configuration data
+      # - "${QUASSEL_WEB_DATA_PATH}":/config:z
+    networks:
+      - mainNet
+
+  quassel-db:
+    image: postgres
+    container_name: quassel-db
+    environment:
+      - POSTGRES_USER=grafana
+      - POSTGRES_PASSWORD=grafana
+      - POSTGRES_DB=grafana
+    volumes:
+      # TODO: Fill this up with an env var
+      - quassel_db_data:/var/lib/postgresql/data:z
+    networks:
+      - quassel_db_net
