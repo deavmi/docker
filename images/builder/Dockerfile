@@ -56,7 +56,7 @@ FROM base AS builder
 RUN echo "WhoamI" && whoami && sleep 10
 
 # Copy run script
-COPY --chown builder:builder run.sh .
+COPY --chown=builder:builder run.sh .
 RUN ls -la && sleep 10
 RUN chmod +x run.sh
 CMD ./run.sh
