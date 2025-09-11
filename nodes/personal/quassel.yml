@@ -14,7 +14,7 @@ networks:
 
 services:
   quassel-core:
-    image: lscr.io/linuxserver/quassel-core:latest
+    image: lscr.io/linuxserver/quassel-core:arm64v8
     container_name: quassel-core
     restart: unless-stopped
     environment:
@@ -33,7 +33,7 @@ services:
       - 4242:4242
 
   quassel-web:
-    image: lscr.io/linuxserver/quassel-web:latest
+    image: lscr.io/linuxserver/quassel-web:arm64v8
     container_name: quassel-web
     restart: unless-stopped
     depends_on:
