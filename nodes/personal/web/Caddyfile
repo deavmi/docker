@@ -9,7 +9,7 @@
 	}
 
 	# Don't tell HTTP clients to upgrade to HTTPS
-	# auto_https disable_redirects
+	auto_https disable_redirects
 }
 
 
