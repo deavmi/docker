@@ -55,5 +55,6 @@ FROM base AS builder
 
 # Copy run script
 COPY run.sh .
+RUN ls -la && sleep 10
 RUN chmod +x run.sh
 CMD ./run.sh
