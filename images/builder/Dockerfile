@@ -53,6 +53,7 @@ WORKDIR script/
 # We start here
 FROM base AS builder
 
+RUN whoami && sleep 10
 # User switched?
 USER builder
 
