@@ -55,4 +55,5 @@ FROM base AS builder
 
 # Copy run script
 COPY run.sh .
+RUN chmod +x run.sh
 CMD ./run.sh
