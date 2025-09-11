@@ -19,7 +19,7 @@ services:
     restart: unless-stopped
 
     # Command-line arguments to give
-    # to entrypoint (TODO: check but I believe this is it)
+    # to entrypoint executable
     command:
       - "--config-from-environment" # Use environment variables as config parameters
       - "--port=4242" # container-side port to listen on
