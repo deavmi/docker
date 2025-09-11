@@ -10,6 +10,7 @@ networks:
 include:
   - quassel.yml
   - bots.yml
+  - builder.yml
 
 services:
   host-statistics:
