@@ -11,9 +11,9 @@
 
 
 # Domain name for automatic SSL
-:80 {
+# :80 {
 # :80, :443 {
-# {$DOMAIN}:80, {$DOMAIN}:443 {
+{$DOMAIN}:80, {$DOMAIN}:443 {
 
 	# Handle metrics
 	handle /metrics {
@@ -24,12 +24,12 @@
 	# for files (with relative paths)
 	root * /webroot
 
-	# Serve ditectories in root
+	# Serve directories in root
 	handle * {
 		file_server
 	}
 	
-	# if we hit `/files`
+	# If we hit `/files`
 	# then server root/files`
 	# with a file browser
 	handle /files* {
