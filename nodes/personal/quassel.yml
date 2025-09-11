@@ -7,10 +7,10 @@ networks:
       config:
         - subnet: fde4:498b:fc7f::/48
 
-volumes:
-  quassel_core_data:
-  quassel_db_data:
-  quassel_web_data:
+# volumes:
+  # quassel_core_data:
+  # quassel_db_data:
+  # quassel_web_data:
 
 services:
   quassel-core:
@@ -23,9 +23,9 @@ services:
       - TZ=Etc/UTC
     volumes:
       # TODO: Place to on-disk path
-      - quassel_core_data:/config
+      # - quassel_core_data:/config
       # Configuration data
-      # - "${QUASSEL_CORE_DATA_PATH}":/config:z
+      - "${QUASSEL_CORE_DATA_PATH}":/config:z
     networks:
       - mainNet
       - quassel_db_net
@@ -47,9 +47,9 @@ services:
       - URL_BASE=/quassel
     volumes:
       # TODO: Place to on-disk path
-      - quassel_web_data:/config
+      # - quassel_web_data:/config
       # Configuration data
-      # - "${QUASSEL_WEB_DATA_PATH}":/config:z
+      - "${QUASSEL_WEB_DATA_PATH}:/config:z"
     networks:
       - mainNet
 
@@ -62,6 +62,7 @@ services:
       - POSTGRES_DB=grafana
     volumes:
       # TODO: Fill this up with an env var
-      - quassel_db_data:/var/lib/postgresql/data:z
+      - "${QUASSEL_WEB_DB_PATH}:/var/lib/postgresql/data:z:z"
+      # - quassel_db_data:/var/lib/postgresql/data:z
     networks:
       - quassel_db_net
