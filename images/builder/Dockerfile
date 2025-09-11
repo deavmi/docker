@@ -56,6 +56,8 @@ FROM base AS builder
 # User switched?
 USER builder
 
+RUN whoami && sleep 10
+
 # Copy run script
 COPY run.sh .
 RUN ls -la && sleep 10
