@@ -7,17 +7,12 @@ networks:
       config:
         - subnet: fde4:498b:fc7f::/48
 
-# volumes:
-  # quassel_core_data:
-  # quassel_db_data:
-  # quassel_web_data:
 
 services:
   quassel:
     image: kalaksi/quassel
     container_name: quassel
     restart: unless-stopped
-
     depends_on:
       - quassel-db
 
