@@ -18,3 +18,6 @@ can be built:
 4. `COMMIT`
 	* The commit hash to use
 	* **Default value:** `HEAD`
+5. `NPROC`
+	* Number of cores to use when building
+	* **Default value:** `4`

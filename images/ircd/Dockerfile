@@ -46,7 +46,8 @@ RUN mkdir /home/unreal/ircd
 RUN ./Config -quick
 
 # Build and install
-RUN make -j4
+ENV NPROC=4
+RUN make -j$(NPROC)
 RUN make install
 
 # Copy across build artefacts
