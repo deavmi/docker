@@ -11,7 +11,7 @@ volumes:
   i2pd_data:
 
 include:
-#  - git.yml
+  - git.yml
   - irc.yml
 
 
@@ -106,8 +106,8 @@ services:
     container_name: web
     build:
       context: web/
-#    depends_on:
- #     - gitea
+    depends_on:
+      - gitea
   #    - webirc
     networks:
       - mainNet
