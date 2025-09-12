@@ -39,6 +39,6 @@
 
 	# Gitea service
 	handle /git* {
-		reverse_proxy services.deavmi.assigned.network
+		reverse_proxy https://services.deavmi.assigned.network
 	}
 }
