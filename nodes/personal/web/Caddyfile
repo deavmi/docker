@@ -37,11 +37,6 @@
 		file_server browse
 	}
 
-	# TODO: sub-path or reqwrite thing may be neede idk
-	handle /quassel* {
-		reverse_proxy quassel-web:64080
-	}
-
 	# Gitea service
 	handle /git* {
 		reverse_proxy services.deavmi.assigned.network
