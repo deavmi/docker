@@ -38,6 +38,8 @@ services:
     build:
       additional_contexts:
         tunnelsconfig: ./i2pd
+      args:
+        - NPROC=1
     environment:
       # Disable IPv4
       - DISABLE_IPV4=yes
