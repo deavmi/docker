@@ -42,7 +42,7 @@ services:
       - 4242:4242
 
   quassel-db:
-    image: postgres
+    image: postgres:15.14
     container_name: quassel-db
     environment:
       - POSTGRES_USER=quassel_user
