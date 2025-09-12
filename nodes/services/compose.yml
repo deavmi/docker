@@ -14,7 +14,7 @@ include:
   - git.yml
   - irc.yml
   - im.yml
-
+  - i2p.yml
 
 # TODO: neaten up and see if we can
 # place it elsewhere
@@ -30,61 +30,6 @@ services:
     extends:
       file: ../../services/yggdrasil/compose.yml
       service: yggdrasil
-
-  i2pd:
-    extends:
-      file: ../../services/i2pd/compose.yml
-      service: i2pd
-    build:
-      additional_contexts:
-        tunnelsconfig: ./i2pd
-      args:
-        - NPROC=1
-    environment:
-      # Disable IPv4
-      - DISABLE_IPV4=yes
-      
-      # Enable floodfill
-      - FLOODFILL=yes
-      
-      # Data directory is `/data`
-      - DATA_DIR=/data
-      
-      # Configuration file path
-      - CONFIG_PATH=/conf/i2pd.conf
-      
-      # Config base
-      - CONFIG_BASE_DIR=/conf
-      
-      # Yggdrasil address (TODO: Change this)
-      - MESH_YGGDRASIL_ADDR=202:dd5:84ca:46b4:acb9:a981:5dba:34e8
-    # network_mode: host
-    networks:
-      - mainNet
-      # TODO: For Yggdrasil we mayneed to place
-      # this into the same network namespace so
-      # that i2pd can bind to the tun0 interface
-      # TODO: Actually maybe not if host mode
-      # is fine
-    volumes:
-      # Router data, all stuff that can be
-      # deleted but is useful for caching
-      - "${I2PD_DATA_DIR}:/data:z"
-      
-      # Configuration base path
-      - "${I2PD_CONF_DIR}:/conf:z"
-      
-      # Tunnel key files
-      - "${I2PD_KEYS_DIR}:/keys:z"
-    ports:
-      # SSU2
-      - "6245:6245/tcp"
-
-      # NTCP2
-      - "6246:6246/tcp"
-
-      # Web console
-      # - "8182:8182/tcp"
 
   web:
     container_name: web
