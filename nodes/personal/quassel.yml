@@ -27,6 +27,9 @@ services:
       - "--config-from-environment" # Use environment variables as config parameters
       - "--port=4242" # container-side port to listen on
       - "--configdir=/config"
+
+      # FIXME: Make .secrets contorllable
+      - "--adduser"
     environment:
       - PUID=1000
       - PGID=1003
