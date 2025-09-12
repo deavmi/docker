@@ -9,4 +9,4 @@ services:
     ports:
       - "2000:2022"
     volumes:
-      - "${SSHCHAT_CONF_DIR}:/home/sshchat:ro"
+      - "${SSHCHAT_CONF_DIR}:/home/sshchat"
