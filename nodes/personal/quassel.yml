@@ -24,7 +24,7 @@ services:
       - "--configdir=/config"
     environment:
       # Database-related
-      - DB_BACKEND=PostgreSQL
+      # - DB_BACKEND=PostgreSQL
       - DB_PGSQL_USERNAME=quassel_user
       - DB_PGSQL_PASSWORD=quassel_pass
       - DB_PGSQL_DATABASE=quassel
