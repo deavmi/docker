@@ -106,13 +106,13 @@ services:
     container_name: web
     build:
       context: web/
-    depends_on:
-      - gitea
-      - webirc
+#    depends_on:
+ #     - gitea
+  #    - webirc
     networks:
       - mainNet
     environment:
-      - DOMAIN=services.deavmi.assigned.network
+      - "DOMAIN={$CADDY_DOMAIN}"
     ports:
       - "[::]:80:80/tcp"
       - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?

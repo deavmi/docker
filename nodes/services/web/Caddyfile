@@ -7,12 +7,14 @@
 			output stdout
 			level DEBUG
 	}
+
+        # Don't tell HTTP clients to upgrade to HTTPS
+        auto_https disable_redirects
 }
 
 
 # Domain name for automatic SSL
-:80, :443 {
-# {$DOMAIN}:80, {$DOMAIN}:443 {
+:80, {$DOMAIN}:443 {
 	respond "Hello there"
 
 	# Handle metrics
@@ -34,7 +36,6 @@
 	
 	# i2pd console
 	handle /i2pd* {
-	    # uri strip_prefix /i2pd
 	    reverse_proxy i2pd:7070
 	}
 	
