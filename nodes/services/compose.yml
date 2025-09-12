@@ -13,6 +13,7 @@ volumes:
 include:
   - git.yml
   - irc.yml
+  - im.yml
 
 
 # TODO: neaten up and see if we can
@@ -82,25 +83,6 @@ services:
 
       # Web console
       # - "8182:8182/tcp"
-
-  sshchat:
-    extends:
-      file: ../../services/sshchat/compose.yml
-      service: sshchat
-    networks:
-      - mainNet
-    ports:
-      - "2000:2022/tcp"
-
-  matterbridge:
-    extends:
-      file: ../../services/matterbridge/compose.yml
-      service: matterbridge
-    depends_on:
-      - ircd
-      - sshchat
-    networks:
-      - mainNet
 
   web:
     container_name: web
