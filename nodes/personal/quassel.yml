@@ -75,8 +75,8 @@ services:
     image: postgres
     container_name: quassel-db
     environment:
-      - POSTGRES_USER=quassel_user
-      - POSTGRES_PASSWORD=quassel_pass
+      - POSTGRES_USER=quasseluser
+      - POSTGRES_PASSWORD=quasselpass
       - POSTGRES_DB=quassel
     volumes:
       # TODO: Fill this up with an env var
