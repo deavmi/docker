@@ -30,7 +30,7 @@ USER unreal
 # Clone sources
 WORKDIR /home/unreal
 RUN echo Building with commit $COMMIT
-RUN git clone https://github.com/unrealircd/unrealircd.git --branch $BRANCH unrealircd
+RUN git clone https://github.com/unrealircd/unrealircd.git --branch $BRANCH unrealircd -v
 WORKDIR unrealircd/
 RUN git checkout $COMMIT
 
