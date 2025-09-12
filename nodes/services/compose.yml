@@ -66,13 +66,13 @@ services:
     volumes:
       # Router data, all stuff that can be
       # deleted but is useful for caching
-      - /mnt/datadisk/volumes/i2pd/data/:/data:z
+      - "${I2PD_DATA_DIR}:/data:z"
       
       # Configuration base path
-      - /mnt/datadisk/volumes/i2pd/config/:/conf:z
+      - "${I2PD_CONF_DIR}:/conf:z"
       
       # Tunnel key files
-      - /mnt/datadisk/volumes/i2pd/keys:/keys:z
+      - "${I2PD_KEYS_DIR}:/keys:z"
     ports:
       # SSU2
       - "6245:6245/tcp"
