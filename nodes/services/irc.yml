@@ -3,6 +3,9 @@ services:
     extends:
       file: ../../services/ircd/compose.yml
       service: ircd
+    build:
+      args:
+        - NPROC=1
     networks:
       - mainNet
     # Assume default ports are being exposed
