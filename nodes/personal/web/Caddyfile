@@ -37,6 +37,11 @@
 		file_server browse
 	}
 
+	# Builder
+	handle /builder* {
+		reverse_proxy builder:5000
+	}
+
 	# Gitea service
 	handle /git* {
 		reverse_proxy services.deavmi.assigned.network
