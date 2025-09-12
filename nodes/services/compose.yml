@@ -112,7 +112,7 @@ services:
     networks:
       - mainNet
     environment:
-      - "DOMAIN={$CADDY_DOMAIN}"
+      - "DOMAIN=${CADDY_DOMAIN}"
     ports:
       - "[::]:80:80/tcp"
       - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
