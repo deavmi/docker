@@ -1,0 +1,152 @@
+networks:
+  gitea_db_net:
+    driver: bridge
+    name: gitea_db_net
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492b:fc7f::/48
+  gitea_minio_net:
+    driver: bridge
+    name: gitea_minio_net
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:442b:fc7f::/48
+  gitea_redis_net:
+    driver: bridge
+    name: gitea_redis_net
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:452b:fc7f::/48
+
+# secrets:
+  # MINIO_ACCESS_KEY:
+    # file: /mnt/datadisk/secrets/minio_access_key.txt
+  # MINIO_SECRET_ACCESS_KEY:
+    # file: /mnt/datadisk/secrets/minio_secret_access_key.txt
+
+volumes:
+  redis_gitea_data:
+
+services:
+  gitea:
+    extends:
+      file: ../../services/gitea/compose.yml
+      service: gitea
+    build:
+      context: gitea/
+    container_name: gitea
+    depends_on:
+      - db-gitea
+      - minio-gitea
+      - redis-gitea
+    # TODO: Not yet working
+    # secrets:
+      # - MINIO_ACCESS_KEY
+      # - MINIO_SECRET_ACCESS_KEY
+    environment:
+      # Gitea DB configuraiton
+      - GITEA__database__DB_TYPE=postgres
+      - GITEA__database__HOST=db-gitea:5432
+      - GITEA__database__NAME=${GITEA_DB_NAME}
+      - GITEA__database__USER=${GITEA_DB_USER}
+      - GITEA__database__PASSWD=${GITEA_DB_PASS}
+
+      # Server settings
+      - GITEA__server__ROOT_URL=/git/
+
+      # Instance settings
+      - GITEA__APP_NAME=DForge1
+      - GITEA__ui0x2Emeta__AUTHOR=Deavmi's Forge
+      - GITEA__ui0x2Emeta__DESCRIPTION=Where code is grinded out ⚙️
+      - GITEA__ui__DEFAULT_THEME=forgejo-dark
+      
+      - GITEA__security__INSTALL_LOCK=true # Perform installation unattended
+
+      # For session management
+      - GITEA__session__PROVIDER=redis
+      - GITEA__session__PROVIDER_CONFIG=redis://redis-gitea:6379
+      - GITEA__session__COOKIE_NAME=gitea-cookie
+
+      # For cache management
+      - GITEA__cache__ADAPTER=redis
+      - GITEA__cache__HOST=redis://redis-gitea:6379
+
+      # MinIO storage
+      - GITEA__storage__STORAGE_TYPE=minio
+      - GITEA__storage__MINIO_BUCKET=gitea
+      - GITEA__storage__MINIO_ENDPOINT=minio-gitea:9000
+      - GITEA__storage__MINIO_ACCESS_KEY_ID=minio_secret1
+      - GITEA__storage__MINIO_SECRET_ACCESS_KEY=minio_secret2
+
+      # Logging configuration TODO: Maybe lower later
+      - GITEA__log__LEVEL=Trace
+
+      # For metrics
+      - GITEA__metrics__ENABLED=true
+    networks:
+      - mainNet
+      - gitea_db_net
+      - gitea_minio_net
+      - gitea_redis_net
+  
+  db-gitea:
+    extends:
+      file: ../../services/postgres/compose.yml
+      service: db
+    container_name: gitea_db
+    environment:
+      - POSTGRES_DB=${GITEA_DB_NAME}
+      - POSTGRES_USER=${GITEA_DB_USER}
+      - POSTGRES_PASSWORD=${GITEA_DB_PASS}
+
+    volumes:
+      # Path for Postgres to store data
+      - "${GITEA_POSTGRES_PATH}:/var/lib/postgresql/data:z"
+    networks:
+      - gitea_db_net
+
+  # TODO: If we use this elsehwre then we should
+  # move it out of here and into `storage.yml`
+  minio-gitea:
+    # TODO: Put extends here with some base configuration
+    image: quay.io/minio/minio
+    container_name: minio-gitea
+    restart: unless-stopped
+    volumes:
+      # Data storage path
+      - /mnt/datadisk/volumes/minio:/data:z
+    # secrets:
+      # - MINIO_ACCESS_KEY
+      # - MINIO_SECRET_ACCESS_KEY
+    # TODO: We may need to use docker secrets
+    # for this or a cstonm `.env` file
+    environment:
+      - MINIO_ROOT_USER=minio_secret1
+      - MINIO_ROOT_PASSWORD=minio_secret2
+    networks:
+      - mainNet
+      - gitea_db_net
+      - gitea_minio_net
+    ports:
+      - "9001:9001/tcp"
+    # TODO: See if we should expose the console locally
+    # via docker `ports` here solely for debugging
+    command: "server /data --console-address :9001"
+
+  # TODO: This should be a redis we use for ALL
+  # our services then
+  redis-gitea:
+    image: redis:latest
+    # build:
+      # context: redis/
+    container_name: redis-gitea
+    restart: unless-stopped
+    volumes:
+      # For Redis persistence
+      - redis_gitea_data:/data:z
+    networks:
+      - gitea_redis_net
+    
