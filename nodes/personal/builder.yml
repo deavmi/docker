@@ -8,4 +8,5 @@ services:
     networks:
       - mainNet
     env_file:
-      - .secrets
+      - path: .secrets
+        required: true
