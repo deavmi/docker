@@ -13,7 +13,7 @@ networks:
   # quassel_web_data:
 
 services:
-  quassel-core:
+  quassel:
     image: kalaksi/quassel
     container_name: quassel-core
     restart: unless-stopped
