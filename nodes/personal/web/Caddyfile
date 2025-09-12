@@ -39,6 +39,7 @@
 
 	# Builder
 	handle /builder* {
+		uri strip_prefix /builder
 		reverse_proxy builder:5000
 	}
 
