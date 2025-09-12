@@ -7,3 +7,5 @@ services:
     restart: unless-stopped
     networks:
       - mainNet
+    env_file:
+      - .secrets
