@@ -80,7 +80,7 @@ services:
       - POSTGRES_DB=quassel
     volumes:
       # TODO: Fill this up with an env var
-      - "${QUASSEL_CORE_DB_PATH}:/var/lib/postgresql/data:z:z"
+      - "${QUASSEL_CORE_DB_PATH}:/var/lib/postgresql/data:z"
       # - quassel_db_data:/var/lib/postgresql/data:z
     networks:
       - quassel_db_net
