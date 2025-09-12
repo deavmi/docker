@@ -27,18 +27,18 @@ services:
       - "--config-from-environment" # Use environment variables as config parameters
       - "--port=4242" # container-side port to listen on
     environment:
-      - PUID=1000
-      - PGID=1003
-      - TZ=Etc/UTC
+      #- PUID=1000
+      #- PGID=1003
+      #- TZ=Etc/UTC
 
 
       # Database-related
-      - DB_BACKEND=PostgreSQL
-      - DB_PGSQL_USER=quassel_user
-      - DB_PGSQL_PASSWORD=quassel_pass
-      - DB_PGSQL_DB=quassel
-      - DB_PGSQL_HOSTNAME=quassel-db
-      - DB_PGSQL_PORT=5432
+      DB_BACKEND: PostgreSQL
+      DB_PGSQL_USER: quassel_user
+      DB_PGSQL_PASSWORD: quassel_pass
+      DB_PGSQL_DB: quassel
+      DB_PGSQL_HOSTNAME: quassel-db
+      DB_PGSQL_PORT: 5432
     volumes:
       # TODO: Place to on-disk path
       # - quassel_core_data:/config
@@ -75,9 +75,9 @@ services:
     image: postgres
     container_name: quassel-db
     environment:
-      - POSTGRES_USER=quassel_user
-      - POSTGRES_PASSWORD=quassel_pass
-      - POSTGRES_DB=quassel
+      POSTGRES_USER: quassel_user
+      POSTGRES_PASSWORD: quassel_pass
+      POSTGRES_DB: quassel
     volumes:
       # TODO: Fill this up with an env var
       - "${QUASSEL_CORE_DB_PATH}:/var/lib/postgresql/data:z:z"
