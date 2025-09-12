@@ -18,6 +18,9 @@ services:
     container_name: quassel-core
     restart: unless-stopped
 
+    depends_on:
+      - quassel-db
+
     # Command-line arguments to give
     # to entrypoint executable
     command:
