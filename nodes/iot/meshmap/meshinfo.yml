@@ -21,7 +21,7 @@ services:
 
   meshinfo-db:
     extends:
-      file: ../../services/postgres/compose.yml
+      file: ../../../services/postgres/compose.yml
       service: db
     container_name: meshinfo_db
     environment:
