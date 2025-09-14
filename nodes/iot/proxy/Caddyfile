@@ -1,0 +1,38 @@
+
+{
+	http_port "80"
+	https_port "443"
+
+	log default {
+			output stdout
+			level DEBUG
+	}
+
+	# Don't tell HTTP clients to upgrade to HTTPS
+	auto_https disable_redirects
+}
+
+
+# Domain name for automatic SSL
+:80, {$DOMAIN}:443 {
+
+	# Handle metrics
+	handle /metrics {
+	    metrics
+	}
+
+	# Sets the root of where we look
+	# for files (with relative paths)
+	root * /webroot
+
+	# Serve directories in root
+	handle * {
+		respond "Various services, try `/mesh` for some information"
+	}
+
+	# MeshInfo
+	handle /mesh* {
+		uri strip_prefix /mesh # TODO: Check if it needs this
+		reverse_proxy meshinfo:8000
+	}
+}
