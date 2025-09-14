@@ -47,9 +47,9 @@ services:
     # restart: unless-stopped
 
   proxy:
-    container_name: web
+    container_name: proxy
     build:
-      context: web/
+      context: proxy/
     depends_on:
       - meshinfo
     networks:
