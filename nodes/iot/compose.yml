@@ -20,11 +20,10 @@ services:
       file: ../../services/node_exporter/compose.yml
       service: statistics
 
-  # TODO: Enable this
-  # yggdrasil:
-    # extends:
-      # file: ../../services/yggdrasil/compose.yml
-      # service: yggdrasil
+  yggdrasil:
+    extends:
+      file: ../../services/yggdrasil/compose.yml
+      service: yggdrasil
 
   meshtastic_mqtt:
     extends:
