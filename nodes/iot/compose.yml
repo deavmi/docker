@@ -5,10 +5,14 @@ networks:
     enable_ipv6: true
     ipam:
       config:
-        - subnet: fde4:492a:fc7f::/48
+        - subnet: fde4:488a:fc7f::/48
 
 volumes:
   meshtastic_mqtt_data:
+
+
+includes:
+  - meshinfo.yml
 
 services:
   host-statistics:
@@ -42,20 +46,18 @@ services:
       # service: home-assistant
     # restart: unless-stopped
 
-  # TODO: Add caddy and caddy config here
-  # web:
-    # container_name: web
-    # build:
-      # context: web/
-    # depends_on:
-      # - streamer
-    # restart: unless-stopped
-    # networks:
-      # - mainNet
-    # environment:
-      # - DOMAIN=vinyl.deavmi.assigned.network
-    # ports:
-      # - "[::]:80:80/tcp"
-      # - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
-      # - "[::]:443:443/tcp"
-      # - "[::]:443:443/udp"
+  proxy:
+    container_name: web
+    build:
+      context: web/
+    depends_on:
+      - meshinfo
+    networks:
+      - mainNet
+    environment:
+      - "DOMAIN=${CADDY_DOMAIN}"
+    ports:
+      - "[::]:80:80/tcp"
+      - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
+      - "[::]:443:443/tcp"
+      - "[::]:443:443/udp"
