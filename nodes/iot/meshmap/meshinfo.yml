@@ -25,9 +25,9 @@ services:
       service: db
     container_name: meshinfo_db
     environment:
-      - POSTGRES_DB=${GITEA_DB_NAME}
-      - POSTGRES_USER=${GITEA_DB_USER}
-      - POSTGRES_PASSWORD=${GITEA_DB_PASS}
+      - POSTGRES_DB=meshinfo
+      - POSTGRES_USER=meshinfo_user
+      - POSTGRES_PASSWORD=meshinfo_pass
 
     volumes:
       # Path for Postgres to store data
