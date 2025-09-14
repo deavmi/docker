@@ -12,7 +12,7 @@ volumes:
 
 
 include:
-  - meshinfo.yml
+  - meshinfo/meshinfo.yml
 
 services:
   host-statistics:
