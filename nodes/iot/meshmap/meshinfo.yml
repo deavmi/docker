@@ -1,0 +1,36 @@
+networks:
+  meshinfo_db_net:
+    driver: bridge
+    name: gitea_db_net
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492b:fc7f::/48
+
+services:
+  meshinfo:
+    build:
+      context: meshinfo/
+    container_name: meshinfo
+    depends_on:
+      - meshinfo-db
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - meshinfo_db_net
+
+  meshinfo-db:
+    extends:
+      file: ../../services/postgres/compose.yml
+      service: db
+    container_name: meshinfo_db
+    environment:
+      - POSTGRES_DB=${GITEA_DB_NAME}
+      - POSTGRES_USER=${GITEA_DB_USER}
+      - POSTGRES_PASSWORD=${GITEA_DB_PASS}
+
+    volumes:
+      # Path for Postgres to store data
+      - "${MESHINFO_POSTGRES_PATH}:/var/lib/postgresql/data:z"
+    networks:
+      - meshinfo_db_net
