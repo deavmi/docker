@@ -10,3 +10,19 @@
 	[[gateway.inout]]
 		account="irc.pinewood"
 		channel="#general"
+
+[[gateway]]
+	name="tlang"
+	enable=true
+	
+	[[gateway.inout]]
+		account="irc.pinewood"
+		channel="#tlang"
+
+[[gateway]]
+	name="yggdrasil"
+	enable=true
+	
+	[[gateway.inout]]
+		account="irc.pinewood"
+		channel="#yggdrasil"
