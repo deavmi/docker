@@ -1,4 +1,4 @@
 [irc]
-	[irc.pinewood]
-		Server="pinewood.irc.bnet.eu.org"
-		Nick="bridgebot"
+		[irc.pinewood]
+				Server="pinewood.irc.bnet.eu.org"
+				Nick="bridgebot"
