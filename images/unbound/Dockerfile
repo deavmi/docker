@@ -1,5 +1,5 @@
 # Base image
-FROM ubuntu:latest AS base
+FROM ubuntu:noble AS base
 MAINTAINER "Tristan Brice Velloza Kildaire" "deavmi@redxen.eu"
 
 # Don't allow interactive prompts when using apt
