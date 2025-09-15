@@ -47,7 +47,7 @@ RUN ./Config -quick
 
 # Build and install
 ENV NPROC=4
-RUN make -j$(NPROC)
+RUN make -j$NPROC
 RUN make install
 
 # Copy across build artefacts
