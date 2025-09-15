@@ -15,19 +15,12 @@ services:
     depends_on:
       - quassel-db
 
-    # Bring in additionally
-    env_file:
-      - path: .quassel
-        required: true
-
     # Command-line arguments to give
     # to entrypoint executable
     command:
-      # - "${QUASSEL_CFG_ENV:+--config-from-environment}" # Use environment variables as config parameters
       - "--config-from-environment"
       - "--port=4242" # container-side port to listen on
       - "--configdir=/config"
-      # - "--select-backend=PostgreSQL"
     environment:
       # Database-related
       - DB_BACKEND=PostgreSQL
