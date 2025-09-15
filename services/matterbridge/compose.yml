@@ -3,3 +3,8 @@ services:
     image: 42wim/matterbridge:stable
     container_name: matterbridge
     restart: unless-stopped
+    depends_on:
+      - sshchat
+      - ircd
+    volumes:
+      - "${MATTERBRIDGE_CONF_FILE}:/etc/matterbridge/matterbridge.toml:ro"
