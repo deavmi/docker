@@ -1,3 +1,6 @@
+[general]
+	RemoteNickFormat="{NICK}"
+
 [irc]
 	[irc.pinewood]
 		Server="pinewood.irc.bnet.eu.org:6667"
