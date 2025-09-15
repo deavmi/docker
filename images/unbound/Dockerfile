@@ -1,6 +1,5 @@
 # Base image
-# FROM ubuntu:latest AS base
-FROM debian:bookworm AS base
+FROM ubuntu:latest AS base
 MAINTAINER "Tristan Brice Velloza Kildaire" "deavmi@redxen.eu"
 
 # Don't allow interactive prompts when using apt
@@ -15,7 +14,7 @@ RUN apt install unbound -y
 
 RUN apt install curl net-tools -y
 RUN apt install iproute2 iputils-ping -y
-RUN apt install strace -y
+# RUN apt install strace -y
 
 # Copy my configuration
 WORKDIR /etc/unbound
@@ -29,4 +28,4 @@ COPY --from=zones * /etc/unbound/zones/
 RUN ls zones/ -la && sleep 3
 
 # Start unbound
-CMD ["/usr/bin/strace ", "unbound", "-d"]
+CMD ["unbound", "-d"]
