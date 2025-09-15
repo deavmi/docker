@@ -7,7 +7,6 @@ networks:
       config:
         - subnet: fde4:498b:fc7f::/48
 
-
 services:
   quassel:
     image: kalaksi/quassel
