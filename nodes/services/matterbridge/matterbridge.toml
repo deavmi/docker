@@ -1,5 +1,5 @@
 [general]
-	RemoteNickFormat="{NICK}"
+	RemoteNickFormat="<{NICK}> "
 
 [irc]
 	[irc.pinewood]
