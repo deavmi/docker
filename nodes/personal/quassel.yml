@@ -16,10 +16,15 @@ services:
     depends_on:
       - quassel-db
 
+    # Bring in additionally
+    env_file:
+      - path: .quassel
+        required: true
+
     # Command-line arguments to give
     # to entrypoint executable
     command:
-      - "--config-from-environment" # Use environment variables as config parameters
+      - "${QUASSEL_CFG_ENV}" # Use environment variables as config parameters
       - "--port=4242" # container-side port to listen on
       - "--configdir=/config"
     environment:
