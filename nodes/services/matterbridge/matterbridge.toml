@@ -3,6 +3,11 @@
 		Server="pinewood.irc.bnet.eu.org:6667"
 		Nick="bridgebot"
 
+[sshchat]
+	[mainServer]
+		Server=sshchat:2022
+		Nick="bridgebot"
+
 [[gateway]]
 	name="general"
 	enable=true
@@ -11,6 +16,10 @@
 		account="irc.pinewood"
 		channel="#general"
 
+	[[gateway.inout]]
+		account="sshchat.mainServer"
+		channel="sshchat"
+		
 [[gateway]]
 	name="tlang"
 	enable=true
