@@ -19,12 +19,12 @@ RUN apt install iproute2 iputils-ping -y
 WORKDIR /etc/unbound
 # TODO: Note this in README.md that only a single config may be present
 COPY --from=configs config.conf /etc/unbound/unbound.conf
-RUN ls . -la && sleep 10
+RUN ls . -la && sleep 3
 
 # Setup zones
 RUN mkdir zones
 COPY --from=zones * /etc/unbound/zones/
-RUN ls zones/ -la && sleep 10
+RUN ls zones/ -la && sleep 3
 
 # Start unbound
 CMD ["unbound", "-d"]
