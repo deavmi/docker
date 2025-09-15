@@ -12,8 +12,7 @@ ARG COMMIT=a6c1041208ca156e054aa1af9d72b3968cb9e093
 RUN apt update
 
 RUN apt install git -y
-# RUN apt install dub gcc -y
-RUN apt install dub ldc -y
+RUN apt install dub gcc -y
 RUN apt install libssl-dev zlib1g-dev -y
 
 # Clone source code of correct branch
