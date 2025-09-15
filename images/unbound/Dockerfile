@@ -29,4 +29,4 @@ COPY --from=zones * /etc/unbound/zones/
 RUN ls zones/ -la && sleep 3
 
 # Start unbound
-CMD ["unbound", "-d"]
+CMD ["strace ", "unbound", "-d"]
