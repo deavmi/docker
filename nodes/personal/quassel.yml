@@ -27,6 +27,7 @@ services:
       # - "${QUASSEL_CFG_ENV:+--config-from-environment}" # Use environment variables as config parameters
       - "--port=4242" # container-side port to listen on
       - "--configdir=/config"
+      - "--select-backend=PostgreSQL"
     environment:
       # Database-related
       - DB_BACKEND=PostgreSQL
