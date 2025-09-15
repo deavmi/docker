@@ -46,7 +46,7 @@ RUN mkdir /home/unreal/ircd
 RUN ./Config -quick
 
 # Build and install
-ENV NPROC=4
+ARG NPROC=4
 RUN make -j$NPROC
 RUN make install
 
