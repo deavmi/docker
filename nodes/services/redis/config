@@ -1,0 +1,7 @@
+protected-mode no
+bind [::]
+port 6379
+
+
+logfile /dev/stdout
+loglevbel debug
