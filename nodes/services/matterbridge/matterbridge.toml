@@ -4,7 +4,7 @@
 		Nick="bridgebot"
 
 [sshchat]
-	[mainServer]
+	[sshchat.mainServer]
 		Server="sshchat:2022"
 		Nick="bridgebot"
 
