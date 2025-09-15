@@ -23,10 +23,10 @@ services:
 
   fetcher:
     container_name: fetcher
-     build:
-       context: fetcher/
-     networks:
-       - mainNet
+    build:
+      context: fetcher/
+    networks:
+      - mainNet
 
   unbound:
     extends:
