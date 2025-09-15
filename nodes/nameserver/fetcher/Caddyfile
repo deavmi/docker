@@ -29,11 +29,6 @@
 	# Builder
 	handle * {
 		# uri strip_prefix /builder
-		reverse_proxy https://git.redxen.eu/deavmi/zones/raw/branch/master/deavmi.zone
+		reverse_proxy https://git.redxen.eu/
 	}
-
-	# Gitea service
-	# handle /git* {
-		# reverse_proxy services.deavmi.assigned.network
-	# }
 }
