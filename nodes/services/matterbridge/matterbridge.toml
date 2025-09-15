@@ -1,4 +1,12 @@
 [irc]
-		[irc.pinewood]
-				Server="pinewood.irc.bnet.eu.org"
-				Nick="bridgebot"
+	[irc.pinewood]
+		Server="pinewood.irc.bnet.eu.org"
+		Nick="bridgebot"
+
+[[gateway]]
+	name="general"
+	enable=true
+
+	[[gateway.inout]]
+		account="irc.pinewood"
+		channel="#general"
