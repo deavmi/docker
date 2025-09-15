@@ -20,7 +20,14 @@ services:
       service: yggdrasil
     volumes:
       - "${YGGDRASIL_CONF_PATH}:/etc/yggdrasil.conf:ro,z"
-  
+
+  fetcher:
+    container_name: fetcher
+     build:
+       context: fetcher/
+     networks:
+       - mainNet
+
   unbound:
     extends:
       file: ../../images/unbound/compose.yml
@@ -29,6 +36,8 @@ services:
       additional_contexts:
         zones: unbound/zones
         configs: unbound/configs
+    depends_on:
+      - fetcher
     container_name: unbound
     restart: unless-stopped
     networks:
