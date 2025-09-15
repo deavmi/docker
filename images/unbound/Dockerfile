@@ -13,6 +13,7 @@ RUN apt upgrade -y
 RUN apt install unbound -y
 
 RUN apt install curl net-tools -y
+RUN apt install iproute -y
 
 # Copy my configuration
 WORKDIR /etc/unbound
