@@ -1,6 +1,6 @@
 [irc]
 	[irc.pinewood]
-		Server="pinewood.irc.bnet.eu.org"
+		Server="pinewood.irc.bnet.eu.org:6667"
 		Nick="bridgebot"
 
 [[gateway]]
