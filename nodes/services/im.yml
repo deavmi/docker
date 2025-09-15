@@ -12,6 +12,8 @@ services:
     extends:
       file: ../../services/matterbridge/compose.yml
       service: matterbridge
+    build:
+      context: matterbridge/
     depends_on:
       - ircd
       - sshchat
