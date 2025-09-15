@@ -1,4 +1,4 @@
-# TODO: Pin to s specific version as per recommendations
+# TODO: Pin to a specific version as per recommendations
 FROM caddy:latest
 
 # Copy over configuration file
