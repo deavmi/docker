@@ -1,5 +1,6 @@
 # Base image
-FROM ubuntu:latest AS base
+# FROM ubuntu:latest AS base
+FROM debian:bookworm AS base
 MAINTAINER "Tristan Brice Velloza Kildaire" "deavmi@redxen.eu"
 
 # Don't allow interactive prompts when using apt
