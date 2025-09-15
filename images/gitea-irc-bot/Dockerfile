@@ -13,7 +13,7 @@ RUN apt update
 
 RUN apt install git -y
 # RUN apt install dub gcc -y
-RUN apt install dub ldc2 -y
+RUN apt install dub ldc -y
 RUN apt install libssl-dev zlib1g-dev -y
 
 # Clone source code of correct branch
