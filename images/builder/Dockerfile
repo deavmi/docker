@@ -19,7 +19,7 @@ RUN apt install python3 python3-pip git -y
 RUN apt install wget -y
 
 WORKDIR /tmp
-RUN wget https://github.com/gohugoio/hugo/releases/download/v0.150.0/hugo_0.150.0_linux-amd64.deb -y
+RUN wget https://github.com/gohugoio/hugo/releases/download/v0.150.0/hugo_0.150.0_linux-amd64.deb 
 RUN dpkg -i *.deb
 
 # Create the builder user
