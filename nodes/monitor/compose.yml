@@ -22,8 +22,8 @@ volumes:
   grafana_db:
   loki_data:
 
-include:
-  - agents.yml
+# include:
+  # - agents.yml
 
 services:
   host-statistics:
@@ -83,17 +83,17 @@ services:
       - grafana_db_net
 
   # Logging collector
-  loki:
-    extends:
-      file: ../../services/loki/compose.yml
-      service: loki
-    build:
-      context: loki/
-    container_name: loki
-    networks:
-      - mainNet
-    volumes:
-      - /etc/loki
+  # loki:
+    # extends:
+      # file: ../../services/loki/compose.yml
+      # service: loki
+    # build:
+      # context: loki/
+    # container_name: loki
+    # networks:
+      # - mainNet
+    # volumes:
+      # - /etc/loki
 
   # TODO: caddy definition and let us copy our caddy file
   # over using a custom image rather. This will allow us
