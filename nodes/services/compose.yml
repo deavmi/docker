@@ -30,6 +30,7 @@ services:
     extends:
       file: ../../services/yggdrasil/compose.yml
       service: yggdrasil
+    network_mode: "host"
 
   web:
     container_name: web
