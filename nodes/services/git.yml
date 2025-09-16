@@ -22,15 +22,15 @@ services:
   gitea_old:
     image: docker.gitea.com/gitea:1.24.6
     container_name: gitea_old
-    environment:
-      - USER_UID=1000
-      - USER_GID=1000
     networks:
       - mainNet
     env_file:
       - path: .gitea.old
         required: true
     environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      
       # Gitea DB configuraiton
       - GITEA__database__DB_TYPE=sqlite
       - GITEA__database__DB_PATH=/data/gitea/gitea.db
