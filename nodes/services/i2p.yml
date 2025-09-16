@@ -15,7 +15,7 @@ services:
       - "--tunconf=/tunnels"
 
       - "--ipv4=false"
-      - "--ipv6=true"
+      - "--ipv6=false"
       - "--meshnets.yggdrasil=true"
       - "--meshnets.yggaddress=201:efe0:d45f:f82e:623c:a518:1f96:72bd"
       - "--floodfill"
