@@ -47,7 +47,7 @@ services:
       # - MINIO_ACCESS_KEY
       # - MINIO_SECRET_ACCESS_KEY
     env_file:
-      - path: .minio
+      - path: .gitea
         required: true
     environment:
       # Gitea DB configuraiton
