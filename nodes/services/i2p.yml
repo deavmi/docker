@@ -16,8 +16,8 @@ services:
 
       - "--ipv4=false"
       - "--ipv6"
-      - "--meshnets.yggdrasil"
-      - "--meshnets.yggaddress 201:efe0:d45f:f82e:623c:a518:1f96:72bd"
+      - "--meshnets.yggdrasil=true"
+      - "--meshnets.yggaddress=201:efe0:d45f:f82e:623c:a518:1f96:72bd"
       - "--floodfill"
     environment:
       # Disable IPv4
