@@ -99,6 +99,7 @@ services:
     networks:
       - gitea_db_net
 
+  # TODO: We could make this a shared instance
   minio-gitea:
     # TODO: Put extends here with some base configuration
     image: quay.io/minio/minio
@@ -114,8 +115,8 @@ services:
       - mainNet
       - gitea_db_net
       - gitea_minio_net
-    ports:
-      - "9001:9001/tcp"
+    # ports:
+      # - "9001:9001/tcp"
     # TODO: See if we should expose the console locally
     # via docker `ports` here solely for debugging
     command: "server /data --console-address :9001"
