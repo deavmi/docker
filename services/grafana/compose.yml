@@ -1,0 +1,8 @@
+services:
+  grafana:
+    image: grafana/grafana-oss
+    restart: always
+    volumes:
+      # Path to directory holding configuration and
+      # data
+      - "${GRAFANA_CONF_DIR}:/var/lib/grafana:z"
