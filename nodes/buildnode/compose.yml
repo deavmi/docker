@@ -24,3 +24,4 @@ services:
     extends:
       file: ../../services/act_runner/compose.yml
       service: act-runner
+    container_name: act
