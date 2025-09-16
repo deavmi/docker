@@ -21,12 +21,6 @@ networks:
       config:
         - subnet: fde4:452b:fc7f::/48
 
-# secrets:
-  # MINIO_ACCESS_KEY:
-    # file: /mnt/datadisk/secrets/minio_access_key.txt
-  # MINIO_SECRET_ACCESS_KEY:
-    # file: /mnt/datadisk/secrets/minio_secret_access_key.txt
-
 volumes:
   redis_gitea_data:
 
@@ -42,10 +36,6 @@ services:
       - db-gitea
       - minio-gitea
       - redis-gitea
-    # TODO: Not yet working
-    # secrets:
-      # - MINIO_ACCESS_KEY
-      # - MINIO_SECRET_ACCESS_KEY
     env_file:
       - path: .gitea
         required: true
@@ -81,8 +71,6 @@ services:
       - GITEA__storage__STORAGE_TYPE=minio
       - GITEA__storage__MINIO_BUCKET=gitea
       - GITEA__storage__MINIO_ENDPOINT=minio-gitea:9000
-      - GITEA__storage__MINIO_ACCESS_KEY_ID=${MINIO_ROOT_USER}
-      - GITEA__storage__MINIO_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD}
 
       # Logging configuration TODO: Maybe lower later
       - GITEA__log__LEVEL=Trace
@@ -121,17 +109,9 @@ services:
     volumes:
       # Data storage path
       - ${GITEA_MINIO_PATH}:/data:z
-    # secrets:
-      # - MINIO_ACCESS_KEY
-      # - MINIO_SECRET_ACCESS_KEY
-    # TODO: We may need to use docker secrets
-    # for this or a cstonm `.env` file
     env_file:
       - path: .minio
         required: true
-    # environment:
-      # - MINIO_ROOT_USER=minio_secret1
-      # - MINIO_ROOT_PASSWORD=minio_secret2
     networks:
       - mainNet
       - gitea_db_net
