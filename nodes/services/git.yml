@@ -22,6 +22,8 @@ services:
   gitea_old:
     image: docker.gitea.com/gitea:1.24.6
     container_name: gitea_old
+    depends_on:
+      - redis-gitea
     networks:
       - mainNet
     env_file:
@@ -47,6 +49,11 @@ services:
       - GITEA__server__DISABLE_SSH=false
       - GITEA__server__SSH_PORT=22
       - GITEA__server__SSH_LISTEN_PORT=22
+
+      # For session management
+      - FORGEJO__session__PROVIDER=redis
+      - FORGEJO__session__PROVIDER_CONFIG=redis://redis-gitea:6379
+      - FORGEJO__session__COOKIE_NAME=gitea-old-cookie
     volumes:
       - ${GITEA_OLD_DATA_PATH}:/data:z
     ports:
