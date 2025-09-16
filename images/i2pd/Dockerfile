@@ -70,5 +70,4 @@ USER i2pd
 WORKDIR /home/i2pd
 
 # Run i2pd daemon
-# CMD /run.sh
 ENTRYPOINT /bin/i2pd
