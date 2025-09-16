@@ -1,3 +1,7 @@
+secrets:
+  BUILDER_TOKEN:
+    file: builder.secret
+
 services:
   builder:
     extends:
