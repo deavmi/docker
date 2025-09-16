@@ -27,12 +27,11 @@ services:
       - minio
     networks:
       - mainNet
-    # has JWT token inside
     env_file:
+      # has JWT token inside
       - path: .gitea.old
         required: true
-    # Has minio settings inside
-    env_file:
+      # Has minio settings inside
       - path: .gitea
         required: true
     environment:
