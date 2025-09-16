@@ -27,6 +27,7 @@ services:
       - minio
     networks:
       - mainNet
+      - gitea_redis_net
     env_file:
       # has JWT token inside
       - path: .gitea.old
