@@ -117,7 +117,7 @@ services:
     restart: unless-stopped
     volumes:
       # Data storage path
-      - /mnt/datadisk/volumes/minio:/data:z
+      - ${GITEA_MINIO_PATH}:/data:z
     # secrets:
       # - MINIO_ACCESS_KEY
       # - MINIO_SECRET_ACCESS_KEY
