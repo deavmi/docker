@@ -70,4 +70,5 @@ USER i2pd
 WORKDIR /home/i2pd
 
 # Run i2pd daemon
-ENTRYPOINT /bin/i2pd
+# ENTRYPOINT /bin/i2pd
+ENTRYPOINT echo $@ && sleep 20
