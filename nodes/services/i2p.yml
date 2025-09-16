@@ -15,7 +15,7 @@ services:
       - "--tunconf=/tunnels"
 
       - "--ipv4=false"
-      - "--ipv6=false"
+      - "--ipv6=true"
       - "--meshnets.yggdrasil=true"
       - "--meshnets.yggaddress=201:efe0:d45f:f82e:623c:a518:1f96:72bd"
       - "--floodfill"
@@ -37,9 +37,9 @@ services:
       
       # Yggdrasil address (TODO: Change this)
       - MESH_YGGDRASIL_ADDR=202:dd5:84ca:46b4:acb9:a981:5dba:34e8
-    # network_mode: host
-    networks:
-      - mainNet
+    network_mode: host
+    # networks:
+      # - mainNet
       # TODO: For Yggdrasil we mayneed to place
       # this into the same network namespace so
       # that i2pd can bind to the tun0 interface
@@ -55,12 +55,12 @@ services:
       
       # Tunnel key files
       - "${I2PD_KEYS_DIR}:/keys:z"
-    ports:
+    # ports:
       # SSU2
-      - "6245:6245/tcp"
+      # - "6245:6245/tcp"
 
       # NTCP2
-      - "6246:6246/tcp"
+      # - "6246:6246/tcp"
 
       # Web console
       # - "8182:8182/tcp"
