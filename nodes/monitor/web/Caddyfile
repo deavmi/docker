@@ -1,4 +1,3 @@
-
 {
 	http_port "80"
 	https_port "443"
@@ -9,15 +8,12 @@
 	}
 }
 
-# :80, :443 {
-{$DOMAIN}:80, {$DOMAIN}:443 {
+:80, {$DOMAIN}:443 {
 
-    # Handle metrics
+  # Handle metrics
 	handle /metrics {
 	    metrics
 	}
-
-	respond "Hello there"
 
 	route /files* {
 		respond "crinpoesge"
