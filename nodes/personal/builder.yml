@@ -11,10 +11,3 @@ services:
     restart: unless-stopped
     networks:
       - mainNet
-    # env_file:
-      # - path: ./.builder
-        # required: true
-
-    # environment:
-      # Verification of who is sending us the command
-      # - "GITEA_WEBHOOK_AUTH=${BUILDER_GITEA_WEBHOOK_AUTH}"
