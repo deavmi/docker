@@ -1,0 +1,25 @@
+networks:
+  minio_net:
+    driver: bridge
+    name: minio_net
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:442b:fc7f::/48
+
+services:
+  minio:
+    image: quay.io/minio/minio
+    container_name: minio
+    restart: unless-stopped
+    volumes:
+      # Data storage path
+      - ${MINIO_PATH}:/data:z
+    env_file:
+      - path: .minio
+        required: true
+    networks:
+      - mainNet
+      - minio_net
+    command:
+      - "server /data --console-address :9001"

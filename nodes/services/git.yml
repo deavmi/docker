@@ -6,13 +6,6 @@ networks:
     ipam:
       config:
         - subnet: fde4:492b:fc7f::/48
-  gitea_minio_net:
-    driver: bridge
-    name: gitea_minio_net
-    enable_ipv6: true
-    ipam:
-      config:
-        - subnet: fde4:442b:fc7f::/48
   gitea_redis_net:
     driver: bridge
     name: gitea_redis_net
@@ -34,7 +27,7 @@ services:
     container_name: gitea
     depends_on:
       - db-gitea
-      - minio-gitea
+      - minio
       - redis-gitea
     env_file:
       - path: .gitea
@@ -70,7 +63,7 @@ services:
       # MinIO storage
       - GITEA__storage__STORAGE_TYPE=minio
       - GITEA__storage__MINIO_BUCKET=gitea
-      - GITEA__storage__MINIO_ENDPOINT=minio-gitea:9000
+      - GITEA__storage__MINIO_ENDPOINT=minio:9000
 
       # Logging configuration TODO: Maybe lower later
       - GITEA__log__LEVEL=Trace
@@ -80,7 +73,7 @@ services:
     networks:
       - mainNet
       - gitea_db_net
-      - gitea_minio_net
+      - minio_net
       - gitea_redis_net
   
   db-gitea:
@@ -98,28 +91,6 @@ services:
       - "${GITEA_POSTGRES_PATH}:/var/lib/postgresql/data:z"
     networks:
       - gitea_db_net
-
-  # TODO: We could make this a shared instance
-  minio-gitea:
-    # TODO: Put extends here with some base configuration
-    image: quay.io/minio/minio
-    container_name: minio-gitea
-    restart: unless-stopped
-    volumes:
-      # Data storage path
-      - ${GITEA_MINIO_PATH}:/data:z
-    env_file:
-      - path: .minio
-        required: true
-    networks:
-      - mainNet
-      - gitea_db_net
-      - gitea_minio_net
-    # ports:
-      # - "9001:9001/tcp"
-    # TODO: See if we should expose the console locally
-    # via docker `ports` here solely for debugging
-    command: "server /data --console-address :9001"
 
   # TODO: This should be a redis we use for ALL
   # our services then
