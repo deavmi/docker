@@ -73,6 +73,8 @@ services:
       - GITEA__cache__ADAPTER=redis
       - GITEA__cache__HOST=redis://redis-gitea:6379
 
+      - GITEA__security__INSTALL_LOCK=true # Perform installation unattended
+
       # MinIO storage
       - GITEA__storage__STORAGE_TYPE=minio
       - GITEA__storage__MINIO_BUCKET=gitea
