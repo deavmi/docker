@@ -12,7 +12,7 @@ services:
       - "--datadir=/data"
       - "--conf=/conf/i2pd.conf"
 
-      - "--ipv4=no"
+      - "--ipv4=false"
       - "--ipv6"
       - "--meshnets.yggdrasil"
       - "--meshnets.yggaddress 202:dd5:84ca:46b4:acb9:a981:5dba:34e8"
