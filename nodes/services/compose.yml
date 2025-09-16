@@ -11,6 +11,8 @@ volumes:
   i2pd_data:
 
 include:
+  - minio.yml
+
   - git.yml
   - irc.yml
   - im.yml
