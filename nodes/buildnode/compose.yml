@@ -17,6 +17,7 @@ services:
     extends:
       file: ../../services/yggdrasil/compose.yml
       service: yggdrasil
+    network_mode: "host"
 
   # TODO: This will be deployed on another machine
   act-runner:
