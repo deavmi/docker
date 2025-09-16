@@ -21,24 +21,6 @@ services:
       - "--meshnets.yggdrasil=true"
       - "--meshnets.yggaddress=201:efe0:d45f:f82e:623c:a518:1f96:72bd"
       - "--floodfill"
-    environment:
-      # Disable IPv4
-      - DISABLE_IPV4=yes
-      
-      # Enable floodfill
-      - FLOODFILL=yes
-      
-      # Data directory is `/data`
-      - DATA_DIR=/data
-      
-      # Configuration file path
-      - CONFIG_PATH=/conf/i2pd.conf
-      
-      # Config base
-      - CONFIG_BASE_DIR=/conf
-      
-      # Yggdrasil address (TODO: Change this)
-      - MESH_YGGDRASIL_ADDR=202:dd5:84ca:46b4:acb9:a981:5dba:34e8
     network_mode: host
     # networks:
       # - mainNet
