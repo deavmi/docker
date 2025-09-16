@@ -32,7 +32,7 @@ services:
       - USER_GID=1000
       
       # Gitea DB configuraiton
-      - GITEA__database__DB_TYPE=sqlite
+      - GITEA__database__DB_TYPE=sqlite3
       - GITEA__database__DB_PATH=/data/gitea/gitea.db
       - GITEA__database__DB_NAME=gitea
 
