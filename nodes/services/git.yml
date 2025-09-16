@@ -99,8 +99,6 @@ services:
     networks:
       - gitea_db_net
 
-  # TODO: If we use this elsehwre then we should
-  # move it out of here and into `storage.yml`
   minio-gitea:
     # TODO: Put extends here with some base configuration
     image: quay.io/minio/minio
@@ -126,8 +124,6 @@ services:
   # our services then
   redis-gitea:
     image: redis:latest
-    # build:
-      # context: redis/
     container_name: redis-gitea
     restart: unless-stopped
     volumes:
