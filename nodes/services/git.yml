@@ -51,9 +51,9 @@ services:
       - GITEA__server__SSH_LISTEN_PORT=22
 
       # For session management
-      - FORGEJO__session__PROVIDER=redis
-      - FORGEJO__session__PROVIDER_CONFIG=redis://redis-gitea:6379
-      - FORGEJO__session__COOKIE_NAME=gitea-old-cookie
+      - GITEA__session__PROVIDER=redis
+      - GITEA__session__PROVIDER_CONFIG=redis://redis-gitea:6379
+      - GITEA__session__COOKIE_NAME=gitea-old-cookie
     volumes:
       - ${GITEA_OLD_DATA_PATH}:/data:z
     ports:
