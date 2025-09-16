@@ -1,6 +1,6 @@
 services:
   gitea:
-    image: docker.gitea.com/gitea:1.23.8
+    image: codeberg.org/forgejo/forgejo:11
     restart: unless-stopped
     environment:
       # For when creating files
@@ -8,8 +8,8 @@ services:
       - USER_GID=${USER_GID}
     volumes:
       # Mount for repository data
-      - "${GITEA_DATA_PATH}:/data"
+      - "${GITEA_DATA_PATH}:/data:z"
       
       # Makes timezone and time information available
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro,z
+      - /etc/localtime:/etc/localtime:ro,z
