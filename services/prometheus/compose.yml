@@ -1,6 +1,3 @@
-volumes:
-  prometheus_data:
-
 services:
   prometheus:
     image: prom/prometheus
@@ -9,7 +6,8 @@ services:
       - mainNet
     volumes:
       # Path to directory holding configuration file
-      - "${PROMETHEUS_CONF_DIR}:/etc/prometheus:z"
+      # - "${PROMETHEUS_CONF_DIR}:/etc/prometheus:z"
 
       # Non-bind mount volume (for state)
       - "${PROMETHEUS_STATE_DIR}:/prometheus:z"
+      # - prometheus_data:/prometheus
