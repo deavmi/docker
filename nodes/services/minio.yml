@@ -22,4 +22,7 @@ services:
       - mainNet
       - minio_net
     command:
-      - "server /data --console-address :9001"
+      - "server"
+      - "/data"
+      - "--console-address"
+      - ":9001"
