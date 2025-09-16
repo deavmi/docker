@@ -22,8 +22,8 @@ volumes:
   grafana_db:
   loki_data:
 
-# include:
-  # - agents.yml
+include:
+  - agents.yml
 
 services:
   host-statistics:
