@@ -10,7 +10,7 @@ services:
         - NPROC=1
     command:
       - "--datadir=/data"
-      - "--conf=/conf/i2pd.conf"
+      # - "--conf=/conf/i2pd.conf"
       - "--tunnelsdir=/tunnels"
       - "--tunconf=/tunnels"
 
