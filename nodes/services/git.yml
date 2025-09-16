@@ -38,6 +38,12 @@ services:
     environment:
       - USER_UID=1000
       - USER_GID=1000
+
+      # Instance settings
+      - GITEA__APP_NAME=DGitea1
+      - GITEA__ui0x2Emeta__AUTHOR=Deavmi's (Old) Forge
+      - GITEA__ui0x2Emeta__DESCRIPTION=Grandpa code 👴️
+
       
       # Gitea DB configuraiton
       - GITEA__database__DB_TYPE=sqlite3
@@ -47,6 +53,7 @@ services:
       - GITEA__service__DISABLE_REGISTRATION=true
       - GITEA__lfs__PATH=/data/git/lfs
 
+      # Server settings
       - GITEA__server__APP_DATA_PATH=/data/gitea
       - GITEA__server__DOMAIN=${CADDY_DOMAIN}
       - GITEA__server__SSH_DOMAIN=${CADDY_DOMAIN}
@@ -69,6 +76,12 @@ services:
       - GITEA__storage__STORAGE_TYPE=minio
       - GITEA__storage__MINIO_BUCKET=gitea
       - GITEA__storage__MINIO_ENDPOINT=minio:9000
+
+      # Logging configuration TODO: Maybe lower later
+      - GITEA__log__LEVEL=Trace
+
+      # For metrics
+      - GITEA__metrics__ENABLED=true
     volumes:
       - ${GITEA_OLD_DATA_PATH}:/data:z
     ports:
