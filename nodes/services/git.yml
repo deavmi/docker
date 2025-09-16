@@ -29,6 +29,8 @@ services:
       - mainNet
     volumes:
       - ${GITEA_OLD_DATA_PATH}:/data:z
+    ports:
+      - "2023:22/tcp"
 
   gitea:
     extends:
@@ -87,6 +89,8 @@ services:
       - gitea_db_net
       - minio_net
       - gitea_redis_net
+    ports:
+      - "2022:22/tcp"
   
   db-gitea:
     extends:
