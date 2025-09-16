@@ -22,7 +22,8 @@ services:
     container_name: nginx_agent_nostr_homesteader
     networks:
       - mainNet
-    command: '--nginx.scrape-uri=${AGENT_NOSTR_HOMESTEADER}/metrics'
+    command:
+      - '--nginx.scrape-uri=${AGENT_NOSTR_HOMESTEADER}/metrics'
 
   # Monitors my Ephemeral Nostr relay
   nginx_agent_nostr_ephemeral:
@@ -32,7 +33,8 @@ services:
     container_name: nginx_agent_nostr_ephemeral
     networks:
       - mainNet
-    command: '--nginx.scrape-uri=${AGENT_NOSTR_EPHEMERAL}/metrics'
+    command:
+      - '--nginx.scrape-uri=${AGENT_NOSTR_EPHEMERAL}/metrics'
 
   # Monitors my Personal Nostr relay
   nginx_agent_nostr_personal:
@@ -42,7 +44,8 @@ services:
     container_name: nginx_agent_nostr_personal
     networks:
       - mainNet
-    command: '--nginx.scrape-uri=${AGENT_NOSTR_PERSONAL}/metrics'
+    command:
+      - '--nginx.scrape-uri=${AGENT_NOSTR_PERSONAL}/metrics'
 
   # Monitors my VinylPi
   nginx_agent_vinyl:
@@ -52,7 +55,8 @@ services:
     container_name: nginx_agent_vinyl
     networks:
       - mainNet
-    command: '--nginx.scrape-uri=${AGENT_VINYL}/metrics'
+    command:
+      - '--nginx.scrape-uri=${AGENT_VINYL}/metrics'
 
   # Monitors my website
   nginx_agent_personal_web:
@@ -62,7 +66,8 @@ services:
     container_name: nginx_agent_personal_web
     networks:
       - mainNet
-    command: '--nginx.scrape-uri=${AGENT_PERSONAL}/metrics'
+    command:
+      - '--nginx.scrape-uri=${AGENT_PERSONAL}/metrics'
 
   # Monitors the services node
   nginx_agent_services:
@@ -72,4 +77,5 @@ services:
     container_name: nginx_agent_services
     networks:
       - mainNet
-    command: '--nginx.scrape-uri=${AGENT_SERVICES}/metrics'
+    command:
+      - '--nginx.scrape-uri=${AGENT_SERVICES}/metrics'
