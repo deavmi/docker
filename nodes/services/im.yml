@@ -20,16 +20,22 @@ services:
     networks:
       - mainNet
 
+  # xmpp:
+    # image: prosody/prosody
+    # container_name: xmpp
+    # environment:
+    # 
+      # # Logging level
+      # - PROSODY_LOGLEVEL=debug
+    # volumes:
+      # # Path for certificates
+      # - ${PROSODY_CERT_PATH}:/etc/prosody:z
+    # networks:
+      # - mainNet
+    # 
+
   xmpp:
-    image: prosody/prosody
+    image: ghcr.io/processone/ejabberd
     container_name: xmpp
-    environment:
-    
-      # Logging level
-      - PROSODY_LOGLEVEL=debug
-    volumes:
-      # Path for certificates
-      - ${PROSODY_CERT_PATH}:/etc/prosody:z
     networks:
       - mainNet
-    
