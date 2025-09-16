@@ -6,8 +6,12 @@
 			output stdout
 			level DEBUG
 	}
+
+	# Don't tell HTTP clients to upgrade to HTTPS
+	auto_https disable_redirects
 }
 
+# Domain name for automatic SSL
 :80, {$DOMAIN}:443 {
 
   # Handle metrics
