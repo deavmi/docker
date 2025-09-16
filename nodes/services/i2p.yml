@@ -12,6 +12,7 @@ services:
       - "--datadir=/data"
       - "--conf=/conf/i2pd.conf"
       - "--tunnelsdir=/tunnels"
+      - "--tunconf=/tunnels"
 
       - "--ipv4=false"
       - "--ipv6"
