@@ -18,6 +18,7 @@ RUN apt install python3 python3-pip git -y
 # RUN apt install hugo -y
 RUN apt install wget -y
 RUN apt install golang -y
+ENV GOBIN=/bin
 RUN go install github.com/gohugoio/hugo@latest
 
 # WORKDIR /tmp
