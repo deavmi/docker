@@ -9,7 +9,7 @@ networks:
 
 include:
   - quassel.yml
-  - bots.yml
+  # - bots.yml
   - builder.yml
 
 services:
