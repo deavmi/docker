@@ -9,7 +9,7 @@ networks:
 
 include:
   - quassel.yml
-  # - bots.yml
+  - bots.yml
   - builder.yml
 
 services:
@@ -30,8 +30,6 @@ services:
     container_name: web
     build:
       context: web/
-    # depends_on:
-      # - quassel-web
     networks:
       - mainNet
     volumes:
