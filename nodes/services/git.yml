@@ -27,6 +27,18 @@ services:
       - USER_GID=1000
     networks:
       - mainNet
+    env_file:
+      - path: .gitea.old
+        required: true
+    environment:
+      # Gitea DB configuraiton
+      - GITEA__database__DB_TYPE=sqlite
+      - GITEA__database__DB_PATH=/data/gitea/gitea.db
+      - GITEA__database__DB_NAME=gitea
+
+      - GITEA__service__DISABLE_REGISTRATION=true
+      - GITEA__lfs__PATH=/data/git/lfs
+      
     volumes:
       - ${GITEA_OLD_DATA_PATH}:/data:z
     ports:
