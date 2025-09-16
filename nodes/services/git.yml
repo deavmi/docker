@@ -73,7 +73,8 @@ services:
       - GITEA__cache__ADAPTER=redis
       - GITEA__cache__HOST=redis://redis-gitea:6379
 
-      # - GITEA__security__INSTALL_LOCK=true # Perform installation unattended
+      # Automatic install based on environment varables
+      - GITEA__security__INSTALL_LOCK=true
 
       # MinIO storage
       - GITEA__storage__STORAGE_TYPE=minio
@@ -121,8 +122,9 @@ services:
       - FORGEJO__ui0x2Emeta__AUTHOR=Deavmi's Forge
       - FORGEJO__ui0x2Emeta__DESCRIPTION=Where code is grinded out ⚙️
       - FORGEJO__ui__DEFAULT_THEME=forgejo-dark
-      
-      - FORGEJO__security__INSTALL_LOCK=true # Perform installation unattended
+
+      # Automatic install based on environment varables
+      - FORGEJO__security__INSTALL_LOCK=true
 
       # For session management
       - FORGEJO__session__PROVIDER=redis
