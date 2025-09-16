@@ -1,0 +1,117 @@
+networks:
+  mainNet:
+    driver: bridge
+    name: mainNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492b:fc7f::/48
+
+  grafana_db_net:
+    driver: bridge
+    name: grafana_db_net
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492c:fc7f::/48
+
+# FIXME: Delete grafana temp and sort out rights
+volumes:
+  prometheus_data:
+  grafana_temp:
+  grafana_db:
+  loki_data:
+
+include:
+  - agents.yml
+
+services:
+  host-statistics:
+    extends:
+      file: ../../services/node_exporter/compose.yml
+      service: statistics
+    container_name: host_statistics
+
+  yggdrasil:
+    extends:
+      file: ../../services/yggdrasil/compose.yml
+      service: yggdrasil
+    container_name: yggdrasil
+    network_mode: "host"
+
+  # Statistics collector
+  prometheus:
+    extends:
+      file: ../../services/prometheus/compose.yml
+      service: prometheus
+    build:
+      context: prometheus/
+    container_name: prometheus
+    networks:
+      - mainNet
+    # So that all URLs generated, like links, are to
+    # our reverse proxy's route
+    command: "--config.file=/etc/prometheus/prometheus.yml --web.external-url=/prometheus/"
+
+  # TODO: Add Caddy with `prometheus:9090` proxy_pass
+
+  # Statistics visualizer
+  grafana:
+    extends:
+      file: ../../services/grafana/compose.yml
+      service: grafana
+    build:
+      context: grafana/
+      dockerfile: Dockerfile
+    depends_on:
+      - grafana_db
+      - prometheus
+    container_name: grafana
+    networks:
+      - mainNet
+      - grafana_db_net
+  grafana_db:
+    image: postgres
+    container_name: grafana_db
+    environment:
+      - POSTGRES_USER=grafana
+      - POSTGRES_PASSWORD=grafana
+      - POSTGRES_DB=grafana
+    volumes:
+      - grafana_db:/var/lib/postgresql/data:z
+    networks:
+      - grafana_db_net
+
+  # Logging collector
+  loki:
+    extends:
+      file: ../../services/loki/compose.yml
+      service: loki
+    build:
+      context: loki/
+    container_name: loki
+    networks:
+      - mainNet
+    volumes:
+      - /etc/loki
+
+  # TODO: caddy definition and let us copy our caddy file
+  # over using a custom image rather. This will allow us
+  # to rebuild with a new configuration then and not
+  # have to maintain it within a mount-point.
+  web:
+    container_name: web
+    build:
+      context: web/
+    depends_on:
+      - prometheus
+      - grafana
+    networks:
+      - mainNet
+    environment:
+      - DOMAIN=monitor.deavmi.assigned.network
+    ports:
+      - "[::]:80:80/tcp"
+      - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
+      - "[::]:443:443/tcp"
+      - "[::]:443:443/udp"
