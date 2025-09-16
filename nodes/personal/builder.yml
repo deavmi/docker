@@ -8,5 +8,5 @@ services:
     networks:
       - mainNet
     env_file:
-      - path: .secrets
+      - path: .builder
         required: true
