@@ -1,26 +1,26 @@
-# services:
-  # ircd:
-    # extends:
-      # file: ../../services/ircd/compose.yml
-      # service: ircd
-    # build:
-      # args:
-        # - NPROC=1
-    # networks:
-      # - mainNet
-    # ports:
-      # # Assume default ports are being exposed
-      # - "6667:6667/tcp"
-      # - "6697:6697/tcp"
-      # - "6900:6900/tcp"
-# 
-  # webirc:
-    # extends:
-      # file: ../../services/webirc/compose.yml
-      # service: webirc
-    # build:
-      # context: webirc/
-    # depends_on:
-      # - ircd
-    # networks:
-      # - mainNet
+services:
+  ircd:
+    extends:
+      file: ../../services/ircd/compose.yml
+      service: ircd
+    build:
+      args:
+        - NPROC=1
+    networks:
+      - mainNet
+    ports:
+      # Assume default ports are being exposed
+      - "6667:6667/tcp"
+      - "6697:6697/tcp"
+      - "6900:6900/tcp"
+
+  webirc:
+    extends:
+      file: ../../services/webirc/compose.yml
+      service: webirc
+    build:
+      context: webirc/
+    depends_on:
+      - ircd
+    networks:
+      - mainNet
