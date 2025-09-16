@@ -51,7 +51,10 @@ services:
       - mainNet
     # So that all URLs generated, like links, are to
     # our reverse proxy's route
-    command: "--config.file=/etc/prometheus/prometheus.yml --web.external-url=/prometheus/"
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--web.external-url=/prometheus/"
+      # - "--storage.tsdb.path=/data"
 
   # TODO: Add Caddy with `prometheus:9090` proxy_pass
 
