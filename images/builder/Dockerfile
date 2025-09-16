@@ -57,9 +57,5 @@ FROM base AS builder
 COPY --chown=builder:builder run.sh .
 RUN chmod +x run.sh
 
-# Bring in the `GITEA_WEBHOOK_AUTH` environment
-# variable
-ENV GITEA_WEBHOOK_AUTH=SPECIFY_ONE_PLEASE
-
 # Start
 CMD ./run.sh

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Bring in secret
 TOKEN_FILE=/run/secrets/BUILDER_TOKEN
 if [ ! -f "$TOKEN_FILE" ]
 then
@@ -7,10 +8,9 @@ then
 	exit 1
 fi
 
-ls -la /run/secrets
-
+# Gitea web commander needs the following
+# set
 export GITEA_WEBHOOK_AUTH=$(cat "$TOKEN_FILE")
-
 
 ls
 git pull
