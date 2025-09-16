@@ -19,11 +19,16 @@ Provides site-builder.
 
 Set these in your `.env` file.
 
-1. `BUILDER_GITEA_WEBHOOK_AUTH`
-	* Set this to the webhook auth token that Gitea
-	  would send to you, this prevents others from
-	  sending to your builder and causing it to build
 2. `BUILDER_OUTPUT`
 	* Where the generated websites our output to
 3. `BUILDER_SOURCE`
 	* Source to build websites from
+
+## Secrets
+
+This needs access to the following secrets:
+
+1. `BUILDER_TOKEN`
+	* Set this to the webhook auth token that Gitea
+	  would send to you, this prevents others from
+	  sending to your builder and causing it to build
