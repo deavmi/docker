@@ -7,9 +7,9 @@ services:
     restart: unless-stopped
     networks:
       - mainNet
-    env_file:
-      - path: ./.builder
-        required: true
+    # env_file:
+      # - path: ./.builder
+        # required: true
 
     # environment:
       # Verification of who is sending us the command
