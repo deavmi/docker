@@ -9,7 +9,13 @@ services:
       args:
         - NPROC=1
     command:
+      - "--datadir=/data"
+      - "--conf=/conf/i2pd.conf"
+    
       - "--ipv6"
+      - "--meshnets.yggdrasil"
+      - "--meshnets.yggaddress 202:dd5:84ca:46b4:acb9:a981:5dba:34e8"
+      - "--floodfill"
     environment:
       # Disable IPv4
       - DISABLE_IPV4=yes
