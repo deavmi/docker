@@ -20,7 +20,8 @@ volumes:
 services:
 
   gitea_old:
-    image: docker.gitea.com/gitea:1.24.6
+    build:
+      context: gitea_old/
     container_name: gitea_old
     depends_on:
       - redis-gitea
