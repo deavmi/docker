@@ -15,15 +15,8 @@ RUN apt upgrade -y
 
 # Instal build dependencies
 RUN apt install python3 python3-pip git -y
-# RUN apt install hugo -y
-RUN apt install wget -y
 RUN apt install golang -y
-ENV GOBIN=/bin
-RUN go install github.com/gohugoio/hugo@latest
-
-# WORKDIR /tmp
-# RUN wget https://github.com/gohugoio/hugo/releases/download/v0.150.0/hugo_0.150.0_linux-amd64.deb
-# RUN dpkg -i *.deb
+RUN GOBIN=/bin go install github.com/gohugoio/hugo@latest
 
 # Create the builder user
 # and delete the `ubuntu`
