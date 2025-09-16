@@ -46,6 +46,9 @@ services:
     # secrets:
       # - MINIO_ACCESS_KEY
       # - MINIO_SECRET_ACCESS_KEY
+    env_file:
+      - path: .minio
+        required: true
     environment:
       # Gitea DB configuraiton
       - GITEA__database__DB_TYPE=postgres
@@ -78,8 +81,8 @@ services:
       - GITEA__storage__STORAGE_TYPE=minio
       - GITEA__storage__MINIO_BUCKET=gitea
       - GITEA__storage__MINIO_ENDPOINT=minio-gitea:9000
-      - GITEA__storage__MINIO_ACCESS_KEY_ID=minio_secret1
-      - GITEA__storage__MINIO_SECRET_ACCESS_KEY=minio_secret2
+      - GITEA__storage__MINIO_ACCESS_KEY_ID=${MINIO_ROOT_USER}
+      - GITEA__storage__MINIO_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD}
 
       # Logging configuration TODO: Maybe lower later
       - GITEA__log__LEVEL=Trace
