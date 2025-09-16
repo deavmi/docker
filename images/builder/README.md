@@ -13,9 +13,12 @@ Provides site-builder.
 	* The user's group ID
 	* Same reason as above but for the file's group
 
-## Environment variables
+## Secrets
 
-1. `GITEA_WEBHOOK_AUTH`
+These are expected to be present in order for
+this image to work.
+
+1. `BUIDLER_TOKEN`
 	* To contain the expected token that we use to
 	validate whether the incoming hook is valid or
 	not

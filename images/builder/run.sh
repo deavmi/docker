@@ -1,10 +1,16 @@
 #!/bin/bash
 
+TOKEN_FILE=/run/secrets/BUILDER_TOKEN
+if [ ! -f "$TOKEN_FILE" ]
+then
+	echo "Could not fin token file '$TOKEN_FILE'"
+	exit 1
+fi
+
 ls -la /run/secrets
-for i in $(ls /run/secrets)
-do
-	
-done
+
+export GITEA_WEBHOOK_AUTH=$(cat "$TOKEN_FILE")
+
 
 ls
 git pull
