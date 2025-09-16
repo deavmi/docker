@@ -8,6 +8,8 @@ services:
         tunnelsconfig: ./i2pd
       args:
         - NPROC=1
+    command:
+      - "--ipv6"
     environment:
       # Disable IPv4
       - DISABLE_IPV4=yes

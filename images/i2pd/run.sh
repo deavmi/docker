@@ -81,4 +81,5 @@ CMD="$CMD --tunnelsdir /tunnels"
 
 # Start
 echo "Running with args: '$CMD'"
-i2pd $CMD
+# i2pd $CMD
+i2pd
