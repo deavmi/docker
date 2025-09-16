@@ -1,7 +1,13 @@
 personal
 ========
 
+
 ## Additional configuration
+
+### Builder
+
+Ensure you place a file named `.builder`
+and set in it `GITEA_WEBHOOK_AUTH`.
 
 ### Quassel configuration
 
