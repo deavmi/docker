@@ -18,6 +18,18 @@ volumes:
   redis_gitea_data:
 
 services:
+
+  gitea_old:
+    image: docker.gitea.com/gitea:1.24.6
+    container_name: gitea_old
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    networks:
+      - mainNet
+    volumes:
+      - ${GITEA_OLD_DATA_PATH}:/data:z
+
   gitea:
     extends:
       file: ../../services/gitea/compose.yml
