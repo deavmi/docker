@@ -17,6 +17,7 @@ services:
     extends:
       file: ../../services/yggdrasil/compose.yml
       service: yggdrasil
+    network_mode: "host"
     volumes:
       - "${YGGDRASIL_CONF_PATH}:/etc/yggdrasil.conf:ro,z"
 
