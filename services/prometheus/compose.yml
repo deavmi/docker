@@ -4,10 +4,3 @@ services:
     restart: unless-stopped
     networks:
       - mainNet
-    volumes:
-      # Path to directory holding configuration file
-      # - "${PROMETHEUS_CONF_DIR}:/etc/prometheus:z"
-
-      # Non-bind mount volume (for state)
-      - "${PROMETHEUS_STATE_DIR}:/prometheus:z"
-      # - prometheus_data:/prometheus
