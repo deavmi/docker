@@ -35,7 +35,8 @@ services:
     # 
 
   xmpp:
-    image: ghcr.io/processone/ejabberd
+    build:
+      context: ejabberd/
     container_name: xmpp
     environment:
       # - REGISTER_ADMIN_PASSWORD
