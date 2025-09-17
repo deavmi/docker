@@ -20,32 +20,24 @@ services:
     networks:
       - mainNet
 
-  # xmpp:
-    # image: prosody/prosody
-    # container_name: xmpp
-    # environment:
-    # 
-      # # Logging level
-      # - PROSODY_LOGLEVEL=debug
-    # volumes:
-      # # Path for certificates
-      # - ${PROSODY_CERT_PATH}:/etc/prosody:z
-    # networks:
-      # - mainNet
-    # 
-
   xmpp:
     build:
       context: ejabberd/
     container_name: xmpp
+    env_file:
+      # Bring in `REGISTER_ADMIN_PASSWORD`
+      - path: .xmpp
+        required: true
     environment:
-      # - REGISTER_ADMIN_PASSWORD
       - EJABBERD_MACRO_ADMIN=admin@${XMPP_DOMAIN}
       - EJABBERD_MACRO_HOST=${XMPP_DOMAIN}
     networks:
       - mainNet
     ports:
       - "5222:5222/tcp"
-
-      # HTTP (for ACME)
+      - "5269:5269/tcp"
+      
+      # HTTP (also used for ACME challenges)
       - "5280:5280/tcp"
+      
+      - "5443:5443/tcp"
