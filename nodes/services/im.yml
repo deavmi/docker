@@ -33,6 +33,8 @@ services:
       - EJABBERD_MACRO_HOST=${XMPP_DOMAIN}
     networks:
       - mainNet
+    volumes:
+      - ${XMPP_DATA_PATH}:/opt/ejabberd/database:z
     ports:
       - "5222:5222/tcp"
       - "5269:5269/tcp"
