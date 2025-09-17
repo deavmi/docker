@@ -45,3 +45,6 @@ services:
       - mainNet
     ports:
       - "5222:5222/tcp"
+
+      # HTTP (for ACME)
+      - "5280:5280/tcp"
