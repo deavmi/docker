@@ -22,7 +22,7 @@ WORKDIR /tmp
 RUN git clone https://deavmi.assigned.network/git/deavmi/gitea-irc-bot --branch $BRANCH src/
 WORKDIR src/
 RUN git checkout $COMMIT
-RUN dub build -vvv
+RUN dub build -v
 
 # Base image (for deployment)
 FROM ubuntu:noble AS base
