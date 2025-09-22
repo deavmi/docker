@@ -5,7 +5,7 @@
 
 	log default {
 			output stdout
-			level DEBUG
+			level INFO
 	}
 
 	# Don't tell HTTP clients to upgrade to HTTPS
