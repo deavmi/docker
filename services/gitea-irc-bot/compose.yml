@@ -1,12 +1,5 @@
 services:
   gitea-irc-bot:
-    build:
-      context: ../../images/gitea-irc-bot/
-      args:
-        # Branch to use
-        - BRANCH=master
-        
-        # Commit hash to checkout
-        - COMMIT=a6c1041208ca156e054aa1af9d72b3968cb9e093
+    image: ghcr.io/deavmi/gitea-irc-bot:master
     container_name: gitea-irc-bot
     restart: unless-stopped
