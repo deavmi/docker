@@ -9,7 +9,7 @@ networks:
 
 services:
   quassel:
-    image: kalaksi/quassel
+    image: docker.io/kalaksi/quassel
     container_name: quassel
     restart: unless-stopped
     depends_on:
