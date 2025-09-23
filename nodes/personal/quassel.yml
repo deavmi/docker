@@ -21,6 +21,8 @@ services:
       - "--config-from-environment"
       - "--port=4242" # container-side port to listen on
       - "--configdir=/config"
+      - "--ssl-cert=/certFile.cert"
+      - "--ssl-key=/keyFile.key"
     environment:
       # Database-related
       - DB_BACKEND=PostgreSQL
@@ -38,6 +40,10 @@ services:
       # - quassel_core_data:/config
       # Configuration data
       - "${QUASSEL_CORE_DATA_PATH}:/config:z"
+
+      # SSL certificates and key
+      - "${QUASSEL_SSL_CERT_FILE}:/certFile.cert:ro"
+      - "${QUASSEL_SSL_KEY_FILE}:/keyFile.key:ro"
     networks:
       - mainNet
       - quassel_db_net
