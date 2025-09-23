@@ -21,7 +21,7 @@ services:
       - "--config-from-environment"
       - "--port=4242" # container-side port to listen on
       - "--configdir=/config"
-      - "--ssl-cert=/certFile.cert"
+      - "--ssl-cert=/certFile.crt"
       - "--ssl-key=/keyFile.key"
     environment:
       # Database-related
@@ -42,7 +42,7 @@ services:
       - "${QUASSEL_CORE_DATA_PATH}:/config:z"
 
       # SSL certificates and key
-      - "${QUASSEL_SSL_CERT_FILE}:/certFile.cert:ro"
+      - "${QUASSEL_SSL_CERT_FILE}:/certFile.crt:ro"
       - "${QUASSEL_SSL_KEY_FILE}:/keyFile.key:ro"
     networks:
       - mainNet
