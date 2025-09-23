@@ -32,6 +32,9 @@ services:
       - DB_PGSQL_HOSTNAME=quassel-db
       - DB_PGSQL_PORT=5432
 
+      # Enable TLS
+      - QUASSEL_USE_TLS=true
+
       # Container-specific for files created
       - "QUASSEL_UID=${USER_UID}"
       - "QUASSEL_GID=${USER_GID}"
