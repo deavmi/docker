@@ -69,6 +69,9 @@ RUN apt update
 RUN apt install curl -y
 HEALTHCHECK CMD curl -f --user $MONERO_RPC_USERNAME:$MONERO_RPC_PASSWORD http://[::1]:18081/get_info
 
+# Runtime dependencies
+RUN apt install libudev-dev libboost-chrono-dev libboost-date-time-dev -y
+
 # Switch to the monero user
 USER monero
 
