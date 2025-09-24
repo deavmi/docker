@@ -7,6 +7,9 @@ services:
     extends:
       file: ../../services/monero/compose.yml
       service: monero
+    env_file:
+      - path: monero.secrets
+        required: true
     networks:
       - monnet
     ports:
