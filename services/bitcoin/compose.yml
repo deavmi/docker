@@ -15,6 +15,9 @@ services:
       - type: bind
         source: ${BITCOIN_BLOCKS_DIR}
         target: /blocks
+      - type: bind
+        source: ${BITCOIN_COOKIES_DIR}
+        target: /cookies
     environment:
       # RPC authentication
       - RPC_USERNAME=${BITCOIN_RPC_USERNAME}
