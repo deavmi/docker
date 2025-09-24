@@ -1,0 +1,28 @@
+services:
+  monero:
+    build:
+      context: ../../images/monero/
+      args:
+        - USER_UID=${USER_UID}
+        - USER_GID=${USER_GID}
+        - NPROC=2
+    container_name: monero_daemon
+    restart: always
+    secrets:
+      - MONERO_NODES
+    volumes:
+      - type: bind
+        source: ${MONERO_DATA_PATH}
+        target: /data
+    env_file:
+      - path: monero.secrets
+        required: true
+    environment:
+      # Maximum RPC connections from the same IP
+      - MAX_CONNECTIONS=${MONERO_MAX_CONNECTIONS}
+
+      # Set payment details for making use of the RPC
+      # on this node
+      - RPC_PAYMENT_WALLET_ADDR=${MONERO_RPC_PAYMENT_WALLET_ADDR}
+      - RPC_PAYMENT_DIFFICULTY=${MONERO_RPC_PAYMENT_DIFFICULTY}
+      - RPC_PAYMENT_CREDITS=${MONERO_RPC_PAYMENT_CREDITS}
