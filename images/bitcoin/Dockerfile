@@ -13,23 +13,23 @@ RUN apt upgrade -y
 
 # Install build dependencies
 RUN apt install git -y
-RUN apt-get install build-essential libtool autotools-dev -y
-RUN apt-get install build-essential libtool autotools-dev -y
-RUN apt-get install automake pkg-config bsdmainutils -y
-RUN apt-get install python3 libevent-dev libboost-dev libsqlite3-dev -y
+RUN apt install build-essential cmake pkgconf python3 -y
+RUN apt install libevent-dev libboost-dev -y
+RUN apt install libsqlite3-dev -y
+RUN apt install libcapnp-dev capnproto -y
 
 # Perform build
 WORKDIR /tmp
 RUN git clone https://github.com/bitcoin/bitcoin --depth=1
 WORKDIR bitcoin
-RUN ./autogen.sh
-RUN ./configure
-RUN make -j2
-RUN make install
+ARG NPROC=2
+RUN cmake -B build
+RUN cmake --build build  -j$NPROC
+RUN cmake --install build
 
 # TODO: Pin version
 # TODO: Use something more lean
-FROM ubuntu:latest AS base
+FROM debian:latest AS base
 
 COPY --from=build /bin/bitcoind /bin
 RUN chmod +x /bin/bitcoind
