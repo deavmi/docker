@@ -44,7 +44,7 @@ ARG USER_GID=1003
 
 # Setup user
 RUN groupadd monero --gid $USER_GID
-RUN useradd monero -m --uid $_USER_UID --gid $USER_GID
+RUN useradd monero -m --uid $USER_UID --gid $USER_GID
 WORKDIR /home/monero
 
 # Copy across the file containing information
