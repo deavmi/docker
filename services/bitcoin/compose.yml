@@ -1,0 +1,21 @@
+services:
+  bitcoin:
+    build:
+      context: ../../images/bitcoin/
+      args:
+        - USER_UID=${USER_UID}
+        - USER_GID=${USER_GID}
+        - NPROC=2
+    container_name: bitcoin_daemon
+    restart: always
+    volumes:
+      - type: bind
+        source: ${BITCOIN_DATA_DIR}
+        target: /data
+      - type: bind
+        source: ${BITCOIN_BLOCKS_DIR}
+        target: /blocks
+    environment:
+      # RPC authentication
+      - RPC_USERNAME=${BITCOIN_RPC_USERNAME}
+      - RPC_PASSWORD=${BITCOIN_RPC_PASSWORD}
