@@ -1,7 +1,7 @@
 networks:
-  monnet:
+  mainNet:
     driver: bridge
-    name: monnet
+    name: mainNet
     enable_ipv6: true
     ipam:
       config:
@@ -9,6 +9,7 @@ networks:
 
 include:
   - monero.yml
+  - bitcoin.yml
 
 services:
   host-statistics:
