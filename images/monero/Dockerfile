@@ -34,7 +34,7 @@ RUN cp build/*/master/release/bin/* /bin
 
 # TODO: Pin to version
 # TODO: Use something more lean
-FROM ubuntu:latest AS base
+FROM debian:latest AS base
 COPY --from=build /tmp/monero/build/*/master/release/bin/* /bin
 RUN chmod -R +x /bin # TODO: Only do it to the monero ones EVEN though everything would be executable in `/bin`, duh  
 
