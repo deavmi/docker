@@ -1,7 +1,8 @@
 # Use the latest Ubuntu image
 # TODO: Pin image
 # TODO: Switch to something more bare
-FROM ubuntu:latest AS build
+# FROM ubuntu:latest AS build
+FROM debian:latest AS build
 
 # Set the environment variable(s)
 # that matter.
