@@ -11,6 +11,15 @@ monero
 * `NPROC`
 	* Number of cores to use when building
 
+## Secrets
+
+The following secrets need to be made
+available:
+
+* `MONERO_NODES`
+	* This should be the file containing
+	line-seperated IP addresses of nodes
+
 ## Environment variables
 
 The following environment variables
