@@ -1,0 +1,28 @@
+networks:
+  bitnet_internal:
+    driver: bridge
+    name: bitnet_internal
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492b:fc78::/48
+
+services:
+  bitcoind:
+    extends:
+      file: ../../services/bitcoin/compose.yml
+      service: bitcoin
+    networks:
+      # For talking with Electrum
+      - bitnet_internal
+
+  # TODO: Setup i2pd here so that
+  # it can be accessed and configured
+  # via bob for peering
+
+  # TODO: Move to `../../services/electrs/compose.yml`
+  electrum:
+    image: ghcr.io/deavmi/electrs
+    # networks:
+      # For talking to bitcoind
+      # - bitnet_internal
