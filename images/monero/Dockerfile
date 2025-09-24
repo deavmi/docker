@@ -1,7 +1,7 @@
 # Use the latest Ubuntu image
 # TODO: Pin image
 # TODO: Switch to something more bare
-FROM ubuntu:latest
+FROM ubuntu:latest AS build
 
 # Set the environment variable(s)
 # that matter.
@@ -28,7 +28,8 @@ RUN git clone --recursive https://github.com/monero-project/monero --depth=1
 WORKDIR monero
 RUN git submodule init
 RUN git submodule update
-RUN make -j2
+ARG NPROC=2
+RUN make -j$NPROC
 RUN cp build/*/master/release/bin/* /bin
 
 # Clear out the /tmp and also some

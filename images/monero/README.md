@@ -8,3 +8,5 @@ monero
 * `USER_GID`
 	* The gid of the group the created user
 	is to belong to
+* `NPROC`
+	* Number of cores to use when building
