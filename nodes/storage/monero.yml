@@ -1,0 +1,24 @@
+services:
+  monero:
+    build:
+      context: .
+    container_name: monero_daemon
+    restart: always
+    networks:
+      - monnet
+    volumes:
+      - type: bind
+        source: ${MONERO_DATA_PATH}
+        target: /data
+    environment:
+      # Maximum RPC connections from the same IP
+      - MAX_CONNECTIONS=${MONERO_MAX_CONNECTIONS}
+
+      # Set payment details for making use of the RPC
+      # on this node
+      - RPC_PAYMENT_WALLET_ADDR=${MONERO_RPC_PAYMENT_WALLET_ADDR}
+      - RPC_PAYMENT_PAYMENT=${MONERO_RPC_PAYMENT_PAYMENT}
+      - RPC_PAYMENT_CREDITS=${MONERO_RPC_PAYMENT_CREDITS}
+    ports:
+      - 18080:18080/tcp
+      - 18081:18081/tcp
