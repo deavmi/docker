@@ -1,0 +1,45 @@
+networks:
+  monnet:
+    driver: bridge
+    name: monnet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492a:fc78::/48
+
+include:
+  - monero.yml
+
+services:
+  host-statistics:
+    extends:
+      file: ../../services/node_exporter/compose.yml
+      service: statistics
+    container_name: host_statistics
+
+  yggdrasil:
+    extends:
+      file: ../../services/yggdrasil/compose.yml
+      service: yggdrasil
+    container_name: yggdrasil
+    network_mode: "host"
+
+
+
+  # web:
+    # container_name: web
+    # build:
+      # context: web/
+    # networks:
+      # - mainNet
+    # volumes:
+      # Data directory to serve static site files
+      # from
+      # - /mnt/datadisk/volumes/web:/webroot:z
+    # environment:
+      # - "DOMAIN=${CADDY_DOMAIN}"
+    # ports:
+      # - "[::]:80:80/tcp"
+      # - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
+      # - "[::]:443:443/tcp"
+      # - "[::]:443:443/udp"

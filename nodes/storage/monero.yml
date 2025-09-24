@@ -1,11 +1,20 @@
+secrets:
+  MONERO_NODES:
+    file: nodes.monero
+
 services:
   monero:
     build:
       context: .
+      args:
+        - USER_UID=${USER_UID}
+        - USER_GID=${USER_GID}
     container_name: monero_daemon
     restart: always
     networks:
       - monnet
+    secrets:
+      - MONERO_NODES
     volumes:
       - type: bind
         source: ${MONERO_DATA_PATH}
