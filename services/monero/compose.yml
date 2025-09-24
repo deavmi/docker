@@ -14,9 +14,6 @@ services:
       - type: bind
         source: ${MONERO_DATA_PATH}
         target: /data
-    env_file:
-      - path: monero.secrets
-        required: true
     environment:
       # Maximum RPC connections from the same IP
       - MAX_CONNECTIONS=${MONERO_MAX_CONNECTIONS}
