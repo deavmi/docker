@@ -12,9 +12,13 @@ services:
     extends:
       file: ../../services/bitcoin/compose.yml
       service: bitcoin
+    volumes:
+      # TODO: Configure bitcoind to place it here
+      - ${BTC_COOKIE_DIR}:/cookieDir
     networks:
       # For talking with Electrum
       - bitnet_internal
+      - mainNet
 
   # TODO: Setup i2pd here so that
   # it can be accessed and configured
@@ -23,6 +27,24 @@ services:
   # TODO: Move to `../../services/electrs/compose.yml`
   electrum:
     image: ghcr.io/deavmi/electrs
+    environment:
+      - ELECTRS_ELECTRUM_RPC_ADDR="[::]:50001"
+      - ELECTRS_DB_DIR=/data
+      - ELECTRS_COOKIE_FILE=/cookieDir
+      - ELECTRS_DAEMON_RPC_ADDR=bitcoind:8332
+      - ELECTRS_DAEMON_P2P_ADDR=bitcoind:8333
+
+      - ELECTRS_NETWORK=bitcoin
+
+       # TODO: Change later (TODO: make default if not set as well too)
+      - ELECTRS_LOG_FILTERS=INFO
     # networks:
       # For talking to bitcoind
       # - bitnet_internal
+    volumes:
+      - ${ELECTRUM_DATA_PATH}:/data
+      - ${BTC_COOKIE_DIR}:/cookieDir
+    networks:
+      - mainNet
+    ports:
+      - "50001:50001/tcp"
