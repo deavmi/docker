@@ -12,9 +12,6 @@ services:
     extends:
       file: ../../services/bitcoin/compose.yml
       service: bitcoin
-    volumes:
-      # TODO: Configure bitcoind to place it here
-      - ${BTC_COOKIE_DIR}:/cookieDir
     networks:
       # For talking with Electrum
       - bitnet_internal
@@ -43,7 +40,7 @@ services:
       # - bitnet_internal
     volumes:
       - ${ELECTRUM_DATA_PATH}:/data
-      - ${BTC_COOKIE_DIR}:/cookieDir
+      - ${ELECTRUM_COOKIES_DIR}:/cookieDir
     networks:
       - mainNet
     ports:
