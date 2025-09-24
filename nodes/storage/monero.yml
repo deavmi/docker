@@ -7,11 +7,14 @@ services:
     extends:
       file: ../../services/monero/compose.yml
       service: monero
+    build:
+      args:
+        - NPROC=4
     env_file:
       - path: monero.secrets
         required: true
     networks:
-      - monnet
+      - mainNet
     ports:
       - 18080:18080/tcp
       - 18081:18081/tcp
