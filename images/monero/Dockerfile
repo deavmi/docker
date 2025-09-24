@@ -32,11 +32,11 @@ ARG NPROC=2
 RUN make -j$NPROC
 RUN cp build/*/master/release/bin/* /bin
 
-# Clear out the /tmp and also some
-# of the installed build dependencies
-RUN apt remove git -y
-RUN apt autoremove -y
-RUN rm -rf /tmp/monero/
+# TODO: Pin to version
+# TODO: Use something more lean
+FROM ubuntu:latest AS base
+COPY --from=build /tmp/monero/build/*/master/release/bin/* /bin
+RUN chmod -R +x /bin # TODO: Only do it to the monero ones EVEN though everything would be executable in `/bin`, duh  
 
 # Bring in build arguments
 ARG USER_UID=1000
@@ -49,7 +49,7 @@ WORKDIR /home/monero
 
 # Copy across the file containing information
 # on which IPv6 nodes to add on startup
-COPY nodes.txt .
+# COPY nodes.txt .
 COPY run.sh .
 RUN chmod +x run.sh
 RUN chown -R monero:monero /home/monero
