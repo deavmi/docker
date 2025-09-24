@@ -25,14 +25,20 @@ available:
 The following environment variables
 are required:
 
-* `ENV MAX_CONNECTIONS`
+* `MAX_CONNECTIONS`
 	* Maximum number of connections to RPC
 	from **the same** IP
-* `ENV RPC_PAYMENT_WALLET_ADDR`
+* `RPC_PAYMENT_WALLET_ADDR`
 	* The Monero address where payments
 	should be sent for using the RPC
 	service
-* `ENV_RPC_PAYMENT_DIFFICULTY`
+* `RPC_PAYMENT_DIFFICULTY`
 	* Difficulty
-* `ENV RPC_PAYMENT_CREDITS`
+* `RPC_PAYMENT_CREDITS`
 	* Credits
+
+
+* `MONERO_RPC_USERNAME`
+	* RPC username
+* `MONEOR_RPC_PASSWORD`
+	* RPC password

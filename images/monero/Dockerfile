@@ -58,12 +58,15 @@ RUN chown -R monero:monero /home/monero
 # variables we need
 ENV MAX_CONNECTIONS
 ENV RPC_PAYMENT_WALLET_ADDR
-ENV RPC_PAYMENT_PAYMENT
+ENV RPC_PAYMENT_DIFFICULTY
 ENV RPC_PAYMENT_CREDITS
+
+ENV MONERO_RPC_USERNAME
+ENV MONERO_RPC_PASSWORD
 
 # Healthcheck by saying hi to the RPC
 RUN apt install curl -y
-HEALTHCHECK CMD curl -f --user $RPC_USERNAME:$RPC_PASSWORD http://[::1]:18081/get_info
+HEALTHCHECK CMD curl -f --user $MONERO_RPC_USERNAME:$MONERO_RPC_PASSWORD http://[::1]:18081/get_info
 
 # Switch to the monero user
 USER monero
