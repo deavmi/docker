@@ -9,7 +9,7 @@ services:
       service: monero
     build:
       args:
-        - NPROC=4
+        - NPROC=2
     env_file:
       - path: monero.secrets
         required: true
