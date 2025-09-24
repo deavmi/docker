@@ -26,7 +26,7 @@ services:
       # Set payment details for making use of the RPC
       # on this node
       - RPC_PAYMENT_WALLET_ADDR=${MONERO_RPC_PAYMENT_WALLET_ADDR}
-      - RPC_PAYMENT_PAYMENT=${MONERO_RPC_PAYMENT_PAYMENT}
+      - RPC_PAYMENT_DIFFICULTY=${MONERO_RPC_PAYMENT_DIFFICULTY}
       - RPC_PAYMENT_CREDITS=${MONERO_RPC_PAYMENT_CREDITS}
     ports:
       - 18080:18080/tcp
