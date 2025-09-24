@@ -5,7 +5,7 @@ secrets:
 services:
   monero:
     build:
-      context: .
+      context: ../../images/monero/
       args:
         - USER_UID=${USER_UID}
         - USER_GID=${USER_GID}
