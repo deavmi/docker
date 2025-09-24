@@ -41,7 +41,7 @@ RUN apt install curl -y
 ARG USER_UID=1000
 ARG USER_GID=1003
 RUN groupadd bitcoin --gid $USER_GID
-RUN useradd bitcoin -m --uid $USER_UID --gid USER_GID
+RUN useradd bitcoin -m --uid $USER_UID --gid $USER_GID
 
 # Copy over run script
 WORKDIR /home/bitcoin
