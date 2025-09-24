@@ -28,7 +28,7 @@ paymentArgs=""
 if [ ! "$RPC_PAYMENT_WALLET_ADDR" = "" ]
 then
         paymentArgs="$paymentArgs --rpc-payment-address=$RPC_PAYMENT_WALLET_ADDR"
-        paymentArgs="$paymentArgs --rpc-payment-difficulty=$RPC_PAYMENT_PAYMENT"
+        paymentArgs="$paymentArgs --rpc-payment-difficulty=$RPC_PAYMENT_DIFFICULTY"
         paymentArgs="$paymentArgs --rpc-payment-credits=$RPC_PAYMENT_CREDITS"
 
         echo "Payment RPC mode successfully set to '$paymentArgs'"
