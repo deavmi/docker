@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Bring in secret
+NODES_FILE=/run/secrets/MONERO_NODES
+if [ ! -f "$NODES_FILE" ]
+then
+	echo "Could not find nodes file '$NODES_FILE'"
+	exit 1
+fi
+
 # Add IPv6 nodes
 #
 # Calculate the IPv6 nodes to
@@ -7,7 +15,7 @@
 # by iterating over the `nodes.txt`
 # file line-by-line
 addrString=""
-for addr in $(cat nodes.txt)
+for addr in $(cat $NODES_FILE)
 do
         addrString="--add-priority-node=$addr $addrString"
 done
