@@ -54,6 +54,13 @@ COPY run.sh .
 RUN chmod +x run.sh
 RUN chown -R monero:monero /home/monero
 
+# Bring in all environment
+# variables we need
+ENV MAX_CONNECTIONS
+ENV RPC_PAYMENT_WALLET_ADDR
+ENV RPC_PAYMENT_PAYMENT
+ENV RPC_PAYMENT_CREDITS
+
 # Healthcheck by saying hi to the RPC
 RUN apt install curl -y
 HEALTHCHECK CMD curl -f --user $RPC_USERNAME:$RPC_PASSWORD http://[::1]:18081/get_info

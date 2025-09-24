@@ -36,7 +36,7 @@ else
         echo "Not setting payment RPC mode"
 fi
 
-# Start the Monero daemo
+# Start the Monero daemon
 monerod --non-interactive \
                 --data-dir=/data \
                 --public-node \
