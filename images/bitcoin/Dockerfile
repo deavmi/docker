@@ -31,16 +31,17 @@ RUN cmake --install build
 # TODO: Use something more lean
 FROM debian:latest AS base
 
-COPY --from=build /bin/bitcoind /bin
+COPY --from=build /tmp/bitcoin/build/bin/bitcoind /bin
 RUN chmod +x /bin/bitcoind
 
+RUN apt update
 RUN apt install curl -y
 
 # Setup user
 ARG USER_UID=1000
 ARG USER_GID=1003
 RUN groupadd bitcoin --gid $USER_GID
-RUN useradd bitcoin -m --uid USER_UID --gid USER_GID
+RUN useradd bitcoin -m --uid $USER_UID --gid USER_GID
 
 # Copy over run script
 WORKDIR /home/bitcoin
