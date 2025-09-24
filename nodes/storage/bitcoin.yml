@@ -47,4 +47,4 @@ services:
     networks:
       - mainNet
     ports:
-      - "50001:50001/tcp"
+      - "${ELECTRUM_PORT}:50001/tcp"

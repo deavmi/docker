@@ -5,7 +5,7 @@ services:
       args:
         - USER_UID=${USER_UID}
         - USER_GID=${USER_GID}
-        - NPROC=2
+        - NPROC=1
     container_name: bitcoin_daemon
     restart: always
     volumes:
