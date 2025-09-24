@@ -40,5 +40,5 @@ are required:
 
 * `MONERO_RPC_USERNAME`
 	* RPC username
-* `MONEOR_RPC_PASSWORD`
+* `MONERO_RPC_PASSWORD`
 	* RPC password
