@@ -17,6 +17,7 @@ fi
 addrString=""
 for addr in $(cat $NODES_FILE)
 do
+				echo "Add remote node '$addr'..."
         addrString="--add-priority-node=$addr $addrString"
 done
 
