@@ -35,6 +35,12 @@ services:
       # Container-specific for files created
       - "QUASSEL_UID=${USER_UID}"
       - "QUASSEL_GID=${USER_GID}"
+    # Set the effective UID/GID
+    # for all operations from
+    # the spawned entrypoint and
+    # thereon
+    user:
+      - ${USER_UID}:${USER_GID}
     volumes:
       # TODO: Place to on-disk path
       # - quassel_core_data:/config
