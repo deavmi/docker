@@ -45,6 +45,7 @@ RUN chmod -R +x /bin # TODO: Only do it to the monero ones EVEN though everythin
 # RUN apt install libboost-program-options-dev libreadline6-dev -y
 
 # TODO: See which of these are ACTUALLY required
+RUN apt update
 RUN apt install libssl-dev libzmq3-dev -y
 RUN apt install libunbound-dev libsodium-dev libunwind8-dev liblzma-dev -y
 RUN apt install libreadline6-dev libexpat1-dev libpgm-dev qttools5-dev-tools -y
@@ -81,7 +82,6 @@ ENV MONERO_RPC_USERNAME=""
 ENV MONERO_RPC_PASSWORD=""
 
 # Healthcheck by saying hi to the RPC
-RUN apt update
 RUN apt install curl -y
 HEALTHCHECK CMD curl -f --user $MONERO_RPC_USERNAME:$MONERO_RPC_PASSWORD http://[::1]:18081/get_info
 
