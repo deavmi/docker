@@ -33,8 +33,8 @@ services:
       - DB_PGSQL_PORT=5432
 
       # Container-specific for files created
-      - QUASSEL_UID=${USER_UID}
-      - QUASSEL_GID=${USER_GID}
+      - "QUASSEL_UID=${USER_UID}"
+      - "QUASSEL_GID=${USER_GID}"
     volumes:
       # TODO: Place to on-disk path
       # - quassel_core_data:/config
