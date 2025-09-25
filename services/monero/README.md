@@ -27,6 +27,13 @@ variables:
 	the RPC service
 * `MONERO_RPC_PAYMENT_DIFFICULTY`
 * `MONERO_RPC_PAYMENT_CREDITS`
+* `MONERO_LOG_LEVEL`
+	* `0` is lowest and `4` is highest
+	* **Default:** `0`
+* `MONERO_LOG_FILE`
+	* File for logging to be written to
+	* **Default:** `/dev/stdout/`
+
 
 ## Secrets
 
