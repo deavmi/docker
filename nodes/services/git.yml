@@ -61,8 +61,9 @@ services:
       - GITEA__server__HTTP_PORT=3000
       - GITEA__server__ROOT_URL=/git_old/
       - GITEA__server__DISABLE_SSH=false
-      - GITEA__server__SSH_PORT=22
+      - GITEA__server__SSH_PORT=2023
       - GITEA__server__SSH_LISTEN_PORT=22
+      - GITEA__server__START_SSH_SERVER=true
 
       # For session management
       - GITEA__session__PROVIDER=redis
@@ -131,7 +132,12 @@ services:
       # Federation
       - FORGEJO__FEDERATION__ENABLED=true
       - FORGEJO__FEDERATION__SHARE_USER_STATISTICS=true
-      
+
+      # SSH server
+      - FORGEJO__server__DISABLE_SSH=false
+      - FORGEJO__server__SSH_PORT=2023
+      - FORGEJO__server__SSH_LISTEN_PORT=22
+      - FORGEJO__server__START_SSH_SERVER=true
 
       # Automatic install based on environment varables
       - FORGEJO__security__INSTALL_LOCK=true
@@ -161,6 +167,7 @@ services:
       - minio_net
       - gitea_redis_net
     ports:
+      # SSH server
       - "2022:22/tcp"
   
   db-gitea:
