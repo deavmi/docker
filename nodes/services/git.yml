@@ -123,6 +123,16 @@ services:
       - FORGEJO__ui0x2Emeta__DESCRIPTION=Where code is grinded out ⚙️
       - FORGEJO__ui__DEFAULT_THEME=forgejo-dark
 
+      # Forgejo actions
+      - FORGEJO__ACTIONS__ENABLED=true
+      - FORGEJO__ACTIONS__LOG_RETENTION_DAYS=365
+      - FORGEJO__ACTIONS__ARTIFACT_RETENTION_DAYS=90
+
+      # Federation
+      - FORGEJO__FEDERATION__ENABLED=true
+      - FORGEJO__FEDERATION__SHARE_USER_STATISTICS=true
+      
+
       # Automatic install based on environment varables
       - FORGEJO__security__INSTALL_LOCK=true
 
