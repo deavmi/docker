@@ -42,7 +42,7 @@ services:
       - "${QUASSEL_CORE_DATA_PATH}:/config:z"
 
       # SSL certificates and key
-      - "${QUASSEL_SSL_DIR}:/certs:ro"
+      - "${QUASSEL_SSL_DIR}:/certs"
     networks:
       - mainNet
       - quassel_db_net
