@@ -55,6 +55,11 @@ services:
       - POSTGRES_USER=quassel_user
       - POSTGRES_PASSWORD=quassel_pass
       - POSTGRES_DB=quassel
+    # Set the effective UID/GID
+    # for all operations from
+    # the spawned entrypoint and
+    # thereon
+    user: ${USER_UID}:${USER_GID}
     volumes:
       - "${QUASSEL_CORE_DB_PATH}:/var/lib/postgresql/data:z"
     networks:
