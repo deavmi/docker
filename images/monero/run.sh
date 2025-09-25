@@ -46,6 +46,7 @@ monerod --non-interactive \
                 --p2p-external-port=18080 \
                 --rpc-use-ipv6 --restricted-rpc --rpc-bind-ipv6-address=[::] --rpc-bind-port=18081 \
                 --confirm-external-bind \
-                # --rpc-login="$RPC_USERNAME:$RPC_PASSWORD" \
                  $addrString \
                  $paymentArgs \
+
+# --rpc-login="$RPC_USERNAME:$RPC_PASSWORD" \
