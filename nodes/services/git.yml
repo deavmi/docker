@@ -62,7 +62,9 @@ services:
       - GITEA__server__ROOT_URL=/git_old/
       - GITEA__server__DISABLE_SSH=false
       - GITEA__server__SSH_PORT=2023
-      - GITEA__server__SSH_LISTEN_PORT=22
+      # FIXME: Would have used `22` but _somehow_ it was in use
+      # inthe container _own_ network namespace
+      - GITEA__server__SSH_LISTEN_PORT=21
       - GITEA__server__START_SSH_SERVER=true
 
       # For session management
@@ -90,7 +92,7 @@ services:
     volumes:
       - ${GITEA_OLD_DATA_PATH}:/data:z
     ports:
-      - "2023:22/tcp"
+      - "2023:21/tcp"
 
   gitea:
     extends:
@@ -136,7 +138,9 @@ services:
       # SSH server
       - FORGEJO__server__DISABLE_SSH=false
       - FORGEJO__server__SSH_PORT=2023
-      - FORGEJO__server__SSH_LISTEN_PORT=22
+        # FIXME: Would have used `22` but _somehow_ it was in use
+      # inthe container _own_ network namespace
+      - FORGEJO__server__SSH_LISTEN_PORT=21
       - FORGEJO__server__START_SSH_SERVER=true
 
       # Automatic install based on environment varables
@@ -168,7 +172,7 @@ services:
       - gitea_redis_net
     ports:
       # SSH server
-      - "2022:22/tcp"
+      - "2022:21/tcp"
   
   db-gitea:
     extends:
