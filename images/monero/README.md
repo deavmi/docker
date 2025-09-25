@@ -38,6 +38,8 @@ are required:
 	* Credits
 * `LOG_LEVEL`
 	* `0` is lowest and `4` is highest
+* `LOG_FILE`
+	* Log file
 
 * `MONERO_RPC_USERNAME`
 	* RPC username

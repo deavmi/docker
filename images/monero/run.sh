@@ -49,6 +49,7 @@ monerod --non-interactive \
                  $addrString \
                  $paymentArgs \
                  --log-level $LOG_LEVEL \
+                 --log-file $LOG_FILE \
 
 # TODO: make log level optional and defualt value
 
