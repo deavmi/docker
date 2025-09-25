@@ -138,7 +138,7 @@ services:
 
       # SSH server
       - FORGEJO__server__DISABLE_SSH=false
-      - FORGEJO__server__SSH_PORT=2023
+      - FORGEJO__server__SSH_PORT=2022
       - FORGEJO__server__SSH_DOMAIN=${CADDY_DOMAIN}
         # FIXME: Would have used `22` but _somehow_ it was in use
       # inthe container _own_ network namespace
