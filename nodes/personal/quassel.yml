@@ -31,10 +31,6 @@ services:
       - DB_PGSQL_DATABASE=quassel
       - DB_PGSQL_HOSTNAME=quassel-db
       - DB_PGSQL_PORT=5432
-
-      # Container-specific for files created
-      - "QUASSEL_UID=${USER_UID}"
-      - "QUASSEL_GID=${USER_GID}"
     # Set the effective UID/GID
     # for all operations from
     # the spawned entrypoint and
