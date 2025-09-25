@@ -82,7 +82,7 @@ ENV MONERO_RPC_USERNAME=""
 ENV MONERO_RPC_PASSWORD=""
 
 ENV LOG_LEVEL=0
-ENV LOG_FILE=/dev/stdout
+ENV LOG_FILE=bitmonero.log
 
 # Healthcheck by saying hi to the RPC
 RUN apt install curl -y
