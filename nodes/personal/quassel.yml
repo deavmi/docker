@@ -39,8 +39,7 @@ services:
     # for all operations from
     # the spawned entrypoint and
     # thereon
-    user:
-      - "${USER_UID}:${USER_GID}"
+    user: ${USER_UID}:${USER_GID}
     volumes:
       # TODO: Place to on-disk path
       # - quassel_core_data:/config
