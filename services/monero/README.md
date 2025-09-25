@@ -32,7 +32,7 @@ variables:
 	* **Default:** `0`
 * `MONERO_LOG_FILE`
 	* File for logging to be written to
-	* **Default:** `/dev/stdout/`
+	* **Default:** `bitmonero.log`
 
 
 ## Secrets

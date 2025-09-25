@@ -26,4 +26,4 @@ services:
 
       # Logging
       - LOG_LEVEL=${MONERO_LOG_LEVEL-0}
-      - LOG_FILE=${MONERO_LOG_FILE-/dev/stdout}
+      - LOG_FILE=${MONERO_LOG_FILE-bitmonero.log}
