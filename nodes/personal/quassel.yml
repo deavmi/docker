@@ -39,8 +39,12 @@ services:
     # for all operations from
     # the spawned entrypoint and
     # thereon
+    #
+    # We make it use uid/gid
+    # of whatever my user is
     user:
-      - "${USER_UID}:${USER_GID}"
+      # - "${USER_UID}:${USER_GID}"
+      - deavmi
     volumes:
       # TODO: Place to on-disk path
       # - quassel_core_data:/config
