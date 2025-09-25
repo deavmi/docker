@@ -31,6 +31,8 @@ services:
     environment:
       - EJABBERD_MACRO_ADMIN=admin@${XMPP_DOMAIN}
       - EJABBERD_MACRO_HOST=${XMPP_DOMAIN}
+    # Set effective uid/gid
+    user: ${USER_UID}:${USER_GID}
     networks:
       - mainNet
     volumes:

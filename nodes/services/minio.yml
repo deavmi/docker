@@ -21,6 +21,8 @@ services:
     networks:
       - mainNet
       - minio_net
+    # Set effective uid/gid
+    user: ${USER_UID}:${USER_GID}
     command:
       - "server"
       - "/data"

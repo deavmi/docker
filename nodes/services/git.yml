@@ -162,7 +162,8 @@ services:
       - POSTGRES_DB=${GITEA_DB_NAME}
       - POSTGRES_USER=${GITEA_DB_USER}
       - POSTGRES_PASSWORD=${GITEA_DB_PASS}
-
+    # Set effective UID/GID
+    user: ${USER_UID}:${USER_GID}
     volumes:
       # Path for Postgres to store data
       - "${GITEA_POSTGRES_PATH}:/var/lib/postgresql/data:z"
@@ -175,6 +176,7 @@ services:
     image: redis:latest
     container_name: redis-gitea
     restart: unless-stopped
+    user: ${USER_UID}:${USER_GID}
     volumes:
       # For Redis persistence
       - redis_gitea_data:/data:z
