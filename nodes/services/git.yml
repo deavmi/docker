@@ -62,6 +62,7 @@ services:
       - GITEA__server__ROOT_URL=/git_old/
       - GITEA__server__DISABLE_SSH=false
       - GITEA__server__SSH_PORT=2023
+      - GITEA__server__SSH_DOMAIN=${CADDY_DOMAIN}
       # FIXME: Would have used `22` but _somehow_ it was in use
       # inthe container _own_ network namespace
       - GITEA__server__SSH_LISTEN_PORT=21
@@ -138,6 +139,7 @@ services:
       # SSH server
       - FORGEJO__server__DISABLE_SSH=false
       - FORGEJO__server__SSH_PORT=2023
+      - FORGEJO__server__SSH_DOMAIN=${CADDY_DOMAIN}
         # FIXME: Would have used `22` but _somehow_ it was in use
       # inthe container _own_ network namespace
       - FORGEJO__server__SSH_LISTEN_PORT=21
