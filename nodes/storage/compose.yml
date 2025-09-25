@@ -5,7 +5,7 @@ networks:
     enable_ipv6: true
     ipam:
       config:
-        - subnet: fde4:492a:fc78::/48
+        - subnet: fde4:432a:fc78::/48
 
 include:
   - monero.yml
