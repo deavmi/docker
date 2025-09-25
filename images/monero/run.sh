@@ -48,6 +48,8 @@ monerod --non-interactive \
                 --confirm-external-bind \
                  $addrString \
                  $paymentArgs \
-                 --log-level 4 \
+                 --log-level $LOG_LEVEL \
+
+# TODO: make log level optional and defualt value
 
 # --rpc-login="$RPC_USERNAME:$RPC_PASSWORD" \

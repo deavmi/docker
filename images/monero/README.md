@@ -36,7 +36,8 @@ are required:
 	* Difficulty
 * `RPC_PAYMENT_CREDITS`
 	* Credits
-
+* `LOG_LEVEL`
+	* `0` is lowest and `4` is highest
 
 * `MONERO_RPC_USERNAME`
 	* RPC username

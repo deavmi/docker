@@ -81,6 +81,8 @@ ENV RPC_PAYMENT_CREDITS=""
 ENV MONERO_RPC_USERNAME=""
 ENV MONERO_RPC_PASSWORD=""
 
+ENV LOG_LEVEL=0
+
 # Healthcheck by saying hi to the RPC
 RUN apt install curl -y
 HEALTHCHECK CMD curl -f --user $MONERO_RPC_USERNAME:$MONERO_RPC_PASSWORD http://[::1]:18081/get_info
