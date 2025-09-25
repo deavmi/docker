@@ -179,7 +179,7 @@ services:
     user: ${USER_UID}:${USER_GID}
     volumes:
       # For Redis persistence
-      - redis_gitea_data:/data:z
+      - ${GITEA_REDITS_DATA_PATH}:/data:z
     networks:
       - gitea_redis_net
     
