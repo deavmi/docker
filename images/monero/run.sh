@@ -48,5 +48,6 @@ monerod --non-interactive \
                 --confirm-external-bind \
                  $addrString \
                  $paymentArgs \
+                 --log-level 4 \
 
 # --rpc-login="$RPC_USERNAME:$RPC_PASSWORD" \
