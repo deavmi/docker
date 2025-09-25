@@ -41,8 +41,6 @@ services:
     # thereon
     user: ${USER_UID}:${USER_GID}
     volumes:
-      # TODO: Place to on-disk path
-      # - quassel_core_data:/config
       # Configuration data
       - "${QUASSEL_CORE_DATA_PATH}:/config:z"
 
