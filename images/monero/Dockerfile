@@ -39,6 +39,21 @@ FROM debian:latest AS base
 COPY --from=build /tmp/monero/build/*/master/release/bin/* /bin
 RUN chmod -R +x /bin # TODO: Only do it to the monero ones EVEN though everything would be executable in `/bin`, duh  
 
+# Runtime dependencies
+# RUN apt install libudev-dev libboost-chrono-dev libboost-date-time-dev -y
+# RUN apt install libboost-filesystem-dev -y
+# RUN apt install libboost-program-options-dev libreadline6-dev -y
+
+# TODO: See which of these are ACTUALLY required
+RUN apt install libssl-dev libzmq3-dev -y
+RUN apt install libunbound-dev libsodium-dev libunwind8-dev liblzma-dev -y
+RUN apt install libreadline6-dev libexpat1-dev libpgm-dev qttools5-dev-tools -y
+RUN apt install libhidapi-dev libusb-1.0-0-dev libprotobuf-dev protobuf-compiler -y
+RUN apt install libudev-dev libboost-chrono-dev libboost-date-time-dev -y
+RUN apt install libboost-filesystem-dev libboost-locale-dev libboost-program-options-dev -y
+RUN apt install libboost-regex-dev libboost-serialization-dev libboost-system-dev -y
+RUN apt install libboost-thread-dev python3 ccache doxygen graphviz -y
+
 # Bring in build arguments
 ARG USER_UID=1000
 ARG USER_GID=1003
@@ -69,22 +84,6 @@ ENV MONERO_RPC_PASSWORD=""
 RUN apt update
 RUN apt install curl -y
 HEALTHCHECK CMD curl -f --user $MONERO_RPC_USERNAME:$MONERO_RPC_PASSWORD http://[::1]:18081/get_info
-
-# Runtime dependencies
-# RUN apt install libudev-dev libboost-chrono-dev libboost-date-time-dev -y
-# RUN apt install libboost-filesystem-dev -y
-# RUN apt install libboost-program-options-dev libreadline6-dev -y
-
-# TODO: See which of these are ACTUALLY required
-RUN apt install libssl-dev libzmq3-dev -y
-RUN apt install libunbound-dev libsodium-dev libunwind8-dev liblzma-dev -y
-RUN apt install libreadline6-dev libexpat1-dev libpgm-dev qttools5-dev-tools -y
-RUN apt install libhidapi-dev libusb-1.0-0-dev libprotobuf-dev protobuf-compiler -y
-RUN apt install libudev-dev libboost-chrono-dev libboost-date-time-dev -y
-RUN apt install libboost-filesystem-dev libboost-locale-dev libboost-program-options-dev -y
-RUN apt install libboost-regex-dev libboost-serialization-dev libboost-system-dev -y
-RUN apt install libboost-thread-dev python3 ccache doxygen graphviz -y
-
 
 
 # Switch to the monero user
