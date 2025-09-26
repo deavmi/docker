@@ -3,11 +3,6 @@ monero
 
 ## Build arguments
 
-* `USER_UID`
-	* The uid of the user to create
-* `USER_GID`
-	* The gid of the group the created user
-	is to belong to
 * `NPROC`
 	* Number of cores to use when building
 
@@ -25,6 +20,11 @@ available:
 The following environment variables
 are required:
 
+* `USER_UID`
+	* The uid of the user to run as
+* `USER_GID`
+	* The gid of the group of the user
+	to run as
 * `MAX_CONNECTIONS`
 	* Maximum number of connections to RPC
 	from **the same** IP
