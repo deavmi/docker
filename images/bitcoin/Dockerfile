@@ -54,6 +54,8 @@ RUN chmod +x run.sh
 # with the RPC via bitcoin-cli
 ENV RPC_USERNAME=""
 ENV RPC_PASSWORD=""
+ENV RPC_COOKIE_FILE="/cookies/cookie"
+# FIXME: Below to use cookie file
 HEALTHCHECK CMD bitcoin-cli -rpcuser=$RPC_USERNAME -rpcpassword=$RPC_PASSWORD -getinfo
 
 # Switch to the bitcoin user
