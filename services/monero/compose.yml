@@ -8,12 +8,15 @@ services:
     restart: always
     secrets:
       - MONERO_NODES
-    user: ${USER_UID}:${USER_GID}
+    # user: ${USER_UID}:${USER_GID}
     volumes:
       - type: bind
         source: ${MONERO_DATA_PATH}
         target: /data
     environment:
+      - USER_UID=${USER_UID}
+      - USER_GID=${USER_GID}
+      
       # Maximum RPC connections from the same IP
       - MAX_CONNECTIONS=${MONERO_MAX_CONNECTIONS}
 
