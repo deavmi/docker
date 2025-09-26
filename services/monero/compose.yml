@@ -13,6 +13,8 @@ services:
         source: ${MONERO_DATA_PATH}
         target: /data
     environment:
+      # Effective user/group uid/gid
+      # to run as 
       - USER_UID=${USER_UID}
       - USER_GID=${USER_GID}
       
