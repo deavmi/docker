@@ -6,11 +6,6 @@ bitcoin
 You need to define the following
 build arguments:
 
-* `USER_UID`
-	* The uid of the user to create
-* `USER_GID`
-	* the gid of the group the user, `USER_UID`,
-	will be added to
 * `NPROC`
 	* The number of cores to use when
 	building the source
@@ -20,12 +15,25 @@ build arguments:
 You need to set the following interpolation
 variables:
 
+* `USER_UID`
+	* The uid of the user to run as
+* `USER_GID`
+	* the gid of the group of the user
+	to run as
 * `BITCOIN_DATA_DIR`
 	* Host-side directory for data
 * `BITCOIN_BLOCKS_DIR`
 	* Host-side directory for blocks
 * `BITCOIN_COOKIES_DIR`
 	* Host-side directory to use for storing cookies
+
+## Environment variables
+
+* `USER_UID`
+	* The uid of the user to run as
+* `USER_GID`
+	* the gid of the group of the user
+	to run as
 
 ## Environment files
 

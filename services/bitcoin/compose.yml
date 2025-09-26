@@ -3,8 +3,6 @@ services:
     build:
       context: ../../images/bitcoin/
       args:
-        - USER_UID=${USER_UID}
-        - USER_GID=${USER_GID}
         - NPROC=1
     container_name: bitcoin_daemon
     restart: always
@@ -19,6 +17,10 @@ services:
         source: ${BITCOIN_COOKIES_DIR}
         target: /cookies
     environment:
+      # Effective user/group uid/gid to run as
+      - USER_UID=${USER_UID}
+      - USER_GID=${USER_GID}
+      
       # RPC authentication
       - RPC_USERNAME=${BITCOIN_RPC_USERNAME}
       - RPC_PASSWORD=${BITCOIN_RPC_PASSWORD}
