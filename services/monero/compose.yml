@@ -8,7 +8,6 @@ services:
     restart: always
     secrets:
       - MONERO_NODES
-    # user: ${USER_UID}:${USER_GID}
     volumes:
       - type: bind
         source: ${MONERO_DATA_PATH}
