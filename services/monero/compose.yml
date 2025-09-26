@@ -3,13 +3,12 @@ services:
     build:
       context: ../../images/monero/
       args:
-        - USER_UID=${USER_UID}
-        - USER_GID=${USER_GID}
         - NPROC=2
     container_name: monero_daemon
     restart: always
     secrets:
       - MONERO_NODES
+    user: ${USER_UID}:${USER_GID}
     volumes:
       - type: bind
         source: ${MONERO_DATA_PATH}

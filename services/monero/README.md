@@ -6,20 +6,28 @@ monero
 You need to define the following
 build arguments:
 
-* `USER_UID`
-	* The uid of the user to create
-* `USER_GID`
-	* the gid of the group the user, `USER_UID`,
-	will be added to
 * `NPROC`
 	* The number of cores to use when
 	building the source
+
+## Environment variables
+
+* `USER_UID`
+	* The uid of the user to run as
+* `USER_GID`
+	* the gid of the group of the
+	user to run as
 
 ## Interpolation variables
 
 You need to set the following interpolation
 variables:
 
+* `USER_UID`
+	* The uid of the user to run as
+* `USER_GID`
+	* the gid of the group of the
+	user to run as
 * `MONERO_MAX_CONNECTIONS`
 	* Maximum RPC connections from the same IP
 * `MONERO_RPC_PAYMENT_WALLET_ADDR`
