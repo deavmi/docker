@@ -12,6 +12,9 @@ services:
     extends:
       file: ../../services/bitcoin/compose.yml
       service: bitcoin
+    build:
+      args:
+        - NPROC=2
     networks:
       # For talking with Electrum
       - bitnet_internal
