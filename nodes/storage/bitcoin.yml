@@ -24,6 +24,7 @@ services:
   # TODO: Move to `../../services/electrs/compose.yml`
   electrum:
     image: ghcr.io/deavmi/electrs:master
+    restart: unless-stopped
     environment:
       # Set environment variables which
       # are used in the custom image to
