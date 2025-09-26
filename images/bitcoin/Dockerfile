@@ -38,16 +38,17 @@ RUN apt update
 RUN apt install curl -y
 
 # Setup user
-ARG USER_UID=1000
-ARG USER_GID=1003
-RUN groupadd bitcoin --gid $USER_GID
-RUN useradd bitcoin -m --uid $USER_UID --gid $USER_GID
+ENV USER_UID=1000
+ENV USER_GID=1003
+# RUN groupadd bitcoin --gid $USER_GID
+# RUN useradd bitcoin -m --uid $USER_UID --gid $
+# USER_GID
 
 # Copy over run script
-WORKDIR /home/bitcoin
-COPY run.sh .
+# WORKDIR /home/bitcoin
+COPY run.sh /
 RUN chmod +x run.sh
-RUN chown -R bitcoin:bitcoin /home/bitcoin
+# RUN chown -R bitcoin:bitcoin /home/bitcoin
 
 # Healthcheck by communicating
 # with the RPC via bitcoin-cli
@@ -56,7 +57,7 @@ ENV RPC_PASSWORD=""
 HEALTHCHECK CMD bitcoin-cli -rpcuser=$RPC_USERNAME -rpcpassword=$RPC_PASSWORD -getinfo
 
 # Switch to the bitcoin user
-USER bitcoin
+USER ${USER_UID}:${USER_GID}
 
 ENV BLOCKS_DIR=/blocks
 ENV DATA_DIR=/data
