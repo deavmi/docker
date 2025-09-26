@@ -27,7 +27,7 @@ services:
     environment:
       - ELECTRS_ELECTRUM_RPC_ADDR="[::]:50001"
       - ELECTRS_DB_DIR=/data
-      - ELECTRS_COOKIE_FILE=/cookieDir
+      - ELECTRS_COOKIE_FILE=/cookieDir/${BITCOIN_COOKIE_FILE}
       - ELECTRS_DAEMON_RPC_ADDR=bitcoind:8332
       - ELECTRS_DAEMON_P2P_ADDR=bitcoind:8333
 
