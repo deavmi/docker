@@ -59,7 +59,7 @@ ENV RPC_USERNAME=""
 ENV RPC_PASSWORD=""
 ENV RPC_COOKIE_FILE="/cookies/cookie"
 # FIXME: Below to use cookie file
-HEALTHCHECK CMD bitcoin-cli -rpcuser=$RPC_USERNAME -rpcpassword=$RPC_PASSWORD -getinfo
+HEALTHCHECK CMD bitcoin-cli -rpccookiefile=${RPC_COOKIE_FILE} -getinfo
 
 # Switch to the bitcoin user
 USER ${USER_UID}:${USER_GID}
