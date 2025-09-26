@@ -12,7 +12,7 @@ bitcoind -blocksdir=$BLOCKS_DIR \
         -rest \
         -rpcbind=[::]:8332 \
         -rpcallowip="::/0" \
-        -rcpcookiefile=$RPC_COOKIE_FILE \
+        -rpccookiefile=$RPC_COOKIE_FILE \
         # -rpcuser=$RPC_USERNAME \
         # -rpcpassword=$RPC_PASSWORD \
         
