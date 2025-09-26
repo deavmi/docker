@@ -26,6 +26,8 @@ variables:
 	* Host-side directory for blocks
 * `BITCOIN_COOKIES_DIR`
 	* Host-side directory to use for storing cookies
+* `BITCOIN_COOKIE_FILE`
+	* Name of the cookie file to create
 
 ## Environment variables
 
