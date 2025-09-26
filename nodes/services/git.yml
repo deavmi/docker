@@ -82,7 +82,7 @@ services:
 
       # MinIO storage
       - GITEA__storage__STORAGE_TYPE=minio
-      - GITEA__storage__MINIO_BUCKET=gitea
+      - GITEA__storage__MINIO_BUCKET=giteaold
       - GITEA__storage__MINIO_ENDPOINT=minio:9000
 
       # Logging configuration TODO: Maybe lower later
