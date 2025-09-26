@@ -24,3 +24,4 @@ services:
       # RPC authentication
       - RPC_USERNAME=${BITCOIN_RPC_USERNAME}
       - RPC_PASSWORD=${BITCOIN_RPC_PASSWORD}
+      - RPC_COOKIE_FILE=/cookies/${BITCOIN_COOKIE_FILE_NAME}
