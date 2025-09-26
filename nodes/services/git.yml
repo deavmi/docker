@@ -81,7 +81,7 @@ services:
       - GITEA__security__INSTALL_LOCK=true
 
       # MinIO storage
-      - GITEA__storage__STORAGE_TYPE=minio
+      # - GITEA__storage__STORAGE_TYPE=minio
       - GITEA__storage__MINIO_BUCKET=giteaOld
       - GITEA__storage__MINIO_ENDPOINT=minio:9000
 
