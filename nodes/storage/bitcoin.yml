@@ -23,7 +23,7 @@ services:
 
   # TODO: Move to `../../services/electrs/compose.yml`
   electrum:
-    image: ghcr.io/deavmi/electrs
+    image: ghcr.io/deavmi/electrs:master
     environment:
       - ELECTRS_ELECTRUM_RPC_ADDR="[::]:50001"
       - ELECTRS_DB_DIR=/data
