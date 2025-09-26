@@ -25,6 +25,12 @@ services:
   electrum:
     image: ghcr.io/deavmi/electrs:master
     environment:
+      # Set environment variables which
+      # are used in the custom image to
+      # switch the effective uid/gid
+      - USER_UID=${USER_UID}
+      - USER_GID=${USER_GID}
+      
       - ELECTRS_ELECTRUM_RPC_ADDR="[::]:50001"
       - ELECTRS_DB_DIR=/data
       - ELECTRS_COOKIE_FILE=/cookieDir/${BITCOIN_COOKIE_FILE}
