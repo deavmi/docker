@@ -56,20 +56,20 @@ RUN apt install libboost-regex-dev libboost-serialization-dev libboost-system-de
 RUN apt install libboost-thread-dev python3 ccache doxygen graphviz -y
 
 # Bring in build arguments
-ARG USER_UID=1000
-ARG USER_GID=1003
+ENV USER_UID=1000
+ENV USER_GID=1003
 
 # Setup user
-RUN groupadd monero --gid $USER_GID
-RUN useradd monero -m --uid $USER_UID --gid $USER_GID
-WORKDIR /home/monero
+# RUN groupadd monero --gid $USER_GID
+# RUN useradd monero -m --uid $USER_UID --gid $USER_GID
+# WORKDIR /home/monero
 
 # Copy across the file containing information
 # on which IPv6 nodes to add on startup
 # COPY nodes.txt .
-COPY run.sh .
+COPY run.sh /
 RUN chmod +x run.sh
-RUN chown -R monero:monero /home/monero
+# RUN chown -R monero:monero /home/monero
 
 # Bring in all environment
 # variables we need
@@ -90,7 +90,7 @@ HEALTHCHECK CMD curl -f --user $MONERO_RPC_USERNAME:$MONERO_RPC_PASSWORD http://
 
 
 # Switch to the monero user
-USER monero
+USER ${USER_UID}:${USER_GID}
 
 # Run the startup script
 CMD ["./run.sh"]
