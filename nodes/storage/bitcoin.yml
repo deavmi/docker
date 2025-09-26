@@ -39,7 +39,7 @@ services:
       # For talking to bitcoind
       # - bitnet_internal
     volumes:
-      - ${ELECTRUM_DATA_PATH}:/data
+      - ${ELECTRUM_DATA_DIR}:/data
       - ${ELECTRUM_COOKIES_DIR}:/cookieDir
     networks:
       - mainNet
