@@ -31,11 +31,14 @@ RUN cmake --install build
 # TODO: Use something more lean
 FROM debian:latest AS base
 
-COPY --from=build /tmp/bitcoin/build/bin/bitcoind /bin
-RUN chmod +x /bin/bitcoind
+# COPY --from=build /tmp/bitcoin/build/bin/bitcoind /bin
+COPY --from=build /usr/local/bin/bitcoin* /bin
+# RUN chmod +x /bin/bitcoind
 
 RUN apt update
 RUN apt install curl -y
+
+RUN apt install libevent-dev -y
 
 # Setup user
 ENV USER_UID=1000
