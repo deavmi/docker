@@ -15,6 +15,9 @@ services:
     build:
       args:
         - NPROC=2
+    ports:
+      # P2P connection
+      - 8334:8334/tcp
     networks:
       # For talking with Electrum
       - bitnet_internal
@@ -35,7 +38,7 @@ services:
       - USER_UID=${USER_UID}
       - USER_GID=${USER_GID}
       
-      - ELECTRS_ELECTRUM_RPC_ADDR="[::]:50001"
+      - ELECTRS_ELECTRUM_RPC_ADDR=":::50001"
       - ELECTRS_DB_DIR=/data
       - ELECTRS_COOKIE_FILE=/cookieDir/${BITCOIN_COOKIE_FILE}
       - ELECTRS_DAEMON_RPC_ADDR=bitcoind:8332
