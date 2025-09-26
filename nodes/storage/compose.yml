@@ -9,7 +9,7 @@ networks:
 
 include:
   - monero.yml
-  # - bitcoin.yml
+  - bitcoin.yml
 
 services:
   host-statistics:
