@@ -12,6 +12,7 @@ services:
   i2pd:
     image: purplei2p/i2pd
     restart: unless-stopped
+    container_name: i2pd
     command:
       # Enable IPv6
       - '--ipv6'
@@ -36,6 +37,7 @@ services:
     build:
       args:
         - NPROC=2
+    container_name: bitcoind
     command:
       # Setup a tunnel via i2pd so
       # that we can make outbound
@@ -67,6 +69,7 @@ services:
   electrum:
     image: ghcr.io/deavmi/electrs:master
     restart: unless-stopped
+    container_name: electrs
     environment:
       # Set environment variables which
       # are used in the custom image to
