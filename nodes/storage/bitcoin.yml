@@ -46,6 +46,12 @@ services:
       # Also accept inbound i2p
       # connections
       - '-i2pacceptincoming'
+
+      # FIXME: Remove latrr
+
+      # TOOD: Hack cjdns support to support yggdrasil connections
+      # and/or add manual ygg peers
+      - '-onlynet=i2p'
     ports:
       # P2P connection
       - 8334:8334/tcp
