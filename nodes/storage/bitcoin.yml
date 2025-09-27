@@ -34,6 +34,9 @@ services:
       - '--http.port=8081'
       - '--http.auth=0'
       - '--http.strictheaders=0'
+
+      # Host to advertise
+      - '--host=${CADDY_DOMAIN}'
     networks:
       - mainNet
     # TODO: Disable later
