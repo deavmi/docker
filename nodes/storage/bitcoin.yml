@@ -39,6 +39,12 @@ services:
     ports:
       - "8081:8081/tcp"
 
+    # TODO: Explain later, but my clock
+    # seems wrong
+    volumes:
+      # Makes timezone and time information available
+      - /etc/timezone:/etc/timezone:ro,z
+      - /etc/localtime:/etc/localtime:ro,z
 
   bitcoind:
     extends:
