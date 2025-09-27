@@ -11,6 +11,7 @@ services:
 
   i2pd:
     image: purplei2p/i2pd
+    container_name: i2pd
     restart: unless-stopped
     command:
       # Enable IPv6
