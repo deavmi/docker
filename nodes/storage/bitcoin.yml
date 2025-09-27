@@ -26,8 +26,18 @@ services:
       - '--sam.port=${I2P_SAM_PORT}'
 
       - '--loglevel=debug'
+
+      # TODO: Disable this later
+      - '--http.enabled=1'
+      - '--http.address=::'
+      - '--http.port=8081'
+      - '--http.auth=0'
+      
     networks:
       - mainNet
+    # TODO: Disable later
+    ports:
+      - "8081:8081/tcp"
 
 
   bitcoind:
