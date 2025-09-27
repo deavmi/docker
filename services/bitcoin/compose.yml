@@ -21,7 +21,5 @@ services:
       - USER_UID=${USER_UID}
       - USER_GID=${USER_GID}
       
-      # RPC authentication
-      # - RPC_USERNAME=${BITCOIN_RPC_USERNAME}
-      # - RPC_PASSWORD=${BITCOIN_RPC_PASSWORD}
+      # RPC authentication cookie
       - RPC_COOKIE_FILE=/cookies/${BITCOIN_COOKIE_FILE}

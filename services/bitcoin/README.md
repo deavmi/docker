@@ -36,17 +36,3 @@ variables:
 * `USER_GID`
 	* the gid of the group of the user
 	to run as
-
-## Environment files
-
-You need to create the following
-environment files:
-
-### `bitcoin.secrets`
-
-It should contain the following:
-
-```
-BITCOIN_RPC_USERNAME=
-BITCOIN_RPC_PASSWORD=
-```
