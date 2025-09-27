@@ -59,13 +59,14 @@ ENV RPC_COOKIE_FILE="/cookies/cookie"
 # FIXME: Below to use cookie file
 HEALTHCHECK CMD bitcoin-cli -rpccookiefile=${RPC_COOKIE_FILE} -getinfo
 
+RUN apt install ncat iputils-ping -y
+
+
 # Switch to the bitcoin user
 USER ${USER_UID}:${USER_GID}
 
 ENV BLOCKS_DIR=/blocks
 ENV DATA_DIR=/data
-
-RUN apt install ncat iputils-ping -y
 
 # Run the startup script
 ENTRYPOINT ["./run.sh"]
