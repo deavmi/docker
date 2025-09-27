@@ -25,7 +25,3 @@ are required:
 * `DATA_DIR`
 	* Directory to store data in
 	* **Default:** `/data`
-* `RPC_USERNAME`
-	* RPC username
-* `RPC_PASSWORD`
-	* RPC password

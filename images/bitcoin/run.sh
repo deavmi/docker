@@ -2,8 +2,6 @@
 
 echo "Blocks directory: $BLOCKS_DIR"
 echo "Data directory: $DATA_DIR"
-echo "RPC username: $RPC_USERNAME"
-echo "RPC password: $RPC_PASSWORD"
 echo "Cookie file path: $RPC_COOKIE_FILE"
 
 bitcoind -blocksdir=$BLOCKS_DIR \
@@ -13,7 +11,3 @@ bitcoind -blocksdir=$BLOCKS_DIR \
         -rpcbind=[::]:8332 \
         -rpcallowip="::/0" \
         -rpccookiefile=$RPC_COOKIE_FILE \
-        # -rpcuser=$RPC_USERNAME \
-        # -rpcpassword=$RPC_PASSWORD \
-        
-        # -server \

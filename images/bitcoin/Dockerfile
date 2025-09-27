@@ -55,8 +55,6 @@ RUN chmod +x run.sh
 
 # Healthcheck by communicating
 # with the RPC via bitcoin-cli
-ENV RPC_USERNAME=""
-ENV RPC_PASSWORD=""
 ENV RPC_COOKIE_FILE="/cookies/cookie"
 # FIXME: Below to use cookie file
 HEALTHCHECK CMD bitcoin-cli -rpccookiefile=${RPC_COOKIE_FILE} -getinfo
