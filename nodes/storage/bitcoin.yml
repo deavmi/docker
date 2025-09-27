@@ -23,6 +23,8 @@ services:
       - '--sam.enabled=1'
       - '--sam.address=::'
       - '--sam.port=${I2P_SAM_PORT}'
+
+      - '--loglevel=debug'
     networks:
       - mainNet
 
