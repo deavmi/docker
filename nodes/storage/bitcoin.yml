@@ -8,6 +8,25 @@ networks:
         - subnet: fde4:492b:fc78::/48
 
 services:
+
+  i2pd:
+    image: purplei2p/i2pd
+    restart: unless-stopped
+    command:
+      # Enable IPv6
+      - '--ipv6'
+      
+      # Disbale IPv4
+      # - '--ipv4=false'
+      
+      # Enable SAM
+      - '--sam.enabled=1'
+      - '--sam.address=::'
+      - '--sam.port=${I2P_SAM_PORT}'
+    networks:
+      - mainNet
+
+
   bitcoind:
     extends:
       file: ../../services/bitcoin/compose.yml
@@ -15,6 +34,15 @@ services:
     build:
       args:
         - NPROC=2
+    command:
+      # Setup a tunnel via i2pd so
+      # that we can make outbound
+      # connections
+      - '-i2psam=i2pd:${I2P_SAM_PORT}'
+
+      # Also accept inbound i2p
+      # connections
+      - '-i2pacceptincoming'
     ports:
       # P2P connection
       - 8334:8334/tcp
