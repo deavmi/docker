@@ -66,4 +66,4 @@ ENV BLOCKS_DIR=/blocks
 ENV DATA_DIR=/data
 
 # Run the startup script
-ENTRYPOINT ["run.sh"]
+ENTRYPOINT ["./run.sh"]
