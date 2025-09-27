@@ -16,6 +16,9 @@ services:
     command:
       # Enable IPv6
       - '--ipv6'
+
+      # Enable meshnets access
+      - '--meshnets.yggdrasil'
       
       # Enable SAM
       - '--sam.enabled=1'
