@@ -10,9 +10,9 @@ networks:
 services:
 
   i2pd:
-    # image: purplei2p/i2pd
-    build:
-      context: i2pdc
+    image: purplei2p/i2pd
+    # build:
+      # context: i2pdc
     restart: unless-stopped
     container_name: i2pd
     command:
