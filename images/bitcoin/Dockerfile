@@ -65,5 +65,7 @@ USER ${USER_UID}:${USER_GID}
 ENV BLOCKS_DIR=/blocks
 ENV DATA_DIR=/data
 
+RUN apt install ncat iputils-ping -y
+
 # Run the startup script
 ENTRYPOINT ["./run.sh"]
