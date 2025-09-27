@@ -17,9 +17,6 @@ services:
       # Enable IPv6
       - '--ipv6'
       
-      # Disbale IPv4
-      - '--ipv4=false'
-      
       # Enable SAM
       - '--sam.enabled=1'
       - '--sam.address=::'
