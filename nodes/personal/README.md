@@ -11,6 +11,74 @@ and set in it `BUILDER_GITEA_WEBHOOK_AUTH`.
 
 ### Quassel configuration
 
+This helps you:
+
+1. Create the certificates so that TLS can be used
+to secure your connection with your Quassel core
+2. 
+
+
+#### Certificate generation
+
+The original instructions are from [Baeldung's post](https://www.baeldung.com/openssl-self-signed-cert)
+which I modified to not encrypt the `key` file as I don't know if (or how) Quassel
+would be able to de-encrypt the key via a password.
+
+```bash
+#!/bin/sh
+# Original instructions are
+# from https://www.baeldung.com/openssl-self-signed-cert
+
+if [ -e $KEY_FILE ]
+then
+        KEY_FILE=key.key
+fi
+
+if [ -e $SIGN_REQ_FILE ]
+then
+        SIGN_REQ_FILE=csr.csr
+fi
+
+if [ -e $CERT_FILE ]
+then
+        CERT_FILE=cert.crt
+fi
+
+echo "Generating key file '$KEY_FILE'..."
+openssl genrsa -out "$KEY_FILE" 2048
+
+echo "Generating signing request and saving to '$SIGN_REQ_FILE'..."
+openssl req -key "$KEY_FILE" -new -out "$SIGN_REQ_FILE"
+
+echo "Generating certificate and saving to '$CERT_FILE'..."
+openssl x509 -signkey "$KEY_FILE" -in "$SIGN_REQ_FILE" -req -out "$CERT_FILE"
+```
+
+My version let's you specify the names of all the files.
+I have left them as the above as the file names chosen
+above are those that the Quassel container will search
+for as defined in the Quassel-section in the `.env`
+file. If you want to change them then do:
+
+```bash
+export KEY_FILE=...
+export SIGN_REQ_FILE=...
+export CERT_FILE=...
+```
+
+... before you run the script.
+
+
+If you change them in `.env` then ensure you change
+them here so that they can be found.
+
+Also only the `.key` and `.cert` files are needed.
+The `.key` for decryption of course (its the private
+part) and the `.cert` is the public part _with
+certifying info_.
+
+#### User configuration
+
 Run it, then exec-into the container with:
 
 ```bash
