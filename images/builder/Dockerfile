@@ -5,6 +5,9 @@ MAINTAINER "Tristan Brice Velloza Kildaire" "deavmi@redxen.eu"
 # Don't allow interactive prompts when using apt
 ARG DEBIAN_FRONTEND=noninteractive
 
+# Activate arguments provided as build parameters
+ARG USER_UID
+ARG USER_GID
 
 # Update base system
 RUN apt update
@@ -15,10 +18,21 @@ RUN apt install python3 python3-pip git -y
 RUN apt install golang -y
 RUN GOBIN=/bin go install github.com/gohugoio/hugo@latest
 
-# Switch to the effective uid/gid
-ENV USER_UID=1000
-ENV USER_GID=1003
-USER ${USER_UID}:${USER_GID}
+# Create the builder user
+# and delete the `ubuntu`
+# user (it comes with this
+# in newer Ubuntu images)
+# and MAY conflict with
+# the `builder` user we want
+# to add depending on your
+# uid of choice
+RUN userdel ubuntu
+RUN groupadd builder -g $USER_GID
+RUN useradd -m builder -u $USER_UID -g $USER_GID
+WORKDIR /home/builder
+
+# Switch to the `builder` user
+USER builder
 
 # Install more build dependencies
 #

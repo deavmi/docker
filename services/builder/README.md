@@ -3,21 +3,22 @@ builder
 
 Provides site-builder.
 
-## Environment variables
+## Build variables
 
 1. `USER_UID`
-	* The _effective_ user uid to run as
+	* The user's UID to use when creating the user
+	* This affects the rights of the file made and changed
+	by the builder
+	* **Also set via interpolation variable**
 2. `USER_GID`
-	* The _effective_ group gid to run as
+	* The user's group ID
+	* Same reason as above but for the file's group
+	* **Also set via interpolation variable**
 
 ## Interpolation variables
 
 Set these in your `.env` file.
 
-1. `USER_UID`
-	* The _effective_ user uid to run as
-2. `USER_GID`
-	* The _effective_ group gid to run as
 2. `BUILDER_OUTPUT`
 	* Where the generated websites our output to
 3. `BUILDER_SOURCE`

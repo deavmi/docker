@@ -3,6 +3,13 @@ services:
     container_name: builder
     build:
       context: ../../images/builder/.
+      args:
+        # Change these to the value of `id -u`
+        # on your HOST
+        - "USER_UID=${USER_UID}"
+        # Change these to the value of `id -g`
+        # on your HOST
+        - "USER_GID=${USER_GID}"
     restart: unless-stopped
     secrets:
       - BUILDER_TOKEN
