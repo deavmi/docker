@@ -85,7 +85,7 @@ Run it, then exec-into the container with:
 docker exec -ti quassel /bin/sh
 ```
 
-Then go into `bin/` and run:
+Then go into `/opt/quassel/bin/` and run:
 
 ```bash
 DB_BACKEND=PostgreSQL DB_PGSQL_USERNAME=quassel_user DB_PGSQL_PASSWORD=quassel_pass DB_PGSQL_HOSTNAME=quassel-db DB_PGSQL_DATABASE=quassel DB_PGSQL_PORT=54
