@@ -15,11 +15,6 @@ RUN apt install python3 python3-pip git -y
 RUN apt install golang -y
 RUN GOBIN=/bin go install github.com/gohugoio/hugo@latest
 
-# Switch to the effective uid/gid
-ENV USER_UID=1000
-ENV USER_GID=1003
-USER ${USER_UID}:${USER_GID}
-
 # Install more build dependencies
 #
 # (Had to pass in the `--break-system-packages`
@@ -43,6 +38,11 @@ FROM base AS builder
 # Copy run script
 COPY --chown=builder:builder run.sh .
 RUN chmod +x run.sh
+
+# Switch to the effective uid/gid
+ENV USER_UID=1000
+ENV USER_GID=1003
+USER ${USER_UID}:${USER_GID}
 
 # Start
 CMD ./run.sh
