@@ -82,7 +82,7 @@ certifying info_.
 Run it, then exec-into the container with:
 
 ```bash
-docker exec -ti quassel /bin/bash
+docker exec -ti quassel /bin/sh
 ```
 
 Then go into `bin/` and run:
