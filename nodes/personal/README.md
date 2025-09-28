@@ -15,8 +15,8 @@ This helps you:
 
 1. Create the certificates so that TLS can be used
 to secure your connection with your Quassel core
-2. 
-
+2. Exec into the container, run a shell and then
+connect to the core in order to create your user
 
 #### Certificate generation
 
