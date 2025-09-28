@@ -179,7 +179,7 @@ services:
   db-gitea:
     extends:
       file: ../../services/postgres/compose.yml
-      service: db
+      service: postgres
     container_name: gitea_db
     environment:
       - POSTGRES_DB=${GITEA_DB_NAME}
