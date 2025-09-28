@@ -28,21 +28,22 @@ RUN pip install --break-system-packages mkdocs-blogging-plugin mkdocs-cinder mkd
 RUN pip install --break-system-packages mkdocs-print-site-plugin
 RUN pip install --break-system-packages mkdocs-no-3rd-party-plugin
 
-# Copy builder code
-RUN ["git", "clone", "https://github.com/deavmi/gitea-webhook-commander", "script" ]
-WORKDIR script/
-
 # We start here
 FROM base AS builder
 
 # Copy run script
 COPY --chown=builder:builder run.sh .
-RUN chmod +x run.sh
+RUN chmod +x /run.sh
 
 # Switch to the effective uid/gid
 ENV USER_UID=1000
 ENV USER_GID=1003
 USER ${USER_UID}:${USER_GID}
 
-# Start
-CMD ./run.sh
+# Bring in directory containing scripts directory
+# and change directory into it
+ENV SCRIPTS_DIR=/scripts
+WORKDIR ${SCRIPTS_DIR}
+
+# Start initial helper script
+CMD /run.sh

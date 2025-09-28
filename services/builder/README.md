@@ -22,6 +22,8 @@ Set these in your `.env` file.
 	* Where the generated websites our output to
 3. `BUILDER_SOURCE`
 	* Source to build websites from
+4. `BUILDER_SCRIPTS_DIR`
+	* The directory containing the `hook.py`
 
 ## Secrets
 

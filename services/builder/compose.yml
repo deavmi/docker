@@ -17,6 +17,9 @@ services:
       # Source to build websites from
       - "${BUILDER_SOURCE}:/home/builder/src"
 
+      # Scripts directry
+      - "${BUILDER_SCRIPTS_DIR}:/scripts"
+
       # Makes timezone and time information available
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

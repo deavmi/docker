@@ -9,6 +9,8 @@ Provides site-builder.
 	* The _effective_ user uid to run as
 2. `USER_GID`
 	* The _effective_ user gid to run as
+3. `SCRIPTS_DIR`
+	* The directory containing th `hook.py`
 
 ## Secrets
 
