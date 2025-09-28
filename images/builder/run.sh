@@ -15,5 +15,4 @@ export GITEA_WEBHOOK_AUTH=$(cat "$TOKEN_FILE")
 echo "PWD: $(pwd)"
 ls -la
 git pull
-# ./hook.py
 python3 hook.py
