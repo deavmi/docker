@@ -3,15 +3,12 @@ builder
 
 Provides site-builder.
 
-## Build variables
+## Environment variables
 
 1. `USER_UID`
-	* The user's UID to use when creating the user
-	* This affects the rights of the file made and changed
-	by the builder
+	* The _effective_ user uid to run as
 2. `USER_GID`
-	* The user's group ID
-	* Same reason as above but for the file's group
+	* The _effective_ user gid to run as
 
 ## Secrets
 
