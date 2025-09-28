@@ -96,3 +96,9 @@ This will start an interactive session where you can
 perform the configuration. After this you will then
 want to exit out and restart the container and it
 should be good to go.
+
+## Credits
+
+Thanks a lot [kalaksi](https://github.com/kalaksi/) for all his
+help aiding with the Docker setup for Quassel. Check out his
+[setup](https://github.com/kalaksi/docker-quassel).
