@@ -49,7 +49,9 @@ services:
       - 4242:4242
 
   quassel-db:
-    image: postgres:latest
+    extends:
+      file: ../../services/postgres/compose.yml
+      service: postgres
     container_name: quassel-db
     environment:
       - POSTGRES_USER=quassel_user
