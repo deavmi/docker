@@ -1,0 +1,4 @@
+services:
+  restic:
+    image: restic/restic:latest
+  

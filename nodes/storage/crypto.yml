@@ -1,0 +1,3 @@
+include:
+  - monero.yml
+  - bitcoin.yml

@@ -9,8 +9,11 @@ networks:
         - subnet: fde4:432a:fc78::/48
 
 include:
-  - monero.yml
-  - bitcoin.yml
+  # Backup service
+  - restic.yml
+  
+  # Crypto services
+  - crypto.yml
 
 services:
   host-statistics:
