@@ -7,10 +7,18 @@ networks:
       config:
         - subnet: fde4:492a:fc7f::/48
 
+  gitNet:
+    driver: ipvlan
+    name: gitNet
+    driver_opts:
+      
+
 volumes:
   i2pd_data:
 
 include:
+  - networks.yml
+
   - minio.yml
 
   - git.yml
