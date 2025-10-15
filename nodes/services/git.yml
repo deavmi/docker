@@ -112,6 +112,10 @@ services:
       # SSH server (TODO: Make this just 22)
       # - "2023:21/tcp"
 
+    ports:
+      # Publish port
+      - 3000:3000/tcp
+
       # Expose on behalf of the reverse proxy
       # as it will be using our network interface
       # - "[::]:80:80/tcp"
