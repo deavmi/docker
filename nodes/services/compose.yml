@@ -7,10 +7,10 @@ networks:
       config:
         - subnet: fde4:492a:fc7f::/48
 
-  gitNet:
-    driver: ipvlan
-    name: gitNet
-    driver_opts:
+  # gitNet:
+    # driver: ipvlan
+    # name: gitNet
+    # driver_opts:
       
 
 volumes:
