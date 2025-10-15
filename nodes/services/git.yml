@@ -121,6 +121,21 @@ services:
       - "443/tcp"
       - "443/udp"
 
+  # Reverse proxy with HTTPS for `gitea`
+  gitea_web:
+    build:
+      context: flat/
+    container_name: gitea_web
+    depends_on:
+      - gitea
+    # Run in same network namespace as `gitea`
+    # so that we can bind to its network interface
+    network_mode: service:gitea_old
+    environment:
+      - "DOMAIN=${GITEA_NEW_DOMAIN}"
+      - "WHERE_TO_ADDR=gitea"
+      - "WHERE_TO_PORT=3000"
+
   gitea:
     extends:
       file: ../../services/gitea/compose.yml
