@@ -33,7 +33,7 @@ services:
       context: node1/
     networks:
       ipv6_pool_net:
-        - ipv6_address: ${IPV6_NODE1_ADDR}
+        ipv6_address: ${IPV6_NODE1_ADDR}
     environment:
       - "DOMAIN=${IPV6_NODE1_DOMAIN}"
     ports:
@@ -47,7 +47,7 @@ services:
       context: node2/
     networks:
       ipv6_pool_net:
-        - ipv6_address: ${IPV6_NODE2_ADDR}
+        ipv6_address: ${IPV6_NODE2_ADDR}
     environment:
       - "DOMAIN=${IPV6_NODE2_DOMAIN}"
     ports:
