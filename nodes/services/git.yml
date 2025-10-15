@@ -113,7 +113,6 @@ services:
       # - "2023:21/tcp"
 
     ports:
-      Publish port
       - ::3001:3001/tcp
 
       # Expose on behalf of the reverse proxy
