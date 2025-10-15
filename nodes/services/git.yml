@@ -41,8 +41,8 @@ services:
       - redis-gitea
       - minio
     networks:
-      mainNet:
-      gitea_redis_net:
+      # mainNet:
+      # gitea_redis_net:
       ipv6_pool_net:
         ipv6_address: ${GITEA_OLD_IPV6_ADDR}
     env_file:
