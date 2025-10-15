@@ -31,11 +31,6 @@ services:
     network_mode: service:gitea_old
     environment:
       - "DOMAIN=${GITEA_OLD_DOMAIN}"
-    ports:
-      - "[::]:80:80/tcp"
-      - "[::]:80:80/udp"
-      - "[::]:443:443/tcp"
-      - "[::]:443:443/udp"
 
   # Actual Gitea service `gitea_old`
   gitea_old:
@@ -113,7 +108,15 @@ services:
     volumes:
       - ${GITEA_OLD_DATA_PATH}:/data:z
     ports:
+      # SSH server (TODO: Make this just 22)
       - "2023:21/tcp"
+
+      # Expose on behalf of the reverse proxy
+      # as it will be using our network interface
+      - "[::]:80:80/tcp"
+      - "[::]:80:80/udp"
+      - "[::]:443:443/tcp"
+      - "[::]:443:443/udp"
 
   gitea:
     extends:
