@@ -28,7 +28,7 @@ services:
       - gitea_old
     # Run in same network namespace as `gitea_old`
     # so that we can bind to its network interface
-    network: container:gitea_old
+    network_mode: service:gitea_old
     environment:
       - "DOMAIN=${GITEA_OLD_DOMAIN}"
     ports:
