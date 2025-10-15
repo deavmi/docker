@@ -19,8 +19,9 @@ services:
       - path: .minio
         required: true
     networks:
-      - mainNet
-      - minio_net
+      - ipv6_pool_net
+      # - mainNet
+      # - minio_net
     # Set effective uid/gid
     user: ${USER_UID}:${USER_GID}
     command:
