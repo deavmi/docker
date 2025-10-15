@@ -29,6 +29,8 @@ services:
     networks:
       - mainNet
       - gitea_redis_net
+      ipv6_pool_net:
+        ipv6_address: ${GITEA_OLD_IPV6_ADDR}
     env_file:
       # has JWT token inside
       - path: .gitea.old
@@ -56,13 +58,12 @@ services:
 
       # Server settings
       - GITEA__server__APP_DATA_PATH=/data/gitea
-      - GITEA__server__DOMAIN=${CADDY_DOMAIN}
-      - GITEA__server__SSH_DOMAIN=${CADDY_DOMAIN}
+      - GITEA__server__DOMAIN=${GITEA_OLD_DOMAIN}
+      - GITEA__server__SSH_DOMAIN=${GITEA_OLD_DOMAIN}
       - GITEA__server__HTTP_PORT=3000
-      - GITEA__server__ROOT_URL=/git_old/
+      - GITEA__server__ROOT_URL=/
       - GITEA__server__DISABLE_SSH=false
       - GITEA__server__SSH_PORT=2023
-      - GITEA__server__SSH_DOMAIN=${CADDY_DOMAIN}
       # FIXME: Would have used `22` but _somehow_ it was in use
       # inthe container _own_ network namespace
       - GITEA__server__SSH_LISTEN_PORT=21
@@ -119,7 +120,8 @@ services:
       - FORGEJO__database__PASSWD=${GITEA_DB_PASS}
 
       # Server settings
-      - FORGEJO__server__ROOT_URL=/git/
+      - FORGEJO__server__ROOT_URL=/
+      - FORGEJO__server__DOMAIN=${GITEA_NEW_DOMAIN}
 
       # Instance settings
       - FORGEJO__APP_NAME=DForge1
@@ -139,7 +141,7 @@ services:
       # SSH server
       - FORGEJO__server__DISABLE_SSH=false
       - FORGEJO__server__SSH_PORT=2022
-      - FORGEJO__server__SSH_DOMAIN=${CADDY_DOMAIN}
+      - FORGEJO__server__SSH_DOMAIN=${GITEA_NEW_DOMAIN}
         # FIXME: Would have used `22` but _somehow_ it was in use
       # inthe container _own_ network namespace
       - FORGEJO__server__SSH_LISTEN_PORT=21
@@ -172,6 +174,8 @@ services:
       - gitea_db_net
       - minio_net
       - gitea_redis_net
+      ipv6_pool_net:
+        ipv6_address: ${GITEA_NEW_IPV6_ADDR}
     ports:
       # SSH server
       - "2022:21/tcp"
