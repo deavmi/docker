@@ -77,7 +77,7 @@ services:
       - GITEA__server__HTTP_PORT=3000
       - GITEA__server__ROOT_URL=/
       - GITEA__server__DISABLE_SSH=false
-      - GITEA__server__SSH_PORT=2023
+      - GITEA__server__SSH_PORT=2023 # TODO: Fix this to be just 21 and use an envvar
       # FIXME: Would have used `22` but _somehow_ it was in use
       # inthe container _own_ network namespace
       - GITEA__server__SSH_LISTEN_PORT=21
@@ -107,16 +107,16 @@ services:
       - GITEA__metrics__ENABLED=true
     volumes:
       - ${GITEA_OLD_DATA_PATH}:/data:z
-    ports:
+    # ports:
       # SSH server (TODO: Make this just 22)
-      - "2023:21/tcp"
+      # - "2023:21/tcp"
 
       # Expose on behalf of the reverse proxy
       # as it will be using our network interface
-      - "[::]:80:80/tcp"
-      - "[::]:80:80/udp"
-      - "[::]:443:443/tcp"
-      - "[::]:443:443/udp"
+      # - "[::]:80:80/tcp"
+      # - "[::]:80:80/udp"
+      # - "[::]:443:443/tcp"
+      # - "[::]:443:443/udp"
 
   gitea:
     extends:
