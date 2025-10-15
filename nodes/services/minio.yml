@@ -19,7 +19,8 @@ services:
       - path: .minio
         required: true
     networks:
-      - ipv6_pool_net
+      ipv6_pool_net:
+        ipv6_address: 2a04:5b81:2010:200a::103
       # - mainNet
       # - minio_net
     # Set effective uid/gid
