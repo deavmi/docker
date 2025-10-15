@@ -114,7 +114,7 @@ services:
 
     ports:
       # Publish port
-      - 3000:3000/tcp
+      - ::3000:3000/tcp
 
       # Expose on behalf of the reverse proxy
       # as it will be using our network interface
