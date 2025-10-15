@@ -34,7 +34,8 @@ services:
     # Set effective uid/gid
     user: ${USER_UID}:${USER_GID}
     networks:
-      - mainNet
+      ipv6_pool_net:
+        ipv6_address: ${XMPP_ADDR}
     volumes:
       # Database storage
       - ${XMPP_DATA_PATH}:/opt/ejabberd/database:z
@@ -42,10 +43,10 @@ services:
       # Uploads storage
       - ${XMPP_UPLOADS_PATH}:/opt/ejabberd/upload:z
     ports:
-      - "5222:5222/tcp"
-      - "5269:5269/tcp"
+      - "5222/tcp"
+      - "5269/tcp"
       
       # HTTP (also used for ACME challenges)
-      - "5280:5280/tcp"
+      - "5280/tcp"
       
-      - "5443:5443/tcp"
+      - "5443/tcp"
