@@ -27,8 +27,8 @@ services:
       - redis-gitea
       - minio
     networks:
-      - mainNet
-      - gitea_redis_net
+      mainNet:
+      gitea_redis_net:
       ipv6_pool_net:
         ipv6_address: ${GITEA_OLD_IPV6_ADDR}
     env_file:
@@ -170,10 +170,10 @@ services:
       # For metrics
       - FORGEJO__metrics__ENABLED=true
     networks:
-      - mainNet
-      - gitea_db_net
-      - minio_net
-      - gitea_redis_net
+      mainNet:
+      gitea_db_net:
+      minio_net:
+      gitea_redis_net:
       ipv6_pool_net:
         ipv6_address: ${GITEA_NEW_IPV6_ADDR}
     ports:
