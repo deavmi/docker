@@ -222,7 +222,8 @@ services:
       # Path for Postgres to store data
       - "${GITEA_POSTGRES_PATH}:/var/lib/postgresql/data:z"
     networks:
-      - gitea_db_net
+      # - gitea_db_net
+      - ipv6_pool_net
 
   # TODO: This should be a redis we use for ALL
   # our services then
@@ -235,5 +236,6 @@ services:
       # For Redis persistence
       - ${GITEA_REDITS_DATA_PATH}:/data:z
     networks:
-      - gitea_redis_net
+      # - gitea_redis_net
+      - ipv6_pool_net
     
