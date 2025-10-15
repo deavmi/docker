@@ -19,6 +19,25 @@ volumes:
 
 services:
 
+  # Reverse proxy with HTTPS for `gitea_old`
+  gitea_old_web:
+    build:
+      context: gitea_old_web/
+    container_name: gitea_old_web
+    depends_on:
+      - gitea_old
+    # Run in same network namespace as `gitea_old`
+    # so that we can bind to its network interface
+    network: gitea_old
+    environment:
+      - "DOMAIN=${GITEA_OLD_DOMAIN}"
+    ports:
+      - "[::]:80:80/tcp"
+      - "[::]:80:80/udp"
+      - "[::]:443:443/tcp"
+      - "[::]:443:443/udp"
+
+  # Actual Gitea service `gitea_old`
   gitea_old:
     build:
       context: gitea_old/
