@@ -130,7 +130,7 @@ services:
       - gitea
     # Run in same network namespace as `gitea`
     # so that we can bind to its network interface
-    network_mode: service:gitea_old
+    network_mode: service:gitea
     environment:
       - "DOMAIN=${GITEA_NEW_DOMAIN}"
       - "WHERE_TO_ADDR=gitea"
