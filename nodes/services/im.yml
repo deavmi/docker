@@ -26,7 +26,7 @@ services:
   # (See: https://docs.ejabberd.im/admin/configuration/basic/#setting-up-acme)
   xmpp_acme_passthrough:
     build:
-      context: im/ejabberd
+      context: im/ejabberd/passthrough
     container_name: xmpp_acme_passthrough
     # Run in same network namespace as `xmpp`
     # so that we can bind to its network interface
