@@ -33,7 +33,7 @@ services:
     # and hence will use its IPv6 address
     network_mode: service:xmpp
     environment:
-      - "WHERE_TO_ADDR=::1"
+      - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=5280"
 
   # Ejabberd XMPP server
