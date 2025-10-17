@@ -35,9 +35,9 @@ services:
     # TODO: Fix this and re-enable it
     # user: ${USER_UID}:${USER_GID}
     networks:
-      # ipv6_pool_net:
-        # ipv6_address: ${XMPP_ADDR}
-      mainNet:
+      ipv6_pool_net:
+        ipv6_address: ${XMPP_ADDR}
+      # mainNet:
     volumes:
       # Database storage
       - ${XMPP_DATA_PATH}:/opt/ejabberd/database:z
