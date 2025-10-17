@@ -31,6 +31,15 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${XMPP_ADDR}
+    ports:
+      # Allow on behalf of `xmpp`
+      - "5222/tcp"
+      - "5269/tcp"
+      - "5280/tcp" # TODO: allow?
+      - "5443/tcp"
+
+      # Allow for ACME challenge
+      - "80/tcp"
     environment:
       - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=5280"
@@ -64,14 +73,3 @@ services:
 
       # Uploads storage
       - ${XMPP_UPLOADS_PATH}:/opt/ejabberd/upload:z
-    ports:
-      - "5222/tcp"
-      - "5269/tcp"
-      
-      # HTTP (also used for ACME challenges)
-      - "5280/tcp"
-      
-      - "5443/tcp"
-
-      # Allow on behalf of `xmpp_acme_passthrough`
-      - "80/tcp"
