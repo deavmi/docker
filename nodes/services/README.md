@@ -37,3 +37,18 @@ REGISTER_ADMIN_PASSWORD=lll
 
 Set this to the password that should be used for
 the admin XMPP account.
+
+## IM
+
+### ejabberd
+
+Ensure that the directories configured as:
+
+1. `XMPP_DATA_PATH`
+	* Path for data
+2. `XMPP_UPLOADS_PATH`
+	* Path for uploads
+
+Have the uid/gid of `9000` as that is what
+the user in the ejabberd container runs as
+and needs the files to be accessible to it.
