@@ -16,7 +16,7 @@ services:
       - IRC__PORT=6667
       - IRC__NICKNAME=GiteaBot
       - IRC__REALNAME=A Gitea bot written by deavmi
-      - IRC__CHANNELS=tlang:#tlang;birchwood:#birchwood;libsnooze:#libsnooze;gitea-irc-bot:#dsource;jstruct:#dsource;guillotine:#dsource;botty:#dsource;river:#dsource;libpb:#dsource;gogga:#dsource;loadshedd:#dsource;renaissance:#dsource;dante:#dsource;davinci:#dsource;eventy:#dsource;dlog:#dsource;libtun:#dsource;homepage:#dsource;bformat:#dsource;doap:#dsource;niknaks:#dsource;qix:#dsource;docker:#dsource;bcm2835-d:#dsource;yggdrasil-go:#yggdrasil
+      - IRC__CHANNELS=tlang:#tlang;birchwood:#birchwood;libsnooze:#libsnooze;gitea-irc-bot:#dsource;jstruct:#dsource;guillotine:#dsource;botty:#dsource;river:#dsource;libpb:#dsource;gogga:#dsource;loadshedd:#dsource;renaissance:#dsource;dante:#dsource;davinci:#dsource;eventy:#dsource;dlog:#dsource;libtun:#dsource;homepage:#dsource;bformat:#dsource;doap:#dsource;niknaks:#dsource;qix:#dsource;docker:#dsource;bcm2835-d:#dsource;yggdrasil-go:#yggdrasil;engine:#quakeshack;game:#quakeshack
       - IRC__USERNAME=gitbot
       
       # Ntfy.sh
