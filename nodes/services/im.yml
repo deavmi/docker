@@ -35,6 +35,8 @@ services:
     environment:
       - "WHERE_TO_ADDR=::1"
       - "WHERE_TO_PORT=5280"
+    ports:
+      - "80/tcp"
 
   # Ejabberd XMPP server
   xmpp:
