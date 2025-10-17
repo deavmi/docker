@@ -57,7 +57,7 @@ services:
     #
     # The only reason we do it this way round
     # is for non-cyclic dependency management
-    network_mode: service:xmpp
+    network_mode: service:xmpp_acme_passthrough
     volumes:
       # Database storage
       - ${XMPP_DATA_PATH}:/opt/ejabberd/database:z
