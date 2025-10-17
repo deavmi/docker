@@ -38,7 +38,7 @@ services:
   # Ejabberd XMPP server
   xmpp:
     build:
-      context: ejabberd/
+      context: im/ejabberd/core/
     container_name: xmpp
     env_file:
       # Bring in `REGISTER_ADMIN_PASSWORD`
