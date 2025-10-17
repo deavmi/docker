@@ -1,0 +1,15 @@
+{
+	http_port "80"
+
+	log default {
+			output stdout
+			level DEBUG
+	}
+}
+
+:80 {
+	# Reverse proxy to
+	handle /* {
+		reverse_proxy {$WHERE_TO_ADDR}:{$WHERE_TO_PORT}
+	}	
+}

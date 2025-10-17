@@ -20,10 +20,29 @@ services:
     networks:
       - mainNet
 
+
+  # Reverse proxy with HTTP just because
+  # ejabberd cannot bind on port 80
+  # (See: https://docs.ejabberd.im/admin/configuration/basic/#setting-up-acme)
+  xmpp_acme_passthrough:
+    build:
+      context: im/ejabberd
+    container_name: xmpp_acme_passthrough
+    # Run in same network namespace as `xmpp`
+    # so that we can bind to its network interface
+    # and hence will use its IPv6 address
+    network_mode: service:xmpp
+    environment:
+      - "WHERE_TO_ADDR=::1"
+      - "WHERE_TO_PORT=5280"
+
+  # Ejabberd XMPP server
   xmpp:
     build:
       context: ejabberd/
     container_name: xmpp
+    depends_on:
+      - xmpp_acme_passthrough
     env_file:
       # Bring in `REGISTER_ADMIN_PASSWORD`
       - path: .xmpp
