@@ -41,8 +41,6 @@ services:
     build:
       context: ejabberd/
     container_name: xmpp
-    depends_on:
-      - xmpp_acme_passthrough
     env_file:
       # Bring in `REGISTER_ADMIN_PASSWORD`
       - path: .xmpp
