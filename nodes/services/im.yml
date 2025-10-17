@@ -28,10 +28,9 @@ services:
     build:
       context: im/ejabberd/passthrough
     container_name: xmpp_acme_passthrough
-    # Run in same network namespace as `xmpp`
-    # so that we can bind to its network interface
-    # and hence will use its IPv6 address
-    network_mode: service:xmpp
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${XMPP_ADDR}
     environment:
       - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=5280"
@@ -51,9 +50,14 @@ services:
     # Set effective uid/gid
     # TODO: Fix this and re-enable it
     # user: ${USER_UID}:${USER_GID}
-    networks:
-      ipv6_pool_net:
-        ipv6_address: ${XMPP_ADDR}
+    
+    # Run in same network namespace as `xmpp_acme_passthrough`
+    # so that we can bind to its network interface
+    # and hence will use its IPv6 address
+    #
+    # The only reason we do it this way round
+    # is for non-cyclic dependency management
+    network_mode: service:xmpp
     volumes:
       # Database storage
       - ${XMPP_DATA_PATH}:/opt/ejabberd/database:z
