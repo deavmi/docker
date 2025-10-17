@@ -37,7 +37,7 @@ services:
     networks:
       # ipv6_pool_net:
         # ipv6_address: ${XMPP_ADDR}
-      mainNet
+      mainNet:
     volumes:
       # Database storage
       - ${XMPP_DATA_PATH}:/opt/ejabberd/database:z
