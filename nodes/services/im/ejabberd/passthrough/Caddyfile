@@ -9,7 +9,7 @@
 
 :80 {
 	# Reverse proxy to
-	handle /* {
-		reverse_proxy {$WHERE_TO_ADDR}:{$WHERE_TO_PORT}
+	handle /.well-known/acme-challenge {
+		reverse_proxy {$WHERE_TO_ADDR}:{$WHERE_TO_PORT}/
 	}	
 }
