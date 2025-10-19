@@ -1,0 +1,11 @@
+networks:
+  ipv6_pool_net:
+    name: ipv6_pool_net
+    driver: bridge
+    enable_ipv4: false
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: ${IPV6_POOL_SUBNET}
+    driver_opts:
+      com.docker.network.bridge.gateway_mode_ipv6: routed
