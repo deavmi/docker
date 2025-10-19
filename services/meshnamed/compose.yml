@@ -4,3 +4,4 @@ services:
     image: ghcr.io/deavmi/meshname:master
     command:
       - "-listenaddr=${MESHNAMED_LISTEN_ADDR:-:[::]}:${MESHNAMED_LISTEN_PORT:-53535}"
+      - "-debug"
