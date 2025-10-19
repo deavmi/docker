@@ -1,0 +1,4 @@
+services:
+  meshnamed:
+    container_name: meshnamed
+    image: ghcr.io/deavmi/meshname:master
