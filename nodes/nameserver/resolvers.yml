@@ -1,4 +1,4 @@
-service:
+services:
   meshnamed:
     extends:
       file: ../../services/meshnamed/compose.yml
