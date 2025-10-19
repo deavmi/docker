@@ -7,3 +7,4 @@ Implementation of the [Meshname protocol](https://github.com/zhoreeq/meshname/bl
 
 1. `MESHNAMED_LISTEN_ADDR`
 	* The port to bind the meshnamed daemon to
+	* **Optional:** The default value is `53535`

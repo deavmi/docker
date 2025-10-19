@@ -3,4 +3,4 @@ services:
     container_name: meshnamed
     image: ghcr.io/deavmi/meshname:master
     command:
-      - "-listenaddr=${MESHNAMED_LISTEN_ADDR}"
+      - "-listenaddr=${MESHNAMED_LISTEN_ADDR:-53535}"
