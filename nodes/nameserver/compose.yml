@@ -7,6 +7,10 @@ networks:
       config:
         - subnet: fde4:492a:fc7f::/48
 
+include:
+  # Additional resolvers
+  - resolvers.yml
+
 services:
   host-statistics:
     extends:

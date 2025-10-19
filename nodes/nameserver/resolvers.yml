@@ -1,0 +1,8 @@
+service:
+  meshnamed:
+    extends:
+      file: ../../services/meshnamed/compose.yml
+      service: meshnamed
+    networks:
+      - mainNet
+    
