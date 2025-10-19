@@ -1,0 +1,9 @@
+meshnamed
+=========
+
+Implementation of the [Meshname protocol](https://github.com/zhoreeq/meshname/blob/master/protocol.md).
+
+## Interpolation variables
+
+1. `MESHNAMED_LISTEN_ADDR`
+	* The port to bind the meshnamed daemon to

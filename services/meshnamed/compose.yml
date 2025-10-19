@@ -2,3 +2,5 @@ services:
   meshnamed:
     container_name: meshnamed
     image: ghcr.io/deavmi/meshname:master
+    command:
+      - "-listenaddr=${MESHNAMED_LISTEN_ADDR}"
