@@ -12,10 +12,11 @@ include:
   - resolvers.yml
 
 services:
-  host-statistics:
-    extends:
-      file: ../../services/node_exporter/compose.yml
-      service: statistics
+  # TODO: I had a problem pulling this
+  # host-statistics:
+    # extends:
+      # file: ../../services/node_exporter/compose.yml
+      # service: statistics
 
   yggdrasil:
     extends:
