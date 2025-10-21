@@ -12,6 +12,8 @@ RUN apt upgrade -y
 # Install unbound
 RUN apt install unbound -y
 
+RUN apt install dnsutils iputils-ping -y
+
 # Copy my configuration
 WORKDIR /etc/unbound
 # TODO: Note this in README.md that only a single config may be present
