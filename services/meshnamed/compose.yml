@@ -5,4 +5,4 @@ services:
     command:
       - "-listenaddr=${MESHNAMED_LISTEN_ADDR:-:[::]}:${MESHNAMED_LISTEN_PORT:-53535}"
       - "-debug"
-      - "-networks meship=200::/7"
+      - "-networks=meship=200::/7"
