@@ -28,9 +28,7 @@ services:
     build:
       context: im/ejabberd/passthrough
     container_name: xmpp_acme_passthrough
-    networks:
-      ipv6_pool_net:
-        ipv6_address: ${XMPP_ADDR}
+    network_mode: service:xmpp
     ports:
       # Allow on behalf of `xmpp`
       - "5222/tcp"
@@ -87,4 +85,6 @@ services:
     # therefore it can access this by connecting
     # to ::1 as they will be sharing the same
     # lo0
-    network_mode: service:xmpp
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${XMPP_ADDR}
