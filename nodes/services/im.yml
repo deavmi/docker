@@ -75,9 +75,9 @@ services:
       - ${XMPP_UPLOADS_PATH}:/opt/ejabberd/upload:z
 
   # Redis for caching
-  redis-gitea:
+  redis-xmpp:
     image: redis:latest
-    container_name: redis-gitea
+    container_name: redis-xmpp
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
     volumes:
