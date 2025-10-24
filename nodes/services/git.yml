@@ -230,7 +230,7 @@ services:
     user: ${USER_UID}:${USER_GID}
     volumes:
       # For Redis persistence
-      - ${GITEA_REDITS_DATA_PATH}:/data:z
+      - ${GITEA_REDIS_DATA_PATH}:/data:z
     networks:
       ipv6_pool_net:
         ipv6_address: 2a04:5b81:2010:200a::104
