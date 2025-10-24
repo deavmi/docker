@@ -28,7 +28,7 @@ services:
     build:
       context: im/ejabberd/passthrough
     container_name: xmpp_acme_passthrough
-    network_mode: service:xmpp
+    network_mode: service:redis-xmpp
     ports:
       # Allow on behalf of `xmpp`
       - "5222/tcp"
