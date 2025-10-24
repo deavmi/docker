@@ -29,15 +29,6 @@ services:
       context: im/ejabberd/passthrough
     container_name: xmpp_acme_passthrough
     network_mode: service:redis-xmpp
-    ports:
-      # Allow on behalf of `xmpp`
-      - "5222/tcp"
-      - "5269/tcp"
-      - "5280/tcp" # TODO: allow?
-      - "5443/tcp"
-
-      # Allow for ACME challenge
-      - "80/tcp"
     environment:
       - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=5280"
@@ -88,3 +79,12 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${XMPP_ADDR}
+    ports:
+      # Allow on behalf of `xmpp`
+      - "5222/tcp"
+      - "5269/tcp"
+      - "5280/tcp" # TODO: allow?
+      - "5443/tcp"
+
+      # Allow for ACME challenge (on behalf of `xmpp_acme_passthrough`)
+      - "80/tcp"
