@@ -1,0 +1,7 @@
+services:
+  searx:
+    image: docker.io/searxng/searxng:latest
+    container_name: searx
+    restart: unless-stopped
+    volumes:
+      - ${SEARX_CACHE_DIR}:/var/cache/searxng:z
