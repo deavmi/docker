@@ -29,7 +29,7 @@ services:
     environment:
       - "DOMAIN=${GITEA_OLD_DOMAIN}"
       - "WHERE_TO_ADDR=gitea_old_anubis"
-      - "WHERE_TO_PORT=3001"
+      - "WHERE_TO_PORT=3002"
 
   # Actual Gitea service `gitea_old`
   gitea_old:
