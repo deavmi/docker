@@ -14,9 +14,7 @@ services:
     environment:
       BIND: ":3001"
       TARGET: http://gitea_old:3000
-    # FIXME: Remove after testing
-    ports:
-      - "3001/tcp"
+
 
   # Reverse proxy with HTTPS for `gitea_old`
   gitea_old_web:
@@ -116,6 +114,10 @@ services:
       - "80/udp"
       - "443/tcp"
       - "443/udp"
+
+
+      # FIXME: Remove after testing (On behalf of Anubis)
+      - "3001/tcp"
 
   # Reverse proxy with HTTPS for `gitea`
   gitea_web:
