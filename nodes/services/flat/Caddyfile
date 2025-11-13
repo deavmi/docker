@@ -20,7 +20,7 @@
 	}
 	
 	# Reverse proxy to
-	# handle /* {
+	handle /* {
 		reverse_proxy {$WHERE_TO_ADDR}:{$WHERE_TO_PORT}
-	# }
+	}
 }
