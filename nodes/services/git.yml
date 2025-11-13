@@ -3,18 +3,32 @@ volumes:
 
 services:
 
+  # Anubis reverse proxy for `gitea_old_web`
+  gitea_old_anubis:
+    depends_on:
+      - gitea_old
+    # TODO: For common policies switch to using my
+    # own Docker image with pre-compiled lists in it
+    image: ghcr.io/techarohq/anubis:latest
+    environment:
+      BIND: ":3001"
+      TARGET: http://gitea_old:3000
+    network_mode: service:gitea_old
+
   # Reverse proxy with HTTPS for `gitea_old`
   gitea_old_web:
     build:
       context: flat/
     container_name: gitea_old_web
     depends_on:
-      - gitea_old
+      # - gitea_old
+      - gitea_old_anubis
     # Run in same network namespace as `gitea_old`
     # so that we can bind to its network interface
     network_mode: service:gitea_old
     environment:
-      - "DOMAIN=${GITEA_OLD_DOMAIN}"
+      # - "DOMAIN=${GITEA_OLD_DOMAIN}"
+      - "DOMAIN=${gitea_old_anubis:3001}"
       - "WHERE_TO_ADDR=gitea_old"
       - "WHERE_TO_PORT=3000"
 
