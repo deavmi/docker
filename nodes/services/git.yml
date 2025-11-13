@@ -118,7 +118,7 @@ services:
 
 
       # FIXME: Remove after testing (On behalf of Anubis)
-      - "3001/tcp"
+      # - "3001/tcp"
 
   # Anubis reverse proxy for `gitea_web`
   gitea_anubis:
