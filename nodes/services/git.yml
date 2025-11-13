@@ -12,6 +12,7 @@ services:
     # image: ghcr.io/techarohq/anubis:latest
     build:
       context: anubis
+    container_name: gitea_old_anubis
     depends_on:
       - gitea_old
     network_mode: service:gitea_old
@@ -36,7 +37,6 @@ services:
     network_mode: service:gitea_old
     environment:
       - "DOMAIN=${GITEA_OLD_DOMAIN}"
-      # - "WHERE_TO_ADDR=gitea_old_anubis" (FIXME: IDK WHY THIS LOOKUP FAILED)
       - "WHERE_TO_ADDR=gitea_old_anubis"
       - "WHERE_TO_PORT=3001"
 
