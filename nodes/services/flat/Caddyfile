@@ -21,6 +21,6 @@
 	
 	# Reverse proxy to
 	# handle /* {
-		reverse_proxy {$WHERE_TO_ADDR}:{$WHERE_TO_PORT}
+		reverse_proxy http://{$WHERE_TO_ADDR}:{$WHERE_TO_PORT}
 	# }
 }
