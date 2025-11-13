@@ -34,7 +34,7 @@ services:
     environment:
       - "DOMAIN=${GITEA_OLD_DOMAIN}"
       # - "WHERE_TO_ADDR=gitea_old_anubis" (FIXME: IDK WHY THIS LOOKUP FAILED)
-      - "WHERE_TO_ADDR=::1"
+      - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=3001"
 
   # Actual Gitea service `gitea_old`
