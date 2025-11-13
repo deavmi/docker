@@ -27,10 +27,9 @@ services:
     # so that we can bind to its network interface
     network_mode: service:gitea_old
     environment:
-      # - "DOMAIN=${GITEA_OLD_DOMAIN}"
-      - "DOMAIN=${gitea_old_anubis:3001}"
-      - "WHERE_TO_ADDR=gitea_old"
-      - "WHERE_TO_PORT=3000"
+      - "DOMAIN=${GITEA_OLD_DOMAIN}"
+      - "WHERE_TO_ADDR=gitea_old_anubis"
+      - "WHERE_TO_PORT=3001"
 
   # Actual Gitea service `gitea_old`
   gitea_old:
