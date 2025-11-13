@@ -5,15 +5,15 @@ services:
 
   # Anubis reverse proxy for `gitea_old_web`
   gitea_old_anubis:
-    depends_on:
-      - gitea_old
     # TODO: For common policies switch to using my
     # own Docker image with pre-compiled lists in it
     image: ghcr.io/techarohq/anubis:latest
+    depends_on:
+      - gitea_old
+    network_mode: service:gitea_old
     environment:
       BIND: ":3001"
       TARGET: http://gitea_old:3000
-    network_mode: service:gitea_old
 
   # Reverse proxy with HTTPS for `gitea_old`
   gitea_old_web:
