@@ -17,14 +17,12 @@ services:
       POLICY_FNAME: /policy
       COOKIE_SECURE: false
 
-
   # Reverse proxy with HTTPS for `gitea_old`
   gitea_old_web:
     build:
       context: flat/
     container_name: gitea_old_web
     depends_on:
-      # - gitea_old
       - gitea_old_anubis
     # Run in same network namespace as `gitea_old`
     # so that we can bind to its network interface
@@ -122,19 +120,33 @@ services:
       # FIXME: Remove after testing (On behalf of Anubis)
       - "3001/tcp"
 
+  # Anubis reverse proxy for `gitea_web`
+  gitea_anubis:
+    build:
+      context: ../../images/anubis
+    container_name: gitea_anubis
+    depends_on:
+      - gitea
+    network_mode: service:gitea
+    environment:
+      BIND: ":3001"
+      TARGET: http://gitea:3000
+      POLICY_FNAME: /policy
+      COOKIE_SECURE: false
+
   # Reverse proxy with HTTPS for `gitea`
   gitea_web:
     build:
       context: flat/
     container_name: gitea_web
     depends_on:
-      - gitea
+      - gitea_anubis
     # Run in same network namespace as `gitea`
     # so that we can bind to its network interface
     network_mode: service:gitea
     environment:
       - "DOMAIN=${GITEA_NEW_DOMAIN}"
-      - "WHERE_TO_ADDR=gitea"
+      - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=3000"
 
   gitea:
