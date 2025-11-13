@@ -20,6 +20,7 @@ services:
       # TARGET: http://gitea_old:3000
       TARGET: http://deavmi.assigned.network:80
       POLICY_FNAME: /policy
+      COOKIE_SECURE: false
 
 
   # Reverse proxy with HTTPS for `gitea_old`
