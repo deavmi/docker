@@ -1,0 +1,4 @@
+bots:
+  - name: Challenge all
+    user_agent_regex: .*
+    action: CHALLENGE
