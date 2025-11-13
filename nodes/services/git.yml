@@ -18,6 +18,7 @@ services:
     environment:
       BIND: ":3001"
       TARGET: http://gitea_old:3000
+      POLICY_FNAME: /policy
 
 
   # Reverse proxy with HTTPS for `gitea_old`
