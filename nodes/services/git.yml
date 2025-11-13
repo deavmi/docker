@@ -5,13 +5,8 @@ services:
 
   # Anubis reverse proxy for `gitea_old_web`
   gitea_old_anubis:
-    
-  
-    # TODO: For common policies switch to using my
-    # own Docker image with pre-compiled lists in it
-    # image: ghcr.io/techarohq/anubis:latest
     build:
-      context: anubis
+      context: ../../images/anubis
     container_name: gitea_old_anubis
     depends_on:
       - gitea_old
