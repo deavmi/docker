@@ -43,8 +43,13 @@
 		reverse_proxy builder:5000
 	}
 
-	# Gitea service
+	# Gitea service (new)
 	handle /git* {
-		reverse_proxy services.deavmi.assigned.network
+		reverse_proxy git.deavmi.assigned.network
+	}
+
+	# Gitea service (old)
+	handle /git_old* {
+		reverse_proxy old.git.deavmi.assigned.network
 	}
 }
