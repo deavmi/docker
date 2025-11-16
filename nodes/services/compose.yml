@@ -21,7 +21,7 @@ include:
 
   - minio.yml
 
-  - git/git.yml
+  - git.yml
   - irc.yml
   - im.yml
   - i2p.yml
