@@ -6,7 +6,7 @@ services:
   # Anubis reverse proxy for `gitea_old_web`
   gitea_old_anubis:
     build:
-      context: ../../../images/anubis
+      context: ../../images/anubis
     container_name: gitea_old_anubis
     depends_on:
       - gitea_old
@@ -20,7 +20,7 @@ services:
   # Reverse proxy with HTTPS for `gitea_old`
   gitea_old_web:
     build:
-      context: ../flat/
+      context: flat/
     container_name: gitea_old_web
     depends_on:
       - gitea_old_anubis
@@ -36,7 +36,7 @@ services:
   # Actual Gitea service `gitea_old`
   gitea_old:
     build:
-      context: gitea_old/
+      context: git/gitea_old/
     container_name: gitea_old
     depends_on:
       - redis-gitea
@@ -123,7 +123,7 @@ services:
   # Anubis reverse proxy for `gitea_web`
   gitea_anubis:
     build:
-      context: ../../../images/anubis
+      context: ../../images/anubis
     container_name: gitea_anubis
     depends_on:
       - gitea
@@ -137,7 +137,7 @@ services:
   # Reverse proxy with HTTPS for `gitea`
   gitea_web:
     build:
-      context: ../flat/
+      context: flat/
     container_name: gitea_web
     depends_on:
       - gitea_anubis
@@ -151,10 +151,10 @@ services:
 
   gitea:
     extends:
-      file: ../../../services/gitea/compose.yml
+      file: ../../services/gitea/compose.yml
       service: gitea
     build:
-      context: gitea/
+      context: git/gitea/
     container_name: gitea
     depends_on:
       - db-gitea
@@ -238,7 +238,7 @@ services:
   
   db-gitea:
     extends:
-      file: ../../../services/postgres/compose.yml
+      file: ../../services/postgres/compose.yml
       service: postgres
     container_name: gitea_db
     environment:
