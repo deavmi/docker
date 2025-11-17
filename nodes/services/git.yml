@@ -99,7 +99,7 @@ services:
       - GITEA__storage__MINIO_ENDPOINT=minio:9000
 
       # Logging configuration TODO: Maybe lower later
-      - GITEA__log__LEVEL=Trace
+      - GITEA__log__LEVEL=${GITEA_OLD_LOG_LEVEL}
 
       # For metrics
       - GITEA__metrics__ENABLED=true
@@ -218,7 +218,7 @@ services:
       - FORGEJO__storage__MINIO_ENDPOINT=minio:9000
 
       # Logging configuration TODO: Maybe lower later
-      - FORGEJO__log__LEVEL=Trace
+      - FORGEJO__log__LEVEL=${GITEA_NEW_LOG_LEVEL}
 
       # For metrics
       - FORGEJO__metrics__ENABLED=true
