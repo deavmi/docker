@@ -1,0 +1,8 @@
+services:
+  redis:
+    build:
+      context: ../../images/redis
+    container_name: redis
+    restart: unless-stopped
+    networks:
+     - mainNet
