@@ -46,9 +46,9 @@ services:
     container_name: web
     build:
       context: web/
-    # depends_on:
+    depends_on:
       # - gitea
-  #    - webirc
+      - webirc
     networks:
       - mainNet
     environment:
