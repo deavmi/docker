@@ -3,7 +3,3 @@ services:
     image: 42wim/matterbridge:stable
     container_name: matterbridge
     restart: unless-stopped
-
-    volumes:
-      # Configuration file
-      - ${MATTERBRIDGE_CONF_FILE}:/etc/matterbridge/matterbridge.toml:ro

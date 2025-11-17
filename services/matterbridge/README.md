@@ -1,10 +1,6 @@
 matterbridge
 ============
 
-## `.env`
-
-Please ensure that the following Docker Compose
-interpolation variables are set:
-
-1. `MATTERBRIDGE_CONF_FILE`
-	* Path to the configuration file
+Nothing, setting the configuration file (which is expected to
+be placed at `/etc/matterbridge/matterbridge.toml`) is up to
+you.
