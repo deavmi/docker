@@ -5,7 +5,7 @@ services:
       service: ircd
     build:
       args:
-        - NPROC=1
+        - NPROC=2
     networks:
       - mainNet
     ports:
