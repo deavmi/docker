@@ -252,7 +252,7 @@ services:
       - "${GITEA_POSTGRES_PATH}:/var/lib/postgresql/data:z"
     networks:
       ipv6_pool_net:
-        ipv6_address: 2a04:5b81:2010:200a::105
+        ipv6_address: ${IPV6_INTERNAL_USE_GITEA_NEW_POSTGRES_ADDR}
 
   # TODO: This should be a redis we use for ALL
   # our services then
@@ -266,5 +266,5 @@ services:
       - ${GITEA_REDIS_DATA_PATH}:/data:z
     networks:
       ipv6_pool_net:
-        ipv6_address: 2a04:5b81:2010:200a::104
+        ipv6_address: ${IPV6_INTERNAL_USE_GITEA_GENERAL_REDIS_ADDR}
     
