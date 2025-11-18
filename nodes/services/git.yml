@@ -1,6 +1,3 @@
-volumes:
-  redis_gitea_data:
-
 services:
 
   # Anubis reverse proxy for `gitea_old_web`
