@@ -38,8 +38,8 @@ services:
       context: web/
     depends_on:
       # TODO: Should we really be adding these here?
-      - gitea
-      - gitea_old
+      # - gitea
+      # - gitea_old
       - webirc
     networks:
       - mainNet
