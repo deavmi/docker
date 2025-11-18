@@ -37,6 +37,7 @@ services:
     build:
       context: web/
     depends_on:
+      # TODO: Should we really be adding these here?
       # - gitea
       - webirc
     networks:
