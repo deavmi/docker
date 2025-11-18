@@ -1,12 +1,3 @@
-networks:
-  minio_net:
-    driver: bridge
-    name: minio_net
-    enable_ipv6: true
-    ipam:
-      config:
-        - subnet: fde4:442b:fc7f::/48
-
 services:
   minio:
     image: quay.io/minio/minio
@@ -20,13 +11,12 @@ services:
         required: true
     networks:
       ipv6_pool_net:
-        ipv6_address: 2a04:5b81:2010:200a::103
-      # - mainNet
-      # - minio_net
+        ipv6_address: ${IPV6_INTERNAL_USE_MINIO_ADDR}
     # Set effective uid/gid
     user: ${USER_UID}:${USER_GID}
     command:
       - "server"
       - "/data"
-      - "--console-address"
-      - ":9001"
+      # TODO: Find a way to safely expose this
+      # - "--console-address"
+      # - ":9001"
