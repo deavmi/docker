@@ -20,10 +20,6 @@ include:
   - im.yml
   - i2p.yml
 
-# TODO: neaten up and see if we can
-# place it elsewhere
-  # - ../../services/i2pd/compose.yml
-
 services:
   host-statistics:
     extends:
