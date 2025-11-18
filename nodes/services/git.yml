@@ -116,10 +116,6 @@ services:
       - "443/tcp"
       - "443/udp"
 
-
-      # FIXME: Remove after testing (On behalf of Anubis)
-      # - "3001/tcp"
-
   # Anubis reverse proxy for `gitea_web`
   gitea_anubis:
     build:
