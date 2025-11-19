@@ -1,5 +1,6 @@
 # Secret files
 .gitea
+.gitea.postgres
 .gitea.old
 .minio
 .xmpp
