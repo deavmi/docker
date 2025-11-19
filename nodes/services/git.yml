@@ -153,7 +153,7 @@ services:
       - db-gitea
       - minio
       - redis-gitea
-    # Has minio settings inside
+    # Has minio and DB settings inside
     env_file:
       - path: .gitea
         required: true
@@ -162,8 +162,6 @@ services:
       - FORGEJO__database__DB_TYPE=postgres
       - FORGEJO__database__HOST=db-gitea:5432
       - FORGEJO__database__NAME=${GITEA_DB_NAME}
-      - FORGEJO__database__USER=${GITEA_DB_USER}
-      - FORGEJO__database__PASSWD=${GITEA_DB_PASS}
 
       # Server settings
       - FORGEJO__server__ROOT_URL=/
@@ -234,10 +232,12 @@ services:
       file: ../../services/postgres/compose.yml
       service: postgres
     container_name: gitea_db
+    # Has Gitea-related details inside
+    env_file:
+      - path: .gitea.postgres
+        required: true
     environment:
       - POSTGRES_DB=${GITEA_DB_NAME}
-      - POSTGRES_USER=${GITEA_DB_USER}
-      - POSTGRES_PASSWORD=${GITEA_DB_PASS}
     # Set effective UID/GID
     user: ${USER_UID}:${USER_GID}
     volumes:
