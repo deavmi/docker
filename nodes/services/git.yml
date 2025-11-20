@@ -113,6 +113,8 @@ services:
       - "443/tcp"
       - "443/udp"
 
+      # TODO: Expose metrics here (idk where it happens)
+
   # Anubis reverse proxy for `gitea_web`
   gitea_anubis:
     build:
