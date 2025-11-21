@@ -3,7 +3,7 @@ bots:
     action: ALLOW
     expression:
       all:
-        - 'path.contains("/info/")'
+        - 'headers["User-Agent"].startsWith("git")'
   - name: Challenge all
     user_agent_regex: .*
     action: CHALLENGE
