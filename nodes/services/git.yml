@@ -13,7 +13,6 @@ services:
       TARGET: http://gitea_old:3000
       POLICY_FNAME: /policy
       COOKIE_SECURE: false
-      SLOG_LEVEL: DEBUG
 
   # Reverse proxy with HTTPS for `gitea_old`
   gitea_old_web:
