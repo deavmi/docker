@@ -1,9 +1,10 @@
 bots:
-  - name: Challenge all
-    user_agent_regex: .*
-    action: CHALLENGE
   - name: Gitea allow
     action: ALLOW
     expression:
       all:
         - 'path.contains("/info/")'
+  - name: Challenge all
+    user_agent_regex: .*
+    action: CHALLENGE
+
