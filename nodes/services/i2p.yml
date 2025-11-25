@@ -52,4 +52,4 @@ services:
       - "6246/tcp"
 
       # Web console
-      # - "8182:8182/tcp"
+      - "8182:8182/tcp"
