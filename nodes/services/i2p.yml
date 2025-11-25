@@ -44,15 +44,7 @@ services:
       - "${I2PD_KEYS_DIR}:/keys:z"
     # FIXME: Enable the below so that
     # they are allowed via the firewall
-    ports:
-      # SSU2
-      - "6245/tcp"
 
-      # NTCP2
-      - "6246/tcp"
-
-      # Web console
-      - "8182/tcp"
 
   # Reverse proxy with HTTPS for `i2pd`
   i2pd_web_proxy:
@@ -70,3 +62,21 @@ services:
       # - "WHERE_TO_ADDR=gitea_old_anubis" (FIXME: Lookup fails to resolve by Caddy, not sure why)
       - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=8182"
+    ports:
+      # Reverse proxy
+      - "80/tcp"
+      - "80/udp"
+      - "443/tcp"
+      - "443/udp"
+
+      # Below are exposed on behalf on the `i2pd`
+      # container
+
+      # SSU2
+      - "6245/tcp"
+
+      # NTCP2
+      - "6246/tcp"
+
+      # Web console
+      - "8182/tcp"
