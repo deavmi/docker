@@ -26,7 +26,7 @@ services:
       - "--floodfill"
     # Run in same network namespace as `i2pd_web_proxy`
     # so that we can bind to its network interface
-    network_mode: service:i2pd
+    network_mode: service:i2pd_web_proxy
       # TODO: For Yggdrasil we mayneed to place
       # this into the same network namespace so
       # that i2pd can bind to the tun0 interface
