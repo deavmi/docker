@@ -24,9 +24,9 @@ services:
       # - "--meshnets.yggdrasil=true"
       # - "--meshnets.yggaddress=201:efe0:d45f:f82e:623c:a518:1f96:72bd"
       - "--floodfill"
-    networks:
-      ipv6_pool_net:
-        ipv6_address: ${I2PD_IPV6_ADDR}
+    # Run in same network namespace as `i2pd_web_proxy`
+    # so that we can bind to its network interface
+    network_mode: service:i2pd
       # TODO: For Yggdrasil we mayneed to place
       # this into the same network namespace so
       # that i2pd can bind to the tun0 interface
@@ -53,3 +53,20 @@ services:
 
       # Web console
       - "8182/tcp"
+
+  # Reverse proxy with HTTPS for `i2pd`
+  i2pd_web_proxy:
+    build:
+      context: flat/
+    container_name: i2pd_web_proxy
+    # Placed here so that we define it
+    # and `i2pd` depends on us hence
+    # bringing us up in the process
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${I2PD_IPV6_ADDR}
+    environment:
+      - "DOMAIN=${I2PD_WEB_DOMAIN}"
+      # - "WHERE_TO_ADDR=gitea_old_anubis" (FIXME: Lookup fails to resolve by Caddy, not sure why)
+      - "WHERE_TO_ADDR=[::1]"
+      - "WHERE_TO_PORT=8182"
