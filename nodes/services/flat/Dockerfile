@@ -3,3 +3,6 @@ FROM caddy:latest
 
 # Copy over configuration file
 COPY Caddyfile /etc/caddy/Caddyfile
+
+# Defaults for logging
+ENV DEBUG_LEVEL=DEBUG

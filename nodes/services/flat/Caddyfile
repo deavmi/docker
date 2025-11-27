@@ -4,7 +4,7 @@
 
 	log default {
 			output stdout
-			level DEBUG
+			level {$DEBUG_LEVEL}
 	}
 
   # Don't tell HTTP clients to upgrade to HTTPS

@@ -29,6 +29,7 @@ services:
       # - "WHERE_TO_ADDR=gitea_old_anubis" (FIXME: Lookup fails to resolve by Caddy, not sure why)
       - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=3001"
+      - "DEBUG_LEVEL=INFO"
 
   # Actual Gitea service `gitea_old`
   gitea_old:
@@ -143,6 +144,7 @@ services:
       - "DOMAIN=${GITEA_NEW_DOMAIN}"
       - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=3001"
+      - "DEBUG_LEVEL=INFO"
 
   gitea:
     extends:
