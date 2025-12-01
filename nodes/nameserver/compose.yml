@@ -38,10 +38,6 @@ services:
     networks:
       - mainNet
     volumes:
-      # Makes timezone and time information available
-      # - /etc/timezone:/etc/timezone:ro
-      # - /etc/localtime:/etc/localtime:ro
-
       # Directory containing control socket
       - "${UNBOUND_CTL_DIR}:/ctl"
     ports:
