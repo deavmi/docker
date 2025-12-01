@@ -20,6 +20,7 @@ services:
     image: ghcr.io/deavmi/unrealircd-docker:master
     container_name: ircd
     restart: unless-stopped
+    user: ${USER_UID}:${USER_GID}
     volumes:
       # Path to configuration directory
       - "${IRCD_CONFIG_DIR}:/home/unreal/ircd/conf/:z"
