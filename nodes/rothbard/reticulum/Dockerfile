@@ -48,7 +48,7 @@ ARG PURE_INSTALL
 # script
 COPY install.sh /tmp
 RUN chmod +x /tmp/install.sh
-RUN chown reticulum:reticulum /tmp/install.sh
+# RUN chown reticulum:reticulum /tmp/install.sh
 
 # Create running directory
 # USER reticulum
