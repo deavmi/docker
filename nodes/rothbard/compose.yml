@@ -37,7 +37,6 @@ services:
       context: web/
     # depends_on:
       # - prometheus
-      # - grafana
     networks:
       - mainNet
     volumes:
