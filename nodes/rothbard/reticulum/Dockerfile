@@ -10,21 +10,21 @@ RUN apt update
 RUN apt upgrade -y
 
 # Activate arguments provided as build parameters
-ARG USER_UID
-ARG USER_GID
+# ARG USER_UID
+# ARG USER_GID
 
 # Install Python3 and requirements
 RUN apt install python3 python3-pip -y
 
 # Create the reticulum user
 # and group
-RUN groupadd reticulum -g $USER_GID
-RUN useradd -m reticulum -u $USER_UID -g $USER_GID
+# RUN groupadd reticulum -g $USER_GID
+# RUN useradd -m reticulum -u $USER_UID -g $USER_GID
 
 # Add us to the group which the
 # serial device files are grouped
 # under (permission-wise)
-RUN usermod reticulum -aG dialout
+# RUN usermod reticulum -aG dialout
 
 # Install ncat (useful tool)
 RUN apt install ncat -y
@@ -50,13 +50,14 @@ COPY install.sh /tmp
 RUN chmod +x /tmp/install.sh
 RUN chown reticulum:reticulum /tmp/install.sh
 
-# Switch to reticulum user
-USER reticulum
-WORKDIR /home/reticulum
+# Create running directory
+# USER reticulum
+# WORKDIR /home/reticulum
 
 # Add the directory where pip will
 # install binaries to to our PATH
-ENV PATH=$PATH:/home/reticulum/.local/bin
+# ENV PATH=$PATH:/home/reticulum/.local/bin
+ENV PATH=$PATH:/home/root/.local/bin
 
 # Install reticulum and delete
 # the install script
