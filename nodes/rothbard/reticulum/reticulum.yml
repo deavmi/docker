@@ -17,11 +17,11 @@ services:
       context: lxmd/
     volumes:
       # Configuration and storage for lxmd
-      - /mnt/datadisk/volumes/lxmd/:/data
+      - /mnt/datadisk/volumes/lxmd/:/data:z
 
-      # Makes timezone and time information available
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # Makes timezone and time information available (TODO: Find a way to bring this in)
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     user: ${USER_UID}:${USER_GID}
     networks:
       - retNet
@@ -48,11 +48,11 @@ services:
         - GAI_PREFER_IPV6=true
     volumes:
       # Reticulum configuration and storage directory
-      - /mnt/datadisk/volumes/reticulum/:/data
+      - /mnt/datadisk/volumes/reticulum/:/data:z
 
-      # Makes timezone and time information available
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # Makes timezone and time information available (TODO: Find a way to bring this in)
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     user: ${USER_UID}:${USER_GID}
     devices:
       # Add RNode devices here
