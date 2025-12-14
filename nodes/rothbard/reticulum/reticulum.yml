@@ -18,10 +18,6 @@ services:
     volumes:
       # Configuration and storage for lxmd
       - /mnt/datadisk/volumes/lxmd/:/data:z
-
-      # Makes timezone and time information available (TODO: Find a way to bring this in)
-      # - /etc/timezone:/etc/timezone:ro
-      # - /etc/localtime:/etc/localtime:ro
     user: ${USER_UID}:${USER_GID}
     networks:
       - retNet
@@ -29,7 +25,6 @@ services:
   reticulum:
     container_name: reticulum
     restart: unless-stopped
-    # image: reticulum_base
     build:
       context: ../../../images/reticulum
       args:
@@ -49,10 +44,6 @@ services:
     volumes:
       # Reticulum configuration and storage directory
       - /mnt/datadisk/volumes/reticulum/:/data:z
-
-      # Makes timezone and time information available (TODO: Find a way to bring this in)
-      # - /etc/timezone:/etc/timezone:ro
-      # - /etc/localtime:/etc/localtime:ro
     user: ${USER_UID}:${USER_GID}
     devices:
       # Add RNode devices here
