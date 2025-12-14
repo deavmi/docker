@@ -31,7 +31,7 @@ services:
     restart: unless-stopped
     image: reticulum_base
     build:
-      context: reticulum/
+      context: .
       args:
         - USER_UID=1000
         - USER_GID=1003
