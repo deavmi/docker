@@ -35,8 +35,6 @@ services:
     container_name: web
     build:
       context: web/
-    # depends_on:
-      # - prometheus
     networks:
       - mainNet
     volumes:
