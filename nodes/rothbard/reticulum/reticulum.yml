@@ -29,7 +29,7 @@ services:
   reticulum:
     container_name: reticulum
     restart: unless-stopped
-    image: reticulum_base
+    # image: reticulum_base
     build:
       context: ../../../images/reticulum
       args:
