@@ -16,7 +16,7 @@ networks:
 
 include:
   - reticulum/reticulum.yml
-  - nostr/nostr.yml
+  # - nostr/nostr.yml
 
 services:
   host-statistics:
