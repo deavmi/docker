@@ -45,9 +45,9 @@ services:
       # Reticulum configuration and storage directory
       - /mnt/datadisk/volumes/reticulum/:/data:z
     user: ${USER_UID}:${USER_GID}
-    devices:
+    # devices:
       # Add RNode devices here
-      - /dev/ttyACM0:/dev/rnode1:rwm
+      # - /dev/ttyACM0:/dev/rnode1:rwm
     networks:
       - retNet
     ports:
