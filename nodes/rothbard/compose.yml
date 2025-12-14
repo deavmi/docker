@@ -1,7 +1,7 @@
 networks:
-  normalNet:
+  mainNet:
     driver: bridge
-    name: normalNet
+    name: mainNet
     enable_ipv6: true
     ipam:
       config:
