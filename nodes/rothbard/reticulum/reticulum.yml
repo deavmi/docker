@@ -14,7 +14,7 @@ services:
     depends_on:
       - reticulum
     build:
-      context: lxmd/
+      context: ../../../images/reticulum
     volumes:
       # Configuration and storage for lxmd
       - /mnt/datadisk/volumes/lxmd/:/data:z
