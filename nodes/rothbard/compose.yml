@@ -19,7 +19,7 @@ include:
   - nostr/nostr.yml
 
 services:
-  host-statistics:
+  statistics:
     extends:
       file: ../../services/node_exporter/compose.yml
       service: statistics
@@ -42,7 +42,7 @@ services:
       # from
       - /mnt/datadisk/volumes/web:/webroot:z
     environment:
-      - DOMAIN=${WEB_DOMAIN}
+      - DOMAIN=${CADDY_DOMAIN}
     ports:
       - "[::]:80:80/tcp"
       - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
