@@ -31,6 +31,14 @@ services:
       file: ../../services/yggdrasil/compose.yml
       service: yggdrasil
     container_name: yggdrasil
+    network_mode: "host"
+
+  mycelium:
+    extends:
+      file: ../../services/mycelium/compose.yml
+      service: mycelium
+    container_name: mycelium
+    network_mode: "host"
 
   web:
     container_name: web
