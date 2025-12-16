@@ -87,7 +87,7 @@ services:
     networks:
       - nostrNet
     volumes:
-      - /mnt/datadisk/volumes/nostr/personal_data:/var/lib/postgresql/data
+      - ${NOSTR_PERSONAL_DB_PATH}:/var/lib/postgresql/data:z
 
   personal_relay:
     depends_on:
@@ -101,12 +101,7 @@ services:
     network_mode: service:personal_proxy
     volumes:
       # Path to relay configuration file
-      - /mnt/datadisk/volumes/nostr/personal.toml:/usr/src/app/config.toml:ro
-
-      #  Makes timezone and time information available
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
-
+      - ${NOSTR_PERSONAL_CONFIG_PATH}:/usr/src/app/config.toml:ro,z
 
   personal_proxy:
     build:
