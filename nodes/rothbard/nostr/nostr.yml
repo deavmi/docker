@@ -92,10 +92,11 @@ services:
   personal_relay:
     depends_on:
       - personal_db
-    build:
-      context: nostr/
-      args:
-        - CARGO_LOG=trace
+    image: 
+    # build:
+      # context: nostr/
+      # args:
+        # - CARGO_LOG=trace
     container_name: personal_relay
     restart: unless-stopped
     network_mode: service:personal_proxy
@@ -113,7 +114,7 @@ services:
       # - "WHERE_TO_ADDR=gitea_old_anubis" (FIXME: Lookup fails to resolve by Caddy, not sure why)
       - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=7000"
-      - "DEBUG_LEVEL=INFO"
+      - "DEBUG_LEVEL=DEBUG"
     networks:
       ipv6_pool_net:
         ipv6_address: ${NOSTR_RELAY_PERSONAL_ADDR}
