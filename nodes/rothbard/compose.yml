@@ -15,6 +15,7 @@ networks:
         - subnet: fde4:492c:fc7f::/48
 
 include:
+  - networks.yml
   - reticulum/reticulum.yml
   - nostr/nostr.yml
 
