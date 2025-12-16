@@ -98,8 +98,7 @@ services:
         - CARGO_LOG=trace
     container_name: personal_relay
     restart: unless-stopped
-    networks:
-      - nostrNet
+    network_mode: service:personal_proxy
     volumes:
       # Path to relay configuration file
       - /mnt/datadisk/volumes/nostr/personal.toml:/usr/src/app/config.toml:ro
@@ -108,3 +107,18 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
 
+
+  personal_proxy:
+    build:
+      context: ../flat
+    container_name: personal_proxy
+    restart: unless-stopped
+    environment:
+      - "DOMAIN=${NOSTR_RELAY_PERSONAL_DOMAIN}"
+      # - "WHERE_TO_ADDR=gitea_old_anubis" (FIXME: Lookup fails to resolve by Caddy, not sure why)
+      - "WHERE_TO_ADDR=[::1]"
+      - "WHERE_TO_PORT=7000"
+      - "DEBUG_LEVEL=INFO"
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${NOSTR_RELAY_PERSONAL_ADDR}
