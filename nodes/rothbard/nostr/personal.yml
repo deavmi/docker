@@ -15,17 +15,8 @@ services:
       - POSTGRES_PASSWORD=dbpass
       - PGDATA=/var/lib/postgresql/data
     restart: unless-stopped
-    network_mode: service:personal_relay
     volumes:
       - ${NOSTR_PERSONAL_DB_PATH}:/var/lib/postgresql/data:z
-
-  personal_relay:
-    depends_on:
-      - personal_db
-    build:
-      context: personal
-    container_name: personal_relay
-    restart: unless-stopped
     networks:
       ipv6_pool_net:
         ipv6_address: ${NOSTR_RELAY_PERSONAL_ADDR}
@@ -34,3 +25,12 @@ services:
     ports:
       # Expose (firewall) on behalf of `personal_relay`
       - 7000/tcp
+
+  personal_relay:
+    depends_on:
+      - personal_db
+    build:
+      context: personal
+    container_name: personal_relay
+    restart: unless-stopped
+    network_mode: service:personal_relay
