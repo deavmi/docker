@@ -105,4 +105,7 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${NOSTR_RELAY_PERSONAL_ADDR}
+    ports:
+      # Expose (firewall) on behalf of `personal_relay`
+      - 7000/tcp
       # FIXME: Add Yggdrasil subnet address here
