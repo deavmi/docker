@@ -87,9 +87,9 @@ services:
     container_name: personal_relay
     restart: unless-stopped
     network_mode: service:personal_proxy
-    volumes:
+    # volumes:
       # Path to relay configuration file
-      - ${NOSTR_PERSONAL_CONFIG_PATH}:/usr/src/app/config.toml:ro,z
+      # - ${NOSTR_PERSONAL_CONFIG_PATH}:/usr/src/app/config.toml:ro,z
 
   personal_proxy:
     build:
