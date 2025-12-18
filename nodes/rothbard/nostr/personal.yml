@@ -33,4 +33,4 @@ services:
       context: personal
     container_name: personal_relay
     restart: unless-stopped
-    network_mode: service:personal_relay
+    network_mode: service:personal_db
