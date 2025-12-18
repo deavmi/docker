@@ -15,7 +15,7 @@ services:
       - POSTGRES_PASSWORD=dbpass
       - PGDATA=/var/lib/postgresql/data
     restart: unless-stopped
-    network_mode: service:personal_proxy
+    network_mode: service:personal_relay
     volumes:
       - ${NOSTR_PERSONAL_DB_PATH}:/var/lib/postgresql/data:z
 
