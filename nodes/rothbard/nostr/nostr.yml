@@ -81,7 +81,9 @@ services:
   personal_relay:
     depends_on:
       - personal_db
-    image: ghcr.io/deavmi/nostr-rs-relay:master
+    # image: ghcr.io/deavmi/nostr-rs-relay:master
+    build:
+      context: personal
     container_name: personal_relay
     restart: unless-stopped
     network_mode: service:personal_proxy
