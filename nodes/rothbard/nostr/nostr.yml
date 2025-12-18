@@ -1,6 +1,3 @@
-
-
-
 services:
   ephemeral_relay:
     image: ghcr.io/deavmi/nostr-rs-relay:master

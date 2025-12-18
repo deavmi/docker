@@ -9,7 +9,7 @@
         engine = "postgres"
         min_conn = 0
         max_conn = 4
-        connection = "postgresql://dbuser:dbpass@personal_db:5432/nostr"
+        connection = "postgresql://dbuser:dbpass@[::]:5432/nostr"
 
 [authorization]
        	# Only allow myself to publish events
@@ -18,7 +18,7 @@
         ]
 
 [network]
-        address = "::1"
+        address = "::"
         port = 7000
         remote_ip_header = "x-forwarded-for"
 
