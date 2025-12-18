@@ -4,9 +4,6 @@ services:
       context: homesteader
     container_name: homesteader_relay
     restart: unless-stopped
-    volumes:
-      # Path to relay configuration file
-      - /mnt/datadisk/volumes/nostr/homesteader.toml:/usr/src/app/config.toml:ro
     network_mode: service:homesteader_db
     
   homesteader_db:
