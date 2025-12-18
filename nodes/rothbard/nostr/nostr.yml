@@ -1,3 +1,6 @@
+include:
+  - personal.yml
+
 services:
   ephemeral_relay:
     image: ghcr.io/deavmi/nostr-rs-relay:master
@@ -58,56 +61,4 @@ services:
     volumes:
       - /mnt/datadisk/volumes/nostr/homesteader_data:/var/lib/postgresql/data
 
-  personal_db:
-    image: postgres:16.4
-    container_name: personal_db
 
-    # The container will create a user with this
-    # UID/GID pair. This matches MY host, make them
-    # match your host. This makes files created in
-    # the mountpoint easily accessible for us
-    user: ${USER_UID}:${USER_GID}
-
-    environment:
-      - POSTGRES_DB=nostr
-      - POSTGRES_USER=dbuser
-      - POSTGRES_PASSWORD=dbpass
-      - PGDATA=/var/lib/postgresql/data
-    restart: unless-stopped
-    network_mode: service:personal_proxy
-    volumes:
-      - ${NOSTR_PERSONAL_DB_PATH}:/var/lib/postgresql/data:z
-
-  personal_relay:
-    depends_on:
-      - personal_db
-    # image: ghcr.io/deavmi/nostr-rs-relay:master
-    build:
-      context: personal
-    container_name: personal_relay
-    restart: unless-stopped
-    network_mode: service:personal_proxy
-    # volumes:
-      # Path to relay configuration file
-      # - ${NOSTR_PERSONAL_CONFIG_PATH}:/usr/src/app/config.toml:ro,z
-
-  personal_proxy:
-    build:
-      context: ../flat
-    container_name: personal_proxy
-    restart: unless-stopped
-    environment:
-      - "DOMAIN=${NOSTR_RELAY_PERSONAL_DOMAIN}"
-      # - "WHERE_TO_ADDR=gitea_old_anubis" (FIXME: Lookup fails to resolve by Caddy, not sure why)
-      - "WHERE_TO_ADDR=[::1]"
-      - "WHERE_TO_PORT=7000"
-      - "DEBUG_LEVEL=DEBUG"
-    networks:
-      ipv6_pool_net:
-        ipv6_address: ${NOSTR_RELAY_PERSONAL_ADDR}
-      yggdrasil_net:
-        ipv6_address: ${NOSTR_RELAY_PERSONAL_ADDR_Y}
-    ports:
-      # Expose (firewall) on behalf of `personal_relay`
-      - 7000/tcp
-      # FIXME: Add Yggdrasil subnet address here
