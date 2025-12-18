@@ -18,7 +18,7 @@
         ]
 
 [network]
-        address = "0.0.0.0"
+        address = "::1"
         port = 7000
         remote_ip_header = "x-forwarded-for"
 

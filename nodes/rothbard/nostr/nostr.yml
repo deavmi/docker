@@ -77,9 +77,7 @@ services:
       - POSTGRES_PASSWORD=dbpass
       - PGDATA=/var/lib/postgresql/data
     restart: unless-stopped
-    networks:
-      ipv6_pool_net:
-        ipv6_address: ${IPV6_DB_PERSONAL_INTERNAL}
+    network_mode: service:personal_proxy}
     volumes:
       - ${NOSTR_PERSONAL_DB_PATH}:/var/lib/postgresql/data:z
 
