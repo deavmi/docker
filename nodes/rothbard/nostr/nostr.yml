@@ -1,20 +1,8 @@
 include:
   - personal.yml
+  - ephemeral.yml
 
 services:
-  ephemeral_relay:
-    image: ghcr.io/deavmi/nostr-rs-relay:master
-    restart: unless-stopped
-    networks:
-      - nostrNet
-    volumes:
-      # Path to relay configuration file
-      - /mnt/datadisk/volumes/nostr/ephemeral.toml:/usr/src/app/config.toml:ro
-
-      #  Makes timezone and time information available
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
-
   homesteader_relay:
     depends_on:
       - homesteader_db

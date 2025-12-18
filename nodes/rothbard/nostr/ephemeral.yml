@@ -1,0 +1,13 @@
+services:
+  ephemeral_relay:
+    build:
+      context: personal
+    restart: unless-stopped
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${NOSTR_RELAY_EPHEMERAL_ADDR}
+      yggdrasil_net:
+        ipv6_address: ${NOSTR_RELAY_EPHEMERAL_ADDR_Y}
+    ports:
+      # Expose (firewall) on behalf of `personal_relay`
+      - 7000/tcp
