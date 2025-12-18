@@ -3,6 +3,8 @@ services:
     build:
       context: personal
     restart: unless-stopped
+    envrionment:
+      - RUST_BACKTRACE=1
     networks:
       ipv6_pool_net:
         ipv6_address: ${NOSTR_RELAY_EPHEMERAL_ADDR}
