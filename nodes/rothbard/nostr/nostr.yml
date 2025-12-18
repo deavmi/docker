@@ -3,11 +3,7 @@
 
 services:
   ephemeral_relay:
-    build:
-      context: nostr/
-      args:
-        - CARGO_LOG=trace
-    container_name: ephemeral_relay
+    image: ghcr.io/deavmi/nostr-rs-relay
     restart: unless-stopped
     networks:
       - nostrNet
@@ -22,10 +18,7 @@ services:
   homesteader_relay:
     depends_on:
       - homesteader_db
-    build:
-      context: nostr/
-      args:
-        - CARGO_LOG=trace
+    image: ghcr.io/deavmi/nostr-rs-relay
     container_name: homesteader_relay
     restart: unless-stopped
     networks:
@@ -114,3 +107,4 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${NOSTR_RELAY_PERSONAL_ADDR}
+      # FIXME: Add Yggdrasil subnet address here
