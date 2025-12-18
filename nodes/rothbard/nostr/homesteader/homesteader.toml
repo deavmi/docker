@@ -1,0 +1,33 @@
+[info]
+        relay_url = "ws://rothbard.lab.networks.deavmi.assigned.network:7777"
+        name = "128-Homesteader"
+        description = "An IPv6-only Nostr relay for homesteaders.  No illegal content."
+        pubkey = "d6149823c90c4865e4bc434a4be1a1ee8f72aabd8328dd059ba4f11f7633b0b6"
+        contact = "mailto:deavmi@redxen.eu"
+
+[database]
+        engine = "postgres"
+        min_conn = 0
+        max_conn = 4
+        connection = "postgresql://dbuser:dbpass@[::1]:5432/nostr"
+
+[network]
+        address = "[::]"
+        port = 7000
+        remote_ip_header = "x-forwarded-for"
+
+[options]
+        reject_future_seconds = 14400
+
+[verified_users]
+        # TODO: Figure this out, didn't work for me OR others
+        mode = "passive"
+
+        # Check verification every 2 days
+        verify_expiration = "2 days"
+
+        # When attempting verification, retry every
+        verify_update_frequency = "30 minutes"
+
+        # Give up retrying after this many tries
+        max_consecutive_failures = 6
