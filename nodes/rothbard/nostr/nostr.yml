@@ -78,7 +78,8 @@ services:
       - PGDATA=/var/lib/postgresql/data
     restart: unless-stopped
     networks:
-      - nostrNet
+      ipv6_pool_net:
+        ipv6_address: ${IPV6_DB_PERSONAL_INTERNAL}
     volumes:
       - ${NOSTR_PERSONAL_DB_PATH}:/var/lib/postgresql/data:z
 
