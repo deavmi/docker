@@ -3,7 +3,7 @@
 
 services:
   ephemeral_relay:
-    image: ghcr.io/deavmi/nostr-rs-relay
+    image: ghcr.io/deavmi/nostr-rs-relay:master
     restart: unless-stopped
     networks:
       - nostrNet
@@ -18,7 +18,7 @@ services:
   homesteader_relay:
     depends_on:
       - homesteader_db
-    image: ghcr.io/deavmi/nostr-rs-relay
+    image: ghcr.io/deavmi/nostr-rs-relay:master
     container_name: homesteader_relay
     restart: unless-stopped
     networks:
@@ -85,7 +85,7 @@ services:
   personal_relay:
     depends_on:
       - personal_db
-    image: ghcr.io/deavmi/nostr-rs-relay
+    image: ghcr.io/deavmi/nostr-rs-relay:master
     container_name: personal_relay
     restart: unless-stopped
     network_mode: service:personal_proxy
