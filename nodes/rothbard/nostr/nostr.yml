@@ -48,7 +48,7 @@ services:
     # UID/GID pair. This matches MY host, make them
     # match your host. This makes files created in
     # the mountpoint easily accessible for us
-    user: "1000:1000"
+    user: ${USER_UID}:${USER_GID}
 
     environment:
       - POSTGRES_DB=nostr
@@ -69,7 +69,7 @@ services:
     # UID/GID pair. This matches MY host, make them
     # match your host. This makes files created in
     # the mountpoint easily accessible for us
-    user: "1000:1000"
+    user: ${USER_UID}:${USER_GID}
 
     environment:
       - POSTGRES_DB=nostr
