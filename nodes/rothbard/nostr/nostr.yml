@@ -105,6 +105,8 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${NOSTR_RELAY_PERSONAL_ADDR}
+      yggdrasil_net:
+        ipv6_address: ${NOSTR_RELAY_PERSONAL_ADDR_Y}
     ports:
       # Expose (firewall) on behalf of `personal_relay`
       - 7000/tcp
