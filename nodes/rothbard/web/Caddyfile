@@ -22,34 +22,6 @@
 	    metrics
 	}
 	
-	# Forgejo service
-	handle /git* {
-		uri strip_prefix /git # Straight from https://docs.gitea.com/next/administration/reverse-proxies#caddy-with-a-sub-path
-		reverse_proxy gitea:3000
-	}
+	root /data
 
-	handle /git_old* {
-		uri strip_prefix /git_old
-		reverse_proxy gitea_old:3000
-	}
-
-	# Minio web console (currently just for Gitea)
-	handle /minio* {
-		uri strip_prefix /minio
-		reverse_proxy minio-gitea:9001
-	}
-	
-	# i2pd console
-	handle /i2pd* {
-	    reverse_proxy i2pd:7070
-	}
-	
-	# WebIRC
-	handle /irc {
-        redir /irc* /irc/
-	}
-	handle /irc/*  {
-	    uri strip_prefix /irc
-	    reverse_proxy webirc:9000
-	}
 }

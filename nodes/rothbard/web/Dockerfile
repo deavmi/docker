@@ -3,3 +3,6 @@ FROM caddy:latest
 
 # Copy over configuration file
 COPY Caddyfile /etc/caddy/Caddyfile
+
+# Copy over content
+COPY index.html /data/index.html
