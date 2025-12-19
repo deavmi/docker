@@ -15,13 +15,15 @@
 
 # Domain name for automatic SSL
 :80, {$DOMAIN}:443 {
-	# respond "Hello there"
+	# Root path handling
+	handle / {
+		file_serer {
+			root /data
+		}
+	}
 
 	# Handle metrics
 	handle /metrics {
 	    metrics
 	}
-	
-	root /data
-
 }
