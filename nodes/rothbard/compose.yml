@@ -44,10 +44,6 @@ services:
     container_name: web
     build:
       context: web/
-    volumes:
-      # Data directory to serve static site files
-      # from
-      - /mnt/datadisk/volumes/web:/webroot:z
     environment:
       - DOMAIN=${CADDY_DOMAIN}
     ports:
