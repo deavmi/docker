@@ -17,7 +17,7 @@
 :80, {$DOMAIN}:443 {
 	# Root path handling
 	handle / {
-		file_serer {
+		file_server {
 			root /data
 		}
 	}
