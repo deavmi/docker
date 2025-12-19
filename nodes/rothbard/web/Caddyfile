@@ -15,7 +15,7 @@
 
 # Domain name for automatic SSL
 :80, {$DOMAIN}:443 {
-	respond "Hello there"
+	# respond "Hello there"
 
 	# Handle metrics
 	handle /metrics {
