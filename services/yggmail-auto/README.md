@@ -13,5 +13,7 @@ setup:
 3. `YGGMAIL_PEER`
 	* This is the address of the endpoint to connect to (an Yggdrasil peer)
 	* Format is `tls://`, `tcp://`, `quic://`
-4. `YGGMAIL_PASSWORD_HASH_FILE_PATH`
+4. `YGGMAIL_STORAGE`
+	* Path to where the SQLite3 database is to be stored
+5. `YGGMAIL_PASSWORD_HASH_FILE_PATH`
 	* This is the path to the BCrypt password hash on your system
