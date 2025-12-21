@@ -14,9 +14,6 @@ networks:
       config:
         - subnet: fde4:492c:fc7f::/48
 
-# include:
-  # - networks.yml
-
 services:
   statistics:
     extends:
@@ -37,6 +34,14 @@ services:
       service: mycelium
     container_name: mycelium
     network_mode: "host"
+
+  yggmail:
+    extends:
+      file: ../../services/yggmail-auto/compose.yml
+      service: yggmail
+    container_name: yggmail
+    networks:
+      - mainNet
 
   web:
     container_name: web
