@@ -14,8 +14,8 @@ networks:
       config:
         - subnet: fde4:492c:fc7f::/48
 
-include:
-  - networks.yml
+# include:
+  # - networks.yml
 
 services:
   statistics:
