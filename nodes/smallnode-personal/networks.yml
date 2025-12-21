@@ -24,3 +24,18 @@ networks:
       # access to expose `ports` (although these will
       # not be using the docker proxy now)
       com.docker.network.bridge.gateway_mode_ipv6: routed
+
+  mainNet:
+    driver: bridge
+    name: mainNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492a:fc7f::/48
+  nostrNet:
+    driver: bridge
+    name: nostrNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492c:fc7f::/48
