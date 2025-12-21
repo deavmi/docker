@@ -1,0 +1,29 @@
+
+{
+	http_port "80"
+	https_port "443"
+
+	log default {
+			output stdout
+			level DEBUG
+	}
+
+        # Don't tell HTTP clients to upgrade to HTTPS
+        auto_https disable_redirects
+}
+
+
+# Domain name for automatic SSL
+:80, {$DOMAIN}:443 {
+	# Root path handling
+	handle / {
+		file_server {
+			root /data
+		}
+	}
+
+	# Handle metrics
+	handle /metrics {
+	    metrics
+	}
+}

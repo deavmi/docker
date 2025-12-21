@@ -1,0 +1,57 @@
+networks:
+  mainNet:
+    driver: bridge
+    name: mainNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492a:fc7f::/48
+  nostrNet:
+    driver: bridge
+    name: nostrNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492c:fc7f::/48
+
+include:
+  - networks.yml
+
+services:
+  statistics:
+    extends:
+      file: ../../services/node_exporter/compose.yml
+      service: statistics
+    container_name: host_statistics
+
+  yggdrasil:
+    extends:
+      file: ../../services/yggdrasil/compose.yml
+      service: yggdrasil
+    container_name: yggdrasil
+    network_mode: "host"
+
+  mycelium:
+    extends:
+      file: ../../services/mycelium/compose.yml
+      service: mycelium
+    container_name: mycelium
+    network_mode: "host"
+
+  web:
+    container_name: web
+    build:
+      context: web/
+    environment:
+      - DOMAIN=${CADDY_DOMAIN}
+    ports:
+      - "80/tcp"
+      - "80/udp" # TODO: Does quick run on non-HTTPS?
+      - "443/tcp"
+      - "443/udp"
+      - "2019/tcp" # TODO: Remove this it is FULL ADMIN PORT (only prometheus must be accessing this)
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${IPV6_NODE1_ADDR}
+      yggdrasil_net:
+        ipv6_address: ${YGG_NODE1_ADDR}
