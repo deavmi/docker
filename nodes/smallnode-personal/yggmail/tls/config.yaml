@@ -1,0 +1,22 @@
+# Accept the ACME terms of service
+acceptTOS: true
+
+# For ACME I assume
+httpAddr: :80
+
+# TLS endpoint address to listen on
+tlsAddr: :1111
+
+backends:
+  # Map TLS endpoints (SNIs) to certain backend
+  # services
+  - serverNames:
+    - imap.yggmail.deavmi.assigned.network
+    mode: tcp
+    addresses:
+      - yggmail:1143
+  - serverNames:
+    - smtp.yggmail.deavmi.assigned.network
+    mode: tcp
+    addresses:
+      - yggmail:1025
