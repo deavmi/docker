@@ -32,10 +32,3 @@ networks:
     ipam:
       config:
         - subnet: fde4:492a:fc7f::/48
-  nostrNet:
-    driver: bridge
-    name: nostrNet
-    enable_ipv6: true
-    ipam:
-      config:
-        - subnet: fde4:492c:fc7f::/48
