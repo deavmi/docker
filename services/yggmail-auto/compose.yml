@@ -1,0 +1,22 @@
+services:
+  # Yggmail service
+  yggmail:
+    image: ghcr.io/deavmi/yggmail-auto:master
+    container_name: yggmail
+
+    user: ${USER_UID}:${USER_GID}
+    environment:
+      # Your peer
+      - PEER=${YGGMAIL_PEER}
+    volumes:
+      # Where the SQLite database is to be stored
+      - ${YGGMAIL_STORAGE}:/store:z
+
+      # File holding the BCrypt password hash
+      - ${YGGMAIL_PASSWORD_HASH_FILE_PATH}:/run/secrets/YGGMAIL_PASSWORD_HASH:z
+      
+    # if you don't want to use the TLS
+    # auto-proxy then uncomment the below
+    # ports:
+      # - 1143:1143/tcp
+      # - 1025:1025/tcp
