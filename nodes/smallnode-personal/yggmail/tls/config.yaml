@@ -14,9 +14,9 @@ backends:
     - imap.yggmail.deavmi.assigned.network
     mode: tcp
     addresses:
-      - [::1]:1143
+      - ::1:1143
   - serverNames:
     - smtp.yggmail.deavmi.assigned.network
     mode: tcp
     addresses:
-      - [::1]:1025
+      - ::1:1025
