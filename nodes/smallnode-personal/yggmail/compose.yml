@@ -1,0 +1,39 @@
+services:
+  # Yggmail auto
+  yggmail:
+    extends:
+      file: ../../../services/yggmail-auto/compose.yml
+      service: yggmail
+    container_name: yggmail
+    restart: unless-stopped
+    # Place in same network namespace as `yggmail_tls`
+    network_mode: service:yggmail_tls
+
+  # Automatic TLS reverse proxy (with SNI)
+  yggmail_tls:
+    build:
+      context: tls
+    container_name: yggmail_tls
+    restart: unless-stopped
+    networks:
+      - mainNet
+    # FIXME: Check setcap, might need it to
+    # bind to ports lower than 1024 (such as port 80
+    # needed for the ACME challenge)
+    user: ${USER_UID}:${USER_GID}
+    environment:
+      # FIXME: Determine what this is for
+      - TLSPROXY_PASSPHRASE="whatisthisfor?"
+    volumes:
+      - ${YGGMAIL_TLS_CACHE_DIR}:/.cache:z
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${IPV6_ADDR_TLS_YGGMAIL}
+    ports:
+      # TLS endpoint
+      - 1111/tcp
+
+      # ACME must listen ALWAYS on port 80
+      # (if you have conflicts then place)
+      # this onto a seperate network
+      - 80/tcp
