@@ -15,8 +15,6 @@ services:
       context: tls
     container_name: yggmail_tls
     restart: unless-stopped
-    networks:
-      - mainNet
     # FIXME: Check setcap, might need it to
     # bind to ports lower than 1024 (such as port 80
     # needed for the ACME challenge)
