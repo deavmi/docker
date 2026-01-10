@@ -19,7 +19,6 @@ networks:
 volumes:
   # Docker-managed datastore for prometheus
   prometheus_data:
-  grafana_temp:
   grafana_db:
   loki_data:
 
