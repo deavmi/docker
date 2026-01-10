@@ -67,7 +67,7 @@ services:
       - POSTGRES_PASSWORD=grafana
       - POSTGRES_DB=grafana
     volumes:
-      - ${GRAFANA_DB_DIR}:/var/lib/postgresql/data:z
+      - ${GRAFANA_DB_DIR}:/var/lib/postgresql:z
     networks:
       - grafana_db_net
 
