@@ -108,9 +108,9 @@ services:
     container_name: web
     build:
       context: web/
-    depends_on:
-      - prometheus
-      - grafana
+    # depends_on:
+      # - prometheus
+      # - grafana
     networks:
       - mainNet
     environment:
