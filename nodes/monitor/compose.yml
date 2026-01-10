@@ -73,7 +73,7 @@ services:
       - grafana_db
       - prometheus
 
-    # user: ${USER_UID}:${USER_GID}
+    user: ${USER_UID}:${USER_GID}
     networks:
       - mainNet
       - grafana_db_net
