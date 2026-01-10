@@ -68,10 +68,12 @@ services:
     build:
       context: grafana/
       dockerfile: Dockerfile
+    container_name: grafana
     depends_on:
       - grafana_db
       - prometheus
-    container_name: grafana
+
+    user: ${USER_UID}:${USER_GID}
     networks:
       - mainNet
       - grafana_db_net
