@@ -49,7 +49,8 @@ services:
     networks:
       - mainNet
     volumes:
-      - prometheus_data:/prometheus:z
+      # - prometheus_data:/prometheus:z
+      - ${PROMETHEUS_STATE_DIR}:/prometheus:z
     # So that all URLs generated, like links, are to
     # our reverse proxy's route
     command:
