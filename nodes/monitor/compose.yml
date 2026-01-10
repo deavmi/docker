@@ -75,6 +75,9 @@ services:
     networks:
       - mainNet
       - grafana_db_net
+    volumes:
+      - ${GRAFANA_CONF_DIR}:/var/lib/grafana
+  
   grafana_db:
     image: postgres
     container_name: grafana_db
