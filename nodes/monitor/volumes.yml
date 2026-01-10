@@ -1,0 +1,5 @@
+volumes:
+  # Docker-managed datastore for prometheus
+  prometheus_data:
+  
+  # loki_data:

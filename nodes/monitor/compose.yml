@@ -1,26 +1,7 @@
-networks:
-  mainNet:
-    driver: bridge
-    name: mainNet
-    enable_ipv6: true
-    ipam:
-      config:
-        - subnet: fde4:492b:fc7f::/48
-
-  grafana_db_net:
-    driver: bridge
-    name: grafana_db_net
-    enable_ipv6: true
-    ipam:
-      config:
-        - subnet: fde4:492c:fc7f::/48
-
-volumes:
-  # Docker-managed datastore for prometheus
-  prometheus_data:
-  # loki_data:
-
 include:
+  - networks.yml
+  - volumes.yml
+  
   - agents.yml
 
 services:
