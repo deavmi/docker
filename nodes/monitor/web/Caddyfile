@@ -25,7 +25,7 @@
 
 	# Grafana web interface
 	handle /grafana* {
-		reverse_proxy grafana:3000
+		reverse_proxy grafana:3000/grafana
 	}	
 
 	# Prometheus web interface
