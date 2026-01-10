@@ -15,11 +15,10 @@ networks:
       config:
         - subnet: fde4:492c:fc7f::/48
 
-# FIXME: Delete grafana temp and sort out rights
 volumes:
   # Docker-managed datastore for prometheus
   prometheus_data:
-  loki_data:
+  # loki_data:
 
 include:
   - agents.yml
@@ -49,8 +48,8 @@ services:
     networks:
       - mainNet
     volumes:
-      # - prometheus_data:/prometheus:z
-      - ${PROMETHEUS_STATE_DIR}:/prometheus:z
+      - prometheus_data:/prometheus:z
+      # - ${PROMETHEUS_STATE_DIR}:/prometheus:z
     # So that all URLs generated, like links, are to
     # our reverse proxy's route
     command:
