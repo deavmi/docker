@@ -15,7 +15,7 @@
       }
     ]
   },
-  "description": "Tracking for projects",
+  "description": "Tracking for source control management",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
@@ -458,7 +458,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Projects",
+  "title": "SCM",
   "uid": "af913e4d-d4ea-4ceb-aab3-6f97a146b318",
   "version": 2
 }
