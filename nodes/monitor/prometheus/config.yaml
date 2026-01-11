@@ -75,33 +75,33 @@ scrape_configs:
           name: 'VinylPi node'
       # TODO: Add monitor of self
 
-  # NGINX statistics
-  - job_name: 'NGINX'
+  # Caddy statistics
+  - job_name: 'Caddy'
     scrape_interval: 5s
     metrics_path: '/metrics'
     static_configs:
       # Personal node
-      - targets: ['nginx_agent_personal_web:9113']
+      - targets: ['ygg.home.deavmi.assigned.network:80']
         labels:
           server: personal
           name: 'Personal website'
 
       # Services node
-      - targets: ['nginx_agent_services:9113']
+      - targets: ['ygg.services.deavmi.assigned.network:80']
         labels:
           server: services
           name: 'Services node'
 
       # Nostr relays
-      - targets: ['nginx_agent_nostr_ephemeral:9113']
+      - targets: ['nginx_agent_nostr_ephemeral:80']
         labels:
           server: ephemeral_nostr
           name: 'Ephemeral Nostr Relay'
-      - targets: ['nginx_agent_nostr_personal:9113']
+      - targets: ['nginx_agent_nostr_personal:80']
         labels:
           server: personal_nostr
           name: 'Personal Nostr Relay'
-      - targets: ['nginx_agent_nostr_homesteader:9113']
+      - targets: ['nginx_agent_nostr_homesteader:80']
         labels:
           server: homesteader_nostr
           name: 'Homesteader Nostr Relay'
