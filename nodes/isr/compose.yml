@@ -38,7 +38,7 @@ services:
     build:
       context: flat/
     networks:
-      - mainNet
+      - isrNet
     environment:
       - "DOMAIN=${CADDY_DOMAIN}"
     ports:
