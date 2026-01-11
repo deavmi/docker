@@ -24,7 +24,16 @@ networks:
       # access to expose `ports` (although these will
       # not be using the docker proxy now)
       com.docker.network.bridge.gateway_mode_ipv6: routed
-
+  ygg_pool_net:
+    name: ygg_pool_net
+    driver: bridge
+    enable_ipv4: false
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: ${YGG_POOL_SUBNET}
+    driver_opts:
+      com.docker.network.bridge.gateway_mode_ipv6: routed
 
 services:
   node1:
