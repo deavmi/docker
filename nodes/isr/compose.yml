@@ -1,7 +1,7 @@
 networks:
-  mainNet:
+  isrNet:
     driver: bridge
-    name: mainNet
+    name: isrNet
     enable_ipv6: true
     ipam:
       config:
