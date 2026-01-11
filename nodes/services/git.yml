@@ -42,8 +42,8 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${GITEA_OLD_IPV6_ADDR}
-      ygg_pool_net:
-        ipv6_address: ${GITEA_OLD_YGG_ADDR}
+      # ygg_pool_net:
+        # ipv6_address: ${GITEA_OLD_YGG_ADDR}
     env_file:
       # has JWT token inside
       - path: .gitea.old
