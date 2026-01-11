@@ -19,7 +19,7 @@ scrape_configs:
   - job_name: 'SVN'
     scrape_interval: 5s
     scheme: 'http'
-    metrics_path: '/git/metrics'
+    metrics_path: '/metrics'
     static_configs:
       # - targets: ['ygg.old.git.services.deavmi.assigned.network']
       - targets: ['old.git.services.deavmi.assigned.network']
