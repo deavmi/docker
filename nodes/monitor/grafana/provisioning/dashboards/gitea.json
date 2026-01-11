@@ -161,7 +161,7 @@
       "id": 6,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "percentChangeColorMode": "standard",
@@ -193,6 +193,40 @@
           "legendFormat": "Milestones",
           "range": true,
           "refId": "A",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus_main"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "gitea_repositories{job=\"SVN\", name=\"Forgejo\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "Milestones",
+          "range": true,
+          "refId": "B",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus_main"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "gitea_mirrors{job=\"SVN\", name=\"Forgejo\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "Milestones",
+          "range": true,
+          "refId": "C",
           "useBackend": false
         }
       ],
@@ -338,7 +372,7 @@
       "id": 2,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "percentChangeColorMode": "standard",
@@ -370,6 +404,40 @@
           "legendFormat": "Milestones",
           "range": true,
           "refId": "A",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus_main"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "gitea_repositories{job=\"SVN\", name=\"Gitea\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "Milestones",
+          "range": true,
+          "refId": "B",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus_main"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "gitea_mirrors{job=\"SVN\", name=\"Gitea\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "Milestones",
+          "range": true,
+          "refId": "C",
           "useBackend": false
         }
       ],
