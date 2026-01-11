@@ -1,0 +1,26 @@
+{
+	http_port "80"
+	https_port "443"
+
+	log default {
+			output stdout
+			level {$DEBUG_LEVEL}
+	}
+
+  # Don't tell HTTP clients to upgrade to HTTPS
+  auto_https disable_redirects
+}
+
+
+# Domain name for automatic SSL
+:80, {$DOMAIN}:443 {
+	# Handle metrics
+	handle /caddymetrics {
+	    metrics
+	}
+	
+	# Reverse proxy to
+	handle /* {
+		reverse_proxy {$WHERE_TO_ADDR}:{$WHERE_TO_PORT}
+	}
+}
