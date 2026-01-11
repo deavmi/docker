@@ -1,0 +1,48 @@
+networks:
+  mainNet:
+    driver: bridge
+    name: mainNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492a:fc7d::/48
+
+volumes:
+  i2pd_data:
+
+include:
+  # - networks.yml
+  - i2p.yml
+
+services:
+  # host-statistics:
+    # extends:
+      # file: ../../services/node_exporter/compose.yml
+      # service: statistics
+
+  # yggdrasil:
+    # extends:
+      # file: ../../services/yggdrasil/compose.yml
+      # service: yggdrasil
+    # network_mode: "host"
+
+  # mycelium:
+    # extends:
+      # file: ../../services/mycelium/compose.yml
+      # service: mycelium
+    # container_name: mycelium
+    # network_mode: "host"
+
+  web:
+    container_name: web
+    build:
+      context: web/
+    networks:
+      - mainNet
+    environment:
+      - "DOMAIN=${CADDY_DOMAIN}"
+    ports:
+      - "[::]:80:80/tcp"
+      - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
+      - "[::]:443:443/tcp"
+      - "[::]:443:443/udp"
