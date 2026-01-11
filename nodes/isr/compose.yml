@@ -12,7 +12,7 @@ volumes:
 
 include:
   # - networks.yml
-  - i2p.yml
+  - i2p/i2p.yml
 
 services:
   # host-statistics:

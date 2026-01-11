@@ -4,3 +4,8 @@ services:
       file: ../../services/i2pd/compose.yml
       service: i2pd
     container_name: i2p
+    build:
+      additional_contexts:
+        tunnelsconfig: ./tunnels
+      args:
+        - NPROC=1
