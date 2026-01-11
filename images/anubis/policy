@@ -6,7 +6,7 @@ bots:
         - 'headers["User-Agent"].startsWith("git")'
   - name: Prometheus metrics
     action: ALLOW
-    path_regex: */metrics
+    path_regex: .*/metrics
   - name: Challenge all
     user_agent_regex: .*
     action: CHALLENGE
