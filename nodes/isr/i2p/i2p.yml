@@ -8,4 +8,4 @@ services:
       additional_contexts:
         tunnelsconfig: ./tunnels
       args:
-        - NPROC=1
+        - NPROC=4
