@@ -15,8 +15,8 @@ scrape_configs:
           server: monitor
           name: "Monitor node"
 
-  # Gitea metrics
-  - job_name: 'SVN'
+  # Gitea/Forgejo metrics
+  - job_name: 'SCM'
     scrape_interval: 5s
     scheme: 'http'
     metrics_path: '/metrics'
