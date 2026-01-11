@@ -16,16 +16,21 @@ scrape_configs:
           name: "Monitor node"
 
   # Gitea metrics
-  - job_name: 'Gitea'
+  - job_name: 'SVN'
     scrape_interval: 5s
     scheme: 'http'
     metrics_path: '/git/metrics'
     static_configs:
-      - targets: ['ygg.services.deavmi.assigned.network']
+      # - targets: ['ygg.old.git.services.deavmi.assigned.network']
+      - targets: ['old.git.services.deavmi.assigned.network']
         labels:
           server: services
-          name: "Services node"
-    
+          name: "Gitea"
+      # - targets: ['ygg.new.git.services.deavmi.assigned.network']
+      - targets: ['new.git.services.deavmi.assigned.network']
+        labels:
+          server: services
+          name: "Forgejo"
 
   # Docker
   - job_name: 'Docker'
