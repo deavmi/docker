@@ -1,0 +1,6 @@
+services:
+  i2p:
+    extends:
+      file: ../../services/i2pd/compose.yml
+      service: i2pd
+    container_name: i2p
