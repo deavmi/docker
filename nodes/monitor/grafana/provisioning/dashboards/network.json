@@ -19,7 +19,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2284462162513920,
+  "id": 1399737498165248,
   "links": [],
   "panels": [
     {
@@ -60,6 +60,7 @@
               "type": "linear"
             },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -74,7 +75,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
@@ -87,8 +89,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 17,
+        "h": 13,
+        "w": 18,
         "x": 0,
         "y": 0
       },
@@ -110,7 +112,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.1",
+      "pluginVersion": "12.3.1",
       "targets": [
         {
           "datasource": {
@@ -150,10 +152,100 @@
       ],
       "title": "Network activity",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus_main"
+      },
+      "description": "Totals for transmit and receive",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 24,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus_main"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "sum by(server) (node_network_receive_bytes_total{job=\"Nodes\"})",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "RX {{server}}",
+          "range": true,
+          "refId": "RX",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus_main"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "sum by(server) (node_network_transmit_bytes_total{job=\"Nodes\"})",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "TX {{server}}",
+          "range": true,
+          "refId": "TX",
+          "useBackend": false
+        }
+      ],
+      "title": "TX/RX totals",
+      "type": "stat"
     }
   ],
   "preload": false,
-  "schemaVersion": 41,
+  "schemaVersion": 42,
   "tags": [],
   "templating": {
     "list": []
@@ -166,5 +258,5 @@
   "timezone": "browser",
   "title": "Networking",
   "uid": "adsvs9n",
-  "version": 2
+  "version": 1
 }
