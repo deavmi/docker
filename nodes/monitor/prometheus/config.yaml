@@ -74,6 +74,10 @@ scrape_configs:
         labels:
           server: personal
           name: 'Personal node'
+      - targets: ['ygg.services.deavmi.assigned.network:9100']
+        labels:
+          server: services
+          name: 'Services node'
       - targets: ['ygg.vinyl.lab.networks.deavmi.assigned.network:9100']
         labels:
           server: vinyl
