@@ -20,7 +20,7 @@ include:
   - nostr/nostr.yml
 
 services:
-  statistics:
+  host-statistics:
     extends:
       file: ../../services/node_exporter/compose.yml
       service: statistics
