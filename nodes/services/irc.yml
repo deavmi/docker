@@ -3,9 +3,6 @@ services:
     extends:
       file: ../../services/ircd/compose.yml
       service: ircd
-    build:
-      args:
-        - NPROC=2
     networks:
       - mainNet
     ports:
