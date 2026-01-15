@@ -23,6 +23,19 @@
   "links": [],
   "panels": [
     {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "panels": [],
+      "title": "General",
+      "type": "row"
+    },
+    {
       "datasource": {
         "type": "prometheus",
         "uid": "prometheus_main"
@@ -92,7 +105,7 @@
         "h": 13,
         "w": 18,
         "x": 0,
-        "y": 0
+        "y": 1
       },
       "id": 2,
       "options": {
@@ -179,10 +192,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 24,
+        "h": 13,
         "w": 6,
         "x": 18,
-        "y": 0
+        "y": 1
       },
       "id": 3,
       "options": {
@@ -242,9 +255,183 @@
       ],
       "title": "TX/RX totals",
       "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 5,
+      "panels": [],
+      "title": "VPNs",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus_main"
+      },
+      "description": "Yggdrasil network statistics",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 15
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus_main"
+          },
+          "editorMode": "builder",
+          "expr": "node_network_receive_packets_total{job=\"Nodes\", device=\"yggdrasil0\"}",
+          "instant": false,
+          "legendFormat": "RX {{server}}",
+          "range": true,
+          "refId": "Yggdrasil RX"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus_main"
+          },
+          "editorMode": "builder",
+          "expr": "node_network_transmit_packets_total{job=\"Nodes\", device=\"yggdrasil0\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "RX {{server}}",
+          "range": true,
+          "refId": "Yggdrasil TX"
+        }
+      ],
+      "title": "Yggdrasil network",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus_main"
+      },
+      "description": "Mycelium network statistics",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 15
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus_main"
+          },
+          "editorMode": "builder",
+          "expr": "node_network_receive_packets_total{job=\"Nodes\", device=\"mycelium0\"}",
+          "instant": false,
+          "legendFormat": "RX {{server}}",
+          "range": true,
+          "refId": "Mycelium RX"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus_main"
+          },
+          "editorMode": "builder",
+          "expr": "node_network_transmit_packets_total{job=\"Nodes\", device=\"mycelium0\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "RX {{server}}",
+          "range": true,
+          "refId": "Mycelium TX"
+        }
+      ],
+      "title": "Mycelium network",
+      "type": "stat"
     }
   ],
   "preload": false,
+  "refresh": "auto",
   "schemaVersion": 42,
   "tags": [],
   "templating": {
@@ -258,5 +445,5 @@
   "timezone": "browser",
   "title": "Networking",
   "uid": "adsvs9n",
-  "version": 1
+  "version": 2
 }
