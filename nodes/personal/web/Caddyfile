@@ -18,7 +18,9 @@
 
 	# Handle metrics
 	handle /metrics {
-	    metrics
+	    metrics {
+	    	per_host
+	    }
 	}
 
 	# Sets the root of where we look
