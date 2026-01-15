@@ -19,7 +19,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 0,
+  "id": 1835012774359040,
   "links": [],
   "panels": [
     {
@@ -34,6 +34,86 @@
       "panels": [],
       "title": "Upstreams",
       "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus_main"
+      },
+      "description": "Availability of all upstreams",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 19,
+        "w": 18,
+        "x": 0,
+        "y": 1
+      },
+      "id": 5,
+      "options": {
+        "calculate": false,
+        "cellGap": 1,
+        "color": {
+          "exponent": 0.5,
+          "fill": "dark-orange",
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Greens",
+          "steps": 2
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": true
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "tooltip": {
+          "mode": "single",
+          "showColorScale": false,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus_main"
+          },
+          "editorMode": "builder",
+          "expr": "caddy_reverse_proxy_upstreams_healthy",
+          "instant": false,
+          "legendFormat": "{{upstream}}",
+          "range": true,
+          "refId": "Map"
+        }
+      ],
+      "title": "Upstream availability",
+      "type": "heatmap"
     },
     {
       "datasource": {
@@ -63,9 +143,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
-        "w": 24,
-        "x": 0,
+        "h": 19,
+        "w": 6,
+        "x": 18,
         "y": 1
       },
       "id": 1,
@@ -108,7 +188,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 20
       },
       "id": 2,
       "panels": [],
@@ -148,7 +228,7 @@
         "h": 5,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 21
       },
       "id": 4,
       "options": {
@@ -188,7 +268,7 @@
     }
   ],
   "preload": false,
-  "refresh": "5m",
+  "refresh": "auto",
   "schemaVersion": 42,
   "tags": [],
   "templating": {
@@ -202,5 +282,5 @@
   "timezone": "browser",
   "title": "Caddy",
   "uid": "ad68pwk",
-  "version": 6
+  "version": 1
 }
