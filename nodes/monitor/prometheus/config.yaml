@@ -78,6 +78,10 @@ scrape_configs:
         labels:
           server: services
           name: 'Services node'
+      - targets: ['ygg.monitor.deavmi.assigned.network:9100']
+        labels:
+          server: monitor
+          name: 'Monitor node'
       - targets: ['ygg.vinyl.lab.networks.deavmi.assigned.network:9100']
         labels:
           server: vinyl
