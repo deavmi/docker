@@ -101,6 +101,12 @@ scrape_configs:
           server: services
           name: 'Services node'
 
+      # Monitor node
+      - targets: ['ygg.monitor.deavmi.assigned.network:80']
+        labels:
+          server: monitor
+          name: 'Monitor node'
+
       # Nostr relays
       - targets: ['nginx_agent_nostr_ephemeral:80']
         labels:
