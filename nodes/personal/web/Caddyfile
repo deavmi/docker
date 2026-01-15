@@ -10,6 +10,10 @@
 
 	# Don't tell HTTP clients to upgrade to HTTPS
 	auto_https disable_redirects
+
+  metrics {
+	 	per_host
+  }
 }
 
 
@@ -18,9 +22,7 @@
 
 	# Handle metrics
 	handle /metrics {
-	    metrics {
-	    	per_host
-	    }
+	    metrics
 	}
 
 	# Sets the root of where we look
