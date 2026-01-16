@@ -19,6 +19,6 @@ services:
     image: prom/snmp-exporter
     container_name: snmp_agent
     restart: unless-stopped
-    command: "--config.file=/etc/snmp_exporter/snmp.yml --log.level=debug"
+    command: "--log.level=debug --config.file=/etc/snmp_exporter/snmp.yml "
     networks:
       - mainNet
