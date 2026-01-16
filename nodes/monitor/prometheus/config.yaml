@@ -15,6 +15,17 @@ scrape_configs:
           server: monitor
           name: "Monitor node"
 
+  # SNMP
+  - job_name: 'snmp'
+    scrape_interval: 5s
+    # metrics_path: '/metrics' # TODO: Will have to specify per endpoint
+
+    static_configs:
+      - targets: ['snmp_agent:9116']
+        labels:
+          router: 'main router'
+          name: "Core router"
+
   # Gitea/Forgejo metrics
   - job_name: 'SCM'
     scrape_interval: 5s
