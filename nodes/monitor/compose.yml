@@ -32,6 +32,8 @@ services:
       service: prometheus
     build:
       context: prometheus/
+    depends_on:
+      - irc_agent
     container_name: prometheus
     networks:
       - mainNet
