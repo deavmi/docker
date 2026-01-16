@@ -18,10 +18,10 @@ scrape_configs:
   # SNMP
   - job_name: 'snmp'
     scrape_interval: 5s
-    # metrics_path: '/metrics' # TODO: Will have to specify per endpoint
-
+    metrics_path: '/snmp'
     static_configs:
       - targets: ['snmp_agent:9116']
+        metrics_path: '/kak'
         labels:
           router: 'main router'
           name: "Core router"
