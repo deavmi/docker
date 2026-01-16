@@ -13,3 +13,11 @@ services:
       - PIE_IRC.SERVER=${AGENT_IRC_PINEWOOD}
     networks:
       - mainNet
+
+  # SNMP exporter
+  snmp_agent:
+    image: prom/snmp-exporter
+    container_name: snmp_agent
+    restart: unless-stopped
+    networks:
+      - mainNet
