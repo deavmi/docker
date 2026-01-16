@@ -18,6 +18,13 @@ services:
     container_name: yggdrasil
     network_mode: "host"
 
+  mycelium:
+    extends:
+      file: ../../services/mycelium/compose.yml
+      service: mycelium
+    container_name: mycelium
+    network_mode: "host"
+
   # Statistics collector
   prometheus:
     extends:
@@ -91,7 +98,7 @@ services:
   web:
     container_name: web
     build:
-      context: web/
+      context: web/hsts
     depends_on:
       - prometheus
       - grafana
