@@ -19,5 +19,6 @@ services:
     image: prom/snmp-exporter
     container_name: snmp_agent
     restart: unless-stopped
+    command: "--log.level=debug"
     networks:
       - mainNet
