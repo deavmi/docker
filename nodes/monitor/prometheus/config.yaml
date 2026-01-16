@@ -15,16 +15,16 @@ scrape_configs:
           server: monitor
           name: "Monitor node"
 
-  # SNMP
-  - job_name: 'snmp'
+  # SNMP jobs
+  - job_name: 'snmp_core_router'
     scrape_interval: 5s
-    metrics_path: '/snmp'
+    metrics_path: '/snmp?target=router.top.networks.deavmi.assigned.network'
     static_configs:
       - targets: ['snmp_agent:9116']
-        metrics_path: '/kak'
         labels:
           router: 'main router'
           name: "Core router"
+          snmp:
 
   # Gitea/Forgejo metrics
   - job_name: 'SCM'
