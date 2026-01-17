@@ -114,15 +114,15 @@ services:
       - "[::]:443:443/tcp"
       - "[::]:443:443/udp"
 
-  # yggdrasil_web_proxy:
-    # container_name: yggdrasil_web_proxy
-    # build:
-      # context: web/non-hsts
-    # depends_on:
-      # - grafana
-    # networks:
-      # ygg_pool_net:
-        # ipv6_address: ${GRAFANA_WPROXY_YGG_ADDR}
+  yggdrasil_web_proxy:
+    container_name: yggdrasil_web_proxy
+    build:
+      context: web/non-hsts
+    depends_on:
+      - grafana
+    networks:
+      ygg_pool_net:
+        ipv6_address: ${GRAFANA_WPROXY_YGG_ADDR}
     # ports:
       # # Firewall expose
       # - 80/tcp
