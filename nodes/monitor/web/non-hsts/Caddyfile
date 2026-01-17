@@ -1,14 +1,10 @@
 {
 	http_port "80"
-	https_port "443"
 
 	log default {
 			output stdout
 			level INFO
 	}
-
-	# Don't tell HTTP clients to upgrade to HTTPS
-	auto_https disable_redirects
 
 	metrics {
 		per_host
@@ -16,7 +12,7 @@
 }
 
 # Domain name for automatic SSL
-:80, {$DOMAIN}:443 {
+:80 {
 
   # Handle metrics
 	handle /metrics {
