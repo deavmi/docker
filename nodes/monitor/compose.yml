@@ -40,7 +40,6 @@ services:
       - mainNet
     volumes:
       - prometheus_data:/prometheus:z
-      # - ${PROMETHEUS_STATE_DIR}:/prometheus:z
     # So that all URLs generated, like links, are to
     # our reverse proxy's route
     command:
@@ -103,7 +102,7 @@ services:
     build:
       context: web/hsts
     depends_on:
-      - prometheus
+      - prometheus # TODO: Why?
       - grafana
     networks:
       - mainNet
@@ -114,3 +113,17 @@ services:
       - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
       - "[::]:443:443/tcp"
       - "[::]:443:443/udp"
+
+  yggdrasil_web_proxy:
+    container_name: yggdrasil_web_proxy
+    build:
+      context: web/non-hsts
+    depends_on:
+      - grafana
+    networks:
+      ygg_pool_net:
+        ipv6_address: ${GRAFANA_WPROXY_YGG_ADDR}
+    ports:
+      # Firewall expose
+      - 80/tcp
+      - 80/udp
