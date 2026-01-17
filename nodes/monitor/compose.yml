@@ -125,7 +125,7 @@ services:
     networks:
       ygg_pool_net:
         ipv6_address: ${GRAFANA_WPROXY_YGG_ADDR}
-    # ports:
+    ports:
       # # Firewall expose
-      # - 80/tcp
-      # - 80/udp
+      - 80/tcp
+      - 80/udp
