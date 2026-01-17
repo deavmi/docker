@@ -118,8 +118,8 @@ services:
     container_name: yggdrasil_web_proxy
     build:
       context: web/non-hsts
-    depends_on:
-      - grafana
+    # depends_on:
+      # - grafana
     networks:
       ygg_pool_net:
         ipv6_address: ${GRAFANA_WPROXY_YGG_ADDR}
