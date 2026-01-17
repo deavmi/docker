@@ -120,6 +120,8 @@ services:
       context: web/non-hsts
     # depends_on:
       # - grafana
+    depends_on:
+      - yggdrasil
     networks:
       ygg_pool_net:
         ipv6_address: ${GRAFANA_WPROXY_YGG_ADDR}
