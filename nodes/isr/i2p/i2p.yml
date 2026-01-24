@@ -1,11 +1,88 @@
 services:
-  i2p:
+  i2pd:
     extends:
-      file: ../../../services/i2pd/compose.yml
+      file: ../../services/i2pd/compose.yml
       service: i2pd
-    container_name: i2p
     build:
       additional_contexts:
-        tunnelsconfig: ./tunnels
+        tunnelsconfig: ./i2pd
       args:
-        - NPROC=4
+        - NPROC=1
+    user: ${USER_UID}:${USER_GID}
+    # FIXME: Enable yggdrasil (somehow)
+    # maybe by placing an Yggdrasil instance
+    # here and putting them on the same `ns`
+    command:
+      - "--datadir=/data"
+      # - "--conf=/conf/i2pd.conf"
+      - "--tunnelsdir=/tunnels"
+      - "--tunconf=/tunnels"
+
+      - "--loglevel=debug"
+
+      - "--ipv4=false"
+      - "--ipv6=true"
+      - "--meshnets.yggdrasil={$I2PD_YGGDRASIL_ENABLE:-false}"
+      - "--meshnets.yggaddress=${I2PD_YGGDRASIL_ADDRESS}"
+      - "--floodfill"
+    # Run in same network namespace as `i2pd_web_proxy`
+    # so that we can bind to its network interface
+    network_mode: service:i2pd_web_proxy
+      # TODO: For Yggdrasil we mayneed to place
+      # this into the same network namespace so
+      # that i2pd can bind to the tun0 interface
+      # TODO: Actually maybe not if host mode
+      # is fine
+    volumes:
+      # Router data, all stuff that can be
+      # deleted but is useful for caching
+      - "${I2PD_DATA_DIR}:/data:z"
+      
+      # Configuration base path
+      - "${I2PD_CONF_DIR}:/conf:z"
+      
+      # Tunnel key files
+      - "${I2PD_KEYS_DIR}:/keys:z"
+
+      # Tunnels directory
+      - "${I2PD_TUNNELS_DIR}:/tunnels:z"
+
+      
+    # FIXME: Enable the below so that
+    # they are allowed via the firewall
+
+
+  # Reverse proxy with HTTPS for `i2pd`
+  i2pd_web_proxy:
+    build:
+      context: flat/
+    container_name: i2pd_web_proxy
+    # Placed here so that we define it
+    # and `i2pd` depends on us hence
+    # bringing us up in the process
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${I2PD_IPV6_ADDR}
+    environment:
+      - "DOMAIN=${I2PD_WEB_DOMAIN}"
+      # - "WHERE_TO_ADDR=gitea_old_anubis" (FIXME: Lookup fails to resolve by Caddy, not sure why)
+      - "WHERE_TO_ADDR=[::1]"
+      - "WHERE_TO_PORT=8182"
+    ports:
+      # Reverse proxy
+      - "80/tcp"
+      - "80/udp"
+      - "443/tcp"
+      - "443/udp"
+
+      # Below are exposed on behalf on the `i2pd`
+      # container
+
+      # SSU2
+      - "6245/tcp"
+
+      # NTCP2
+      - "6246/tcp"
+
+      # Web console
+      - "8182/tcp"
