@@ -1,7 +1,7 @@
 services:
   i2pd:
     extends:
-      file: ../../services/i2pd/compose.yml
+      file: ../../../services/i2pd/compose.yml
       service: i2pd
       args:
         - NPROC=1
