@@ -1,0 +1,36 @@
+networks:
+  ipv6_pool_net__isr:
+    name: ipv6_pool_net_isr
+    driver: bridge
+    enable_ipv4: false
+    enable_ipv6: true
+    ipam:
+      config:
+        # Will use for automatic addressing in cases
+        # whereby no static addresses are assigned to
+        # the given container
+        #
+        # Also will install a route to IPV6_POOL_SUBNET
+        # _via_ the bridge device, enabling access to
+        # the containers attached to said bridge (with
+        # IPv6 addresses in this range)
+        - subnet: ${IPV6_POOL_SUBNET}
+    driver_opts:
+      # Disables any NAT and make this behave as if the
+      # containers are simply on the bridge (nothing
+      # in between them and the host)
+      #
+      # Will, however, add rules still to only allow
+      # access to expose `ports` (although these will
+      # not be using the docker proxy now)
+      com.docker.network.bridge.gateway_mode_ipv6: routed
+  ygg_pool_net_isr:
+    name: ygg_pool_net_isr
+    driver: bridge
+    enable_ipv4: false
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: ${YGG_POOL_SUBNET}
+    driver_opts:
+      com.docker.network.bridge.gateway_mode_ipv6: routed

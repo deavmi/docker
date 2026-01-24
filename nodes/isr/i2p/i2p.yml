@@ -58,7 +58,7 @@ services:
     # and `i2pd` depends on us hence
     # bringing us up in the process
     networks:
-      ipv6_pool_net:
+      ipv6_pool_net_isr:
         ipv6_address: ${I2PD_IPV6_ADDR}
     environment:
       - "DOMAIN=${I2PD_WEB_DOMAIN}"
