@@ -3,9 +3,6 @@ services:
     extends:
       file: ../../services/i2pd/compose.yml
       service: i2pd
-    build:
-      additional_contexts:
-        tunnelsconfig: ./i2pd
       args:
         - NPROC=1
     user: ${USER_UID}:${USER_GID}
