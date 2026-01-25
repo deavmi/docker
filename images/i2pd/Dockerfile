@@ -42,12 +42,10 @@ RUN apt install libssl3 libboost-program-options1.74.0 -y
 
 # Setup binary
 RUN chmod +x /bin/i2pd
-RUN chown i2pd:i2pd /bin/i2pd
 
 # Copy across run script
 COPY run.sh /
 RUN chmod +x run.sh
-RUN chown i2pd:i2pd run.sh
 
 # Run i2pd daemon
 ENTRYPOINT /bin/i2pd
