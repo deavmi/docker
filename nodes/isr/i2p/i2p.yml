@@ -66,6 +66,8 @@ services:
     networks:
       ipv6_pool_net_isr:
         ipv6_address: ${I2PD_IPV6_ADDR}
+      ygg_pool_net_isr:
+        ipv6_address: ${I2PD_YGG_ADDR}
     environment:
       - "DOMAIN=${I2PD_WEB_DOMAIN}"
       # - "WHERE_TO_ADDR=gitea_old_anubis" (FIXME: Lookup fails to resolve by Caddy, not sure why)
