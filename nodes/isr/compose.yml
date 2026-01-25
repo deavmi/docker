@@ -33,16 +33,3 @@ services:
     container_name: mycelium
     network_mode: "host"
 
-  isr_web:
-    container_name: isr_web
-    build:
-      context: flat/
-    networks:
-      - isrNet
-    environment:
-      - "DOMAIN=${CADDY_DOMAIN}"
-    # ports:
-      # - "[::]:80:80/tcp"
-      # - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
-      # - "[::]:443:443/tcp"
-      # - "[::]:443:443/udp"
