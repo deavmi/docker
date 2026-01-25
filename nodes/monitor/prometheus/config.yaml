@@ -67,6 +67,10 @@ scrape_configs:
         labels:
           server: vinyl
           name: 'VinylPi node'
+      - targets: ['ygg.smallnode.deavmi.assigned.network:1234']
+        labels:
+          server: smallnode
+          name: 'Small node'
       # TODO: Add monitor of self (try with a UNIX domain socket?)
 
   # Hosts
@@ -97,6 +101,10 @@ scrape_configs:
         labels:
           server: vinyl
           name: 'VinylPi node'
+      - targets: ['ygg.smallnode.deavmi.assigned.networkk:9100']
+        labels:
+          server: smallnode
+          name: 'Small node'
       # TODO: Add monitor of self
 
   # Caddy statistics
