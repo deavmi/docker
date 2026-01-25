@@ -71,6 +71,10 @@ scrape_configs:
         labels:
           server: smallnode
           name: 'Small node'
+      - targets: ['ygg.isr.deavmi.assigned.network:1234']
+        labels:
+          server: isr
+          name: 'ISR node'
       # TODO: Add monitor of self (try with a UNIX domain socket?)
 
   # Hosts
@@ -105,6 +109,10 @@ scrape_configs:
         labels:
           server: smallnode
           name: 'Small node'
+      - targets: ['ygg.isr.deavmi.assigned.network:9100']
+        labels:
+          server: isr
+          name: 'ISR node'
       # TODO: Add monitor of self
 
   # Caddy statistics
