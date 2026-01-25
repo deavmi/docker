@@ -25,14 +25,9 @@ services:
       - "--meshnets.yggdrasil={$I2PD_YGGDRASIL_ENABLE:-false}"
       - "--meshnets.yggaddress=${I2PD_YGGDRASIL_ADDRESS}"
       - "--floodfill"
-    # Temporarily used to kickstart things and get them
-    # working because it doesn't bootstrap in the other
-    # `ipv6_pool_net` for some reason
-    networks:
-      - isrNet
     # Run in same network namespace as `i2pd_web_proxy`
     # so that we can bind to its network interface
-    # network_mode: service:i2pd_web_proxy
+    network_mode: service:i2pd_web_proxy
       # TODO: For Yggdrasil we mayneed to place
       # this into the same network namespace so
       # that i2pd can bind to the tun0 interface
