@@ -52,7 +52,7 @@ services:
   # Reverse proxy with HTTPS for `i2pd`
   i2pd_web_proxy:
     build:
-      context: flat/
+      context: ../flat/
     container_name: i2pd_web_proxy
     # Placed here so that we define it
     # and `i2pd` depends on us hence
