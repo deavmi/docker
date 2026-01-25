@@ -20,11 +20,11 @@ services:
       # file: ../../services/node_exporter/compose.yml
       # service: statistics
 
-  # yggdrasil:
-    # extends:
-      # file: ../../services/yggdrasil/compose.yml
-      # service: yggdrasil
-    # network_mode: "host"
+  yggdrasil:
+    extends:
+      file: ../../services/yggdrasil/compose.yml
+      service: yggdrasil
+    network_mode: "host"
 
   # mycelium:
     # extends:
