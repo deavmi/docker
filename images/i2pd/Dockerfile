@@ -40,15 +40,6 @@ COPY --from=build /tmp/i2pd /bin/i2pd
 RUN apt update
 RUN apt install libssl3 libboost-program-options1.74.0 -y
 
-# Activate arguments provided as build parameters
-ARG USER_UID
-ARG USER_GID
-
-# Create the i2pd user
-# group
-RUN groupadd i2pd -g $USER_GID
-RUN useradd -m i2pd -u $USER_UID -g $USER_GID
-
 # Setup binary
 RUN chmod +x /bin/i2pd
 RUN chown i2pd:i2pd /bin/i2pd
@@ -57,17 +48,6 @@ RUN chown i2pd:i2pd /bin/i2pd
 COPY run.sh /
 RUN chmod +x run.sh
 RUN chown i2pd:i2pd run.sh
-
-# Create directory for tunnel configuration
-# and then copy across tunnel files
-RUN mkdir /tunnels
-COPY --from=tunnelsconfig * /tunnels
-RUN chown i2pd:i2pd /tunnels -R -v
-RUN ls -la /tunnels && sleep 3
-
-# Switch to i2pd user
-USER i2pd
-WORKDIR /home/i2pd
 
 # Run i2pd daemon
 ENTRYPOINT /bin/i2pd
