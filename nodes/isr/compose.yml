@@ -15,10 +15,10 @@ include:
   - i2p/i2p.yml
 
 services:
-  # host-statistics:
-    # extends:
-      # file: ../../services/node_exporter/compose.yml
-      # service: statistics
+  host-statistics:
+    extends:
+      file: ../../services/node_exporter/compose.yml
+      service: statistics
 
   yggdrasil:
     extends:
