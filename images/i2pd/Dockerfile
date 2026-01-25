@@ -38,7 +38,13 @@ COPY --from=build /tmp/i2pd /bin/i2pd
 
 # Install required libraries
 RUN apt update
-RUN apt install libssl3 libboost-program-options1.74.0 -y
+RUN apt install \
+    libboost-date-time-dev \
+    libboost-filesystem-dev \
+    libboost-program-options-dev \
+    libboost-system-dev \
+    libssl-dev \
+    zlib1g-dev -y
 
 # Setup binary
 RUN chmod +x /bin/i2pd
