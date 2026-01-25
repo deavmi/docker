@@ -101,7 +101,7 @@ scrape_configs:
         labels:
           server: vinyl
           name: 'VinylPi node'
-      - targets: ['ygg.smallnode.deavmi.assigned.networkk:9100']
+      - targets: ['ygg.smallnode.deavmi.assigned.network:9100']
         labels:
           server: smallnode
           name: 'Small node'
