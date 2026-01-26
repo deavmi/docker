@@ -34,6 +34,10 @@ services:
       - I2P_ENABLE_IPV6=${I2P_ENABLE_IPV6:-false}
       - I2P_DISABLE_IPV4=${I2P_DISABLE_IPV4:-false}
 
+      - I2P_HTTP_CONSOLE_BIND_ADDR=${I2P_HTTP_CONSOLE_BIND_ADDR}
+      - I2P_HTTP_CONSOLE_BIND_PORT=${I2P_HTTP_CONSOLE_BIND_PORT}
+      
+
       
     # Run in same network namespace as `i2pd_web_proxy`
     # so that we can bind to its network interface
