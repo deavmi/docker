@@ -1,3 +1,7 @@
+secrets:
+  HTTP_CONSOLE_PASSWORD:
+    file: i2pd.secret
+
 services:
   i2pd:
     extends:
@@ -9,7 +13,9 @@ services:
     # FIXME: Enable yggdrasil (somehow)
     # maybe by placing an Yggdrasil instance
     # here and putting them on the same `ns`
-    command:
+    secrets:
+      - HTTP_CONSOLE_PASSWORD
+    # command:
       # - "--datadir=/data"
       # - "--conf=/conf/i2pd.conf"
 
