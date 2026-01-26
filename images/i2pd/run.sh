@@ -74,7 +74,7 @@ then
     else
         CHOSEN_CONSOLE_ROOT=$CONSOLE__ROOT
     fi
-		HTTP_CONSOLE_PASSWORD="$(cat /run/secrets/I2P_HTTP_CONSOLE_ENABLE)"
+		HTTP_CONSOLE_PASSWORD="$(cat /run/secrets/HTTP_CONSOLE_PASSWORD)"
 		
     CMD="$CMD --http.enabled 1 --http.address $I2P_HTTP_CONSOLE_BIND_ADDR --http.port $I2P_HTTP_CONSOLE_BIND_PORT --http.strictheaders 0 --http.webroot $CHOSEN_CONSOLE_ROOT --http.auth 1 --http.user $I2P_HTTP_CONSOLE_USER --http.pass $HTTP_CONSOLE_PASSWORD"
 fi
