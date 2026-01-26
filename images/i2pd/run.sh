@@ -79,6 +79,14 @@ CMD="$CMD --tunnelsdir /tunnels"
 
 # TODO: Still to do, setting auth
 
+# If IPv4 should be disabled
+if [ ! "$I2P_LOG_LEVEL" = "" ]
+then
+    CMD="$CMD --loglevel $I2P_LOG_LEVEL"
+else
+		CMD="$CMD --loglevel error"
+fi
+
 # Start
 echo "Running with args: '$CMD'"
 i2pd $CMD
