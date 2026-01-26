@@ -65,17 +65,19 @@ CMD="$CMD --tunnelsdir /tunnels"
 
 # Configure web console
 # TODO: Figure out how to get this if to work?
-# if [ $CONSOLE__BIND_ADDR and $CONSOLE__BIND_PORT ]
-# then
+# FIXME: Make this use an "enabled" option
+if [ ! "$I2P_HTTP_CONSOLE_ENABLE" = "false" ]
+then
     if [ ! $CONSOLE__ROOT ]
     then
         CHOSEN_CONSOLE_ROOT="/"
     else
         CHOSEN_CONSOLE_ROOT=$CONSOLE__ROOT
     fi
-
-    CMD="$CMD --http.enabled 1 --http.address $I2P_HTTP_CONSOLE_BIND_ADDR --http.port $I2P_HTTP_CONSOLE_BIND_PORT --http.strictheaders 0 --http.webroot $CHOSEN_CONSOLE_ROOT"
-# fi
+		HTTP_CONSOLE_PASSWORD="$(cat /run/secrets/I2P_HTTP_CONSOLE_ENABLE)"
+		
+    CMD="$CMD --http.enabled 1 --http.address $I2P_HTTP_CONSOLE_BIND_ADDR --http.port $I2P_HTTP_CONSOLE_BIND_PORT --http.strictheaders 0 --http.webroot $CHOSEN_CONSOLE_ROOT --http.auth 1 --http.user $I2P_HTTP_CONSOLE_USER --http.pass $HTTP_CONSOLE_PASSWORD"
+fi
 
 # TODO: Still to do, setting auth
 
