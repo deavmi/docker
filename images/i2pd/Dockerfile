@@ -56,4 +56,4 @@ COPY run.sh /
 RUN chmod +x run.sh
 
 # Run i2pd daemon
-ENTRYPOINT /bin/i2pd
+ENTRYPOINT ./run.sh

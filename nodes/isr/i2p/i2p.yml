@@ -10,21 +10,31 @@ services:
     # maybe by placing an Yggdrasil instance
     # here and putting them on the same `ns`
     command:
-      - "--datadir=/data"
-      - "--conf=/conf/i2pd.conf"
+      # - "--datadir=/data"
+      # - "--conf=/conf/i2pd.conf"
 
       # Main tunnel configuration file
       # and extras directory
       # - "--tunconf=/tunnels/tunnels.conf"
-      - "--tunnelsdir=/tunnels"
+      # - "--tunnelsdir=/tunnels"
 
-      - "--loglevel=debug"
+      # - "--loglevel=debug"
 
-      - "--ipv4=false"
-      - "--ipv6=true"
-      - "--meshnets.yggdrasil={$I2PD_YGGDRASIL_ENABLE:-false}"
-      - "--meshnets.yggaddress=${I2PD_YGGDRASIL_ADDRESS}"
-      - "--floodfill"
+      # - "--ipv4=false"
+      # - "--ipv6=true"
+      # - "--meshnets.yggdrasil={$I2PD_YGGDRASIL_ENABLE:-false}"
+      # - "--meshnets.yggaddress=${I2PD_YGGDRASIL_ADDRESS}"
+      # - "--floodfill"
+    environment:
+      - I2PD_YGGDRASIL_ENABLE=${I2PD_YGGDRASIL_ENABLE:-false}
+      - I2PD_YGGDRASIL_ADDRESS=${I2PD_YGGDRASIL_ADDRESS}
+
+      - I2P_FLOODFILL=${I2P_FLOODFILL:-false}
+
+      - I2P_ENABLE_IPV6=${I2P_ENABLE_IPV6:-false}
+      - I2P_DISABLE_IPV4=${I2P_DISABLE_IPV4:-false}
+
+      
     # Run in same network namespace as `i2pd_web_proxy`
     # so that we can bind to its network interface
     network_mode: service:i2pd_web_proxy

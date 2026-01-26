@@ -5,22 +5,22 @@ CMD=""
 
 # If an Yggdrasil address is specified
 # then enable it
-if [ ! "$MESH_YGGDRASIL_ADDR" = "" ]
+if [ ! "$I2PD_YGGDRASIL_ENABLE" = "false" ]
 then
-    CMD="$CMD --meshnets.yggdrasil --meshnets.yggaddress $MESH_YGGDRASIL_ADDR"
+    CMD="$CMD --meshnets.yggdrasil --meshnets.yggaddress $I2PD_YGGDRASIL_ADDRESS"
     
     # TODO: Add reseed file additional_context requirement
     CMD="$CMD --reseed.yggurls http://[324:71e:281a:9ed3::ace]:7070/,http://[301:65b9:c7cd:9a36::1]:18801/,http://[320:8936:ec1a:31f1::216]/,http://[316:f9e0:f22e:a74f::216]/"
 fi
 
 # If IPv6 should be enabled
-if [ ! "$ENABLE_IPV6" = "" ]
+if [ ! "$I2P_ENABLE_IPV6" = "false" ]
 then
     CMD="$CMD --ipv6"
 fi
 
 # If IPv4 should be disabled
-if [ ! "$DISABLE_IPV4" = "" ]
+if [ ! "$I2P_DISABLE_IPV4" = "false" ]
 then
     # FIXME: Find a way to disable it
     # CMD="$CMD --ipv6"
@@ -30,11 +30,11 @@ fi
 # Data directory for peer profiles, keys, etc.
 # 
 # By default assume `/data`
-if [ "$DATA_DIR" = "" ]
+if [ "$I2PD_DATA_DIR" = "" ]
 then
     CHOSEN_DATA_DIR="/data"
 else
-    CHOSEN_DATA_DIR="$DATA_DIR"
+    CHOSEN_DATA_DIR="$I2PD_DATA_DIR"
 fi
 
 # Set data directory
@@ -55,7 +55,7 @@ fi
 # CMD="$CMD --conf $CHOSEN_CONFIG_DIR"
 
 # If we should be a floodfill
-if [ ! "$FLOODFILL" = "" ]
+if [ ! "$I2P_FLOODFILL" = "false" ]
 then
     CMD="$CMD --floodfill"
 fi
@@ -81,5 +81,5 @@ CMD="$CMD --tunnelsdir /tunnels"
 
 # Start
 echo "Running with args: '$CMD'"
-# i2pd $CMD
-i2pd
+i2pd $CMD
+# i2pd
