@@ -25,3 +25,20 @@ services:
       service: mycelium
     container_name: mycelium
     network_mode: "host"
+
+  ircd:
+    image: ghcr.io/deavmi/unrealircd-docker:master
+    container_name: ircd
+    restart: unless-stopped
+    networks:
+      - mainNet
+    volumes:
+      - ${IRCD_CONFIG_DIR}:/home/unreal/ircd/conf/
+
+      # Makes timezone and time information available
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "6667:6667"
+      - "6697:6697"
+      - "6900:6900"
