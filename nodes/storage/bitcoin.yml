@@ -73,6 +73,8 @@ services:
       # TOOD: Hack cjdns support to support yggdrasil connections
       # and/or add manual ygg peers
       - '-onlynet=i2p'
+      - '-onlynet=ipv6'
+      # - '-onlynet=i2p'
     ports:
       # P2P connection
       - 8334/tcp
