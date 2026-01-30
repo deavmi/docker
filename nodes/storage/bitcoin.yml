@@ -62,7 +62,7 @@ services:
       # Setup a tunnel via i2pd so
       # that we can make outbound
       # connections
-      - '-i2psam=i2pd:${I2P_SAM_PORT}'
+      # - '-i2psam=i2pd:${I2P_SAM_PORT}'
 
       # Also accept inbound i2p
       # connections
