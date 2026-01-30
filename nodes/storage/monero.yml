@@ -22,6 +22,9 @@ services:
       - 18080/tcp
       - 18081/tcp
 
+      # On behalf of the Prometheus exporter
+      - 9000/tcp
+
   monero_stats:
     image: ghcr.io/deavmi/monero-exporter:master
     network_mode: service:monero
@@ -29,5 +32,3 @@ services:
       - "--bind-addr 9090"
       - "--monero-addr [::1]:18081"
       - "--telemetry-path /metrics"
-    ports:
-      - 9000/tcp
