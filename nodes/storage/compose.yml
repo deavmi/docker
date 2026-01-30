@@ -49,5 +49,5 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${IPV6_NODE1_ADDR}
-      yggdrasil_net:
+      ygg_pool_net:
         ipv6_address: ${YGG_NODE1_ADDR}
