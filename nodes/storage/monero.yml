@@ -24,7 +24,7 @@ services:
 
   monero_stats:
     image: ghcr.io/deavmi/monero-exporter
-    network: service:monero
+    network_mode: service:monero
     command:
       - "--bind-addr 9090"
       - "--monero-addr [::1]:18081"
