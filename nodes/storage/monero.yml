@@ -7,6 +7,7 @@ services:
     extends:
       file: ../../services/monero/compose.yml
       service: monero
+    container_name: monero
     build:
       args:
         - NPROC=1
@@ -28,6 +29,7 @@ services:
   monero_stats:
     image: ghcr.io/deavmi/monero-exporter:master
     network_mode: service:monero
+    container_name: monero_stats
     command:
       - "--bind-addr 9090"
       - "--monero-addr [::1]:18081"
