@@ -14,7 +14,10 @@ services:
       - path: monero.secrets
         required: true
     networks:
-      - mainNet
+      ipv6_pool_net:
+        ipv6_address: ${MONERO_IPV6_ADDRESS}
+      ygg_pool_net:
+        ipv6_address: ${MONERO_YGG_ADDRESS}
     ports:
-      - 18080:18080/tcp
-      - 18081:18081/tcp
+      - 18080/tcp
+      - 18081/tcp

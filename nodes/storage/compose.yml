@@ -15,6 +15,9 @@ include:
   # Crypto services
   - crypto.yml
 
+  # Network definitions
+  - networks.yml
+
 services:
   host-statistics:
     extends:
