@@ -31,6 +31,6 @@ services:
     network_mode: service:monero
     container_name: monero_stats
     command:
-      - "--bind-addr :9000"
-      - "--monero-addr [::1]:18081"
-      - "--telemetry-path /metrics"
+      - "--bind-addr=:9000"
+      - "--monero-addr=[::1]:18081"
+      - "--telemetry-path=/metrics"
