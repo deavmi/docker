@@ -75,11 +75,12 @@ services:
       - '-onlynet=i2p'
     ports:
       # P2P connection
-      - 8334:8334/tcp
+      - 8334/tcp
     networks:
-      # For talking with Electrum
-      - bitnet_internal
-      - mainNet
+      ipv6_pool_net:
+        ipv6_address: ${BITCOIN_IPV6_ADDRESS}
+      ygg_pool_net:
+        ipv6_address: ${BITCOIN_YGG_ADDRESS}
 
   # TODO: Setup i2pd here so that
   # it can be accessed and configured
@@ -114,7 +115,10 @@ services:
       - ${ELECTRUM_DATA_DIR}:/data
       - ${ELECTRUM_COOKIES_DIR}:/cookieDir
     networks:
-      - mainNet
+      ipv6_pool_net:
+        ipv6_address: ${ELECTRUM_IPV6_ADDRESS}
+      ygg_pool_net:
+        ipv6_address: ${ELECTRUM_YGG_ADDRESS}
     ports:
-      - "${ELECTRUM_PORT}:50001/tcp"
-      - ${ELECTRUM_METRICS_PORT}:4224/tcp
+      - 50001/tcp
+      - 4224/tcp
