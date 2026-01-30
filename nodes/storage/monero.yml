@@ -23,7 +23,7 @@ services:
       - 18081/tcp
 
   monero_stats:
-    image: ghcr.io/deavmi/monero-exporter
+    image: ghcr.io/deavmi/monero-exporter:master
     network_mode: service:monero
     command:
       - "--bind-addr 9090"
