@@ -124,6 +124,8 @@ services:
     extends:
       file: ../../../services/i2pd-exporter/compose.yml
       service: i2pd_exporter
+    depends_on:
+      - i2pd
     environment:
       - I2PCONTROL_ADDRESS=${I2PD_IPV6_ADDR}
       - METRICS_LISTEN_ADDR=9600
