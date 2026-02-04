@@ -1,0 +1,5 @@
+services:
+  i2pd_exporter:
+    image: ghcr.io/deavmi/i2pd-exporter:main
+    container_name: i2pd_prometheus
+    restart: unless-stopped
