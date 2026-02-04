@@ -89,6 +89,12 @@ else
 		CMD="$CMD --loglevel error"
 fi
 
+# If I2PControl should be enabled
+if [ "$I2P_CONTROL_ENABLED" = "true" ]
+then
+		CMD="$CMD --i2pcontrol.enabled --i2pcontrol.address $I2P_CONTROL_ADDR --i2pcontrol.port $I2P_CONTROL_PORT"
+fi
+
 # Start
 echo "Running with args: '$CMD'"
 i2pd $CMD
