@@ -46,7 +46,13 @@ services:
       - I2P_HTTP_CONSOLE_BIND_PORT=${I2P_HTTP_CONSOLE_BIND_PORT}
       
       - I2P_LOG_LEVEL=${I2P_LOG_LEVEL:-error}
-      
+
+      # Enable I2PControl and set required ports
+      # so that `i2pd_exporter` can access it
+      - I2P_CONTROL_ENABLED=${I2P_CONTROL_ENABLED}
+      - I2P_CONTROL_ADDR=${I2P_CONTROL_ADDR}
+      - I2P_CONTROL_PORT=${I2P_CONTROL_PORT}
+
     # Run in same network namespace as `i2pd_web_proxy`
     # so that we can bind to its network interface
     network_mode: service:i2pd_web_proxy
@@ -113,3 +119,20 @@ services:
 
       # Web console
       - "8182/tcp"
+
+  i2pd_exporter:
+    extends:
+      file: ../../../services/i2pd-exporter/compose.yml
+      service: i2pd_exporter
+    environment:
+      - I2PCONTROL_ADDRESS=${I2PD_IPV6_ADDR}
+      - METRICS_LISTEN_ADDR=9600
+    networks:
+      # For access to the `i2pd` container
+      # so that we can connetc to its i2control
+      # port
+      ipv6_pool_net_isr:
+        ipv6_address: ${IPV6_I2P_EXPORTER_ADDR}
+    ports:
+      # Allow access through firewall
+      - 9600/tcp
