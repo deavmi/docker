@@ -128,7 +128,7 @@ services:
       - i2pd
     environment:
       - I2PCONTROL_ADDRESS=${I2PD_IPV6_ADDR}
-      - METRICS_LISTEN_ADDR=9600
+      - "METRICS_LISTEN_ADDR=[::]:9600"
     networks:
       # For access to the `i2pd` container
       # so that we can connetc to its i2control
