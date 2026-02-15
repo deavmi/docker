@@ -15,6 +15,18 @@ scrape_configs:
           server: monitor
           name: "Monitor node"
 
+  # Scrape ISR I2P node
+  - job_name: 'isr'
+    scrape_interval: 5s
+    metrics_path: '/metrics'
+
+    static_configs:
+      - targets: ['monitor.i2p.deavmi.assigned.network:9600']
+        labels:
+          server: isr
+          service: i2p
+          name: "ISR node"
+
   # SNMP jobs
   - job_name: 'snmp_core_router'
     scrape_interval: 5s
