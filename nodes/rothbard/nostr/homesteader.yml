@@ -31,4 +31,4 @@ services:
         ipv6_address: ${NOSTR_RELAY_HOMESTEADER_ADDR_Y}
     ports:
       # Expose (firewall) on behalf of `personal_relay`
-      - :::7000/tcp
+      - 7000/tcp
