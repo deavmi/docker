@@ -17,7 +17,7 @@ services:
       context: ../../../images/reticulum
     volumes:
       # Configuration and storage for lxmd
-      - /mnt/datadisk/volumes/lxmd/:/data:z
+      - ${LXMD_DATA_PATH}:/data:z
     user: ${USER_UID}:${USER_GID}
     networks:
       - retNet
@@ -43,11 +43,11 @@ services:
         - GAI_PREFER_IPV6=true
     volumes:
       # Reticulum configuration and storage directory
-      - /mnt/datadisk/volumes/reticulum/:/data:z
+      - ${RETICULUM_DATA_PATH:/data:z
     user: ${USER_UID}:${USER_GID}
-    # devices:
+    devices:
       # Add RNode devices here
-      # - /dev/ttyACM0:/dev/rnode1:rwm
+      - /dev/ttyACM0:/dev/rnode1:rwm
     networks:
       - retNet
     ports:
