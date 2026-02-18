@@ -33,7 +33,6 @@ services:
     restart: unless-stopped
     network_mode: service:personal_db
 
-
   personal_relay_ygg:
     depends_on:
       - personal_relay

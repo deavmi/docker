@@ -27,8 +27,25 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${NOSTR_RELAY_HOMESTEADER_ADDR}
+    ports:
+      # Expose (firewall) on behalf of `personal_relay`
+      - 7000/tcp
+
+
+  homesteader_relay_ygg:
+    depends_on:
+      - homesteader_relay
+    build:
+      context: flat
+    container_name: homesteader_relay_ygg
+    restart: unless-stopped
+    networks:
       yggdrasil_net:
         ipv6_address: ${NOSTR_RELAY_HOMESTEADER_ADDR_Y}
+    environment:
+      - PORT=7000
+      - WHERE_TO_ADDR=homesteader.nostr.rothbard.lab.networks.deavmi.assigned.network
+      - WHERE_TO_PORT=7000
     ports:
       # Expose (firewall) on behalf of `personal_relay`
       - 7000/tcp
