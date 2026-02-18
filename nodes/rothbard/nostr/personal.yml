@@ -46,7 +46,7 @@ services:
         ipv6_address: ${NOSTR_RELAY_PERSONAL_ADDR_Y}
     environment:
       - PORT=7000
-      - WHEERE_TO_ADDR=personal.nostr.rothbard.lab.networks.deavmi.assigned.network
+      - WHERE_TO_ADDR=personal.nostr.rothbard.lab.networks.deavmi.assigned.network
       - WHERE_TO_PORT=7000
     ports:
       # Expose (firewall) on behalf of `personal_relay`
