@@ -20,8 +20,6 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${NOSTR_RELAY_PERSONAL_ADDR}
-      yggdrasil_net:
-        ipv6_address: ${NOSTR_RELAY_PERSONAL_ADDR_Y}
     ports:
       # Expose (firewall) on behalf of `personal_relay`
       - 7000/tcp
@@ -34,3 +32,22 @@ services:
     container_name: personal_relay
     restart: unless-stopped
     network_mode: service:personal_db
+
+
+  personal_relay_ygg:
+    depends_on:
+      - personal_relay
+    build:
+      context: flat
+    container_name: personal_relay_ygg
+    restart: unless-stopped
+    networks:
+      yggdrasil_net:
+        ipv6_address: ${NOSTR_RELAY_PERSONAL_ADDR_Y}
+    environment:
+      - PORT=7000
+      - WHEERE_TO_ADDR=personal.nostr.rothbard.lab.networks.deavmi.assigned.network
+      - WHERE_TO_PORT=7000
+    ports:
+      # Expose (firewall) on behalf of `personal_relay`
+      - 7000/tcp
