@@ -25,8 +25,8 @@ services:
     volumes:
       - ${NOSTR_HOMESTEADER_DB_PATH}:/var/lib/postgresql/data:z
     networks:
-      ipv6_pool_net:
-        ipv6_address: ${NOSTR_RELAY_HOMESTEADER_ADDR}
+      # ipv6_pool_net:
+        # ipv6_address: ${NOSTR_RELAY_HOMESTEADER_ADDR}
       yggdrasil_net:
         ipv6_address: ${NOSTR_RELAY_HOMESTEADER_ADDR_Y}
     ports:
