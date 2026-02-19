@@ -18,6 +18,9 @@ services:
     volumes:
       # Configuration and storage for lxmd
       - ${LXMD_DATA_PATH}:/data:z
+      
+      # Local RNS instance configuration path
+      - ${LXMD_RNS_PATH}:/rns:z
     user: ${USER_UID}:${USER_GID}
     networks:
       - retNet
