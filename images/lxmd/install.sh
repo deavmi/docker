@@ -1,4 +1,4 @@
 #!/bin/sh
 
 
-pip3 install lxmd --break-system-packages
+pip3 install lxmf --break-system-packages
