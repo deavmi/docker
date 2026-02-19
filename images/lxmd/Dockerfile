@@ -46,4 +46,4 @@ RUN /tmp/./install.sh
 RUN rm /tmp/install.sh
 
 # Run the daemon
-CMD sleep 5 && lxmd --config /data
+CMD sleep 5 && lxmd --config /data --rnsconfig /rns
