@@ -21,6 +21,14 @@ RUN apt install python3 python3-pip -y
 # RUN groupadd reticulum -g $USER_GID
 # RUN useradd -m reticulum -u $USER_UID -g $USER_GID
 
+# It seems that device mounts seem to mount
+# device nodes with a gid that matches the container
+# image's `dialout` group. Therefore ensure
+# that we add ourselves to whatever gid `dialout`
+# refers too as that is the only way we will
+# be able to get access to that device node
+RUN usermod -aG dialout $(whoami)
+
 # Add us to the group which the
 # serial device files are grouped
 # under (permission-wise)
