@@ -37,7 +37,6 @@ RUN chmod +x /tmp/install.sh
 
 # Add the directory where pip will
 # install binaries to to our PATH
-# ENV PATH=$PATH:/home/reticulum/.local/bin
 ENV PATH=$PATH:/home/root/.local/bin
 
 # Install reticulum and delete

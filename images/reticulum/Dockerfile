@@ -9,17 +9,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update
 RUN apt upgrade -y
 
-# Activate arguments provided as build parameters
-# ARG USER_UID
-# ARG USER_GID
-
 # Install Python3 and requirements
 RUN apt install python3 python3-pip -y
-
-# Create the reticulum user
-# and group
-# RUN groupadd reticulum -g $USER_GID
-# RUN useradd -m reticulum -u $USER_UID -g $USER_GID
 
 # It seems that device mounts seem to mount
 # device nodes with a gid that matches the container
@@ -28,11 +19,6 @@ RUN apt install python3 python3-pip -y
 # refers too as that is the only way we will
 # be able to get access to that device node
 RUN usermod -aG dialout $(whoami)
-
-# Add us to the group which the
-# serial device files are grouped
-# under (permission-wise)
-# RUN usermod reticulum -aG dialout
 
 # Install ncat (useful tool)
 RUN apt install ncat -y
@@ -56,15 +42,9 @@ ARG PURE_INSTALL
 # script
 COPY install.sh /tmp
 RUN chmod +x /tmp/install.sh
-# RUN chown reticulum:reticulum /tmp/install.sh
-
-# Create running directory
-# USER reticulum
-# WORKDIR /home/reticulum
 
 # Add the directory where pip will
 # install binaries to to our PATH
-# ENV PATH=$PATH:/home/reticulum/.local/bin
 ENV PATH=$PATH:/home/root/.local/bin
 
 # Install reticulum and delete
