@@ -18,15 +18,6 @@ RUN apt install picocom -y
 RUN apt install curl wget -y
 RUN apt install net-tools dnsutils iputils-ping -y
 
-# Activate build argument `GAI_PREFER_IPV6`
-ARG GAI_PREFER_IPV6
-
-# Run GAI configuration
-COPY gai.sh /tmp
-RUN chmod +x /tmp/gai.sh
-RUN /tmp/gai.sh
-RUN rm /tmp/gai.sh
-
 # Activate build argument `PURE_INSTALL`
 ARG PURE_INSTALL
 
