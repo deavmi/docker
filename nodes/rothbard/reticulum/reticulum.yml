@@ -45,6 +45,14 @@ services:
       # Reticulum configuration and storage directory
       - ${RETICULUM_DATA_PATH}:/data:z
     user: ${USER_UID}:${USER_GID}
+    group_add:
+      # On container-side the device node
+      # (for the RNode) will be mounted with
+      # GID 20. Hence ensure we add that to
+      # the effective GID supplementary set
+      # so that we have permissions to interact
+      # with that device
+      - 20
     devices:
       # Add RNode devices here
       - /dev/ttyACM0:/dev/rnode1:rwm
