@@ -18,7 +18,7 @@ RUN apt install python3 python3-pip -y
 # that we add ourselves to whatever gid `dialout`
 # refers too as that is the only way we will
 # be able to get access to that device node
-RUN usermod -aG dialout $(whoami)
+RUN usermod $(whoami) -aG dialout
 
 # Install ncat (useful tool)
 RUN apt install ncat -y
