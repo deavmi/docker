@@ -12,14 +12,6 @@ RUN apt upgrade -y
 # Install Python3 and requirements
 RUN apt install python3 python3-pip -y
 
-# It seems that device mounts seem to mount
-# device nodes with a gid that matches the container
-# image's `dialout` group. Therefore ensure
-# that we add ourselves to whatever gid `dialout`
-# refers too as that is the only way we will
-# be able to get access to that device node
-RUN usermod $(whoami) -aG dialout
-
 # Install ncat (useful tool)
 RUN apt install ncat -y
 RUN apt install picocom -y
