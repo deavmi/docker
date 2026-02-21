@@ -31,9 +31,6 @@ services:
     build:
       context: ../../../images/reticulum
       args:
-        - USER_UID=1000
-        - USER_GID=1003
-
         # This platform cannot use
         # the crypto library, hence
         # we must use the `rnspure`
