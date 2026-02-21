@@ -698,7 +698,7 @@
           "expr": "node_network_transmit_packets_total{job=\"Nodes\", device=\"yggdrasil0\"}",
           "hide": false,
           "instant": false,
-          "legendFormat": "RX {{server}}",
+          "legendFormat": "TX {{server}}",
           "range": true,
           "refId": "Yggdrasil TX"
         }
@@ -802,5 +802,5 @@
   "timezone": "browser",
   "title": "Networking",
   "uid": "adsvs9n",
-  "version": 3
+  "version": 4
 }
