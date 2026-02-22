@@ -12,7 +12,13 @@ services:
     container_name: lxmd
     restart: unless-stopped
     depends_on:
+      # Needs the other reticulum instance to be available
+      # so that lxmd's own RNS instance will have another 
+      # instance to announce to on startup and we won't have
+      # to wait long for it to re-announce later
       - reticulum
+        condition: service_healthy
+        restart: false
     build:
       context: ../../../images/lxmd
     environment:
@@ -20,7 +26,6 @@ services:
       # if you didn't make startup wait a little
       # bit (clearly for some Docker networking interfaces
       # to properly initialize)
-      #
       - SLEEP_TIME=5
     volumes:
       # Configuration and storage for lxmd
