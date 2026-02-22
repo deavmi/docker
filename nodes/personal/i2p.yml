@@ -33,13 +33,13 @@ services:
       - "i2pd_data:/data:z"
       
       # Configuration base path
-      - "i2pd_conf:/conf:z"
+      - "./i2p/conf:/conf:z"
       
       # Tunnel key files
       - "i2pd_keys:/keys:z"
 
       # Tunnels directory
-      - "./tunnels:/tunnels:zr"
+      - "./i2p/tunnels:/tunnels:zr"
 
       # For mapping .i2pd
       - "i2pd_dot:/.i2pd:z"
