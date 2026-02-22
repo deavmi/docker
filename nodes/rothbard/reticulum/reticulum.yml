@@ -21,7 +21,6 @@ services:
       # bit (clearly for some Docker networking interfaces
       # to properly initialize)
       #
-      However, I also make this one wait longer
       - SLEEP_TIME=5
     volumes:
       # Configuration and storage for lxmd
