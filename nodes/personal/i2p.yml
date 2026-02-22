@@ -30,8 +30,8 @@ services:
       - I2P_FLOODFILL=false
 
       # Set logging level
-      # - I2P_LOG_LEVEL=${I2P_LOG_LEVEL:-error}
-      - I2P_LOG_LEVEL=info
+      - I2P_LOG_LEVEL=${I2P_LOG_LEVEL:-error}
+      # - I2P_LOG_LEVEL=info
 
       # Disable the web interface
       - I2P_HTTP_CONSOLE_ENABLE=false
