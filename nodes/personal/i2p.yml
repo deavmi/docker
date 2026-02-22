@@ -45,7 +45,7 @@ services:
       
       # Configuration base path
       # - "./i2p/conf:/conf:z"
-      - "i2p_conf:/conf:z"
+      - "i2pd_conf:/conf:z"
       
       # Tunnel key files
       - "i2pd_keys:/keys:z"
