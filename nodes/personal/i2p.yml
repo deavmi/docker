@@ -19,7 +19,7 @@ services:
       - I2P_DISABLE_IPV4=${I2P_DISABLE_IPV4:-false}
       
       - I2PD_YGGDRASIL_ENABLE=false
-      # - I2PD_YGGDRASIL_ADDRESS=${YGGDRASIL_ADDRESS}
+      - I2PD_YGGDRASIL_ADDRESS=8888
       
       - I2P_FLOODFILL=false
 
