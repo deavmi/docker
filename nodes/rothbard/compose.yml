@@ -53,7 +53,9 @@ services:
       - "443/udp"
       - "2019/tcp" # TODO: Remove this it is FULL ADMIN PORT (only prometheus must be accessing this)
     networks:
-      ipv6_pool_net:
-        ipv6_address: ${IPV6_NODE1_ADDR}
-      yggdrasil_net:
-        ipv6_address: ${YGG_NODE1_ADDR}
+      - mainNet
+    # networks:
+      # ipv6_pool_net:
+        # ipv6_address: ${IPV6_NODE1_ADDR}
+      # yggdrasil_net:
+        # ipv6_address: ${YGG_NODE1_ADDR}
