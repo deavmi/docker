@@ -22,7 +22,8 @@ services:
       - I2P_LOG_LEVEL=${I2P_LOG_LEVEL:-error}
 
       - I2P_HTTP_CONSOLE_ENABLE=false
-
+    networks:
+      - mainNet
     volumes:
       # Router data, all stuff that can be
       # deleted but is useful for caching
