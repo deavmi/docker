@@ -44,6 +44,11 @@ ENV PATH=$PATH:/home/root/.local/bin
 RUN /tmp/./install.sh
 RUN rm /tmp/install.sh
 
+# Setup healthcheck
+COPY healthcheck.sh /healthcheck.sh
+RUN chmod +x /healthcheck.sh
+HEALTHCHECK --interval=10s CMD /./healthcheck.sh
+
 # Run the daemon
 ENV PYTHONUNBUFFERED=1
 ENV SLEEP_TIME=5
