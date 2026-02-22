@@ -7,13 +7,3 @@ networks:
     ipam:
       config:
         - subnet: fde4:493b:fc7f::/48
-
-
-  pseudoNetForI2p:
-    driver: bridge
-    name: pseudoNetForI2p
-    enable_ipv6: true
-    enable_ipv4: false
-    ipam:
-      config:
-        - subnet: fde4:493a:fc7f::/48
