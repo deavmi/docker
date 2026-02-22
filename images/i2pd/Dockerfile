@@ -46,7 +46,7 @@ RUN apt install \
     libssl-dev \
     zlib1g-dev -y
 
-RUN apt install net-tools curl -y
+RUN apt install net-tools curl iputils-ping tcpdump -y
 
 # Setup binary
 RUN chmod +x /bin/i2pd
