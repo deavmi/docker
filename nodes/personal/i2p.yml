@@ -1,4 +1,4 @@
-olumes:
+volumes:
   i2pd_data:
   i2pd_keys:
   i2pd_dot:
