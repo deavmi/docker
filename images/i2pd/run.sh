@@ -7,7 +7,12 @@ CMD=""
 # then enable it
 if [ ! "$I2PD_YGGDRASIL_ENABLE" = "false" ]
 then
-    CMD="$CMD --meshnets.yggdrasil --meshnets.yggaddress $I2PD_YGGDRASIL_ADDRESS"
+		CMD="$CMD --meshnets.yggdrasil"
+		
+		if [ ! "$I2PD_YGGDRASIL_ADDRESS" = "" ]
+		then
+    	CMD="$CMD --meshnets.yggaddress $I2PD_YGGDRASIL_ADDRESS"
+    fi
     
     # TODO: Add reseed file additional_context requirement
     CMD="$CMD --reseed.yggurls http://[324:71e:281a:9ed3::ace]:7070/,http://[301:65b9:c7cd:9a36::1]:18801/,http://[320:8936:ec1a:31f1::216]/,http://[316:f9e0:f22e:a74f::216]/"
