@@ -12,12 +12,7 @@ services:
     container_name: lxmd
     restart: unless-stopped
     depends_on:
-      # Needs the other reticulum instance to be available
-      # so that lxmd's own RNS instance will have another 
-      # instance to announce to on startup and we won't have
-      # to wait long for it to re-announce later
-      reticulum:
-        condition: service_healthy
+      - reticulum
     build:
       context: ../../../images/lxmd
     environment:
