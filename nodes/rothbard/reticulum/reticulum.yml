@@ -16,7 +16,7 @@ services:
       # so that lxmd's own RNS instance will have another 
       # instance to announce to on startup and we won't have
       # to wait long for it to re-announce later
-      - reticulum
+      reticulum:
         condition: service_healthy
         restart: false
     build:
