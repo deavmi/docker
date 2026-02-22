@@ -13,6 +13,13 @@ then
     CMD="$CMD --reseed.yggurls http://[324:71e:281a:9ed3::ace]:7070/,http://[301:65b9:c7cd:9a36::1]:18801/,http://[320:8936:ec1a:31f1::216]/,http://[316:f9e0:f22e:a74f::216]/"
 fi
 
+# If we should do transit (default is empty
+# meaning that we DO transit)
+if [ ! "$I2P_NO_TRANSIT" = "" ]
+then
+	CMD="$CMD --notransit"
+fi
+
 # If IPv6 should be enabled
 if [ ! "$I2P_ENABLE_IPV6" = "false" ]
 then
