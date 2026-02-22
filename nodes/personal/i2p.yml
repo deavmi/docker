@@ -1,6 +1,5 @@
 volumes:
   i2pd_data:
-  i2pd_conf:
   i2pd_keys:
   i2pd_dot:
 
