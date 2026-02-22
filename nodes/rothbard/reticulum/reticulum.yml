@@ -15,6 +15,14 @@ services:
       - reticulum
     build:
       context: ../../../images/lxmd
+    environment:
+      # AutoPeering over link-local didn't work
+      # if you didn't make startup wait a little
+      # bit (clearly for some Docker networking interfaces
+      # to properly initialize)
+      #
+      However, I also make this one wait longer
+      - SLEEP_TIME=5
     volumes:
       # Configuration and storage for lxmd
       - ${LXMD_DATA_PATH}:/data:z
@@ -41,6 +49,12 @@ services:
         # whenever getaddrinfo() is
         # used
         - GAI_PREFER_IPV6=true
+    environment:
+      # AutoPeering over link-local didn't work
+      # if you didn't make startup wait a little
+      # bit (clearly for some Docker networking interfaces
+      # to properly initialize)
+      - SLEEP_TIME=5
     volumes:
       # Reticulum configuration and storage directory
       - ${RETICULUM_DATA_PATH}:/data:z

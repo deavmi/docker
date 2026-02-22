@@ -37,4 +37,5 @@ RUN rm /tmp/install.sh
 
 # Run the daemon
 ENV PYTHONUNBUFFERED=1
-CMD sleep 5 && lxmd --config /data --rnsconfig /rns
+ENV SLEEP_TIME=5
+CMD sleep $SLEEP_TIME && lxmd --config /data --rnsconfig /rns

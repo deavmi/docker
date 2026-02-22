@@ -46,4 +46,5 @@ RUN rm /tmp/install.sh
 
 # Run the daemon
 ENV PYTHONUNBUFFERED=1
-CMD sleep 5 && rnsd --config /data
+ENV SLEEP_TIME=5
+CMD sleep $SLEEP_TIME && rnsd --config /data
