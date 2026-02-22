@@ -2,6 +2,7 @@ volumes:
   i2pd_data:
   i2pd_keys:
   i2pd_dot:
+  i2pd_conf:
 
 services:
   i2pd:
@@ -43,7 +44,8 @@ services:
       - "i2pd_data:/data:z"
       
       # Configuration base path
-      - "./i2p/conf:/conf:z"
+      # - "./i2p/conf:/conf:z"
+      - "i2p_conf:/conf:z"
       
       # Tunnel key files
       - "i2pd_keys:/keys:z"
