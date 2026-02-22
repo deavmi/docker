@@ -1,4 +1,4 @@
-volumes:
+olumes:
   i2pd_data:
   i2pd_keys:
   i2pd_dot:
@@ -19,7 +19,7 @@ services:
       - I2P_DISABLE_IPV4=${I2P_DISABLE_IPV4:-false}
       
       - I2PD_YGGDRASIL_ENABLE=true
-      - I2PD_YGGDRASIL_ADDRESS=${YGGDRASIL_ADDRESS}
+      # - I2PD_YGGDRASIL_ADDRESS=${YGGDRASIL_ADDRESS}
       
       - I2P_FLOODFILL=false
 
