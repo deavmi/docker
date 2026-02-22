@@ -1,0 +1,39 @@
+volumes:
+  i2pd_data:
+  i2pd_conf:
+  i2pd_keys:
+  i2pd_dot:
+
+services:
+  i2pd:
+    extends:
+      file: ../../services/i2pd/compose.yml
+      service: i2pd
+      args:
+        - NPROC=1
+    # TODO: Can't properly use Docker volumes
+    # if we enable this. Thankfully I don't
+    # care about storing the data
+    # user: ${USER_UID}:${USER_GID}
+    environment:
+      - I2P_ENABLE_IPV6=${I2P_ENABLE_IPV6:-false}
+      - I2P_DISABLE_IPV4=${I2P_DISABLE_IPV4:-false}
+
+      - I2P_LOG_LEVEL=${I2P_LOG_LEVEL:-error}
+
+    volumes:
+      # Router data, all stuff that can be
+      # deleted but is useful for caching
+      - "i2pd_data:/data:z"
+      
+      # Configuration base path
+      - "i2pd_conf:/conf:z"
+      
+      # Tunnel key files
+      - "i2pd_keys:/keys:z"
+
+      # Tunnels directory
+      - "./tunnels:/tunnels:zr"
+
+      # For mapping .i2pd
+      - "i2pd_dot:/.i2pd:z"

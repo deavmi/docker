@@ -1,0 +1,8 @@
+networks:
+  mainNet:
+    driver: bridge
+    name: mainNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:493b:fc7f::/48
