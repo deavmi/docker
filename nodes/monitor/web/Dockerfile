@@ -4,5 +4,5 @@ FROM caddy:latest
 # Copy over configuration file
 COPY Caddyfile /etc/caddy/Caddyfile
 
-RUN mkdir /data
+# RUN mkdir /data
 COPY index.html /data
