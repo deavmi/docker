@@ -20,7 +20,7 @@ scrape_configs:
     scrape_interval: 5s
     metrics_path: '/metrics'
     http_headers:
-      x-prometheus-scrape-timeout-seconds:
+      bruh:
         values: ['1']
     static_configs:
       - targets: ['i2p.isr.deavmi.assigned.network:9600']
