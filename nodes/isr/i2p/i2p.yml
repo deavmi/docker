@@ -127,7 +127,7 @@ services:
     depends_on:
       - i2pd
     environment:
-      - I2PCONTROL_ADDRESS=${I2PD_IPV6_ADDR}
+      - I2PCONTROL_ADDRESS=http://${I2PD_IPV6_ADDR}:${I2P_CONTROL_PORT}
       - "METRICS_LISTEN_ADDR=[::]:9600"
     networks:
       # For access to the `i2pd` container
