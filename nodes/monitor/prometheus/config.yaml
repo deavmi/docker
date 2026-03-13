@@ -19,13 +19,16 @@ scrape_configs:
   - job_name: 'isr'
     scrape_interval: 5s
     metrics_path: '/metrics'
-
+    http_headers:
+      X-Prometheus-Scrape-Timeout-Seconds:
+        values: ['1']
     static_configs:
-      - targets: ['monitor.i2p.deavmi.assigned.network:9600']
+      - targets: ['i2p.isr.deavmi.assigned.network:9600']
         labels:
           server: isr
           service: i2p
           name: "ISR node"
+          
 
   # SNMP jobs
   - job_name: 'snmp_core_router'
