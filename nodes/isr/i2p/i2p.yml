@@ -120,6 +120,9 @@ services:
       # Web console
       - "8182/tcp"
 
+      # Allow access through firewall
+      - 9600/tcp
+
   i2pd_exporter:
     extends:
       file: ../../../services/i2pd-exporter/compose.yml
@@ -129,12 +132,13 @@ services:
     environment:
       - I2PCONTROL_ADDRESS=http://${I2PD_IPV6_ADDR}:${I2P_CONTROL_PORT}
       - "METRICS_LISTEN_ADDR=[::]:9600"
-    networks:
+    network_mode: service:i2pd_web_proxy
+    # networks:
       # For access to the `i2pd` container
       # so that we can connetc to its i2control
       # port
-      ipv6_pool_net_isr:
-        ipv6_address: ${IPV6_I2P_EXPORTER_ADDR}
-    ports:
+      # ipv6_pool_net_isr:
+        # ipv6_address: ${IPV6_I2P_EXPORTER_ADDR}
+    # ports:
       # Allow access through firewall
-      - 9600/tcp
+      # - 9600/tcp
