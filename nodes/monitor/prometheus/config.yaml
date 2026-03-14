@@ -153,6 +153,12 @@ scrape_configs:
           server: monitor
           name: 'Monitor node'
 
+      # Rothbard node
+      - targets: ['ygg.rothbard.lab.networks.deavmi.assigned.network:80']
+        labels:
+          server: rothbard
+          name: 'Rothbard node'
+
       # Nostr relays
       - targets: ['nginx_agent_nostr_ephemeral:80']
         labels:
