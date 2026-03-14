@@ -160,15 +160,15 @@ scrape_configs:
           name: 'Rothbard node'
 
       # Nostr relays
-      - targets: ['nginx_agent_nostr_ephemeral:80']
+      - targets: ['y.ephemeral.nostr.rothbard.lab.networks.deavmi.assigned.network:7000']
         labels:
           server: ephemeral_nostr
           name: 'Ephemeral Nostr Relay'
-      - targets: ['nginx_agent_nostr_personal:80']
+      - targets: ['y.personal.nostr.rothbard.lab.networks.deavmi.assigned.network:7000']
         labels:
           server: personal_nostr
           name: 'Personal Nostr Relay'
-      - targets: ['nginx_agent_nostr_homesteader:80']
+      - targets: ['y.homesteader.nostr.rothbard.lab.networks.deavmi.assigned.network:7000']
         labels:
           server: homesteader_nostr
           name: 'Homesteader Nostr Relay'
