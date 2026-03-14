@@ -43,7 +43,7 @@
         "content": "<img src=\"https://deavmi.assigned.network/projects/bonobonet/b_hash_logo.png\" width=90%>\n</img>",
         "mode": "markdown"
       },
-      "pluginVersion": "12.3.1",
+      "pluginVersion": "12.3.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -69,7 +69,7 @@
         "content": "# BonoboNET monitoring\n\nThis dashboard monitors the BonoboNET IRC network.",
         "mode": "markdown"
       },
-      "pluginVersion": "12.3.1",
+      "pluginVersion": "12.3.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -123,7 +123,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.3.1",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
           "datasource": {
@@ -241,7 +241,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.3.1",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
           "datasource": {
@@ -311,7 +311,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.3.1",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
           "datasource": {
@@ -375,8 +375,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 15,
+        "h": 8,
+        "w": 24,
         "x": 0,
         "y": 14
       },
@@ -398,7 +398,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.3.1",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
           "datasource": {
@@ -451,5 +451,5 @@
   "timezone": "browser",
   "title": "IRC",
   "uid": "b29b06fc-b996-4acd-ac8c-05e1dbaf6df3",
-  "version": 1
+  "version": 2
 }
