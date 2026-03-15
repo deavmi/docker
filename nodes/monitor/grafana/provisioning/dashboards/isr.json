@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 0,
+  "id": 2063506537091072,
   "links": [],
   "panels": [
     {
@@ -163,6 +163,7 @@
         "type": "prometheus",
         "uid": "prometheus_main"
       },
+      "description": "Number of tunnels we are participating in",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -175,28 +176,25 @@
               {
                 "color": "green",
                 "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 3,
         "w": 4,
         "x": 14,
         "y": 4
       },
-      "id": 4,
+      "id": 9,
       "options": {
-        "minVizHeight": 75,
-        "minVizWidth": 75,
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -204,9 +202,9 @@
           "fields": "",
           "values": false
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "sizing": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
       "pluginVersion": "12.3.3",
       "targets": [
@@ -216,15 +214,15 @@
             "uid": "prometheus_main"
           },
           "editorMode": "builder",
-          "expr": "i2p_router_tunnels_success_ratio{job=\"isr\"}",
+          "expr": "i2p_router_tunnels_participating{job=\"isr\"}",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
-          "refId": "Tunnel success ratio"
+          "refId": "Tunnels participating"
         }
       ],
-      "title": "Tunnel success ratio",
-      "type": "gauge"
+      "title": "Tunnels participating",
+      "type": "stat"
     },
     {
       "datasource": {
@@ -311,6 +309,74 @@
         "type": "prometheus",
         "uid": "prometheus_main"
       },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 14,
+        "y": 7
+      },
+      "id": 4,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus_main"
+          },
+          "editorMode": "builder",
+          "expr": "i2p_router_tunnels_success_ratio{job=\"isr\"}",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "Tunnel success ratio"
+        }
+      ],
+      "title": "Tunnel success ratio",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus_main"
+      },
       "description": "How long the router has been running",
       "fieldConfig": {
         "defaults": {
@@ -332,10 +398,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 3,
         "w": 4,
         "x": 14,
-        "y": 10
+        "y": 13
       },
       "id": 7,
       "options": {
@@ -549,5 +615,5 @@
   "timezone": "browser",
   "title": "ISR",
   "uid": "adkjfzp",
-  "version": 25
+  "version": 1
 }
