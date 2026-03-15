@@ -45,7 +45,7 @@ services:
       - I2P_HTTP_CONSOLE_BIND_ADDR=${I2P_HTTP_CONSOLE_BIND_ADDR}
       - I2P_HTTP_CONSOLE_BIND_PORT=${I2P_HTTP_CONSOLE_BIND_PORT}
       
-      - I2P_LOG_LEVEL=${I2P_LOG_LEVEL:-none}
+      - I2P_LOG_LEVEL=${I2P_LOG_LEVEL:-error}
 
       # Enable I2PControl and set required ports
       # so that `i2pd_exporter` can access it
