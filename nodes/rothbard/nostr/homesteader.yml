@@ -46,6 +46,7 @@ services:
       - PORT=7000
       - WHERE_TO_ADDR=homesteader.nostr.rothbard.lab.networks.deavmi.assigned.network
       - WHERE_TO_PORT=7000
+      - DEBUG_LEVEL=ERROR
     ports:
       # Expose (firewall) on behalf of `personal_relay`
       - 7000/tcp
