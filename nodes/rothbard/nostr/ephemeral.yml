@@ -1,27 +1,27 @@
-services:
-  ephemeral_relay:
-    build:
-      context: ephemeral
-    restart: unless-stopped
-    container_name: ephemeral_relay
-    networks:
-      ipv6_pool_net:
-        ipv6_address: ${NOSTR_RELAY_EPHEMERAL_ADDR}
-      yggdrasil_net:
-        ipv6_address: ${NOSTR_RELAY_EPHEMERAL_ADDR_Y}
-    ports:
-      # Expose (firewall) on behalf of `personal_relay`
-      - 7000/tcp
-
-  ephemeral_restarter:
-    container_name: ephemeral_restarter
-    depends_on:
-      - ephemeral_relay
-    build:
-      context: restarter/
-    restart: always
-    environment:
-      - SLEEP_SECS=604800
-      - CONTAINER_NAME=ephemeral_relay
-    volumes:
-       - /var/run/docker.sock:/var/run/docker.sock
+# services:
+#   ephemeral_relay:
+#     build:
+#       context: ephemeral
+#     restart: unless-stopped
+#     container_name: ephemeral_relay
+#     networks:
+#       ipv6_pool_net:
+#         ipv6_address: ${NOSTR_RELAY_EPHEMERAL_ADDR}
+#       yggdrasil_net:
+#         ipv6_address: ${NOSTR_RELAY_EPHEMERAL_ADDR_Y}
+#     ports:
+#       # Expose (firewall) on behalf of `personal_relay`
+#       - 7000/tcp
+# 
+#   ephemeral_restarter:
+#     container_name: ephemeral_restarter
+#     depends_on:
+#       - ephemeral_relay
+#     build:
+#       context: restarter/
+#     restart: always
+#     environment:
+#       - SLEEP_SECS=604800
+#       - CONTAINER_NAME=ephemeral_relay
+#     volumes:
+#        - /var/run/docker.sock:/var/run/docker.sock
