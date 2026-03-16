@@ -159,6 +159,18 @@ scrape_configs:
           server: rothbard
           name: 'Rothbard node'
 
+      # VinylPi
+      - targets: ['nginx_agent_vinyl:9113']
+        labels:
+          server: vinyl
+          name: 'VinylPi node'
+
+  # Nostr relays
+  - job_name: 'Nostr'
+    scrape_interval: 5s
+    metrics_path: '/metrics'
+    static_configs:
+    
       # Nostr relays
       - targets: ['y.ephemeral.nostr.rothbard.lab.networks.deavmi.assigned.network:7000']
         labels:
@@ -173,11 +185,7 @@ scrape_configs:
           server: homesteader_nostr
           name: 'Homesteader Nostr Relay'
 
-      # VinylPi
-      - targets: ['nginx_agent_vinyl:9113']
-        labels:
-          server: vinyl
-          name: 'VinylPi node'
+
 
   # Unbound stats
   - job_name: 'unbound'
