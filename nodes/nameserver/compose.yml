@@ -25,6 +25,13 @@ services:
     volumes:
       - "${YGGDRASIL_CONF_PATH}:/etc/yggdrasil.conf:ro,z"
 
+  mycelium:
+    extends:
+      file: ../../services/mycelium/compose.yml
+      service: mycelium
+    container_name: mycelium
+    network_mode: "host"
+
   unbound:
     extends:
       file: ../../images/unbound/compose.yml
