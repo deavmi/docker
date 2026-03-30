@@ -7,6 +7,6 @@ RUN apt install git -y
 
 COPY run.sh /run.sh
 
-ENV DIRECTORY
-ENV RATE
+ENV DIRECTORY=/data
+ENV RATE=3600
 CMD ["/./run.sh", "$DIRECTORY", "$RATE"]
