@@ -70,9 +70,9 @@
 	# 	file_server
 	# }
 
-	handle_path /novasredes/* {
-		rewrite * /novaredes/*
-		root /novasredes/public
+	handle /novasredes/* {
+		# rewrite * /novaredes/*
+		root * /novasredes/public/
 		file_server
 	}
 }
