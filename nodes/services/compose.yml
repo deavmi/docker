@@ -47,6 +47,8 @@ services:
       - mainNet
     environment:
       - "DOMAIN=${CADDY_DOMAIN}"
+    volumes:
+      - /mnt/datadisk/volumes/novasredes:/novasredes:z
     ports:
       - "[::]:80:80/tcp"
       - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?

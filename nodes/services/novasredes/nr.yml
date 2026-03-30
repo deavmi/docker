@@ -1,0 +1,49 @@
+networks:
+  mainNet:
+    driver: bridge
+    name: novasRedesWebNet
+    enable_ipv6: true
+    enable_ipv4: false
+    ipam:
+      config:
+        - subnet: fde4:493b:fc7f::/48
+
+services:
+  novasredes_web:
+    container_name: novasredes_web
+    network_mode: service:novasredes_yggdrasil
+
+  novasredes_commander:
+    container_name: novasredes_commander
+    build:
+      context: builder
+      dockerfile: Dockerfile
+    user: ${USER_UID}:${USER_GID}
+    volumes:
+      - /mnt/datadisk/volumes/novasredes:/data:z
+    environment:
+      # Directory to `git pull`+`hugo build .` in
+      - DIRECTORY=/data
+
+      # Refresh and build every 1 hour
+      - RATE=3600
+    networks:
+      - novasRedesWebNet
+
+  novasredes_yggdrasil:
+    extends:
+      file: ../../services/yggdrasil/compose.yml
+      service: yggdrasil
+    network:
+      - novasRedesWebNet
+    volumes:
+     # Copy in configuration file to container
+     - "${NOVAS_REDES_YGGDRASIL_CONF_PATH}:/etc/yggdrasil.conf:ro,z"
+
+     # Access to TUN/TAP control device node
+     - /dev/net/tun:/dev/net/tun:z
+    cap_add:
+      # Add capability for performing needed network
+      # manipulation via the `/dev/tun` in order to
+      # open tun adaptor
+      - NET_ADMIN

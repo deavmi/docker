@@ -55,6 +55,6 @@
 
 	# Novasredes (TODO: Self-host this data rather)
 	handle /novasredes/* {
-		reverse_proxy https://novasredes.github.io
+		file_browser /novasredes
 	}
 }
