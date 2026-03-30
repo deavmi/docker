@@ -58,14 +58,20 @@
 	}
 
 	# Novasredes (TODO: Self-host this data rather)
-	handle /novasredes {
-		redir /novasredes* /novasredes/
-	}
-	
-	handle /novasredes/* {
-		uri strip_prefix /novasredes
+	# handle /novasredes {
+	# 	uri strip_prefix /novasredes
+	# 	root /novasredes/public
+	# }
+	# 
+	# handle /novasredes/* {
+	# 	uri strip_prefix /novasredes
+	# 	root /novasredes/public
+	# 	
+	# 	file_server
+	# }
+
+	handle_path /novasredes {
 		root /novasredes/public
-		
 		file_server
 	}
 }
