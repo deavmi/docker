@@ -55,6 +55,8 @@
 
 	# Novasredes (TODO: Self-host this data rather)
 	handle /novasredes/* {
-		root /novasredes
+		file_server {
+			root /novasredes	
+		}
 	}
 }
