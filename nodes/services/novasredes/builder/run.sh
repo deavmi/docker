@@ -6,6 +6,6 @@ echo "Using rate: $RATE"
 while [ true ]
 do
 	git pull
-	hugo build .
+	hugo
 	sleep $RATE
 done
