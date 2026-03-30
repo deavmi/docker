@@ -5,5 +5,5 @@ FROM caddy:latest
 COPY Caddyfile /etc/caddy/Caddyfile
 
 # Copy over landing page
-RUN mkdir /data
-COPY index.html /data
+RUN mkdir /landing
+COPY index.html /landing

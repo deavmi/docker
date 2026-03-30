@@ -17,7 +17,7 @@
 :80, {$DOMAIN}:443 {
 	handle / {
 		file_server {
-			root /data	
+			root /landing	
 		}
 	}
 
