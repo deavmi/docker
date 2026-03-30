@@ -1,9 +1,8 @@
-FROM ubuntu:latest
+FROM fedora:latest
 
-RUN apt update
-RUN apt upgrade -y
-RUN apt install hugo -y
-RUN apt install git -y
+RUN dnf update -y
+RUN dnf install hugo -y
+RUN dnf install git -y
 
 COPY run.sh /run.sh
 
