@@ -70,7 +70,7 @@
 	# 	file_server
 	# }
 
-	handle_path /novasredes {
+	handle_path /novasredes/* {
 		root /novasredes/public
 		file_server
 	}
