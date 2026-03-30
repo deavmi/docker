@@ -58,7 +58,7 @@
 	}
 
 	# Novasredes (TODO: Self-host this data rather)
-	handle /novasredes/* {
+	handle /novasredes {
 		root /novasredes/public
 		uri strip_prefix /novasredes
 		file_server
