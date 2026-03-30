@@ -20,6 +20,8 @@ include:
   - im.yml
   - i2p.yml
 
+  - novasredes/nr.yml
+
 services:
   host-statistics:
     extends:

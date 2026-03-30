@@ -13,8 +13,8 @@ services:
     container_name: novasredes_web
     network_mode: service:novasredes_yggdrasil
 
-  novasredes_commander:
-    container_name: novasredes_commander
+  novasredes_builder:
+    container_name: novasredes_builder
     build:
       context: builder
       dockerfile: Dockerfile
