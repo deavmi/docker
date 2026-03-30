@@ -1,12 +1,12 @@
-networks:
-  mainNet:
-    driver: bridge
-    name: novasRedesWebNet
-    enable_ipv6: true
-    enable_ipv4: false
-    ipam:
-      config:
-        - subnet: fde4:493b:fc7f::/48
+# networks:
+#   mainNet:
+#     driver: bridge
+#     name: novasRedesWebNet
+#     enable_ipv6: true
+#     enable_ipv4: false
+#     ipam:
+#       config:
+#         - subnet: fde4:493b:fc7f::/48
 
 services:
   novasredes_builder:
@@ -24,4 +24,4 @@ services:
       # Refresh and build every 1 hour
       - RATE=3600
     networks:
-      - novasRedesWebNet
+      - mainNet
