@@ -1,13 +1,3 @@
-# networks:
-#   mainNet:
-#     driver: bridge
-#     name: novasRedesWebNet
-#     enable_ipv6: true
-#     enable_ipv4: false
-#     ipam:
-#       config:
-#         - subnet: fde4:493b:fc7f::/48
-
 services:
   novasredes_builder:
     container_name: novasredes_builder
