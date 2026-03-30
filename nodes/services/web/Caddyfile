@@ -71,6 +71,7 @@
 	# }
 
 	handle_path /novasredes/* {
+		rewrite * /novaredes/*
 		root /novasredes/public
 		file_server
 	}
