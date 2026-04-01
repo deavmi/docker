@@ -57,31 +57,21 @@
 	    reverse_proxy webirc:9000
 	}
 
-	# Novasredes (TODO: Self-host this data rather)
-	# handle /novasredes {
-	# 	uri strip_prefix /novasredes
-	# 	root /novasredes/public
-	# }
-	# 
-	# handle /novasredes/* {
-	# 	uri strip_prefix /novasredes
-	# 	root /novasredes/public
-	# 	
-	# 	file_server
-	# }
-
-	# Strip the request path specified below
+	# Match anything matching `/novasredes/*`
+	# but remove the `/novasredes/` part
+	# and keep whatever the `*` is
 	handle_path /novasredes/* {
-		# Rewrite from /novasredes/public/novasredes/*
-		# to
-		# /novasredes/public/*
-		# uri path_regexp /novasredes/public/novasredes/* /novasredes/public/*
+		# Take `*` and then tack it onto
+		# to `/novasredes` so we get
+		# `/novasredes/*`
 		rewrite /novasredes/{path}
 	
 		# Set where the path building starts
 		#
 		# Then request URI is tacked onto this
-		# root /novasredes/
+		# root /
+		#
+		# We therefore take `/` and make it `//novasredes/{path}`
 		root /
 
 		# State we want to serve files
