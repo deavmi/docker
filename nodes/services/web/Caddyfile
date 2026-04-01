@@ -82,6 +82,7 @@
 		#
 		# Then request URI is tacked onto this
 		# root /novasredes/
+		root /
 
 		# State we want to serve files
 		file_server
