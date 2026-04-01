@@ -50,7 +50,8 @@ services:
     environment:
       - "DOMAIN=${CADDY_DOMAIN}"
     volumes:
-      - /mnt/datadisk/volumes/novasredes:/novasredes:z
+      # Make ___/novasredes/public available at /novasredes
+      - /mnt/datadisk/volumes/novasredes/public:/novasredes:z
     ports:
       - "[::]:80:80/tcp"
       - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
