@@ -57,6 +57,12 @@
 	    reverse_proxy webirc:9000
 	}
 
+	# Redirect `/novasredes`
+	# to /novasredes/
+	handle /novasredes {
+		redir /novasredes/
+	}
+	
 	# Match anything matching `/novasredes/*`
 	# but remove the `/novasredes/` part
 	# and keep whatever the `*` is
