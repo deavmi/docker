@@ -75,7 +75,7 @@
 		# Rewrite from /novasredes/public/novasredes/*
 		# to
 		# /novasredes/public/*
-		uri path_regexp /novasredes/public/novasredes/ /novasredes/public/
+		uri path_regexp /novasredes/public/novasredes/* /novasredes/public/*
 	
 		# Set where the path building starts
 		#
