@@ -74,7 +74,7 @@
 		# Set where the path building starts
 		#
 		# Then request URI is tacked onto this
-		root /novasredes/
+		root /novasredes/public
 
 		# State we want to serve files
 		file_server
