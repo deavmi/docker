@@ -70,8 +70,8 @@
 	# 	file_server
 	# }
 
-	# handle_path /novasredes/* {
-	handle /novasredes/* {
+	# Strip the request path specified below
+	handle_path /novasredes/* {
 		# Rewrite from /novasredes/public/novasredes/*
 		# to
 		# /novasredes/public/*
