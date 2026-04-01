@@ -71,8 +71,9 @@
 	# }
 
 	handle /novasredes/* {
-		rewrite * /public/*
-		root /novasredes/
-		file_server
+		try_files /novasredes
+		# rewrite * /public/*
+		# root /novasredes/
+		# file_server
 	}
 }
