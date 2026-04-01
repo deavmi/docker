@@ -72,6 +72,11 @@
 
 	# handle_path /novasredes/* {
 	handle /novasredes/* {
+		# Rewrite from /novasredes/public/novasredes/*
+		# to
+		# /novasredes/public/*
+		rewrite /novasredes/public/novasredes/* /novasredes/public/*
+	
 		# Set where the path building starts
 		#
 		# Then request URI is tacked onto this
