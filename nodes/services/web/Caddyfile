@@ -71,8 +71,12 @@
 	# }
 
 	handle /novasredes/* {
-		# rewrite * /public/*
-		# root /novasredes/
+		# Set where the path building starts
+		#
+		# Then request URI is tacked onto this
+		root /novasredes/
+
+		# State we want to serve files
 		file_server
 	}
 }
