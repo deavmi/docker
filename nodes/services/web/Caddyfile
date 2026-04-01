@@ -60,7 +60,7 @@
 	# Redirect `/novasredes`
 	# to /novasredes/
 	handle /novasredes {
-		redir /novasredes/
+		redir * /novasredes/
 	}
 	
 	# Match anything matching `/novasredes/*`
