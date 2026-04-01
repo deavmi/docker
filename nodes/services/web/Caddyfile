@@ -76,11 +76,12 @@
 		# to
 		# /novasredes/public/*
 		# uri path_regexp /novasredes/public/novasredes/* /novasredes/public/*
+		rewrite /novasredes/{path}
 	
 		# Set where the path building starts
 		#
 		# Then request URI is tacked onto this
-		root /novasredes/
+		# root /novasredes/
 
 		# State we want to serve files
 		file_server
