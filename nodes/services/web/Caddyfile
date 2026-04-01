@@ -70,7 +70,8 @@
 	# 	file_server
 	# }
 
-	handle_path /novasredes/* {
+	# handle_path /novasredes/* {
+	handle /novasredes/* {
 		# Set where the path building starts
 		#
 		# Then request URI is tacked onto this
