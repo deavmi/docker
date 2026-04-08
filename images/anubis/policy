@@ -8,9 +8,9 @@ bots:
   - name: Gitea allow (Go get)
     action: ALLOW
     expression:
-      all:
-        - 'path.contains("deavmi")'
-
+      any:
+        - '"GoModule" in headers'
+        - '"Git-Protocol" in headers'
 
   - name: Prometheus metrics
     action: ALLOW
