@@ -1,9 +1,17 @@
 bots:
-  - name: Gitea allow
+  - name: Gitea allow (cloning)
     action: ALLOW
     expression:
       all:
         - 'headers["User-Agent"].startsWith("git")'
+
+  - name: Gitea allow (Go get)
+    action: ALLOW
+    expression:
+      all:
+        - 'path.contains("deavmi")'
+
+
   - name: Prometheus metrics
     action: ALLOW
     path_regex: .*/metrics
