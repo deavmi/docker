@@ -21,6 +21,7 @@ include:
   - i2p.yml
 
   - novasredes/nr.yml
+  - git/athens/athens.yml
 
 services:
   host-statistics:
