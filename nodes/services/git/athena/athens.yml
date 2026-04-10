@@ -10,5 +10,9 @@ services:
         ipv6_address: ${ATHENS_IPV6_ADDR}
       ygg_pool_net:
         ipv6_address: ${ATHENS_YGG_ADDR}
+    environment:
+      - ATHENS_DISK_STORAGE_ROOT=/data
+    volumes:
+      - ${ATHENS_DATA_PATH}:/data:z
     ports:
       - 3000
