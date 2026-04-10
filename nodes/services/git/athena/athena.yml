@@ -1,19 +1,34 @@
 services:
-  # Go package datastore and proxy
-  athens:
+  # Go package datastore and proxy (clearnet)
+  athens_normal:
     image: gomods/athens:latest
-    container_name: athens
+    container_name: athens_normal
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
     networks:
       ipv6_pool_net:
         ipv6_address: ${ATHENS_IPV6_ADDR}
+    environment:
+      - ATHENS_DISK_STORAGE_ROOT=/data
+      - ATHENS_LOG_LEVEL=debug
+    volumes:
+      - ${ATHENS_DATA_PATH_ROOT}/normal:/data:z
+    ports:
+      - 3000
+
+  # Go package datastore and proxy (Yggdrasil)
+  athens_ygg:
+    image: gomods/athens:latest
+    container_name: athens_ygg
+    restart: unless-stopped
+    user: ${USER_UID}:${USER_GID}
+    networks:
       ygg_pool_net:
         ipv6_address: ${ATHENS_YGG_ADDR}
     environment:
       - ATHENS_DISK_STORAGE_ROOT=/data
       - ATHENS_LOG_LEVEL=debug
     volumes:
-      - ${ATHENS_DATA_PATH}:/data:z
+      - ${ATHENS_DATA_PATH_ROOT}/ygg:/data:z
     ports:
       - 3000
