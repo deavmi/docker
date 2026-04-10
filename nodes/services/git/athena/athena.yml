@@ -12,6 +12,7 @@ services:
         ipv6_address: ${ATHENS_YGG_ADDR}
     environment:
       - ATHENS_DISK_STORAGE_ROOT=/data
+      - ATHENS_LOG_LEVEL=debug
     volumes:
       - ${ATHENS_DATA_PATH}:/data:z
     ports:
