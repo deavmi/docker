@@ -9,6 +9,9 @@ services:
       # Logging level
       - "RUST_LOG=${ROUTE96_LOG_LEVEL:-info}"
     volumes:
-     # Copy in configuration file to container
-     - "${ROUTE96_CONF_PATH}:/app/config.yaml:ro,z"
+      # Copy in configuration file to container
+      - "${ROUTE96_CONF_PATH}:/app/config.yaml:ro,z"
+
+      # Media storage mount
+      - "${ROUTE96_MEDIA_DATA_PATH}:/data:z"
     user: ${USER_UID}:${USER_GID}
