@@ -1,17 +1,40 @@
-
-
-
 services:
   blossom:
     extends:
       file: ../../services/route96/compose.yml
       service: blossom
     container_name: blossom
+    depends_on:
+      - blossom_db
     networks:
       ipv6_pool_net:
         ipv6_address: ${BLOSSOM_SERVER_ADDR_IPV6}
       yggdrasil_net:
         ipv6_address: ${BLOSSOM_SERVER_ADDR_YGG}
+   volumes:
+      - ${ROUTE96_MEDIA_DATA_PATH}:/data
     ports:
       # Allow through firewall
       - 8000/tcp
+
+  blossom_db:
+    image: postgres:16.4
+    container_name: blossom_db
+
+    # The container will create a user with this
+    # UID/GID pair. This matches MY host, make them
+    # match your host. This makes files created in
+    # the mountpoint easily accessible for us
+    user: ${USER_UID}:${USER_GID}
+
+    environment:
+      - POSTGRES_DB=blossom
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=dbpass
+      - PGDATA=/var/lib/postgresql/data
+    restart: unless-stopped
+    volumes:
+      - ${ROUTE96_DB_DATA_PATH}:/var/lib/postgresql/data:z
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${IPV6_NODE7_ADDR}

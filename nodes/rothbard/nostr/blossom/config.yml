@@ -1,0 +1,5 @@
+listen: "[::]:8000"
+database: "mysql://dbuser:dbpass@blossom_db:5432/blossom"
+storage_dir: "/data"
+max_upload_bytes: 5e+9
+
