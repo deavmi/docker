@@ -11,3 +11,4 @@ services:
     volumes:
      # Copy in configuration file to container
      - "${ROUTE96_CONF_PATH}:/app/config.yaml:ro,z"
+    user: ${USER_UID}:${USER_GID}
