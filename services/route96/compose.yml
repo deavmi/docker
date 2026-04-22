@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       # Logging level
-      - "RUST_LOG=${ROUTE96_LOG:-info}"
+      - "RUST_LOG=${ROUTE96_LOG_LEVEL:-info}"
     volumes:
      # Copy in configuration file to container
      - "${ROUTE96_CONF_PATH}:/app/config.yaml:ro,z"
