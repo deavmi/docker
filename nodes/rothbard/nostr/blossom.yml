@@ -1,0 +1,17 @@
+
+
+
+services:
+  blossom:
+    extends:
+      file: ../../services/route96/compose.yml
+      service: blossom
+    container_name: blossom
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${BLOSSOM_SERVER_ADDR_IPV6}
+      yggdrasil_net:
+        ipv6_address: ${BLOSSOM_SERVER_ADDR_YGG}
+    ports:
+      # Allow through firewall
+      - 8000/tcp
