@@ -1,4 +1,8 @@
 include:
+  # Relay instances
   - personal.yml
   - ephemeral.yml
   - homesteader.yml
+
+  # Blossom instances
+  - include blossom.yml
