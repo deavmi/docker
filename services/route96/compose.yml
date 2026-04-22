@@ -1,0 +1,13 @@
+services:
+  route96:
+    build:
+      context: ../../images/route96
+      dockerfile: Dockerfile
+    container_name: blossom
+    restart: always
+    environment:
+      # Logging level
+      - "RUST_LOG=${ROUTE96_LOG:-info}"
+    volumes:
+     # Copy in configuration file to container
+     - "${ROUTE96_CONF_PATH}:/app/config.yaml:ro,z"
