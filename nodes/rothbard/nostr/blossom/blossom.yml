@@ -11,8 +11,6 @@ services:
         ipv6_address: ${BLOSSOM_SERVER_ADDR_IPV6}
       yggdrasil_net:
         ipv6_address: ${BLOSSOM_SERVER_ADDR_YGG}
-   volumes:
-      - ${ROUTE96_MEDIA_DATA_PATH}:/data
     ports:
       # Allow through firewall
       - 8000/tcp
