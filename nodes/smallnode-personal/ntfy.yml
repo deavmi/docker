@@ -16,6 +16,9 @@ services:
       NTFY_AUTH_DEFAULT_ACCESS: deny-all
       NTFY_ENABLE_LOGIN: true
       NTFY_AUTH_FILE: /var/lib/ntfy/auth.db
+    env_file:
+      - path: .ntfy.secrets
+        required: true
     networks:
       - mainNet
     ports:
