@@ -26,7 +26,7 @@ WORKDIR /tmp/yggdrasil
 # he deems to be the latest stable
 # version (or not) he wants to use
 ARG BRANCH=develop
-ARG COMMIT=47818a1a7c475c3c214e3b25d961b77d55069086
+ARG COMMIT=be5daeba7ad6b9eb3a30a3fa84e58d3962322dbd
 
 # Perform checkout and build
 RUN git checkout $BRANCH # TODO: Are commit ids global?
