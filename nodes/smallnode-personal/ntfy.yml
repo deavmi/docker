@@ -11,9 +11,11 @@ services:
       # Storage
       - ${NTFY_DATA_PATH}:/var/cache/ntfy:z
       - ${NTFY_ETC_PATH}:/etc/ntfy:z
+      - ${NTFY_AUTH_PATH}:/var/lib/ntfy:z
     environment:
       NTFY_AUTH_DEFAULT_ACCESS: deny-all
       NTFY_ENABLE_LOGIN: true
+      NTFY_AUTH_FILE: /var/lib/ntfy/auth.db
     networks:
       - mainNet
     ports:
