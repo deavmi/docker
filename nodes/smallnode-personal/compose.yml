@@ -1,6 +1,12 @@
 include:
+  # General network definitions
   - networks.yml
+
+  # YggMail service
   - yggmail/compose.yml
+
+  # Ntfy.sh
+  - ntfy.yml
   
 services:
   statistics:
