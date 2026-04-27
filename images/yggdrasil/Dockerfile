@@ -14,7 +14,7 @@ RUN apt install git golang -y
 
 # Build
 WORKDIR /tmp
-RUN ["git", "clone", "https://github.com/yggdrasil-network/yggdrasil-go", "yggdrasil"]
+RUN ["git", "clone", "https://github.com/yggdrasil-network/yggdrasil-go", "yggdrasil", "--depth", "1"]
 WORKDIR /tmp/yggdrasil
 
 # Activate arguments provided as build parameters
