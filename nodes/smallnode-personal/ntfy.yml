@@ -1,4 +1,5 @@
 services:
+  
   ntfy:
     container_name: ntfy
     image: binwiederhier/ntfy
@@ -7,8 +8,12 @@ services:
     command:
       - serve
     volumes:
+      # Storage
       - ${NTFY_DATA_PATH}:/var/cache/ntfy:z
       - ${NTFY_ETC_PATH}:/etc/ntfy:z
+    environment:
+      NTFY_AUTH_DEFAULT_ACCESS: deny-all
+      NTFY_ENABLE_LOGIN: true
     networks:
       - mainNet
     ports:
