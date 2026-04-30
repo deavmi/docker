@@ -46,7 +46,7 @@ services:
       ygg_pool_net:
         ipv6_address: ${GITEA_OLD_YGG_ADDR}
     environment:
-      - "WHERE_TO_ADDR=gitea_old_web"
+      - "WHERE_TO_ADDR=${GITEA_OLD_IPV6_ADDR}"
       - "WHERE_TO_PORT=80"
       - "DEBUG_LEVEL=INFO"
     ports:
