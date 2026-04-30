@@ -31,28 +31,6 @@ services:
       - "WHERE_TO_PORT=3001"
       - "DEBUG_LEVEL=INFO"
 
-  # Web proxy bound to an Yggdrasil address but
-  # accessible _via_ Yggdrasil
-  #
-  # It uses ::/0 (default route) routing to get
-  # data
-  # gitea_old_ygg_web_proxy:
-  #   build:
-  #     context: flat/
-  #   container_name: gitea_old_ygg_web_proxy
-  #   depends_on:
-  #     - gitea_old_web
-  #   networks:
-  #     ygg_pool_net:
-  #       ipv6_address: ${GITEA_OLD_YGG_ADDR}
-  #   environment:
-  #     - "WHERE_TO_ADDR=${GITEA_OLD_IPV6_ADDR}"
-  #     - "WHERE_TO_PORT=80"
-  #     - "DEBUG_LEVEL=INFO"
-  #   ports:
-  #     # Expose via firewall
-  #     - 80/tcp
-
   # Actual Gitea service `gitea_old`
   gitea_old:
     build:
@@ -244,8 +222,8 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${GITEA_NEW_IPV6_ADDR}
-      # ygg_pool_net:
-        # ipv6_address: ${GITEA_NEW_YGG_ADDR}
+      ygg_pool_net:
+        ipv6_address: ${GITEA_NEW_YGG_ADDR}
     # In this case it means allow access (firewalling rule)
     ports:
       # SSH server
