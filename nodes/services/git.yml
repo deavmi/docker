@@ -49,6 +49,9 @@ services:
       - "WHERE_TO_ADDR=gitea_old_web"
       - "WHERE_TO_PORT=80"
       - "DEBUG_LEVEL=INFO"
+    ports:
+      # Expose via firewall
+      - 80/tcp
 
   # Actual Gitea service `gitea_old`
   gitea_old:
