@@ -13,7 +13,7 @@ services:
       # conf/cache <- for caching
       # conf/tmp <- temporary files
       # conf/logs <- logs
-      - "${IRCD_CONFIG_DIR}:/home/unreal/ircd/conf/:z"
+      - "${IRCD_CONFIG_DIR}:/conf/:z"
       
       # Makes timezone and time information available
       # - /etc/timezone:/etc/timezone:ro
