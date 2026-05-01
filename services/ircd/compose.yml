@@ -1,12 +1,12 @@
 services:
   ircd:
     # Using the GitHub image
-    # image: ghcr.io/deavmi/unrealircd-docker:master
-    build:
-      context: ../../images/ircd
-      args:
-        - USER_UID=${USER_UID}
-        - USER_GID=${USER_GID}
+    image: ghcr.io/deavmi/unrealircd-docker:master
+    # build:
+      # context: ../../images/ircd
+      # args:
+        # - USER_UID=${USER_UID}
+        # - USER_GID=${USER_GID}
     container_name: ircd
     restart: unless-stopped
     # user: ${USER_UID}:${USER_GID}
