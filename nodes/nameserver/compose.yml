@@ -11,6 +11,9 @@ include:
   # Additional resolvers
   - resolvers.yml
 
+  # Pi hole
+  - pihole.yml
+
 services:
   host-statistics:
     extends:
