@@ -1,4 +1,12 @@
 networks:
+  mainNet:
+    driver: bridge
+    name: mainNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492a:fc7f::/48
+        
   ipv6_pool_net:
     name: ipv6_pool_net
     driver: bridge
