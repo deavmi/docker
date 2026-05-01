@@ -8,6 +8,9 @@ networks:
         - subnet: fde4:492a:fc7f::/48
 
 include:
+  # Network definitions
+  - networks.yml
+  
   # Additional resolvers
   - resolvers.yml
 
