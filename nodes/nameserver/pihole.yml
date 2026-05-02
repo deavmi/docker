@@ -13,6 +13,13 @@ services:
       # Pihole upstream DNS servers
       - FTLCONF_dns_upstreams=${PIHOLE_DNS_UPSTREAMS}
 
+      # Disable rate limits
+      - FLTCONF_dns_rateLimit_count=0
+      - FLTCONF_dns_rateLimit_interval=0
+
+      # Allow queries from all IPs
+      - FLTCONF_dns_listeningMode=ALL
+
       # User UID/GID
       - PIHOLE_UID=${USER_UID}
       - PIHOLE_GID=${USER_GID}
