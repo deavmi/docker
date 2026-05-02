@@ -3,6 +3,9 @@ services:
     container_name: pihole
     image: pihole/pihole:latest
     restart: unless-stopped
+    depends_on:
+      # As it uses it as the upstream DNS resolver
+      - unbound
     networks:
       ipv6_pool_net:
         ipv6_address: ${PIHOLE_IPV6_ADDR}
