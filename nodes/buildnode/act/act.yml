@@ -16,6 +16,10 @@ services:
 
       # Labels we will report we support to Gitea
       - GITEA_RUNNER_LABELS=${ACT_GITEA_RUNNER_LABELS}
+    command:
+      - daemon
+      - --config
+      - /config.yml
     networks:
       - mainNet
     volumes:
