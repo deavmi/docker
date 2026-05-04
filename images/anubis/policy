@@ -23,5 +23,6 @@ bots:
   - name: ACT runner access
     action: ALLOW
     expression:
-      all:
+      any:
         - '"X-Runner-Version" in headers'
+        - 'path.startsWith("/git/api/actions/")'
