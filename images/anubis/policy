@@ -12,17 +12,17 @@ bots:
         - '"GoModule" in headers'
         - '"Git-Protocol" in headers'
 
-  - name: Prometheus metrics
-    action: ALLOW
-    path_regex: .*/metrics
-  - name: Challenge all
-    user_agent_regex: .*
-    action: CHALLENGE
-
-
   - name: ACT runner access
     action: ALLOW
     expression:
-      any:
+      all:
         - '"X-Runner-Version" in headers'
-        - 'path.startsWith("/git/api/actions/")'
+
+  - name: Prometheus metrics
+    action: ALLOW
+    path_regex: .*/metrics
+
+
+  - name: Challenge all
+    user_agent_regex: .*
+    action: CHALLENGE
