@@ -31,7 +31,7 @@ services:
       # Needs access to the docker socket so it
       # can control docker and spawn new instances
       # for CI jobs
-      - /var/run/:/var/run/:z
+      - /var/run/docker.sock:/var/run/docker.sock
 
       # Data directory
       - "${ACT_DATA_DIR}:/data:z"
