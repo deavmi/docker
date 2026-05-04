@@ -1,7 +1,8 @@
 services:
   act-runner:
-    build:
-      context: .
+    image: gitea/act_runner:latest
+    # build:
+      # context: .
     container_name: act_runner
     environment:
       # URL to your Gitea instance
