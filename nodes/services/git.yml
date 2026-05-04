@@ -146,7 +146,7 @@ services:
       - "DOMAIN=${GITEA_NEW_DOMAIN}"
       - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=3001"
-      - "DEBUG_LEVEL=DEBUG"
+      - "DEBUG_LEVEL=INFO"
 
   gitea:
     extends:
