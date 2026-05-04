@@ -15,6 +15,8 @@ services:
 
       # Labels we will report we support to Gitea
       - GITEA_RUNNER_LABELS=${ACT_GITEA_RUNNER_LABELS}
+    networks:
+      - mainNet
     volumes:
       # Needs access to the docker socket so it
       # can control docker and spawn new instances
