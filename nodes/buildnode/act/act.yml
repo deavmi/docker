@@ -27,6 +27,11 @@ services:
       - mainNet
     ports:
       - 9101:9101/tcp
+    group_add:
+      # Add ourselves to the GID specified to allow us access
+      # to the Docker socket that will be mounted inside our
+      # container with the same GID as on the host side
+      - ${DOCKER_GID}
     volumes:
       # Needs access to the docker socket so it
       # can control docker and spawn new instances
