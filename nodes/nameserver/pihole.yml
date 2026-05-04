@@ -11,7 +11,7 @@ services:
         ipv6_address: ${PIHOLE_IPV6_ADDR}
     volumes:
       # Copy in adlists
-      - lists.txt:/etc/pihole/adlists.list:z
+      - ./lists.txt:/etc/pihole/adlists.list:z
     environment:
       # Pihole upstream DNS servers
       - FTLCONF_dns_upstreams=${PIHOLE_DNS_UPSTREAMS}
