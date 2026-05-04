@@ -19,3 +19,9 @@ bots:
     user_agent_regex: .*
     action: CHALLENGE
 
+
+  - name: ACT runner access
+    action: ALLOW
+    expression:
+      all:
+        - remoteAddress.startsWith("2a04:5b81:2010")
