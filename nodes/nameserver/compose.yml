@@ -6,7 +6,7 @@ include:
   - resolvers.yml
 
   # Pi hole
-  - pihole.yml
+  - pihole/pihole.yml
 
 services:
   host-statistics:
