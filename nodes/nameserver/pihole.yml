@@ -9,6 +9,9 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${PIHOLE_IPV6_ADDR}
+    volumes:
+      # Copy in adlists
+      - lists.txt:/etc/pihole/adlists.list:z
     environment:
       # Pihole upstream DNS servers
       - FTLCONF_dns_upstreams=${PIHOLE_DNS_UPSTREAMS}
@@ -20,7 +23,7 @@ services:
       # Allow queries from all IPs
       - FTLCONF_dns_listeningMode=ALL
 
-      # User UID/GID
+      # User UID/GID (TODO: what for? need to mount storage for this to make sense)
       - PIHOLE_UID=${USER_UID}
       - PIHOLE_GID=${USER_GID}
     # Has WebUI pasword in it
