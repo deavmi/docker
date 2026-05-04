@@ -12,6 +12,9 @@ services:
     volumes:
       # Copy in adlists
       - ./lists.txt:/etc/pihole/adlists.list:z
+
+      # General data directory
+      - ${PIHOLE_DATA_DIRECTORY}:/data:z
     environment:
       # Pihole upstream DNS servers
       - FTLCONF_dns_upstreams=${PIHOLE_DNS_UPSTREAMS}
@@ -26,6 +29,11 @@ services:
       # User UID/GID (TODO: what for? need to mount storage for this to make sense)
       - PIHOLE_UID=${USER_UID}
       - PIHOLE_GID=${USER_GID}
+
+      # Configure where the data is stored
+      - FLTCONF_files_database=${PIHOLE_DATA_DIRECTORY}/database.db
+      - FLTCONF_files_tmp_db=${PIHOLE_DATA_DIRECTORY}/tmp_db.db
+      - FLTCONF_files_gravity=${PIHOLE_DATA_DIRECTORY}/gravity.db
     # Has WebUI pasword in it
     env_file:
       - path: .pihole
