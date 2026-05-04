@@ -24,4 +24,4 @@ bots:
     action: ALLOW
     expression:
       all:
-        - remoteAddress.startsWith("2a04:5b81:2010")
+        - '"X-Runner-Version" in headers'
