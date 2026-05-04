@@ -1,0 +1,2 @@
+# Ignore any files that are for secrets
+.pihole
