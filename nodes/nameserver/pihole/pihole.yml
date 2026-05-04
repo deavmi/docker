@@ -31,9 +31,9 @@ services:
       - PIHOLE_GID=${USER_GID}
 
       # Configure where the data is stored
-      - FLTCONF_files_database=${PIHOLE_DATA_DIRECTORY}/database.db
-      - FLTCONF_files_tmp_db=${PIHOLE_DATA_DIRECTORY}/tmp_db.db
-      - FLTCONF_files_gravity=${PIHOLE_DATA_DIRECTORY}/gravity.db
+      - FTLCONF_files_database=${PIHOLE_DATA_DIRECTORY}/database.db
+      - FTLCONF_files_tmp_db=${PIHOLE_DATA_DIRECTORY}/tmp_db.db
+      - FTLCONF_files_gravity=${PIHOLE_DATA_DIRECTORY}/gravity.db
     # Has WebUI pasword in it
     env_file:
       - path: .pihole
