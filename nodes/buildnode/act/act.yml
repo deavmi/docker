@@ -1,8 +1,8 @@
 services:
   act-runner:
-    # image: gitea/act_runner:latest
-    build:
-      context: .
+    image: gitea/act_runner:latest
+    # build:
+      # context: .
     container_name: act_runner
     restart: unless-stopped
     environment:
