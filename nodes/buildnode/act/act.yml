@@ -16,7 +16,7 @@ services:
       - GITEA_RUNNER_LABELS=${ACT_GITEA_RUNNER_LABELS}
 
       # The configuration file
-      - CONFIG_FILE=/config.yml
+      # - CONFIG_FILE=/config.yml
     env_file:
       # has Gitea runner secret inside
       - path: .runner
