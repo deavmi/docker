@@ -18,6 +18,8 @@ services:
 
       # The configuration file
       # - CONFIG_FILE=/config.yml
+    # Allow certain system calls?
+    priveleged: true
     env_file:
       # has Gitea runner secret inside
       - path: .runner
