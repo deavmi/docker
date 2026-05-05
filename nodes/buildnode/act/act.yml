@@ -21,7 +21,7 @@ services:
 
       # To let act_runner know which Docker soket
       # to check
-      # - DOCKER_HOST=unix:///run/user/1000/docker.sock
+      - DOCKER_HOST=unix:///run/user/1000/docker.sock
     # Allow certain system calls?
     privileged: true
     env_file:
