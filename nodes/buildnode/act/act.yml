@@ -1,9 +1,9 @@
 services:
   act-runner:
     # image: gitea/act_runner:latest
-    image: gitea/act_runner:latest-dind-rootless
-    # build:
-      # context: .
+    # image: gitea/act_runner:latest-dind-rootless
+    build:
+      context: .
     container_name: act_runner
     restart: unless-stopped
     environment:
