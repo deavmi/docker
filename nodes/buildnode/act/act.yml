@@ -9,9 +9,6 @@ services:
       # URL to your Gitea instance
       - GITEA_INSTANCE_URL=${ACT_GITEA_INSTANCE_URL}
 
-      # Secret token (for accessing instance)
-      # - GITEA_RUNNER_REGISTRATION_TOKEN=${ACT_GITEA_RUNNER_REGISTRATION_TOKEN}
-
       # Name this runner should report to Gitea
       - GITEA_RUNNER_NAME=${ACT_GITEA_RUNNER_NAME}
 
