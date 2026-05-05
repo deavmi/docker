@@ -1,6 +1,7 @@
 container:
   network: host
   docker_host: unix:///run/user/1000/docker.sock
+  privileged: true
 
 
 # Prometheus monitoring
