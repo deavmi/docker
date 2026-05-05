@@ -1,6 +1,6 @@
 container:
   network: host
-
+  docker_host: unix:///run/user/1000/docker.sock
 
 
 # Prometheus monitoring
