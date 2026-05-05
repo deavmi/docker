@@ -5,7 +5,7 @@ secrets:
 services:
   monero:
     extends:
-      file: ../../services/monero/compose.yml
+      file: ../../../services/monero/compose.yml
       service: monero
     container_name: monero
     build:
