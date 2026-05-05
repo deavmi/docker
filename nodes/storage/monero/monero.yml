@@ -1,0 +1,36 @@
+secrets:
+  MONERO_NODES:
+    file: nodes.monero
+
+services:
+  monero:
+    extends:
+      file: ../../services/monero/compose.yml
+      service: monero
+    container_name: monero
+    build:
+      args:
+        - NPROC=1
+    env_file:
+      - path: monero.secrets
+        required: true
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${MONERO_IPV6_ADDRESS}
+      ygg_pool_net:
+        ipv6_address: ${MONERO_YGG_ADDRESS}
+    ports:
+      - 18080/tcp
+      - 18081/tcp
+
+      # On behalf of the Prometheus exporter
+      - 9000/tcp
+
+  monero_stats:
+    image: ghcr.io/deavmi/monero-exporter:master
+    network_mode: service:monero
+    container_name: monero_stats
+    command:
+      - "--bind-addr=:9000"
+      - "--monero-addr=http://[::1]:18081"
+      - "--telemetry-path=/metrics"

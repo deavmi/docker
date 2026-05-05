@@ -1,3 +1,3 @@
 include:
-  - monero.yml
+  - monero/monero.yml
   - bitcoin.yml
