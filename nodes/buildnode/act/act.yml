@@ -18,6 +18,10 @@ services:
 
       # The configuration file
       # - CONFIG_FILE=/config.yml
+
+      # To let act_runner know which Docker soket
+      # to check
+      - DOCKER_HOST=unix:///run/user/1000/docker.sock
     # Allow certain system calls?
     privileged: true
     env_file:
