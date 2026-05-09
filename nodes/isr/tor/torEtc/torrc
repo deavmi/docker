@@ -1,0 +1,12 @@
+\# Disallow connecting over IPv4 or else it will consistently
+# try to user it and always fail
+ClientUseIPv4 0
+
+# Allow usage via IPv6 (default is to not allow it)
+ClientUseIPv6 1
+
+# Prometheus logging
+MetricsPort [::]:9001
+MetricsPortPolicy accept [::]/0
+
+# TODO: Declare your hidden services here!
