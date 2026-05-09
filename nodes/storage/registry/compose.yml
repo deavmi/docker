@@ -28,6 +28,12 @@ services:
       # TODO: For authentication to work you ned HTTTPs
       # setup and working
       - REGISTRY_HTTP_TLS_LETSENCRYPT_CACHEFILE=/tmp
+
+      # TODO: best placer to store these?
+      - REGISTRY_HTTP_TLS_CERTIFICATE=/tmp/crt.crt
+      - REGISTRY_HTTP_TLS_KEY=/tmp/key.key
+      # TODO: best placer to store these?
+      
       - REGISTRY_HTTP_TLS_LETSENCRYPT_EMAIL=${REGISTRY_LE_EMAIL}
 
 
