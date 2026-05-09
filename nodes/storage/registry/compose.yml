@@ -14,9 +14,9 @@ services:
         required: true
     networks:
       ipv6_pool_net:
-        ipv6_address: ${IPV6_NODE1_ADDR}
+        ipv6_address: ${IPV6_NODE5_ADDR}
       ygg_pool_net:
-        ipv6_address: ${YGG_NODE1_ADDR}
+        ipv6_address: ${YGG_NODE5_ADDR}
     # TODO: Add redis cache
     user: ${USER_UID}:${USER_GID}
     environment:
