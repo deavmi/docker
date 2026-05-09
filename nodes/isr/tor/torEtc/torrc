@@ -9,4 +9,10 @@ ClientUseIPv6 1
 MetricsPort [::]:9001
 MetricsPortPolicy accept [::]/0
 
-# TODO: Declare your hidden services here!
+# Pinewood.BNET IRC server
+HiddenServiceDir /services/community/irc
+HiddenServicePort 6667 ygg.irc.deavmi.assigned.network:6667
+
+# Personal homepage
+HiddenServiceDir /services/personal/web
+HiddenServicePort 80 ygg.home.deavmi.assigned.network:80
