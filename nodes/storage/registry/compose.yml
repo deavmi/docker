@@ -21,9 +21,9 @@ services:
     user: ${USER_UID}:${USER_GID}
     environment:
       # Bind to all addresses
-      - "REGISTRY_HTTP_ADDR=[::]:5000"
+      - "REGISTRY_HTTP_ADDR=[::]:${REGISTRY_PORT}"
       - REGISTRY_HTTP_NET=tcp
-      - "REGISTRY_HTTP_HOST=https://registry.deavmi.assigned.network:5000"
+      - "REGISTRY_HTTP_HOST=https://${REGISTRY_DOMAIN}:${REGISTRY_PORT}"
       # Set the location where images should be stored
       - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/imageStore
 
@@ -35,7 +35,7 @@ services:
     ports:
       # The Registry runs an HTTP server on
       # port 5000
-      - 5000/tcp
+      - ${REGISTRY_PORT}/tcp
 
 
     # TODO: For a public one you can shove caddy infront
