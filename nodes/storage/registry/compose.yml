@@ -1,7 +1,7 @@
 
 
 services:
-  distribution:
+  docker-registry:
     # TODO: In future use their docker file to build this
     # and or grab it from a local image store when I have
     # built it myself
