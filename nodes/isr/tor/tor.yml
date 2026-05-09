@@ -1,0 +1,11 @@
+services:
+  tor:
+    extends:
+      file: ../../../services/tor/compose.yml
+      service: tor
+    networks:
+      ipv6_pool_net_isr:
+        ipv6_address: ${TOR_IPV6_ADDR}
+    # Volumes are set with avriables in `../.env`
+    # and according top the extended
+    # compose file above
