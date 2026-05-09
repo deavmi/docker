@@ -24,13 +24,15 @@ services:
       # - REGISTRY_HTTP_ADDR=:::${REGISTRY_PORT}
       - REGISTRY_HTTP_NET=tcp
       - "REGISTRY_HTTP_HOST=https://${REGISTRY_DOMAIN}:${REGISTRY_PORT}"
-      # Set the location where images should be stored
-      - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/imageStore
-
+      
       # TODO: For authentication to work you ned HTTTPs
       # setup and working
-      - REGISTRY_TLS_LETSENCRYPT_CACHEFILE=/tmp
-      - REGISTRY_TLS_LETSENCRYPT_EMAIL=${REGISTRY_LE_EMAIL}
+      - REGISTRY_HTTP_TLS_LETSENCRYPT_CACHEFILE=/tmp
+      - REGISTRY_HTTP_TLS_LETSENCRYPT_EMAIL=${REGISTRY_LE_EMAIL}
+
+
+      # Set the location where images should be stored
+      - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/imageStore
     volumes:
       # Storage for images pushed to this registry
       - ${REGISTRY_STORAGE_DIR}:/imageStore:z
