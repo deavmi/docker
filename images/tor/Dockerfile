@@ -6,7 +6,7 @@ RUN apt upgrade -y
 
 # Install build dependencies
 RUN apt install git -y
-RUN apt install cargo rust -y
+RUN apt install cargo -y
 
 # Clone the source and perform
 # the build
