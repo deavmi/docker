@@ -6,7 +6,7 @@ services:
     # and or grab it from a local image store when I have
     # built it myself
     image: ghcr.io/distribution/distribution:edge
-    container_name: distribution
+    container_name: docker_registry
     env_file:
       # Has the REGISTRY_HTTP_SECRET environment
       # variable in it
