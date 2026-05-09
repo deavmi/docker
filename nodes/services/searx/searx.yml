@@ -1,0 +1,16 @@
+services:
+  searx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: searx
+    # TODO: Set uid/gid here
+    networks:
+      - mainNet
+    
+  searx-redis:
+    extends:
+      file: ../../../services/redis/compose.yml
+      service: redis
+    networks:
+      - mainNet

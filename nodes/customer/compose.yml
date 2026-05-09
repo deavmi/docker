@@ -1,0 +1,44 @@
+networks:
+  mainNet:
+    driver: bridge
+    name: mainNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492a:fc7f::/48
+
+
+include:
+  - xmpp.yml
+
+# TODO: neaten up and see if we can
+# place it elsewhere
+  # - ../../services/i2pd/compose.yml
+
+services:
+  host-statistics:
+    extends:
+      file: ../../services/node_exporter/compose.yml
+      service: statistics
+
+  yggdrasil:
+    extends:
+      file: ../../services/yggdrasil/compose.yml
+      service: yggdrasil
+    network_mode: "host"
+
+  web:
+    container_name: web
+    build:
+      context: web/
+    # depends_on:
+      # - ea
+    networks:
+      - mainNet
+    environment:
+      - "DOMAIN=${CADDY_DOMAIN}"
+    ports:
+      - "[::]:80:80/tcp"
+      - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
+      - "[::]:443:443/tcp"
+      - "[::]:443:443/udp"

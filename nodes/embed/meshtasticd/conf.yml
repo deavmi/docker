@@ -1,0 +1,20 @@
+Logging:
+  LogLevel: debug
+
+
+# Lora:
+  # Module: sx1262  # Waveshare SX126X XXXM
+  # DIO2_AS_RF_SWITCH: true
+  # CS: 21
+  # IRQ: 16
+  # Busy: 20
+  # Reset: 18
+  # SX126X_ANT_SW: 6
+
+
+Webserver:
+  Port: 443
+  #RootPath: /usr/share/meshtasticd/web
+
+
+MACAddress: AA:BB:CC:DD:EE:FF 

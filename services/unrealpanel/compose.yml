@@ -1,0 +1,13 @@
+services:
+  unrealpanel:
+    build:
+      context: ../../images/unrealpanel
+      dockerfile: Dockerfile
+      # FIXME: Implement the below in the image
+      args:
+        - BRANCH=develop
+        - COMMIT=47818a1a7c475c3c214e3b25d961b77d55069086
+    container_name: unrealpanel
+    restart: always
+    ports:
+      - 8888:80

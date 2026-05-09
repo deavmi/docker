@@ -1,0 +1,12 @@
+services:
+  firod:
+    image: firoorg/firod
+    image: firoorg/firod
+    build:
+      context: ../../images/firod
+    container_name: firod
+    restart: unless-stopped
+    volumes:
+      # Firo data directory
+      - ${FIRO_DATA_DIR}:/home/firod/.firo:z
+    

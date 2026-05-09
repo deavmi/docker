@@ -1,0 +1,8 @@
+services:
+  forgejo-runner:
+    image: data.forgejo.org/forgejo/forgejo:11
+    restart: unless-stopped
+    container_name: forgejo_runner
+    environment:
+      - USER_UID=${USER_UID}
+      - USER_GID=${USER_GID}

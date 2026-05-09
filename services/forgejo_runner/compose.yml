@@ -1,9 +1,9 @@
 services:
   act-runner:
-    image: gitea/act_runner:latest
+    image: data.forgejo.org/forgejo/runner:4.0.0
     environment:
       # Config file
-      #- CONFIG_FILE=/config.yml
+      - CONFIG_FILE=/config.yml
 
       # URL to your Gitea instance
       - GITEA_INSTANCE_URL=${ACT_GITEA_INSTANCE_URL}
@@ -16,7 +16,6 @@ services:
 
       # Labels we will report we support to Gitea
       - GITEA_RUNNER_LABELS=${ACT_GITEA_RUNNER_LABELS}
-    # user: ${USER_UID}:${USER_GID}
     volumes:
       # Needs access to the docker socket so it
       # can control docker and spawn new instances
@@ -24,7 +23,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
       # Data directory
-      - "${ACT_DATA_DIR}:/data:z"
+      # - /home/deavmi/volumes/ci/data:/data
+      - "${ACT_DATA_DIR}:/data:z" #/home/deavmi/volumes/ci/data
 
       # Configuration file
-      #- "${ACT_CONFIG_PATH}:/config.yml:ro,z"
+      - "${ACT_CONFIG_PATH}:/config.yml:ro,z" #/home/deavmi/volumes/ci/config.yml

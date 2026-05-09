@@ -6,7 +6,7 @@ ClientUseIPv4 0
 ClientUseIPv6 1
 
 # Prometheus logging
-MetricsPort [::]:9001
+MetricsPort [::]:9600
 MetricsPortPolicy accept [::]/0
 
 # Pinewood.BNET IRC server

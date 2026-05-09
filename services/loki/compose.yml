@@ -1,0 +1,7 @@
+services:
+  loki:
+    image: grafana/loki:latest
+    restart: always
+    command: "-config.file=/etc/loki/loki.yaml"
+    ports:
+      - "3100:3100/tcp"

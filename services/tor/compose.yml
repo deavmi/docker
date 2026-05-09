@@ -1,7 +1,9 @@
 services:
   tor:
     # TODO: Eventually build this from source
-    image: dockurr/tor
+    # image: dockurr/tor
+    build:
+      context: ../../images/tor
     container_name: tor
     restart: unless-stopped
 

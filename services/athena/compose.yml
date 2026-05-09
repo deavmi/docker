@@ -1,0 +1,4 @@
+services:
+  image: gomods/athens
+  container_name: athena
+  restart: unless-stopped

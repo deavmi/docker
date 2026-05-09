@@ -21,14 +21,15 @@ RUN apt install libssl-dev -y
 
 # Create the unreal user
 # and group
-RUN groupadd unreal -g $USER_GID
-RUN useradd -m unreal -u $USER_UID -g $USER_GID
+# RUN groupadd unreal -g $USER_GID
+# RUN useradd -m unreal -u $USER_UID -g $USER_GID
 
 # Switch to unreal user
-USER unreal
+# USER unreal
 
 # Clone sources
-WORKDIR /home/unreal
+RUN mkdir /src
+WORKDIR /src
 RUN echo Building with commit $COMMIT
 RUN git clone https://github.com/unrealircd/unrealircd.git --branch $BRANCH unrealircd -v
 WORKDIR unrealircd/

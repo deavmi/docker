@@ -1,0 +1,17 @@
+version: 0.1
+
+log:
+  accesslog:
+    disabled: true
+  level: debug
+  formatter: text
+
+
+# TODO: Check this out and see how it 
+# is exposed
+prometheus:
+  enabled: true
+  path: /metrics
+
+redis:
+  addrs: [registry-redis:6379]

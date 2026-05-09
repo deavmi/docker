@@ -6,6 +6,9 @@ services:
         - NPROC=2
     container_name: monero_daemon
     restart: always
+    # Effective user/group uid/gid
+    # to run as 
+    user: ${USER_UID}:${USER_GID}
     secrets:
       - MONERO_NODES
     volumes:
@@ -13,11 +16,6 @@ services:
         source: ${MONERO_DATA_PATH}
         target: /data
     environment:
-      # Effective user/group uid/gid
-      # to run as 
-      - USER_UID=${USER_UID}
-      - USER_GID=${USER_GID}
-      
       # Maximum RPC connections from the same IP
       - MAX_CONNECTIONS=${MONERO_MAX_CONNECTIONS}
 

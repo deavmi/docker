@@ -25,11 +25,14 @@ RUN apt install libboost-thread-dev python3 ccache doxygen graphviz -y
 
 # Perform build
 WORKDIR /tmp
-RUN git clone --recursive https://github.com/monero-project/monero --depth=1
-WORKDIR monero
-RUN git submodule init
-RUN git submodule update
+RUN git clone https://github.com/firoorg/firo firod --depth=1
+WORKDIR firod
 ARG NPROC=2
+
+
+# Straight from the Firod official source (https://github.com/firoorg/firo)
+
+
 RUN make -j$NPROC
 RUN cp build/*/master/release/bin/* /bin
 
@@ -56,8 +59,8 @@ RUN apt install libboost-regex-dev libboost-serialization-dev libboost-system-de
 RUN apt install libboost-thread-dev python3 ccache doxygen graphviz -y
 
 # Bring in build arguments
-# ENV USER_UID=1000
-# ENV USER_GID=1003
+ENV USER_UID=1000
+ENV USER_GID=1003
 
 # Setup user
 # RUN groupadd monero --gid $USER_GID
@@ -90,7 +93,7 @@ HEALTHCHECK CMD curl -f --user $MONERO_RPC_USERNAME:$MONERO_RPC_PASSWORD http://
 
 
 # Switch to the monero user
-# USER ${USER_UID}:${USER_GID}
+USER ${USER_UID}:${USER_GID}
 
 # Run the startup script
 CMD ["./run.sh"]

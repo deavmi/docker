@@ -8,6 +8,7 @@ services:
         tunnelsconfig: ./i2pd
       args:
         - NPROC=1
+    user: ${USER_UID}:${USER_GID}
     # FIXME: Enable yggdrasil (somehow)
     # maybe by placing an Yggdrasil instance
     # here and putting them on the same `ns`
@@ -21,8 +22,8 @@ services:
 
       - "--ipv4=false"
       - "--ipv6=true"
-      # - "--meshnets.yggdrasil=true"
-      # - "--meshnets.yggaddress=201:efe0:d45f:f82e:623c:a518:1f96:72bd"
+      - "--meshnets.yggdrasil={$I2PD_YGGDRASIL_ENABLE:-false}"
+      - "--meshnets.yggaddress=${I2PD_YGGDRASIL_ADDRESS}"
       - "--floodfill"
     # Run in same network namespace as `i2pd_web_proxy`
     # so that we can bind to its network interface
@@ -42,6 +43,11 @@ services:
       
       # Tunnel key files
       - "${I2PD_KEYS_DIR}:/keys:z"
+
+      # Tunnels directory
+      - "${I2PD_TUNNELS_DIR}:/tunnels:z"
+
+      
     # FIXME: Enable the below so that
     # they are allowed via the firewall
 

@@ -1,0 +1,85 @@
+networks:
+  mainNet:
+    driver: bridge
+    name: mainNet
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fde4:492a:fc7f::/48
+
+services:
+  host-statistics:
+    extends:
+      file: ../../services/node_exporter/compose.yml
+      service: statistics
+
+  # TODO: Enable this
+  # yggdrasil:
+    # extends:
+      # file: ../../services/yggdrasil/compose.yml
+      # service: yggdrasil
+
+  streamer:
+    build:
+      context: streamer/
+    container_name: streamer
+    restart: unless-stopped
+    networks:
+      - mainNet
+    volumes:
+      # Instead of editing the Icecast file
+      # just let it write to its defaults
+      # but make it go nowhere
+      - /dev/null:/var/log/icecast2/access.log
+      - /dev/null:/var/log/icecast2/error.log
+
+  vlc:
+    build:
+      context: vlc/
+    container_name: vlc
+    depends_on:
+      # VLC would shit-itself after sometime if it cannot
+      # connect to the Icecast endpoint
+      - streamer
+    restart: unless-stopped
+    networks:
+      - mainNet
+    environment:
+      # Name of the PulseAudio device
+      - PULSE_SOURCE_DEVICE=alsa_input.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-stereo
+
+      # PulseAudio server path (container-side)
+      - PULSE_SERVER_PATH=/run/user/1000/pulse/native
+
+      # Icecast Details (will match those of the following
+      # container)
+      - ICECAST_HOSTNAME=streamer:8000
+      - ICECAST_MOUNT_POINT=stream.ogg
+      - ICECAST_PASSWORD=l33picStreamer
+      
+      # Enable verbose logging for VLC
+      - VLC_VERBOSE=3
+    volumes:
+      # Should be the host's Pulse Audio UNIX socket (mapped)-> UNIX sock on container side
+      - /run:/run
+
+      # Makes timezone and time information available
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
+
+  web:
+    container_name: web
+    build:
+      context: web/
+    depends_on:
+      - streamer
+    restart: unless-stopped
+    networks:
+      - mainNet
+    environment:
+      - DOMAIN=vinyl.deavmi.assigned.network
+    ports:
+      - "[::]:80:80/tcp"
+      - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
+      - "[::]:443:443/tcp"
+      - "[::]:443:443/udp"

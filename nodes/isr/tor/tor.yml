@@ -13,4 +13,4 @@ services:
     # compose file above
     ports:
       # Allow Prometheus metrics through firewall
-      - 9001/tcp
+      - 9600/tcp
