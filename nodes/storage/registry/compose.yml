@@ -29,6 +29,8 @@ services:
 
       # TODO: For authentication to work you ned HTTTPs
       # setup and working
+      - REGISTRY_TLS_LETSENCRYPT_CACHEFILE=/tmp
+      - REGISTRY_TLS_LETSENCRYPT_EMAIL=${REGISTRY_LE_EMAIL}
     volumes:
       # Storage for images pushed to this registry
       - ${REGISTRY_STORAGE_DIR}:/imageStore:z
