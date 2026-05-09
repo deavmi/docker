@@ -11,8 +11,14 @@ volumes:
   i2pd_data:
 
 include:
+  # General IP network definitions
   - networks.yml
+
+  # I2P router
   - i2p/i2p.yml
+
+  # Tor router
+  - tor/tor.yml
 
 services:
   host-statistics:
