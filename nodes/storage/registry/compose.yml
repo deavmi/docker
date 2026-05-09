@@ -1,0 +1,43 @@
+
+
+services:
+  distribution:
+    # TODO: In future use their docker file to build this
+    # and or grab it from a local image store when I have
+    # built it myself
+    image: ghcr.io/distribution/distribution:edge
+    container_name: distribution
+    env_file:
+      # Has the REGISTRY_HTTP_SECRET environment
+      # variable in it
+      - path: .registry.key
+        required: true
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${IPV6_NODE1_ADDR}
+      ygg_pool_net:
+        ipv6_address: ${YGG_NODE1_ADDR}
+    # TODO: Add redis cache
+    user: ${USER_UID}:${USER_GID}
+    environment:
+      # Bind to all addresses
+      - "REGISTRY_HTTP_ADDR=[::]:5000"
+      - REGISTRY_HTTP_NET=tcp
+      - "REGISTRY_HTTP_HOST=https://registry.deavmi.assigned.network:5000"
+      # Set the location where images should be stored
+      - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/imageStore
+
+      # TODO: For authentication to work you ned HTTTPs
+      # setup and working
+    volumes:
+      # Storage for images pushed to this registry
+      - ${REGISTRY_STORAGE_DIR}:/imageStore:z
+    ports:
+      # The Registry runs an HTTP server on
+      # port 5000
+      - 5000/tcp
+
+
+    # TODO: For a public one you can shove caddy infront
+    # of it _or_ use the built-in lets-encrypt support
+

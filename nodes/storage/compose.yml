@@ -9,14 +9,17 @@ networks:
         - subnet: fde4:432a:fc78::/48
 
 include:
+  # Network definitions
+  - networks.yml
+
   # Backup service
   - restic.yml
   
   # Crypto services
   - crypto.yml
 
-  # Network definitions
-  - networks.yml
+  # Docker registry service
+  - registry/compose.yml
 
 services:
   host-statistics:
