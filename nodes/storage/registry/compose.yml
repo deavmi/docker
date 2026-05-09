@@ -21,7 +21,7 @@ services:
     user: ${USER_UID}:${USER_GID}
     environment:
       # Bind to all addresses
-      - REGISTRY_HTTP_ADDR=[::]:${REGISTRY_PORT}
+      # - REGISTRY_HTTP_ADDR=:::${REGISTRY_PORT}
       - REGISTRY_HTTP_NET=tcp
       - "REGISTRY_HTTP_HOST=https://${REGISTRY_DOMAIN}:${REGISTRY_PORT}"
       # Set the location where images should be stored
