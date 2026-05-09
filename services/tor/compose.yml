@@ -1,0 +1,24 @@
+services:
+  tor:
+    # TODO: Eventually build this from source
+    image: dockurr/tor
+    container_name: tor
+    restart: unless-stopped
+
+    # Run as your UID/GID so that the
+    # created files (like hidden services
+    # files) are acceessible to you
+    #
+    # Also means configuration can be done
+    # as your user for torrc (TODO: bake this
+    # in?)
+    user: ${USER_UID}:${USER_GID}
+    volumes:
+      # Hidden services directory
+      - ${TOR_HS_DIR_HOST}:${TOR_HS_DIR_CONTAINER}:z
+
+      # Temporary data
+      - ${TOR_TMP_DIR}:/.tor:z
+
+      # Tor configuration path
+      - ${TOR_CONFIG_DIR}:/etc/tor:z
