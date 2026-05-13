@@ -21,6 +21,9 @@ include:
   # Docker registry service
   - registry/compose.yml
 
+  # Chatmail
+  - chatmail.yml
+
 services:
   host-statistics:
     extends:

@@ -1,0 +1,16 @@
+services:
+  chatmail-relay:
+    container_name: chatmail_relay
+    restart: unless-stopped
+    image: ghcr.io/chatmail/docker:latest
+    environment:
+      # Domain for the mail server (to generate certificates)
+      - MAIL_DOMAIN=${CHATMAIL_DOMAIN}
+    volumes:
+      # Storage for mail
+      - ${CHATMIAL_STORAGE}:/opt/chatmail-www:z
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${CHATMAIL_IPV6_ADDR}
+      ygg_pool_net:
+        ipv6_address: ${CHATMAIL_YGG_ADDR}
