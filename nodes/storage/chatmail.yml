@@ -7,7 +7,7 @@ services:
     environment:
       # Domain for the mail server (to generate certificates)
       - MAIL_DOMAIN=${CHATMAIL_DOMAIN}
-    volumes:
+    # volumes:
       # Storage for mail
       # - ${CHATMAIL_STORAGE}:/opt/chatmail-www:z
     networks:
