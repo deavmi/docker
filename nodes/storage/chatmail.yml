@@ -3,6 +3,7 @@ services:
     container_name: chatmail_relay
     restart: unless-stopped
     image: ghcr.io/chatmail/docker:latest
+    user: ${USER_UID}:${USER_GID}
     environment:
       # Domain for the mail server (to generate certificates)
       - MAIL_DOMAIN=${CHATMAIL_DOMAIN}
