@@ -9,7 +9,7 @@ services:
       - MAIL_DOMAIN=${CHATMAIL_DOMAIN}
     volumes:
       # Storage for mail
-      - ${CHATMAIL_STORAGE}:/opt/chatmail-www:z
+      # - ${CHATMAIL_STORAGE}:/opt/chatmail-www:z
     networks:
       ipv6_pool_net:
         ipv6_address: ${CHATMAIL_IPV6_ADDR}
