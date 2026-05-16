@@ -3,6 +3,7 @@ services:
     extends:
       file: ../../services/ircd/compose.yml
       service: ircd
+    restart: unless-stopped
     networks:
       - mainNet
     ports:
@@ -15,6 +16,7 @@ services:
     extends:
       file: ../../services/webirc/compose.yml
       service: webirc
+    restart: unless-stopped
     build:
       context: webirc/
     depends_on:
