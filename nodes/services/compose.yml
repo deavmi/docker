@@ -11,17 +11,16 @@ volumes:
   i2pd_data:
 
 include:
-  - networks.yml
-
   - minio.yml
 
   - git.yml
   - irc.yml
-  - im.yml
+  # - im.yml
   - i2p.yml
 
-  - novasredes/nr.yml
-  - git/athena/athena.yml
+# TODO: neaten up and see if we can
+# place it elsewhere
+  # - ../../services/i2pd/compose.yml
 
 services:
   host-statistics:
@@ -35,24 +34,17 @@ services:
       service: yggdrasil
     network_mode: "host"
 
-  mycelium:
-    extends:
-      file: ../../services/mycelium/compose.yml
-      service: mycelium
-    container_name: mycelium
-    network_mode: "host"
-
   web:
     container_name: web
     build:
       context: web/
+    depends_on:
+      - gitea
+  #    - webirc
     networks:
       - mainNet
     environment:
       - "DOMAIN=${CADDY_DOMAIN}"
-    volumes:
-      # Make ___/novasredes/public available at /novasredes
-      - /mnt/datadisk/volumes/novasredes/public:/novasredes:z
     ports:
       - "[::]:80:80/tcp"
       - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
