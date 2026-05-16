@@ -4,6 +4,7 @@ services:
   gitea_old_anubis:
     build:
       context: ../../images/anubis
+    restart: unleess-stopped
     container_name: gitea_old_anubis
     depends_on:
       - gitea_old
@@ -18,6 +19,7 @@ services:
   gitea_old_web:
     build:
       context: flat/
+    restart: unleess-stopped
     container_name: gitea_old_web
     depends_on:
       - gitea_old_anubis
@@ -36,6 +38,7 @@ services:
     build:
       context: git/gitea_old/
     container_name: gitea_old
+    restart: unleess-stopped
     depends_on:
       - redis-gitea
       - minio
@@ -123,6 +126,7 @@ services:
     build:
       context: ../../images/anubis
     container_name: gitea_anubis
+    restart: unleess-stopped
     depends_on:
       - gitea
     network_mode: service:gitea
@@ -137,6 +141,7 @@ services:
     build:
       context: flat/
     container_name: gitea_web
+    restart: unleess-stopped
     depends_on:
       - gitea_anubis
     # Run in same network namespace as `gitea`
@@ -155,6 +160,7 @@ services:
     build:
       context: git/gitea/
     container_name: gitea
+    restart: unleess-stopped
     depends_on:
       - db-gitea
       - minio
@@ -240,6 +246,7 @@ services:
       file: ../../services/postgres/compose.yml
       service: postgres
     container_name: gitea_db
+    restart: unleess-stopped
     # Has Gitea-related details inside
     env_file:
       - path: .gitea.postgres
