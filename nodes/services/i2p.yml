@@ -3,6 +3,7 @@ services:
     extends:
       file: ../../services/i2pd/compose.yml
       service: i2pd
+    restart: unless-stopped
     build:
       additional_contexts:
         tunnelsconfig: ./i2pd
