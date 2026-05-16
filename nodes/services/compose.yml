@@ -38,6 +38,7 @@ services:
     container_name: web
     build:
       context: web/
+    restart: unless-stopped
     depends_on:
       - gitea
   #    - webirc

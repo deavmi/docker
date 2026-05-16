@@ -1,6 +1,7 @@
 services:
   novasredes_builder:
     container_name: novasredes_builder
+    restart: unless-stopped
     build:
       context: builder
       dockerfile: Dockerfile
