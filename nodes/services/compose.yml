@@ -47,6 +47,8 @@ services:
   #    - webirc
     networks:
       - mainNet
+    volumes:
+      - /mnt/datadisk/volumes/novasredes/public:/novasredes:z
     environment:
       - "DOMAIN=${CADDY_DOMAIN}"
     ports:
