@@ -15,8 +15,9 @@ include:
 
   - git.yml
   - irc.yml
+  
   # - im.yml
-  - i2p.yml
+  # - i2p.yml
 
 # TODO: neaten up and see if we can
 # place it elsewhere
