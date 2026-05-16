@@ -48,8 +48,7 @@ services:
     networks:
       - mainNet
     volumes:
-      # Novasredes mount
-      - ${CADDY_NOVASREDES_PUBLIC}:/novasredes:z
+      - /mnt/datadisk/volumes/novasredes/public:/novasredes:z
     environment:
       - "DOMAIN=${CADDY_DOMAIN}"
     ports:
