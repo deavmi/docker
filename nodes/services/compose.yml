@@ -13,11 +13,12 @@ volumes:
 include:
   - minio.yml
 
+  - novasredes/nr.yml
   - git.yml
   - irc.yml
 
   - networks.yml
-  
+
   # - im.yml
   # - i2p.yml
 
