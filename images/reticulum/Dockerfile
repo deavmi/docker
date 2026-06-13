@@ -39,6 +39,11 @@ RUN chmod +x /tmp/install.sh
 # install binaries to to our PATH
 ENV PATH=$PATH:/home/root/.local/bin
 
+# Enable installing lxmf for
+# in-band peering discovery
+# mechanism
+ARG LXMF_INSTALL=1
+
 # Install reticulum and delete
 # the install script
 RUN /tmp/./install.sh

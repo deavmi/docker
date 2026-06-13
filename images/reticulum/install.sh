@@ -14,3 +14,9 @@ then
 else
         pip3 install rns --break-system-packages
 fi
+
+# If in-band interface discovery is requested
+if [ "$LXMF_INSTALL" = 1 ]
+then
+				pip3 install lxmf --break-system-packages
+fi
