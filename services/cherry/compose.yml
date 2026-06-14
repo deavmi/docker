@@ -10,3 +10,6 @@ services:
 
       # Where the database is stored
       - "${CHERRY_DB_DIR}:/db:z"
+
+      # Copy file in
+      - "${CHERRY_CONFIG_PATH}:/config.toml"
