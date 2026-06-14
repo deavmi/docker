@@ -7,6 +7,8 @@ services:
     networks:
       ygg_pool_net:
         ipv6_address: ${YGGDRASIL_WEBSITE_YGG_ADDR}
+      ipv6_pool_net:
+        ipv6_address: ${IPV6_NODE6_ADDR}
     ports:
       - "[::]:80:80/tcp"
       - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
