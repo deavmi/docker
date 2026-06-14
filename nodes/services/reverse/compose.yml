@@ -1,0 +1,12 @@
+services:
+  yggdrasil_website_proxy:
+    container_name: yggdrasil_website_proxy
+    build:
+      context: yggsite/
+    restart: unless-stopped
+    networks:
+      ygg_pool_net:
+        ipv6_address: ${YGGDRASIL_WEBSITE_YGG_ADDR}
+    ports:
+      - "[::]:80:80/tcp"
+      - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?

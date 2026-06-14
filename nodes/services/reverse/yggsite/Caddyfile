@@ -1,0 +1,21 @@
+
+{
+	http_port "80"
+
+	log default {
+			output stdout
+			level DEBUG
+	}
+
+  # Don't tell HTTP clients to upgrade to HTTPS
+  auto_https disable_redirects
+}
+
+
+:80 {
+	# Yggdrasil service
+	handle / {
+		uri strip_prefix /git # Straight from https://docs.gitea.com/next/administration/reverse-proxies#caddy-with-a-sub-path
+		reverse_proxy https://yggdrasil-network.github.io
+	}
+}

@@ -13,7 +13,10 @@ volumes:
 include:
   - minio.yml
 
+  # Reverse proxies
   - novasredes/nr.yml
+  - reverse/compose.yml
+  
   - git.yml
   - irc.yml
 
