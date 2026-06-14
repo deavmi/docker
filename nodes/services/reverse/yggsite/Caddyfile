@@ -14,8 +14,8 @@
 
 :80 {
 	# Yggdrasil service
-	handle / {
-		uri strip_prefix /git # Straight from https://docs.gitea.com/next/administration/reverse-proxies#caddy-with-a-sub-path
+	handle /* {
+		# uri strip_prefix /git # Straight from https://docs.gitea.com/next/administration/reverse-proxies#caddy-with-a-sub-path
 		reverse_proxy https://yggdrasil-network.github.io
 	}
 }
