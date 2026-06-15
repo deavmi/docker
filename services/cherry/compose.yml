@@ -1,7 +1,7 @@
 services:
   cherry:
     container_name: cherry
-    image: 
+    image: ghcr.io/deavmi/cherry-server:main
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
     volumes:
