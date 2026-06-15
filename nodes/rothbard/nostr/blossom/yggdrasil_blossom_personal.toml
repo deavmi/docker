@@ -18,3 +18,12 @@ public_keys = [
 enabled = false
 mode = "Whitelist"
 mime_types = []
+
+[get]
+require_auth = false
+
+[list]
+require_auth = false
+
+[mirror]
+enable = false
