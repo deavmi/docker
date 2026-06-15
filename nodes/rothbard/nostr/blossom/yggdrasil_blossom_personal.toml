@@ -1,4 +1,11 @@
 database_directory = "/db"
 files_directory = "/blobs"
-server_url = "http://ygg.blossom.nostr.rothbard.lab.networks.deavmi.assigned.network:3030"
+server_url = "http://ygg.personal.blossom.nostr.rothbard.lab.networks.deavmi.assigned.network:3030"
 host = "[::]:3030"
+
+[upload.public_key_filter]
+enabled = true
+mode = "Whitelist"
+public_keys = [
+	""
+]
