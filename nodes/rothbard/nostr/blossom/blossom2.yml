@@ -1,0 +1,42 @@
+services:
+  blossom_ygg_personal:
+    extends:
+      file: ../../services/cherry/compose.yml
+      service: cherry
+    container_name: blossom_ygg_personal
+    networks:
+      yggdrasil_net:
+        ipv6_address: ${BLOSSOM_SERVER_ADDR_YGG}
+    ports:
+      # Allow through firewall
+      - 3030/tcp
+    volumes:
+      # Where blobs are stored
+      - "${BLOSSOM_SERVER_PERSONAL_YGG_BLOBS}:/blobs:z"
+
+      # Where the database is stored
+      - "${BLOSSOM_SERVER_PERSONAL_YGG_DB}:/db:z"
+
+      # Copy file in
+      - "./yggdrasil_blossom_personal.toml:/config.toml"
+
+  blossom_clearnet_personal:
+    extends:
+      file: ../../services/cherry/compose.yml
+      service: cherry
+    container_name: blossom_clearnet_personal
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${BLOSSOM_SERVER_ADDR_IPV6}
+    ports:
+      # Allow through firewall
+      - 3030/tcp
+    volumes:
+      # Where blobs are stored
+      - "${BLOSSOM_SERVER_PERSONAL_CLEARNET_BLOBS}:/blobs:z"
+
+      # Where the database is stored
+      - "${BLOSSOM_SERVER_PERSONAL_CLEARNET_DB}:/db:z"
+
+      # Copy file in
+      - "./clearnet_blossom_personal.toml:/config.toml"

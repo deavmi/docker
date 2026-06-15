@@ -1,0 +1,4 @@
+database_directory = "/db"
+files_directory = "/blobs"
+server_url = "http://ygg.blossom.nostr.rothbard.lab.networks.deavmi.assigned.network:3030"
+host = "[::]:3030"
