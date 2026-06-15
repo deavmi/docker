@@ -17,3 +17,4 @@ public_keys = [
 [upload.mimetype_filter]
 enabled = false
 mode = "Whitelist"
+mime_types = []
