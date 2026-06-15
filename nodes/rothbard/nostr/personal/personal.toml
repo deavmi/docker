@@ -14,7 +14,7 @@
 [authorization]
        	# Only allow myself to publish events
         pubkey_whitelist = [
-                "d6149823c90c4865e4bc434a4be1a1ee8f72aabd8328dd059ba4f11f7633b0b6"
+                "05dc5187506e870cd19d2454597d7a91fffa5111b3c75ae371e75a3e4270781e"
         ]
 
 [network]
