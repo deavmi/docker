@@ -4,6 +4,7 @@ services:
       file: ../../../../services/cherry/compose.yml
       service: cherry
     container_name: blossom_ygg_personal
+    command: "--config /config.toml"
     networks:
       yggdrasil_net:
         ipv6_address: ${BLOSSOM_SERVER_ADDR_YGG}
@@ -25,6 +26,7 @@ services:
       file: ../../../../services/cherry/compose.yml
       service: cherry
     container_name: blossom_clearnet_personal
+    command: "--config /config.toml"
     networks:
       ipv6_pool_net:
         ipv6_address: ${BLOSSOM_SERVER_ADDR_IPV6}
