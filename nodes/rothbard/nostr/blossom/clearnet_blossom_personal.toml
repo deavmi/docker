@@ -13,3 +13,6 @@ mode = "Whitelist"
 public_keys = [
 	""
 ]
+
+[upload.mimetype_filter]
+enabled = false
