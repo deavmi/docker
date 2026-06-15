@@ -4,6 +4,8 @@ services:
     image: ghcr.io/deavmi/cherry-server:main
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
+    # TODO: Find a way to actuallyallow inherit with
+    # rewrite
     # volumes:
       # Where blobs are stored
       # - "${CHERRY_DATA_DIR}:/blobs:z"
