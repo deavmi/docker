@@ -1,7 +1,7 @@
 services:
   blossom_ygg_personal:
     extends:
-      file: ../../../services/cherry/compose.yml
+      file: ../../../../services/cherry/compose.yml
       service: cherry
     container_name: blossom_ygg_personal
     networks:
@@ -22,7 +22,7 @@ services:
 
   blossom_clearnet_personal:
     extends:
-      file: ../../../services/cherry/compose.yml
+      file: ../../../../services/cherry/compose.yml
       service: cherry
     container_name: blossom_clearnet_personal
     networks:
