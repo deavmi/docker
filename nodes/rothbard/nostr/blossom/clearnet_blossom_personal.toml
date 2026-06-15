@@ -11,7 +11,7 @@ max_size = 200
 enabled = true
 mode = "Whitelist"
 public_keys = [
-	""
+	"05dc5187506e870cd19d2454597d7a91fffa5111b3c75ae371e75a3e4270781e"
 ]
 
 [upload.mimetype_filter]
