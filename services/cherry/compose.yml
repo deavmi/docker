@@ -4,12 +4,12 @@ services:
     image: ghcr.io/deavmi/cherry-server:main
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
-    volumes:
+    # volumes:
       # Where blobs are stored
-      - "${CHERRY_DATA_DIR}:/blobs:z"
+      # - "${CHERRY_DATA_DIR}:/blobs:z"
 
       # Where the database is stored
-      - "${CHERRY_DB_DIR}:/db:z"
+      # - "${CHERRY_DB_DIR}:/db:z"
 
       # Copy file in
-      - "${CHERRY_CONFIG_PATH}:/config.toml"
+      # - "${CHERRY_CONFIG_PATH}:/config.toml"
