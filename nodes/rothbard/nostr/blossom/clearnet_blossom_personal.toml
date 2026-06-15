@@ -5,6 +5,7 @@ host = "[::]:3030"
 
 [upload]
 enabled = true
+max_size = 200
 
 [upload.public_key_filter]
 enabled = true
