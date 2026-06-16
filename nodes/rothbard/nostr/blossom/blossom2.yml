@@ -7,7 +7,7 @@ services:
     command: "--config /config.toml"
     networks:
       yggdrasil_net:
-        ipv6_address: ${BLOSSOM_SERVER_ADDR_YGG}
+        ipv6_address: ${BLOSSOM_SERVER_PERSONAL_ADDR_YGG}
     ports:
       # Allow through firewall
       - 3030/tcp
@@ -29,7 +29,7 @@ services:
     command: "--config /config.toml"
     networks:
       ipv6_pool_net:
-        ipv6_address: ${BLOSSOM_SERVER_ADDR_IPV6}
+        ipv6_address: ${BLOSSOM_SERVER_PERSONAL_ADDR_IPV6}
     ports:
       # Allow through firewall
       - 3030/tcp
