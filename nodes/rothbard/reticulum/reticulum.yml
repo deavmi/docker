@@ -29,7 +29,10 @@ services:
       - ${LXMD_RNS_PATH}:/rns:z
     user: ${USER_UID}:${USER_GID}
     networks:
-      - retNet
+      ipv6_pool_net:
+        ipv6_address: ${LXMD_IPV6_ADDR}
+      yggdrasil_net:
+        ipv6_address: ${LXMD_YGG_IPV6_ADDR}
 
   reticulum:
     container_name: reticulum
@@ -69,7 +72,11 @@ services:
       # Add RNode devices here
       - /dev/ttyACM0:/dev/rnode1:rwm
     networks:
-      - retNet
+      ipv6_pool_net:
+        ipv6_address: ${RETICULUM_IPV6_ADDR}
+      yggdrasil_net:
+        ipv6_address: ${RETICULUM_YGG_IPV6_ADDR}
     ports:
-      - :::4242:4242/tcp # TCP server interface port
-      - :::4242:4242/udp # UDP server interface port
+      # Expose via firewall
+      - 4242/tcp # TCP server interface port
+      - 4242/udp # UDP server interface port
