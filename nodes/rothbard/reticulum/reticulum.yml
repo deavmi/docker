@@ -28,11 +28,12 @@ services:
       # Local RNS instance configuration path
       - ${LXMD_RNS_PATH}:/rns:z
     user: ${USER_UID}:${USER_GID}
-    networks:
-      ipv6_pool_net:
-        ipv6_address: ${LXMD_IPV6_ADDR}
-      yggdrasil_net:
-        ipv6_address: ${LXMD_YGG_IPV6_ADDR}
+    network_mode: service:reticulum
+    # networks:
+      # ipv6_pool_net:
+        # ipv6_address: ${LXMD_IPV6_ADDR}
+      # yggdrasil_net:
+        # ipv6_address: ${LXMD_YGG_IPV6_ADDR}
 
   reticulum:
     container_name: reticulum
