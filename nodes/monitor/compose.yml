@@ -118,7 +118,7 @@ services:
       - "/etc/alloy/config.alloy"
     volumes:
       # Storage for data
-      - "${ALLOY_STORAGE}:/var/lib/alloy/data:z"
+      - "${ALLOY_STORAGE}:/var/lib/alloy:z"
 
   # TODO: caddy definition and let us copy our caddy file
   # over using a custom image rather. This will allow us
