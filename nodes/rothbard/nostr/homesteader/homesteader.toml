@@ -1,7 +1,7 @@
 [info]
         relay_url = "ws://rothbard.lab.networks.deavmi.assigned.network:7777"
         name = "128-Homesteader"
-        description = "An IPv6-only Nostr relay for homesteaders.  No illegal content."
+        description = "An IPv6-only Nostr relay for homesteaders.  DM me for access.  No illegal content."
         pubkey = "d6149823c90c4865e4bc434a4be1a1ee8f72aabd8328dd059ba4f11f7633b0b6"
         contact = "mailto:deavmi@redxen.eu"
 
@@ -15,6 +15,16 @@
         address = "[::]"
         port = 7000
         remote_ip_header = "x-forwarded-for"
+
+[authorization]
+       	# Only allow the following people to publish
+        pubkey_whitelist = [
+        				# These two are mine
+                "05dc5187506e870cd19d2454597d7a91fffa5111b3c75ae371e75a3e4270781e",
+                "794b46879ba7af8429e29f5e29c410107209e9783ede9d0610f4b789f7e4c038"
+
+                # These are others
+        ]
 
 [options]
         reject_future_seconds = 14400
