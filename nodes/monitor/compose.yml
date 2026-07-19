@@ -109,7 +109,7 @@ services:
       - loki
     ports:
       # Syslog listener
-      - 3333:3333/tcp
+      - :::3333:3333/tcp
       # - 3333:3333/udp
 
       # Alloy port (for Grafana/Loki (consumer) to connect to)
