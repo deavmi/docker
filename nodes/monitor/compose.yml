@@ -81,17 +81,41 @@ services:
       - grafana_db_net
 
   # Logging collector
-  # loki:
-    # extends:
-      # file: ../../services/loki/compose.yml
-      # service: loki
-    # build:
-      # context: loki/
-    # container_name: loki
-    # networks:
-      # - mainNet
+  loki:
+    extends:
+      file: ../../services/loki/compose.yml
+      service: loki
+    build:
+      context: loki/
+    user: ${USER_UID}:${USER_GID}
+    container_name: loki
+    networks:
+      - mainNet
     # volumes:
       # - /etc/loki
+
+  # Alloy (syslog listener)
+  alloy:
+    build:
+      context: alloy/
+    user: ${USER_UID}:${USER_GID}
+    container_name: alloy
+    networks:
+      - mainNet
+    ports:
+      # Syslog listener
+      - 3333:3333/tcp
+      # - 3333:3333/udp
+
+      # Alloy port (for Grafana/Loki (consumer) to connect to)
+      # - 12345:12345/tcp
+    command:
+      # TODO: Do we need this? - for web UI???
+      - "--server.http.listen-addr=[::]:12345"
+      - "--storage.path=/etc/alloy/config.alloy"
+    volumes:
+      # Storage for data
+      - "${ALLOY_STORAGE}:/var/lib/alloy/data:z"
 
   # TODO: caddy definition and let us copy our caddy file
   # over using a custom image rather. This will allow us
