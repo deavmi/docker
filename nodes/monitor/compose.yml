@@ -92,7 +92,7 @@ services:
     networks:
       - mainNet
     command:
-      - "-config=/config.yaml"
+      - "-config.file=/config.yaml"
     # volumes:
       # - /etc/loki
 
