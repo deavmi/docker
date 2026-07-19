@@ -105,6 +105,8 @@ services:
     container_name: alloy
     networks:
       - mainNet
+    depends_on:
+      - loki
     ports:
       # Syslog listener
       - 3333:3333/tcp
