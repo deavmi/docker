@@ -114,7 +114,7 @@ services:
       # TODO: Do we need this? - for web UI???
       - "run"
       - "--server.http.listen-addr=[::]:12345"
-      - "--storage.path=/etc/alloy/config.alloy"
+      - "--storage.path=/var/lib/alloy/data"
       - "/etc/alloy/config.alloy"
     volumes:
       # Storage for data
