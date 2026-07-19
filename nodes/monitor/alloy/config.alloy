@@ -1,0 +1,11 @@
+logging {
+	level = "info"
+	format = "logfmt"
+}
+
+loki.source.syslog "syslog" {
+	listener {
+		address = "[::]:3333"
+		protocol = "tcp"
+	}
+}
