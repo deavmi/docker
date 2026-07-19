@@ -4,8 +4,8 @@ FROM grafana/loki
 
 # Copy over configuration file
 # RUN mkdir /etc/loki
-COPY config.yaml /etc/loki/loki.yaml
-USER root
-RUN chown loki:loki /etc/loki/loki.yaml
-USER loki
-RUN ls -la /etc/loki && sleep 5
+COPY config.yaml /config.yaml
+# USER root
+# RUN chown loki:loki /etc/loki/loki.yaml
+# USER loki
+# RUN ls -la /etc/loki && sleep 5
