@@ -8,4 +8,12 @@ loki.source.syslog "syslog" {
 		address = "[::]:3333"
 		protocol = "tcp"
 	}
+
+	forward_to = [loki.write.main.receiver]
+}
+
+loki.write "main" {
+	endpoint = {
+		url = "http://loki:3100/loki/api/v1/push"
+	}
 }
