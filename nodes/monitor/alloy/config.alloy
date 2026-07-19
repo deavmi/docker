@@ -8,6 +8,8 @@ loki.source.syslog "syslog" {
 		address = "[::]:3333"
 		protocol = "tcp"
 	}
+
+	syslog_format = "rfc3164"
 	
 	forward_to = [loki.write.main.receiver]
 }
