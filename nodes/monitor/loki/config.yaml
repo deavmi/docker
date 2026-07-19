@@ -9,8 +9,13 @@ server:
   http_listen_address: "::"
 
 common:
+  # Recommendation by caskd to get it working
+  # in IPv6-only networks (otherwise it can't
+  # find any AF_INET addresses on any of the
+  # interfaces and it crashes)
+  instance_addr: '::1'
   ring:
-    instance_addr: 127.0.0.1
+    instance_enable_ipv6: true # See above  
     kvstore:
       store: inmemory
   replication_factor: 1
