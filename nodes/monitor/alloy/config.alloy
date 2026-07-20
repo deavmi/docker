@@ -6,7 +6,7 @@ logging {
 loki.source.syslog "syslog" {
 	listener {
 		address = "[::]:3333"
-		protocol = "udp"
+		protocol = "tcp"
 		syslog_format = "rfc3164"
 		label_structured_data = true
 	}
