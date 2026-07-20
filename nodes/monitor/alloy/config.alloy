@@ -9,6 +9,7 @@ loki.source.syslog "syslog" {
 		protocol = "udp"
 		syslog_format = "rfc3164"
 		label_structured_data = true
+		use_incoming_timestamp = true
 	}
 	
 	forward_to = [loki.write.main.receiver]
