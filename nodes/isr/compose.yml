@@ -18,7 +18,7 @@ include:
   - i2p/i2p.yml
 
   # Tor router
-  - tor/tor.yml
+  #- tor/tor.yml
 
 services:
   host-statistics:
