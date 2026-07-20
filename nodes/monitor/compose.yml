@@ -110,6 +110,7 @@ services:
     ports:
       # Syslog listener for Mikrotik's
       - :::3333:3333/tcp
+      - :::3333:3333/udp
       
       # - 3333:3333/udp
 
