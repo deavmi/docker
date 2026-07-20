@@ -108,9 +108,9 @@ services:
     depends_on:
       - loki
     ports:
-      # Syslog listener
-      - :::3333:3333/udp
+      # Syslog listener for Mikrotik's
       - :::3333:3333/tcp
+      
       # - 3333:3333/udp
 
       # Alloy port (for Grafana/Loki (consumer) to connect to)
