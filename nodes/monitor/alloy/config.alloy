@@ -7,8 +7,8 @@ loki.source.syslog "syslog" {
 	listener {
 		address = "[::]:3333"
 		protocol = "udp"
-		syslog_format = "rfc5424"
-		label_structured_data = false
+		syslog_format = "rfc3164"
+		label_structured_data = true
 	}
 	
 	forward_to = [loki.write.main.receiver]
