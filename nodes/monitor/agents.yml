@@ -22,3 +22,5 @@ services:
     command: "--log.level=debug --config.file=/etc/snmp_exporter/snmp.yml "
     networks:
       - mainNet
+    ports:
+      - 9116:9116/tcp
