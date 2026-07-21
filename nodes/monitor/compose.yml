@@ -2,7 +2,7 @@ include:
   - networks.yml
   - volumes.yml
   
-  - agents.yml
+  - agents/agents.yml
 
 services:
   host-statistics:
