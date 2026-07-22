@@ -38,7 +38,7 @@ scrape_configs:
 
   # SNMP jobs
   - job_name: 'snmp_core_router'
-    scrape_interval: 5s
+    scrape_interval: 200s
     metrics_path: '/snmp'
     params:
       target: ['router.top.networks.deavmi.assigned.network']
