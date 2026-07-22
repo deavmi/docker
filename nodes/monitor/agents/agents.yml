@@ -29,7 +29,7 @@ services:
       context: ../promtail
     container_name: promtail
     restart: unless-stopped
-    command: "--log.level=debug -config.file=/etc/promtail/promtail.yml "
+    command: "--log.level=debug -config.file=/etc/promtail/promtail.yaml"
     networks:
       - mainNet
     ports:
