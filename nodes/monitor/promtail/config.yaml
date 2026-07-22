@@ -9,7 +9,7 @@ clients:
 scrape_configs:
   - job_name: syslogs
     syslog:     # Based on https://kaspars.net/blog/remote-logging-mikrotik-routeros
-      listen_address: [::]:3334
+      listen_address: '[::]:3334'
       listen_protocol: udp
       syslog_format: rfc3164
       # TODO: https://github.com/McJoppy/promtail-syslog/blob/main/promtail.yaml
