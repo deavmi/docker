@@ -33,6 +33,6 @@ services:
     networks:
       - mainNet
     ports:
-      - ::3334:3334/tcp
-      - ::3334:3334/udp
+      - :::3334:3334/tcp
+      - :::3334:3334/udp
   
