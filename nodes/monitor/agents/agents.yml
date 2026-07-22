@@ -16,7 +16,7 @@ services:
 
   # SNMP exporter
   snmp_agent:
-    image: prom/snmp-exporter
+    image: ghcr.io/deavmi/snmp_exporter:main
     container_name: snmp_agent
     restart: unless-stopped
     command: "--log.level=debug --config.file=/etc/snmp_exporter/snmp.yml "
