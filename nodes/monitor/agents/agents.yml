@@ -32,4 +32,7 @@ services:
     command: "--log.level=debug -config.file=/etc/promtail/promtail.yml "
     networks:
       - mainNet
+    ports:
+      - ::3334:3334/tcp
+      - ::3334:3334/udp
   
