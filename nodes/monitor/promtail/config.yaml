@@ -3,7 +3,7 @@
 # We don't serve a server for logs to be collected
 # but RATHER we push them _to_ a server (in my case
 # a Loki instance)
-client:
+clients:
   url: http://loki:3100/loki/api/v1/push
 
 scrape_configs:
