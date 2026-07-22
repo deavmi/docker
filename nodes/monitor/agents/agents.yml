@@ -22,3 +22,14 @@ services:
     command: "--log.level=debug --config.file=/etc/snmp_exporter/snmp.yml "
     networks:
       - mainNet
+
+  # Promtail
+  promtail:
+    build:
+      context: ../promtail
+    container_name: promtail
+    restart: unless-stopped
+    command: "--log.level=debug -config.file=/etc/promtail/promtail.yml "
+    networks:
+      - mainNet
+  

@@ -1,0 +1,15 @@
+# We don't serve a server for logs to be collected
+# but RATHER we push them _to_ a server (in my case
+# a Loki instance)
+client:
+  url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  - job_name: syslogs
+    # Based on https://kaspars.net/blog/remote-logging-mikrotik-routeros
+    syslog:
+      listen_address: [::]:3334
+      listen_protocol: udp
+      syslog_format: rfc3164
+      
+      
