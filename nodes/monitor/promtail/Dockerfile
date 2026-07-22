@@ -3,4 +3,4 @@
 FROM grafana/promtail:latest
 
 # Copy over configuration file
-COPY config.yaml /etc/promtail/promtail.yml
+COPY config.yaml /etc/promtail/promtail.yaml

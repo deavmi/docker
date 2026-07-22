@@ -12,5 +12,6 @@ scrape_configs:
       listen_address: [::]:3334
       listen_protocol: udp
       syslog_format: rfc3164
-      
+      # TODO: https://github.com/McJoppy/promtail-syslog/blob/main/promtail.yaml
+      #label_structured
       
