@@ -41,7 +41,7 @@ scrape_configs:
     scrape_interval: 5s
     metrics_path: '/snmp'
     params:
-      target: 'router.top.networks.deavmi.assigned.network'
+      target: ['router.top.networks.deavmi.assigned.network']
     static_configs:
       - targets: ['snmp_agent:9116']
         labels:
