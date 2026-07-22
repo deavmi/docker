@@ -123,6 +123,7 @@ services:
 
       # Allow access through firewall
       - 9600/tcp
+      - 9601/tcp
 
   i2pd_exporter:
     extends:
