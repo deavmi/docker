@@ -28,11 +28,11 @@ scrape_configs:
           server: isr
           service: i2p
           name: "ISR node"
-      - targets: ['ygg.tor.isr.deavmi.assigned.network:9600']
-        labels:
-          server: isr
-          service: Tor
-          name: "ISR node"
+      # - targets: ['ygg.tor.isr.deavmi.assigned.network:9600']
+      #   labels:
+      #     server: isr
+      #     service: Tor
+      #     name: "ISR node"
 
           
 
