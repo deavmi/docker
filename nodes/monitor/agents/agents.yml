@@ -8,7 +8,7 @@ services:
   irc_agent:
     image: ghcr.io/dgl/ircd_exporter
     container_name: irc_agent
-    restart: always
+    restart: unless-stopped
     environment:
       - PIE_IRC.SERVER=${AGENT_IRC_PINEWOOD}
     networks:
