@@ -29,6 +29,8 @@ services:
       context: ../promtail
     container_name: promtail
     restart: unless-stopped
+    depends_on:
+      - loki
     command: "--log.level=debug -config.file=/etc/promtail/promtail.yaml"
     networks:
       - mainNet
