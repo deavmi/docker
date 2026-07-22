@@ -130,11 +130,16 @@ services:
       service: i2pd_exporter
     depends_on:
       - i2pd
-    environment:
+    command:
+      - "--i2pcontrol-address https://[::]:${I2P_CONTROL_PORT}"
+      - "--metrics-listen-addr [::]:9600"
+      - "--i2pcontrol-tls-insecure"
+    # environment:
       # - I2PCONTROL_ADDRESS=https://${I2PD_IPV6_ADDR}:${I2P_CONTROL_PORT}
-      - I2PCONTROL_ADDRESS=http://[::]:${I2P_CONTROL_PORT}
-      - "METRICS_LISTEN_ADDR=[::]:9600"
-      - I2PCONTROL_TLS_INSECURE=true
+      # TODO: Re-activate the below
+      # - I2PCONTROL_ADDRESS=http://[::]:${I2P_CONTROL_PORT}
+      # - "METRICS_LISTEN_ADDR=[::]:9600"
+      # - I2PCONTROL_TLS_INSECURE=true
     network_mode: service:i2pd_web_proxy
     # networks:
       # For access to the `i2pd` container
