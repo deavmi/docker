@@ -1,3 +1,5 @@
+# Based on https://github.com/jafernandez73/grafana-loki/blob/master/docs/promtail-examples.md
+
 # We don't serve a server for logs to be collected
 # but RATHER we push them _to_ a server (in my case
 # a Loki instance)
