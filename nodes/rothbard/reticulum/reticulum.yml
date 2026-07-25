@@ -7,6 +7,9 @@ networks:
       config:
         - subnet: fde4:492b:fc7f::/48
 
+include:
+  - i2p.yml
+
 services:
   lxmd:
     container_name: lxmd
