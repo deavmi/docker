@@ -8,6 +8,7 @@ networks:
         - subnet: fde4:492b:fc7f::/48
 
 include:
+  # For Reticulum support
   - i2p.yml
 
 services:

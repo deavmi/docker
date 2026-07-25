@@ -1,11 +1,12 @@
 services:
-  i2pd:
+  i2pd_reticulum:
     extends:
       file: ../../../services/i2pd/compose.yml
       service: i2pd
       args:
         - NPROC=1
     user: ${USER_UID}:${USER_GID}
+    container_name: i2pd_reticulum
     # FIXME: Enable yggdrasil (somehow)
     # maybe by placing an Yggdrasil instance
     # here and putting them on the same `ns`
