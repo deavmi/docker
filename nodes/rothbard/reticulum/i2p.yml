@@ -44,6 +44,10 @@ services:
       
       - I2P_LOG_LEVEL=none
 
+      # Don't transit other's traffic on the I2P
+      # network; just use it as a client
+      - I2P_NO_TRANSIT=true
+
       # Enable I2PControl and set required ports
       # so that `i2pd_exporter` can access it
       # - I2P_CONTROL_ENABLED=${I2P_CONTROL_ENABLED}
