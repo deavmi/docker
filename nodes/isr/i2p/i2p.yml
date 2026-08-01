@@ -9,6 +9,7 @@ services:
       service: i2pd
       args:
         - NPROC=1
+    restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
     # FIXME: Enable yggdrasil (somehow)
     # maybe by placing an Yggdrasil instance
@@ -88,6 +89,7 @@ services:
     build:
       context: ../flat/
     container_name: i2pd_web_proxy
+    restart: unless-stopped
     # Placed here so that we define it
     # and `i2pd` depends on us hence
     # bringing us up in the process

@@ -25,11 +25,13 @@ services:
     extends:
       file: ../../services/node_exporter/compose.yml
       service: statistics
-
+    restart: unless-stopped
+    
   yggdrasil:
     extends:
       file: ../../services/yggdrasil/compose.yml
       service: yggdrasil
+    restart: unless-stopped
     network_mode: "host"
 
   mycelium:
@@ -37,5 +39,6 @@ services:
       file: ../../services/mycelium/compose.yml
       service: mycelium
     container_name: mycelium
+    restart: unless-stopped
     network_mode: "host"
 
