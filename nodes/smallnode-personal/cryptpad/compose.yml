@@ -1,0 +1,55 @@
+services:
+  cryptpad:
+    container_name: cryptpad
+    restart: unless-stopped
+    image: cryptpad/latest
+    user: ${USER_UID}:${USER_GID}
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${GITEA_OLD_IPV6_ADDR}
+      ygg_pool_net:
+        ipv6_address: ${GITEA_OLD_YGG_ADDR}
+    environment:
+      # Domain (for web UI serving)
+      - CPAD_MAIN_DOMAIN=${CRYPTPAD_DOMAIN}
+
+      # Request to install the (Optional) OnlyOffice suite
+      # TODO: Before enabling ensure you have the ADDITIONAL
+      # volume mounts added
+      # - CPAD_INSTALL_ONLYOFFICE=1
+    volumes:
+      # Blob storage
+      - "${CRYPTPAD_STORE_BLOB}:/cryptpad/blob:z"
+
+      # Block storage
+      - "${CRYPTPAD_STORE_BLOCK}:/cryptpad/block:z"
+
+      # Data storage
+      - "${CRYPTPAD_STORE_DATA}:/cryptpad/data:z"
+
+      # File storage
+      - "${CRYPTPAD_STORE_FILES}:/cryptpad/datastore:z"
+
+      # Preferences (stored in the repository)
+      - ".:/cryptpad/customize:z"
+
+      # Admin keys (config.js)
+      - "${CRYPTPAD_STORE_CONFIG_FILE}:/cryptpad/config/config.js:z,ro"
+
+  # Reverse proxy with HTTPS for `cryptpad`
+  cryptpad_proxy:
+    build:
+      context: flat/
+    restart: unless-stopped
+    container_name: cryptpad_proxy
+    depends_on:
+      - cryptpad
+    # Run in same network namespace as `gitea_old`
+    # so that we can bind to its network interface
+    network_mode: service:cryptpad
+    environment:
+      - "DOMAIN=${CRYPTPAD_DOMAIN}"
+      # - "WHERE_TO_ADDR=gitea_old_anubis" (FIXME: Lookup fails to resolve by Caddy, not sure why)
+      - "WHERE_TO_ADDR=[::1]"
+      - "WHERE_TO_PORT=80"
+      - "DEBUG_LEVEL=INFO"
