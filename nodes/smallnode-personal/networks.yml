@@ -32,3 +32,14 @@ networks:
     ipam:
       config:
         - subnet: fde4:492a:fc7f::/48
+
+  ygg_pool_net:
+    name: ygg_pool_net
+    driver: bridge
+    enable_ipv4: false
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: ${YGG_POOL_SUBNET}
+    driver_opts:
+      com.docker.network.bridge.gateway_mode_ipv6: routed
