@@ -18,7 +18,6 @@ ENV PATH=$PATH:/home/root/.local/bin
 # Run the daemon
 ENV PYTHONUNBUFFERED=1
 ENV SLEEP_TIME=5
-# CMD sleep $SLEEP_TIME && lxmd --config /data --rnsconfig /rns
 
 # Directory to hold RRCD state
 ENV RRCD_HOME=/rrcd/state
@@ -27,4 +26,4 @@ ENV RRCD_HOME=/rrcd/state
 ENV RRCD_IDENTITY=/rrcd/identity
 
 # Run with the config file at /config.toml
-CMD rrcd --config /config.toml --identity $RRCD_IDENTITY
+CMD sleep $SLEEP_TIME && rrcd --config /config.toml --identity $RRCD_IDENTITY
