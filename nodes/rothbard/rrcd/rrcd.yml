@@ -5,7 +5,7 @@ services:
     depends_on:
       - reticulum
     build:
-      context: ../../../images/rrcd
+      context: ../../../images/rrc
     environment:
       # AutoPeering over link-local didn't work
       # if you didn't make startup wait a little
