@@ -1,0 +1,33 @@
+services:
+  rrcd:
+    container_name: rrcd
+    restart: unless-stopped
+    depends_on:
+      - reticulum
+    build:
+      context: ../../../images/rrcd
+   environment:
+      # AutoPeering over link-local didn't work
+      # if you didn't make startup wait a little
+      # bit (clearly for some Docker networking interfaces
+      # to properly initialize)
+      - SLEEP_TIME=5
+
+      # TODO: Set the two other fields here
+    volumes:
+      # State storage
+      - ${RRCD_STATE_DIR}:/rrcd/state:z
+
+      # Identity storage
+      - ${RRCD_IDENTITY_DIR}:/rrcd/identity:z
+
+      # TODO: reticulum state dir? probably not
+
+      # Path to RRCD config file
+      - ${RRCD_CONFIG_PATH}:/config.toml:z,ro
+    user: ${USER_UID}:${USER_GID}
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${RRCD_IPV6_ADDR}
+      yggdrasil_net:
+        ipv6_address: ${RRCD_YGG_IPV6_ADDR}
