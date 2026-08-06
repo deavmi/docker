@@ -18,7 +18,7 @@
 
 
 # Domain name for automatic SSL
-:80, {$DOMAIN}:443 {
+:80, {$DOMAIN}:443, {$DOMAIN_1}:443, {$DOMAIN_2}:443 {
 
 	# Handle metrics
 	handle /metrics {
@@ -60,10 +60,5 @@
 	# Go meta-tag imports server
 	handle /go* {
 		reverse_proxy go_proxy:80
-	}
-
-	# Forward to services.deavmi.assigned.network
-	handle /novasredes* {
-		reverse_proxy services.deavmi.assigned.network:80
 	}
 }

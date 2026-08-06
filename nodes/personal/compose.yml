@@ -42,6 +42,8 @@ services:
       - /mnt/datadisk/volumes/web:/webroot:z
     environment:
       - "DOMAIN=${CADDY_DOMAIN}"
+      - "DOMAIN_1=${CADDY_DOMAIN_1}"
+      - "DOMAIN_2=${CADDY_DOMAIN_2}"
     ports:
       - "[::]:80:80/tcp"
       - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
