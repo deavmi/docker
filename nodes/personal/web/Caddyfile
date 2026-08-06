@@ -61,4 +61,9 @@
 	handle /go* {
 		reverse_proxy go_proxy:80
 	}
+
+	# Forward to services.deavmi.assigned.network
+	handle /novasredes* {
+		reverse_proxy services.deavmi.assigned.network:80
+	}
 }
