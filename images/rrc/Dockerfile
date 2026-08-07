@@ -25,6 +25,8 @@ ENV RRCD_HOME=/rrcd/state
 # Directory housing identity
 ENV RRCD_IDENTITY=/rrcd/identity
 
+# Directory housing Reticulum daemon state
+ENV RETICULUM_DIR=/rrcd/reticulum
+
 # Run with the config file at /config.toml
-# CMD sleep $SLEEP_TIME && rrcd --config /config.toml --identity $RRCD_IDENTITY
-CMD sleep 1000
+CMD sleep $SLEEP_TIME && rrcd --config /config.toml --identity $RRCD_IDENTITY --configdir $RETICULUM_DIR
