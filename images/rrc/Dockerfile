@@ -26,4 +26,5 @@ ENV RRCD_HOME=/rrcd/state
 ENV RRCD_IDENTITY=/rrcd/identity
 
 # Run with the config file at /config.toml
-CMD sleep $SLEEP_TIME && rrcd --config /config.toml --identity $RRCD_IDENTITY
+# CMD sleep $SLEEP_TIME && rrcd --config /config.toml --identity $RRCD_IDENTITY
+CMD sleep 1000
