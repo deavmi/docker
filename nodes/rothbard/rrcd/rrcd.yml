@@ -21,7 +21,8 @@ services:
       # Identity storage
       - ${RRCD_IDENTITY_DIR}:/rrcd/identity:z
 
-      # TODO: reticulum state dir? probably not
+      # Reticulum state storage
+      - ${RRCD_RETICULUM_HOME}:/rrcd/reticulum:z
 
       # Path to RRCD config file
       - ${RRCD_CONFIG_PATH}:/config.toml:z,ro
