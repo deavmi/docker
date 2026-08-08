@@ -37,5 +37,5 @@ ENV GREETING="Welcome to my hub!"
 
 # Run with the config file at /config.toml
 CMD sleep $SLEEP_TIME && rrcd --config /config.toml --identity $RRCD_IDENTITY/identity --configdir $RETICULUM_DIR \
-		--announce-period $ANNOUNCE_PERIOD --room-registry /rrcd/roomsReg/rooms.toml --hub-name $HUB_NAME --greeting $GREETING
+		--announce-period $ANNOUNCE_PERIOD --room-registry /rrcd/roomsReg/rooms.toml --hub-name "$HUB_NAME" --greeting "$GREETING"
 # CMD sleep 3600
