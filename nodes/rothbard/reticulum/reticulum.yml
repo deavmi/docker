@@ -1,12 +1,3 @@
-networks:
-  retNet:
-    driver: bridge
-    name: retNet
-    enable_ipv6: true
-    ipam:
-      config:
-        - subnet: fde4:492b:fc7f::/48
-
 include:
   # For Reticulum support
   - i2p.yml
