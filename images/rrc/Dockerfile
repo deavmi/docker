@@ -31,11 +31,14 @@ ENV RETICULUM_DIR=/rrcd/reticulum
 # Announce period in seconds (Default: 900 - every 15 minutes)
 ENV ANNOUNCE_PERIOD=900
 
+# Logging level
+ENV LOG_LEVEL=INFO
+
 # Hub name and greeting
 ENV HUB_NAME="My hub"
 ENV GREETING="Welcome to my hub!"
 
 # Run with the config file at /config.toml
 CMD sleep $SLEEP_TIME && rrcd --config /config.toml --identity $RRCD_IDENTITY/identity --configdir $RETICULUM_DIR \
-		--announce-period $ANNOUNCE_PERIOD --room-registry /rrcd/roomsReg/rooms.toml --hub-name "$HUB_NAME" --greeting "$GREETING"
-# CMD sleep 3600
+		--announce-period $ANNOUNCE_PERIOD --room-registry /rrcd/roomsReg/rooms.toml --hub-name "$HUB_NAME" --greeting "$GREETING" \
+		--log-level $LOG_LEVEL
