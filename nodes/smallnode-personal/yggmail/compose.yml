@@ -61,7 +61,7 @@ services:
   # Reverse proxy with HTTPS for `gitea`
   yggmail_ui_proxy:
     build:
-      context: flat/
+      context: ui/
     container_name: yggmail_ui_proxy
     restart: unless-stopped
     environment:
