@@ -47,7 +47,7 @@ services:
     restart: unless-stopped
     depends_on:
       - yggmail
-    user: ${USER_UID}:${USER_GID}
+    # user: ${USER_UID}:${USER_GID}
     environment:
       - ROUNDCUBEMAIL_DEFAULT_HOST=${YGGMAIL_UI_DOMAIN_IMAP}
       - ROUNDCUBEMAIL_SMTP_SERVER=${YGGMAIL_UI_DOMAIN_SMTP}
