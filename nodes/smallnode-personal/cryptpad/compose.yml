@@ -34,7 +34,7 @@ services:
       - ".:/cryptpad/customize:z"
 
       # Admin keys (config.js)
-      - "${CRYPTPAD_STORE_CONFIG_FILE}:/cryptpad/config/config.js:z,ro"
+      - "${CRYPTPAD_STORE_CONFIG_FILE}:/cryptpad/config:z"
 
   # Reverse proxy with HTTPS for `cryptpad`
   cryptpad_proxy:
