@@ -6,9 +6,9 @@ services:
     user: ${USER_UID}:${USER_GID}
     networks:
       ipv6_pool_net:
-        ipv6_address: ${GITEA_OLD_IPV6_ADDR}
+        ipv6_address: ${CRYPTPAD_IPV6_ADDR}
       ygg_pool_net:
-        ipv6_address: ${GITEA_OLD_YGG_ADDR}
+        ipv6_address: ${CRYPTPAD_YGG_ADDR}
     environment:
       # Domain (for web UI serving)
       - CPAD_MAIN_DOMAIN=${CRYPTPAD_DOMAIN}
