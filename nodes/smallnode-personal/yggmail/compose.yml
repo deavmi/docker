@@ -20,8 +20,8 @@ services:
     # needed for the ACME challenge)
     user: ${USER_UID}:${USER_GID}
     environment:
-      # FIXME: Determine what this is for
-      - TLSPROXY_PASSPHRASE="whatisthisfor?"
+      # Ued to encrypt TLS secrets (FIXME: Determine what this is for)
+      - TLSPROXY_PASSPHRASE=${YGGMAIL_TLS_PASSWORD}
     volumes:
       - ${YGGMAIL_TLS_CACHE_DIR}:/.cache:z
     networks:
