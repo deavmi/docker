@@ -55,8 +55,17 @@ services:
       # Point it to the YggMail instance
       - ROUNDCUBEMAIL_SMTP_PORT=1025
       - ROUNDCUBEMAIL_DEFAULT_PORT=1143
+
+      # Use SQLite for storing data
+      - ROUNDCUBEMAIL_DB_TYPE=sqlite
     # Run in same network namespace as `yggmail_ui_proxy`
     network_mode: service:yggmail_ui_proxy
+    volumes:
+      # Temporary storage
+      - ${YGGMAIL_UI_TEMP_PATH}:/tmp/roundcube-temp:z
+
+      # SQLite DB storage
+      - ${YGGMAIL_UI_DB_PATH}:/var/roundcube/db:z
           
   # Reverse proxy with HTTPS for `gitea`
   yggmail_ui_proxy:
