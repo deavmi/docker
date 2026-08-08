@@ -5,8 +5,11 @@ include:
   # YggMail service
   - yggmail/compose.yml
 
-  # Ntfy.sh
+  # Services
   - ntfy.yml
+  - cryptpad/compose.yml
+
+
   
 services:
   statistics:
