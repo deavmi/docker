@@ -13,7 +13,17 @@ services:
       # to properly initialize)
       - SLEEP_TIME=5
 
-      # TODO: Set the two other fields here
+      # Logging level
+      - LOG_LEVEL=${RRCD_LOG_LEVEL:-INFO}
+
+      # Announce interval in sconds (Default: 900 seconds)
+      - ANNOUNCE_PERIOD=${RRCD_ANNOUNCE_INTERVAL:-900}
+
+      # Hub name
+      - HUB_NAME=${RRCD_HUB_NAME:-MyHub}
+
+      # Greeting
+      - GREETING=${RRCD_GREETING:-Bom dia}
     volumes:
       # State storage
       - ${RRCD_STATE_DIR}:/rrcd/state:z
@@ -21,6 +31,9 @@ services:
       # Identity storage
       - ${RRCD_IDENTITY_DIR}:/rrcd/identity:z
 
+      # Room registry
+      - ${RRCD_ROOM_REGISTRY}:/rrcd/roomsReg:z
+      
       # Reticulum state storage
       - ${RRCD_RETICULUM_HOME}:/rrcd/reticulum:z
 
