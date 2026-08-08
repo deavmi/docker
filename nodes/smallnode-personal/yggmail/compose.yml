@@ -27,6 +27,8 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${IPV6_ADDR_TLS_YGGMAIL}
+      ygg_pool_net:
+        ipv6_address: ${YGG_ADDR_YGGMAIL}
     ports:
       # TLS endpoint
       - 1111/tcp
