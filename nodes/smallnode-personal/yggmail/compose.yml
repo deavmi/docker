@@ -51,6 +51,10 @@ services:
     environment:
       - ROUNDCUBEMAIL_DEFAULT_HOST=${YGGMAIL_UI_DOMAIN_IMAP}
       - ROUNDCUBEMAIL_SMTP_SERVER=${YGGMAIL_UI_DOMAIN_SMTP}
+
+      # Point it to the YggMail instance
+      - ROUNDCUBEMAIL_SMTP_PORT=1025
+      - ROUNDCUBEMAIL_DEFAULT_PORT=1143
           
   # Reverse proxy with HTTPS for `gitea`
   yggmail_ui_proxy:
@@ -68,3 +72,12 @@ services:
       - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=80"
       - "DEBUG_LEVEL=INFO"
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${YGGMAIL_UI_IPV6}
+      ygg_pool_net:
+        ipv6_address: ${YGGMAIL_UI_YGG}
+    ports:
+      # Expose https and http
+      - 443/tcp
+      - 80/tcp
