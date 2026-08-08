@@ -31,10 +31,11 @@ services:
       - "${CRYPTPAD_STORE_FILES}:/cryptpad/datastore:z"
 
       # Preferences (stored in the repository)
-      - ".:/cryptpad/customize:z"
+      # TODO: Re-enable
+      - "./preferences:/cryptpad/customize:z"
 
       # Admin keys (config.js)
-      - "${CRYPTPAD_STORE_CONFIG_FILE}:/cryptpad/config:z"
+      - "${CRYPTPAD_STORE_CONFIG}:/cryptpad/config:z"
 
   # Reverse proxy with HTTPS for `cryptpad`
   cryptpad_proxy:
