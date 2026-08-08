@@ -37,3 +37,7 @@ services:
       # (if you have conflicts then place)
       # this onto a seperate network
       - 80/tcp
+
+      # Expose for non-TLS users (like over Yggdrasil)
+      - 1143/tcp #IMAP
+      - 1025/tcp #SMTP
