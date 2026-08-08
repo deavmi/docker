@@ -55,6 +55,8 @@ services:
       # Point it to the YggMail instance
       - ROUNDCUBEMAIL_SMTP_PORT=1025
       - ROUNDCUBEMAIL_DEFAULT_PORT=1143
+    # Run in same network namespace as `yggmail_ui_proxy`
+    network_mode: service:yggmail_ui_proxy
           
   # Reverse proxy with HTTPS for `gitea`
   yggmail_ui_proxy:
@@ -64,9 +66,6 @@ services:
     restart: unless-stopped
     depends_on:
       - yggmail_ui
-    # Run in same network namespace as `gitea`
-    # so that we can bind to its network interface
-    network_mode: service:yggmail_ui
     environment:
       - "DOMAIN=${YGGMAIL_UI_DOMAIN}"
       - "WHERE_TO_ADDR=[::1]"
