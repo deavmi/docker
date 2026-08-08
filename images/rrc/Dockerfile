@@ -29,5 +29,5 @@ ENV RRCD_IDENTITY=/rrcd/identity
 ENV RETICULUM_DIR=/rrcd/reticulum
 
 # Run with the config file at /config.toml
-# CMD sleep $SLEEP_TIME && rrcd --config /config.toml --identity $RRCD_IDENTITY --configdir $RETICULUM_DIR
-CMD sleep 3600
+CMD sleep $SLEEP_TIME && rrcd --config /config.toml --identity $RRCD_IDENTITY/identity --configdir $RETICULUM_DIR
+# CMD sleep 3600
