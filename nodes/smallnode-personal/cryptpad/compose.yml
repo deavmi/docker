@@ -2,7 +2,7 @@ services:
   cryptpad:
     container_name: cryptpad
     restart: unless-stopped
-    image: cryptpad/latest
+    image: cryptpad/cryptpad:latest
     user: ${USER_UID}:${USER_GID}
     networks:
       ipv6_pool_net:
