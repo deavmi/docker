@@ -45,6 +45,8 @@ services:
     container_name: yggmail_ui
     image: roundcube/roundcubemail
     restart: unless-stopped
+    depends_on:
+      - yggmail
     user: ${USER_UID}:${USER_GID}
     environment:
       - ROUNDCUBEMAIL_DEFAULT_HOST=${YGGMAIL_UI_DOMAIN_IMAP}
@@ -62,8 +64,6 @@ services:
       context: flat/
     container_name: yggmail_ui_proxy
     restart: unless-stopped
-    depends_on:
-      - yggmail_ui
     environment:
       - "DOMAIN=${YGGMAIL_UI_DOMAIN}"
       - "WHERE_TO_ADDR=[::1]"
