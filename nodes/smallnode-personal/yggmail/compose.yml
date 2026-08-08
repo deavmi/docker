@@ -6,6 +6,7 @@ services:
       service: yggmail
     container_name: yggmail
     restart: unless-stopped
+    user: ${USER_UID}:${USER_GID}
     # Place in same network namespace as `yggmail_tls`
     network_mode: service:yggmail_tls
 
@@ -15,9 +16,6 @@ services:
       context: tls
     container_name: yggmail_tls
     restart: unless-stopped
-    # FIXME: Check setcap, might need it to
-    # bind to ports lower than 1024 (such as port 80
-    # needed for the ACME challenge)
     user: ${USER_UID}:${USER_GID}
     environment:
       # Ued to encrypt TLS secrets (FIXME: Determine what this is for)
