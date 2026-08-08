@@ -45,4 +45,3 @@ services:
         ipv6_address: ${RRCD_IPV6_ADDR}
       yggdrasil_net:
         ipv6_address: ${RRCD_YGG_IPV6_ADDR}
-      - retNet
