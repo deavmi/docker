@@ -48,6 +48,9 @@ services:
     user: ${USER_UID}:${USER_GID}
     # Run in same network namespace as `yggmail_ui`
     network_mode: service:yggmail_ui
+    environment:
+      - POSTGRES_USER=${YGGMAIL_UI_DB_USERNAME}
+      - POSTGRES_PASSWORD=${YGGMAIL_UI_DB_PASSWORD}
     volumes:
       # Database storage
       - ${YGGMAIL_UI_DB_PATH}:/var/lib/postgresql:z
@@ -77,6 +80,8 @@ services:
       - ROUNDCUBEMAIL_DB_TYPE=pgsql
       - ROUNDCUBEMAIL_DB_HOST=::1
       - ROUNDCUBEMAIL_DB_PORT=5432
+      - ROUNDCUBEMAIL_DB_USER=${YGGMAIL_UI_DB_USERNAME}
+      - ROUNDCUBEMAIL_DB_PASSWORD=${YGGMAIL_UI_DB_PASSWORD}
     # Run in same network namespace as `yggmail_ui_proxy`
     network_mode: service:yggmail_ui_proxy
     volumes:
