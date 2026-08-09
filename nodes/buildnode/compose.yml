@@ -8,7 +8,13 @@ networks:
         - subnet: fde4:492a:fc7f::/48
 
 include:
-  - act/act.yml
+  - path: act/act.yml
+    env_file:
+      # Default environment variables
+      - .env
+      
+      # ACT-specific environment variables
+      - act/.env.act
 
 services:
   host-statistics:
