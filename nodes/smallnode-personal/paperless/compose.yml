@@ -44,7 +44,7 @@ services:
     network_mode: service:paperless
     volumes:
       # Data storage path
-      - ${PAPERLESS_REDIS_DATA}:/data:z
+      - ${PAPERLESS_REDIS_PATH}:/data:z
 
   paperless_db:
     image: postgres:latest
