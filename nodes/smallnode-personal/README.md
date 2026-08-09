@@ -5,7 +5,7 @@ Please follow these steps before beginning.
 
 ### For YggMail
 
-Please set the following in a file called `.env.yggmail`
+Please set the following in a file called `.env.yggmail.secrets`
 in the **root** of the repository.
 
 1. `YGGMAIL_UI_DB_USERNAME`

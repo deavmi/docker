@@ -8,8 +8,11 @@ include:
       # Default env file
       - .env
 
-      # YggMail secrets
+      # YggMail specifics
       - .env.yggmail
+
+      # YggMail secrets
+      - .env.yggmail.secrets
 
   # Services
   - ntfy.yml

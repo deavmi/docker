@@ -4,4 +4,4 @@
 .yggmail_tls_pass
 
 # YggMail secrets
-.env.yggmail
+.env.yggmail.secrets
