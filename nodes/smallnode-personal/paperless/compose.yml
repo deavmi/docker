@@ -1,6 +1,6 @@
 services:
   paperless:
-    imag: ghcr.io/paperless-ngx/paperless-ngx:latest
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
     container_name: paperless
     restart: unless-stopped
     # Place in same network namespace as `paperless_ui_proxy`
@@ -25,7 +25,7 @@ services:
 
 
   paperless_db:
-    imag: postgres:latest
+    image: postgres:latest
     container_name: paperless_db
     restart: unless-stopped
     # Place in same network namespace as `paperless`
