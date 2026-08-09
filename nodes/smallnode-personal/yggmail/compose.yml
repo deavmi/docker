@@ -102,6 +102,8 @@ services:
     restart: unless-stopped
     environment:
       - "DOMAIN=${YGGMAIL_UI_DOMAIN}"
+      - "DOMAIN_1=${YGGMAIL_UI_DOMAIN_1}"
+      - "DOMAIN_2=${YGGMAIL_UI_DOMAIN_2}"
       - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=80"
       - "DEBUG_LEVEL=INFO"

@@ -1,13 +1,19 @@
-smallnode
-=========
+Preparation
+===========
 
+Please follow these steps before beginning.
 
-## Setup
+### For YggMail
 
-### Ntfy
+Please set the following in a file called `.env.yggmail`
+in the **root** of the repository.
 
-Please create `.ntfy.secrets` and set `NTFY_AUTH_USERS`
-to `user:hash:role` and escape `$` with two `$$` (if you
-use [them](https://docs.ntfy.sh/config/#example-config))
+1. `YGGMAIL_UI_DB_USERNAME`
+	* For the Postgres <-> RoundCube Mail
+2. `YGGMAIL_UI_DB_PASSWORD`
+	* For the Postgres <-> RoundCube Mail
+3. `YGGMAIL_TLS_PASSWORD`
+	* Set this to _something_
 
-And make `role` = `admin`.
+Then also create, in the `.. volumes/yggmail/pwhash.secret`
+a brypt-hashed password for your mail password.
