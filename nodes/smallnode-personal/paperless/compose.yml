@@ -35,6 +35,10 @@ services:
       - USERMAP_UID=${USER_UID}
       - USERMAP_GID=${USER_GID}
 
+      # To make this (Django) app accept
+      # what is being passed to it (see: https://caddy.community/t/django-csrf-issues-with-reverse-proxy/16957/5)
+      - USER_X_FORWARDED_HOST=True
+
   paperless_redis:
     image: docker.io/valkey/valkey:9-alpine
     container_name: paperless_redis
@@ -70,7 +74,7 @@ services:
       - "DOMAIN=${PAPERLESS_DOMAIN}"
       - "DOMAIN_1=${PAPERLESS_DOMAIN_1}"
       - "DOMAIN_2=${PAPERLESS_DOMAIN_2}"
-      - "WHERE_TO_ADDR=localhost"
+      - "WHERE_TO_ADDR=[::1]"
       - "WHERE_TO_PORT=8000"
       - "DEBUG_LEVEL=INFO"
     networks:
