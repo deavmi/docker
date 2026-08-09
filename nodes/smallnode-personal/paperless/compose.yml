@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     # Place in same network namespace as `paperless_ui_proxy`
     network_mode: service:paperless_ui_proxy
-    # user: ${USER_UID}:$.{USER_GID}
+    # user: ${USER_UID}:${USER_GID}
     volumes:
       # Consumption path
       - ${PAPERLESS_CONSUME_PATH}:/usr/src/paperless/consume:z
