@@ -39,10 +39,10 @@ services:
       - ${PAPERLESS_DB_PATH}:/var/lib/postgresql:z
 
   # Reverse proxy with HTTPS for `paperless`
-  paprless_ui_proxy:
+  paperless_ui_proxy:
     build:
       context: ui/
-    container_name: paprless_ui_proxy
+    container_name: paperless_ui_proxy
     restart: unless-stopped
     environment:
       - "DOMAIN=${PAPERLESS_DOMAIN}"
