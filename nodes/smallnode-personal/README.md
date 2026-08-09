@@ -27,3 +27,5 @@ in the **root** of the repository.
 	* For the Postgres <-> Paperless
 2. `PAPERLESS_DB_PASSWORD`
 	* For the Postgres <-> Paperless
+3. `PAPERLESS_SECRET_KEY`
+	* Some random string used for token generation
