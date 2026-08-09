@@ -19,14 +19,13 @@
 	    metrics
 	}
 
-	handle /accounts/login/ {
-		header Referrer-Policy "same-origin"
-		reverse_proxy {$WHERE_TO_ADDR}:{$WHERE_TO_PORT}
+	@login path /accounts/login/ 
+	reverse_proxy @login {$WHERE_TO_ADDR}:{$WHERE_TO_PORT} {
+		header_down Referrer-Policy "same-origin"
 	}
 	
 	# Reverse proxy to
-	handle /* {
-		header Referrer-Policy "no-referrer"
-		reverse_proxy {$WHERE_TO_ADDR}:{$WHERE_TO_PORT}
+	reverse_proxy {$WHERE_TO_ADDR}:{$WHERE_TO_PORT} /* {
+		header_down Referrer-Policy "no-referrer"		
 	}
 }
