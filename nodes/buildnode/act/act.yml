@@ -32,7 +32,11 @@ services:
     #   - path: .runner
     #     required: true
     networks:
-      - mainNet
+      # - mainNet
+      ipv6_pool_net:
+        ipv6_address: ${ACT_IPV6_ADDR}
+      ygg_pool_net:
+        ipv6_address: ${ACT_YGG_ADDR}
     ports:
       # Prometheus metrics
       - 9101:9101/tcp
