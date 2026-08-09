@@ -5,3 +5,6 @@
 
 # YggMail secrets
 .env.yggmail.secrets
+
+# PaperlessNG secrets
+.env.paperless.secrets

@@ -94,7 +94,7 @@ services:
       # SQLite DB storage
       # - ${YGGMAIL_UI_DB_PATH}:/var/roundcube/db:z
           
-  # Reverse proxy with HTTPS for `gitea`
+  # Reverse proxy with HTTPS for `yggmail_ui`
   yggmail_ui_proxy:
     build:
       context: ui/

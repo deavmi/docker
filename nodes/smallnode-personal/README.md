@@ -17,3 +17,13 @@ in the **root** of the repository.
 
 Then also create, in the `.. volumes/yggmail/pwhash.secret`
 a brypt-hashed password for your mail password.
+
+### For Paperless
+
+Please set the following in a file called `.env.paperless.secrets`
+in the **root** of the repository.
+
+1. `PAPERLESS_DB_USERNAME`
+	* For the Postgres <-> Paperless
+2. `PAPERLESS_DB_PASSWORD`
+	* For the Postgres <-> Paperless

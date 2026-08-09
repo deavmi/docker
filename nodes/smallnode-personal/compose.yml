@@ -14,6 +14,19 @@ include:
       # YggMail secrets
       - .env.yggmail.secrets
 
+  # paperlessNG service
+  - path: paperless/compose.yml
+    env_file:
+      # Default env file
+      - .env
+
+      # Paperless specifics
+      - .env.paperless
+
+      # Paperless secrets
+      - .env.paperless.secrets
+
+
   # Services
   - ntfy.yml
   - cryptpad/compose.yml
