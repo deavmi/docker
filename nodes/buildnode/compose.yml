@@ -17,7 +17,7 @@ include:
       - act/.env.act
 
 services:
-  host-statistics:
+  statistics:
     extends:
       file: ../../services/node_exporter/compose.yml
       service: statistics
