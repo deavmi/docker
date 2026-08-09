@@ -17,7 +17,7 @@ include:
       - act/.env.act
 
       # ACT secrets
-      - act/.env.acts.secrets
+      - act/.env.act.secrets
 
 services:
   statistics:
