@@ -39,7 +39,7 @@ services:
     image: docker.io/valkey/valkey:9-alpine
     container_name: paperless_redis
     restart: unless-stopped
-    user: ${USER_UID}:$.{USER_GID}
+    user: ${USER_UID}:${USER_GID}
     # Place in same network namespace as `paperless`
     network_mode: service:paperless
     volumes:
