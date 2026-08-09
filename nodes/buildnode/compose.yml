@@ -16,6 +16,9 @@ include:
       # ACT-specific environment variables
       - act/.env.act
 
+      # ACT secrets
+      - act/.env.acts.secrets
+
 services:
   statistics:
     extends:

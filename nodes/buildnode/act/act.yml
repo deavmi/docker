@@ -19,15 +19,18 @@ services:
       # The configuration file
       - CONFIG_FILE=/config.yml
 
+      # The registration token
+      - GITEA_RUNNER_REGISTRATION_TOKEN=${TOKEN}
+
       # To let act_runner know which Docker soket
       # to check
       - DOCKER_HOST=unix:///run/user/1000/docker.sock
     # Allow certain system calls?
     privileged: true
-    env_file:
-      # has Gitea runner secret inside
-      - path: .runner
-        required: true
+    # env_file:
+    #   # has Gitea runner secret inside
+    #   - path: .runner
+    #     required: true
     networks:
       - mainNet
     ports:
