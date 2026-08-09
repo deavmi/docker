@@ -3,7 +3,13 @@ include:
   - networks.yml
 
   # YggMail service
-  - yggmail/compose.yml
+  - path: yggmail/compose.yml
+    env_file:
+      # Default env file
+      - .env
+
+      # YggMail secrets
+      - .env.yggmail
 
   # Services
   - ntfy.yml

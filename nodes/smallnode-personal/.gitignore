@@ -2,3 +2,6 @@
 
 # TLS proxy
 .yggmail_tls_pass
+
+# YggMail secrets
+.env.yggmail
