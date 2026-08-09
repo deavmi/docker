@@ -16,6 +16,7 @@ services:
       # Data path
       - ${PAPERLESS_DATA_PATH}:/usr/src/paperless/data:z
     environment:
+      # Database configuration
       - PAPERLESS_DBENGINE=postgresql
       - PAPERLESS_DBHOST=localhost
       - PAPERLESS_DBPORT=5432
@@ -23,12 +24,27 @@ services:
       - PAPERLESS_DBUSER=${PAPERLESS_DB_USERNAME}
       - PAPERLESS_DBPASS=${PAPERLESS_DB_PASSWORD}
 
+      # Redis server to use
+      - PAPERLESS_REDIS=redis://localhost:6379
+
       # Secret for tokens
       - PAPERLESS_SECRET_KEY=${PAPERLESS_SECRET_KEY}
 
+      # Tells the container's script to switch
+      # to using these effective IDs
       - USERMAP_UID=${USER_UID}
       - USERMAP_GID=${USER_GID}
 
+  paperless_redis:
+    image: docker.io/valkey/valkey:9-alpine
+    container_name: paperless_redis
+    restart: unless-stopped
+    user: ${USER_UID}:$.{USER_GID}
+    # Place in same network namespace as `paperless`
+    network_mode: service:paperless
+    volumes:
+      # Data storage path
+      - ${PAPERLESS_REDIS_DATA}:/data:z
 
   paperless_db:
     image: postgres:latest
