@@ -15,3 +15,6 @@ FROm gitea/docker:dind-rootless
 
 # Copy across configuration file
 COPY config.yml /config.yml
+
+# Copy across Docker daemon config
+COPY docker.conf /home/rootless/.docker
