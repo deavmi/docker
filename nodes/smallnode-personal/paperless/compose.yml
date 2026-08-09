@@ -70,7 +70,7 @@ services:
       - "DOMAIN=${PAPERLESS_DOMAIN}"
       - "DOMAIN_1=${PAPERLESS_DOMAIN_1}"
       - "DOMAIN_2=${PAPERLESS_DOMAIN_2}"
-      - "WHERE_TO_ADDR=[::1]"
+      - "WHERE_TO_ADDR=localhost"
       - "WHERE_TO_PORT=8000"
       - "DEBUG_LEVEL=INFO"
     networks:
