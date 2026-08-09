@@ -37,7 +37,7 @@ services:
 
       # To make this (Django) app accept
       # what is being passed to it (see: https://caddy.community/t/django-csrf-issues-with-reverse-proxy/16957/5)
-      - USER_X_FORWARDED_HOST=True
+      - USE_X_FORWARDED_HOST=True
 
   paperless_redis:
     image: docker.io/valkey/valkey:9-alpine
