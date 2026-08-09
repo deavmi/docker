@@ -8,3 +8,6 @@
 
 # PaperlessNG secrets
 .env.paperless.secrets
+
+# Gpodder secrets
+.env.gpodder.secrets

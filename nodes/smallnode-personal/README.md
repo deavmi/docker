@@ -29,3 +29,11 @@ in the **root** of the repository.
 	* For the Postgres <-> Paperless
 3. `PAPERLESS_SECRET_KEY`
 	* Some random string used for token generation
+
+### For Gpodder
+
+Please set the following in a file called `.env.gpodder.secrets`
+in the **root** of the repository.
+
+1. `PAPERLESS_SECRET_KEY`
+	* For securing access to the web UI

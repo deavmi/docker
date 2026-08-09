@@ -26,6 +26,17 @@ include:
       # Paperless secrets
       - .env.paperless.secrets
 
+  # Gpodder service
+  - path: gpodder/compose.yml
+    env_file:
+      # Default env file
+      - .env
+
+      # Gpodder specifics
+      - .env.gpodder
+
+      # Gpodder secrets
+      - .env.gpodder.secrets
 
   # Services
   - ntfy.yml

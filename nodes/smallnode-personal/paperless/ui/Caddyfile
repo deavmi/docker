@@ -18,9 +18,15 @@
 	handle /caddymetrics {
 	    metrics
 	}
+
+	handle /accounts/login/ {
+		header_down Referrer-Policy "same-origin"
+		reverse_proxy {$WHERE_TO_ADDR}:{$WHERE_TO_PORT}
+	}
 	
 	# Reverse proxy to
 	handle /* {
+		header_down Referrer-Policy "no-referrer"
 		reverse_proxy {$WHERE_TO_ADDR}:{$WHERE_TO_PORT}
 	}
 }
