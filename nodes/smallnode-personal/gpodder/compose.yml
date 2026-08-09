@@ -1,5 +1,6 @@
 services:
   gpodder:
+    # TODO: Pin to a hash
     image: xthursdayx/gpodder-docker:d2355fc998bc0d921e9ff6ec65f5bfe03ad01966ee6ced3f6cae9ed79c6c6870
     container_name: gpodder
     restart: unless-stopped
