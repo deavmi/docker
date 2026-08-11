@@ -1,0 +1,34 @@
+[rngit]
+
+	# Announcing of destinations
+	announce_interval = 60
+	node_name = "Deavmi's coding shack" # Shows on the nomadnet page
+
+	record_stats = yes
+
+[aliases]
+	# TODO: Install my aliases here
+	thonkpad = x
+	xps = x
+	desktop = x
+
+[repositories]
+	# Interval for mirrored repositories (in hours)
+	mirror_interval = 1
+
+	# Mirrors of my favourite repositories
+	# All readable, writeable by me? (TODO: Look at built-in mirroring feature)
+	mirrors = /repositories/mirrors
+
+	# Personal repositories
+	# All readable, writable only by me
+	personal = /repositories/personal
+
+[access]
+	# Read and view stats
+	personal = r:all, s:all, adm:thonkpad, adm:xps, adm:desktop
+
+	# Mirrors are only readable and stat viewable
+	# (I don't need to push to them as mirroring handles
+	# that)
+	mirrors = r:all, s:all

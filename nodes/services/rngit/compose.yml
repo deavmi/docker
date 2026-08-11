@@ -1,0 +1,14 @@
+services:
+  rngit:
+    build:
+      context: ../../images/rngit
+    container_name: rngit
+    restart: unless-stopped
+    user: ${USER_UID}:${USER_GID}
+    networks:
+    volumes:
+      # Mount in the configuration directory
+      - ./configs:/config:z
+
+      # Repositories store
+      - ${RNGIT_REPOSITORIES_DIRECTORY}:/repositories:z
