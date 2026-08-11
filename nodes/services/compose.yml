@@ -18,6 +18,8 @@ include:
   - reverse/compose.yml
   
   - git.yml
+  - rngit/compose.yml
+  
   - irc.yml
 
   - networks.yml
