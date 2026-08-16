@@ -124,10 +124,10 @@ scrape_configs:
         labels:
           server: monitor
           name: 'Monitor node'
-      - targets: ['ygg.vinyl.lab.networks.deavmi.assigned.network:9100']
-        labels:
-          server: vinyl
-          name: 'VinylPi node'
+      # - targets: ['ygg.vinyl.lab.networks.deavmi.assigned.network:9100']
+      #   labels:
+      #     server: vinyl
+      #     name: 'VinylPi node'
       - targets: ['ygg.smallnode.deavmi.assigned.network:9100']
         labels:
           server: smallnode
@@ -166,12 +166,6 @@ scrape_configs:
         labels:
           server: rothbard
           name: 'Rothbard node'
-
-      # VinylPi
-      - targets: ['nginx_agent_vinyl:9113']
-        labels:
-          server: vinyl
-          name: 'VinylPi node'
 
   # Nostr relays
   - job_name: 'Nostr'
