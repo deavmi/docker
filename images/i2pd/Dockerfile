@@ -1,5 +1,5 @@
 # Bring in ?
-ARG NPROC
+ARG NPROC=1
 
 # Base image
 FROM debian:bookworm AS base
