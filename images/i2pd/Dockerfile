@@ -1,6 +1,3 @@
-# Bring in ?
-ARG NPROC=1
-
 # Base image
 FROM debian:bookworm AS base
 MAINTAINER "Tristan Brice Velloza Kildaire" "deavmi@redxen.eu"
@@ -26,7 +23,7 @@ FROM base AS buildbase
 
 # Transfer over value from previous
 # stage
-ARG NPROC
+# ARG NPROC
 
 # Install dependencies
 RUN apt install git make g++ -y
@@ -42,7 +39,6 @@ ADD https://github.com/PurpleI2P/i2pd.git#openssl src/
 WORKDIR src/
 
 # Build, move binary to homedir, clean build
-ARG NPROC
 RUN make -j$NPROC
 RUN mv i2pd /tmp/i2pd
 
@@ -59,7 +55,6 @@ WORKDIR src/
 ADD https://github.com/PurpleI2P/i2pd.git#openssl i2pd/
 
 # Build, move binary to homedir, clean build
-ARG NPROC
 RUN make -j$NPROC
 RUN mv b33address /tmp/b33address
 RUN mv famtool /tmp/famtool
