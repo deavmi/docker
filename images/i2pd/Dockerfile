@@ -1,3 +1,6 @@
+# Bring in ?
+ARG NPROC
+
 # Base image
 FROM debian:bookworm AS base
 MAINTAINER "Tristan Brice Velloza Kildaire" "deavmi@redxen.eu"
