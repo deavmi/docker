@@ -4,7 +4,7 @@ services:
       context: ../../../images/rngit
       args:
         # Enable GAI fix
-        - GAI_PREFER_IPV6=true
+        - GAI_PREFER_IPV6=false
     container_name: rngit
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
