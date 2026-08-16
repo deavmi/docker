@@ -1,7 +1,7 @@
 services:
   rngit:
     build:
-      context: ../../images/rngit
+      context: ../../../images/rngit
     container_name: rngit
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
