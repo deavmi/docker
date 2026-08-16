@@ -18,7 +18,15 @@ include:
   - reverse/compose.yml
   
   - git.yml
-  - rngit/compose.yml
+
+  # RNGit
+  - path: rngit/compose.yml
+    env_file:
+      # Default `.env`
+      - .env
+
+      # RNGit specifics
+      - rngit/.env
   
   - irc.yml
 

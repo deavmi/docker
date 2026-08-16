@@ -32,3 +32,7 @@
 	# (I don't need to push to them as mirroring handles
 	# that)
 	mirrors = r:all, s:all
+
+[pages]
+	# Announce a NomadNet destination
+	serve_nomadnet = yes

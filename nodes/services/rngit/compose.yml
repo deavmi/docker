@@ -12,3 +12,8 @@ services:
 
       # Repositories store
       - ${RNGIT_REPOSITORIES_DIRECTORY}:/repositories:z
+
+      # Reticulum node storage
+      - ${RNGIT_RETICULUM_DIRECTORY}:/rns
+
+    
