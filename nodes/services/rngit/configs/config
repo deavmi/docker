@@ -1,7 +1,7 @@
 [rngit]
 
 	# Announcing of destinations
-	announce_interval = 60
+	announce_interval = 5
 	node_name = "Deavmi's coding shack" # Shows on the nomadnet page
 
 	record_stats = yes
