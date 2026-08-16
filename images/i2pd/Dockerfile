@@ -30,7 +30,6 @@ FROM buildbase as i2pd_build
 # Clone sources (i2pd)
 WORKDIR /tmp
 ADD https://github.com/PurpleI2P/i2pd.git#openssl src/
-# RUN ["git", "clone", "https://github.com/PurpleI2P/i2pd", "--depth", "1", "--branch", "openssl", "src"]
 #RUN git checkout $BRANCH # TODO: Add support for this
 WORKDIR src/
 
