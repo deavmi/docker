@@ -3,6 +3,7 @@ services:
     extends:
       file: ../../../services/i2pd/compose.yml
       service: i2pd
+    build:
       args:
         - NPROC=1
     user: ${USER_UID}:${USER_GID}
