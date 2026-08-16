@@ -174,10 +174,10 @@ scrape_configs:
     static_configs:
     
       # Nostr relays
-      - targets: ['y.ephemeral.nostr.rothbard.lab.networks.deavmi.assigned.network:7000']
-        labels:
-          server: ephemeral_nostr
-          name: 'Ephemeral Nostr Relay'
+      # - targets: ['y.ephemeral.nostr.rothbard.lab.networks.deavmi.assigned.network:7000']
+      #   labels:
+      #     server: ephemeral_nostr
+      #     name: 'Ephemeral Nostr Relay'
       - targets: ['y.personal.nostr.rothbard.lab.networks.deavmi.assigned.network:7000']
         labels:
           server: personal_nostr
