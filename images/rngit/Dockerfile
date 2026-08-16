@@ -21,6 +21,9 @@ RUN apt install net-tools dnsutils iputils-ping -y
 # Activate bkuild argument `PURE_INSTALL`
 ARG PURE_INSTALL
 
+# Install git (as required by RNGit)
+RUN apt install git -y
+
 # Copy across installation
 # script
 COPY install.sh /tmp
