@@ -5,7 +5,7 @@
 	instance_name = default
 
 [logging]
-	loglevel = 1
+	loglevel = 4
 
 [interfaces]
   [[rothbard_RNS_transport_ZA_ygg]]
