@@ -35,7 +35,7 @@ ADD https://github.com/PurpleI2P/i2pd.git#openssl src/
 WORKDIR src/
 
 # Build, move binary to homedir, clean build
-ARG NPROC=2
+ARG NPROC
 RUN make -j$NPROC
 RUN mv i2pd /tmp/i2pd
 
