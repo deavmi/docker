@@ -41,4 +41,4 @@ RUN rm /tmp/install.sh
 # Run the daemon
 ENV PYTHONUNBUFFERED=1
 ENV SLEEP_TIME=5
-CMD sleep $SLEEP_TIME && rngit --config /config --print-identity && rngit --config /data --rnsconfig /rns
+CMD sleep $SLEEP_TIME && rngit --config /config --print-identity && rngit --config /config --rnsconfig /rns
