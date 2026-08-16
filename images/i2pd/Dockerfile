@@ -52,6 +52,7 @@ WORKDIR src/
 ADD https://github.com/PurpleI2P/i2pd.git#openssl i2pd/
 
 # Build, move binary to homedir, clean build
+ARG NPROC
 RUN make -j$NPROC
 RUN mv b33address /tmp/b33address
 RUN mv famtool /tmp/famtool
