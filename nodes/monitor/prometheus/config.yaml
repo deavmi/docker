@@ -16,18 +16,18 @@ scrape_configs:
           name: "Monitor node"
 
   # Scrape ISR I2P node
-  - job_name: 'isr'
-    scrape_interval: 5s
-    metrics_path: '/metrics'
-    http_headers:
-      Prometheus-Scrape-Timeout-Seconds:
-        values: ['1']
-    static_configs:
-      - targets: ['i2p.isr.deavmi.assigned.network:9600']
-        labels:
-          server: isr
-          service: i2p
-          name: "ISR node"
+  # - job_name: 'isr'
+  #   scrape_interval: 5s
+  #   metrics_path: '/metrics'
+  #   http_headers:
+  #     Prometheus-Scrape-Timeout-Seconds:
+  #       values: ['1']
+  #   static_configs:
+  #     - targets: ['i2p.isr.deavmi.assigned.network:9600']
+  #       labels:
+  #         server: isr
+  #         service: i2p
+  #         name: "ISR node"
       # - targets: ['ygg.tor.isr.deavmi.assigned.network:9600']
       #   labels:
       #     server: isr
