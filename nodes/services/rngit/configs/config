@@ -7,10 +7,11 @@
 	record_stats = yes
 
 [aliases]
-	# TODO: Install my aliases here
+	# Aliases to Git peer identities which are referenced
+	# within the file (for ACL purposes)
 	thonkpad = x
-	xps = x
-	desktop = x
+	xps = e14291e7e2ffb4a9aee6c3665bf245fc
+	desktop = c331816d23ada5f55150c59a65093cda
 
 [repositories]
 	# Interval for mirrored repositories (in hours)
