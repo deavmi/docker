@@ -17,7 +17,7 @@
 [aliases]
 	# Aliases to Git peer identities which are referenced
 	# within the file (for ACL purposes)
-	thonkpad = x
+	thonkpad = 25749a2a4637f3c86c71cb0d9cde3a15
 	xps = e14291e7e2ffb4a9aee6c3665bf245fc
 	desktop = c331816d23ada5f55150c59a65093cda
 
