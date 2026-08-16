@@ -11,8 +11,11 @@ services:
       ygg_pool_net:
         ipv6_address: ${RNGIT_YGG_ADDR}
     volumes:
-      # Mount in the configuration directory
-      - ./configs:/config:z
+      # Mount in the RNGit state directory
+      - ${RNGIT_STATE_DIRECTORY}:/config:z
+      
+      # Mount in the configuration file (as read-only)
+      - ./configs:/config/config:z,ro
 
       # Repositories store
       - ${RNGIT_REPOSITORIES_DIRECTORY}:/repositories:z
