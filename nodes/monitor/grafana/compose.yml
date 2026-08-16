@@ -1,0 +1,32 @@
+services:
+  # Statistics visualizer
+  grafana:
+    extends:
+      file: ../../services/grafana/compose.yml
+      service: grafana
+    build:
+      context: grafana/
+      dockerfile: Dockerfile
+    container_name: grafana
+    depends_on:
+      - grafana_db
+      - prometheus
+
+    user: ${USER_UID}:${USER_GID}
+    networks:
+      - mainNet
+      - grafana_db_net
+    volumes:
+      - ${GRAFANA_CONF_DIR}:/var/lib/grafana:z
+  
+  grafana_db:
+    image: postgres
+    container_name: grafana_db
+    environment:
+      - POSTGRES_USER=${GRAFANA_DB_USER}
+      - POSTGRES_PASSWORD=${GRAFANA_DB_PASS}
+      - POSTGRES_DB=grafana
+    volumes:
+      - ${GRAFANA_DB_DIR}:/var/lib/postgresql:z
+    networks:
+      - grafana_db_net
