@@ -85,16 +85,6 @@ COPY --from=i2pd_tools_build /tmp/vain /bin/vain
 COPY --from=i2pd_tools_build /tmp/verifyhost /bin/verifyhost
 COPY --from=i2pd_tools_build /tmp/x25519 /bin/x25519
 
-# # Install required libraries
-# RUN apt update
-# RUN apt install \
-#     libboost-date-time-dev \
-#     libboost-filesystem-dev \
-#     libboost-program-options-dev \
-#     libboost-system-dev \
-#     libssl-dev \
-#     zlib1g-dev -y
-
 RUN apt install net-tools curl iputils-ping tcpdump -y
 
 # Setup binaries
