@@ -2,7 +2,7 @@ services:
   # Statistics visualizer
   grafana:
     extends:
-      file: ../../services/grafana/compose.yml
+      file: ../../../services/grafana/compose.yml
       service: grafana
     build:
       context: grafana/
