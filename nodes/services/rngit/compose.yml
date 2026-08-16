@@ -22,3 +22,6 @@ services:
 
       # Reticulum node storage
       - ${RNGIT_RETICULUM_DIRECTORY}:/rns
+
+      # Mount in the (RNS) configuration file (as read-only)
+      - ./configs/rns:/rns/config:z,ro

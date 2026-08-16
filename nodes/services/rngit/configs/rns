@@ -1,0 +1,15 @@
+
+[reticulum]
+	enable_transport = False
+	share_instance = Yes
+	instance_name = default
+
+[logging]
+	loglevel = 1
+
+[interfaces]
+  [[rothbard_RNS_transport_ZA_ygg]]
+    type = TCPClientInterface
+    enabled = false
+    target_host = y.rns.rothbard.lab.networks.deavmi.assigned.network
+    target_port = 4242
