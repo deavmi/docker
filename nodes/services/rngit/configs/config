@@ -6,6 +6,9 @@
 
 	record_stats = yes
 
+	# Interval for mirrored repositories (in hours)
+	mirror_interval = 1
+
 [aliases]
 	# Aliases to Git peer identities which are referenced
 	# within the file (for ACL purposes)
@@ -14,9 +17,6 @@
 	desktop = c331816d23ada5f55150c59a65093cda
 
 [repositories]
-	# Interval for mirrored repositories (in hours)
-	mirror_interval = 1
-
 	# Mirrors of my favourite repositories
 	# All readable, writeable by me? (TODO: Look at built-in mirroring feature)
 	mirrors = /repositories/mirrors
