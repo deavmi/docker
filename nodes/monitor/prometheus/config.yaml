@@ -86,10 +86,10 @@ scrape_configs:
         labels:
           server: rothbard
           name: 'Rothbard node'
-      - targets: ['ygg.vinyl.lab.networks.deavmi.assigned.network:1234']
-        labels:
-          server: vinyl
-          name: 'VinylPi node'
+      # - targets: ['ygg.vinyl.lab.networks.deavmi.assigned.network:1234']
+      #   labels:
+      #     server: vinyl
+      #     name: 'VinylPi node'
       - targets: ['ygg.smallnode.deavmi.assigned.network:1234']
         labels:
           server: smallnode
