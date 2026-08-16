@@ -12,11 +12,6 @@ RUN apt upgrade -y
 # Install required build dependencies
 RUN apt install git golang -y
 
-# Build
-WORKDIR /tmp
-RUN ["git", "clone", "https://github.com/yggdrasil-network/yggdrasil-go", "yggdrasil"]
-WORKDIR /tmp/yggdrasil
-
 # Activate arguments provided as build parameters
 #
 # I have some defaults set over here
@@ -26,11 +21,13 @@ WORKDIR /tmp/yggdrasil
 # he deems to be the latest stable
 # version (or not) he wants to use
 ARG BRANCH=develop
-ARG COMMIT=be5daeba7ad6b9eb3a30a3fa84e58d3962322dbd
+
+# Build
+WORKDIR /tmp
+ADD https://github.com/yggdrasil-network/yggdrasil-go.git#$BRANCH yggdrasil
+WORKDIR /tmp/yggdrasil
 
 # Perform checkout and build
-RUN git checkout $BRANCH # TODO: Are commit ids global?
-RUN git checkout $COMMIT
 RUN ./build
 
 # Switch to new layer for deployment
