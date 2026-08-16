@@ -1,8 +1,24 @@
 include:
-  # Relay instances
-  - personal.yml
+  # Personal instance
+  - path: personal.yml
+    env_file:
+      # Default values
+      - ../.env
+
+      # Deployment specific
+      - .personal.env
+
   - ephemeral.yml
-  - homesteader.yml
+
+  # Homesteader instance
+  - path: homesteader.yml
+    env_file:
+      # Default values
+      - ../.env
+
+      # Deployment specific
+      - .homesteader.env
+  
 
   # Blossom instances
   - blossom/blossom2.yml

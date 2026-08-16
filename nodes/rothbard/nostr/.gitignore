@@ -1,0 +1,3 @@
+# Nostr relay secrets
+.personal.env
+.homesteader.env
