@@ -11,6 +11,9 @@
 	# Interval for mirrored repositories (in hours)
 	mirror_interval = 1
 
+[logging]
+	loglevel = 4
+
 [aliases]
 	# Aliases to Git peer identities which are referenced
 	# within the file (for ACL purposes)
