@@ -1,7 +1,7 @@
 [rngit]
 
 	# Announcing of destinations
-	announce_interval = 5
+	announce_interval = 60
 
 	# Shows on the nomadnet page
 	node_name = Deavmi's coding shack
@@ -12,7 +12,7 @@
 	mirror_interval = 1
 
 [logging]
-	loglevel = 4
+	loglevel = 1
 
 [aliases]
 	# Aliases to Git peer identities which are referenced
