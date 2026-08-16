@@ -21,10 +21,6 @@ RUN apt install \
 # Base image for building
 FROM base AS buildbase
 
-# Transfer over value from previous
-# stage
-# ARG NPROC
-
 # Install dependencies
 RUN apt install git make g++ -y
 
@@ -39,6 +35,7 @@ ADD https://github.com/PurpleI2P/i2pd.git#openssl src/
 WORKDIR src/
 
 # Build, move binary to homedir, clean build
+ARG NPROC
 RUN make -j$NPROC
 RUN mv i2pd /tmp/i2pd
 
