@@ -21,6 +21,10 @@ RUN apt install \
 # Base image for building
 FROM base AS buildbase
 
+# Transfer over value from previous
+# stage
+ARG NPROC
+
 # Install dependencies
 RUN apt install git make g++ -y
 
