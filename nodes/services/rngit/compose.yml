@@ -6,6 +6,11 @@ services:
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
     networks:
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${RNGIT_IPV6_ADDR}
+      ygg_pool_net:
+        ipv6_address: ${RNGIT_YGG_ADDR}
     volumes:
       # Mount in the configuration directory
       - ./configs:/config:z
