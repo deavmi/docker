@@ -11,8 +11,8 @@ services:
 
     environment:
       - POSTGRES_DB=nostr
-      - POSTGRES_USER=dbuser
-      - POSTGRES_PASSWORD=dbpass
+      - POSTGRES_USER=${NOSTR_PERSONAL_DB_USER}
+      - POSTGRES_PASSWORD=${NOSTR_PERSONAL_DB_PASS}
       - PGDATA=/var/lib/postgresql/data
     restart: unless-stopped
     volumes:
