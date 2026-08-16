@@ -13,3 +13,9 @@
     enabled = false
     target_host = y.rns.rothbard.lab.networks.deavmi.assigned.network
     target_port = 4242
+
+  [[rothbard_RNS_transport_ZA_ipv6]]
+    type = TCPClientInterface
+    enabled = false
+    target_host = rns.rothbard.lab.networks.deavmi.assigned.network
+    target_port = 4242
