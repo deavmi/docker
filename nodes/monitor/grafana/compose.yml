@@ -5,7 +5,7 @@ services:
       file: ../../../services/grafana/compose.yml
       service: grafana
     build:
-      context: grafana/
+      context: .
       dockerfile: Dockerfile
     container_name: grafana
     depends_on:
