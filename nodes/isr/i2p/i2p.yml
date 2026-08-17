@@ -74,7 +74,9 @@ services:
       - "${I2PD_KEYS_DIR}:/keys:z"
 
       # Tunnels directory
-      - "${I2PD_TUNNELS_DIR}:/tunnels:z"
+      # - "${I2PD_TUNNELS_DIR}:/tunnels:z"
+      - "./tunnels:/tunnels:z"
+      
 
       # For mapping .i2pd
       - "${I2PD_DOT_DIR}:/.i2pd:z"
