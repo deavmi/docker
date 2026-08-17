@@ -7,8 +7,9 @@ services:
     extends:
       file: ../../../services/i2pd/compose.yml
       service: i2pd
-      args:
-        - NPROC=1
+      build:
+        args:
+          - NPROC=1
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
     # FIXME: Enable yggdrasil (somehow)
