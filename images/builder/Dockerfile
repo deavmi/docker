@@ -28,6 +28,8 @@ RUN pip install --break-system-packages mkdocs-blogging-plugin mkdocs-cinder mkd
 RUN pip install --break-system-packages mkdocs-print-site-plugin
 RUN pip install --break-system-packages mkdocs-no-3rd-party-plugin
 
+RUN apt install nano -y
+
 # We start here
 FROM base AS builder
 
