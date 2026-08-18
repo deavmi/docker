@@ -7,17 +7,17 @@ services:
     extends:
       file: ../../../services/i2pd/compose.yml
       service: i2pd
-      build:
-        args:
-          - NPROC=1
+    build:
+      args:
+        - NPROC=1
 
-          # Change these to the value of `id -u`
-          # on your HOST
-          - USER_UID=${USER_UID}
+        # Change these to the value of `id -u`
+        # on your HOST
+        - USER_UID=${USER_UID}
 
-          # Change these to the value of `id -g`
-          # on your HOST
-          - USER_GID=${USER_GID}
+        # Change these to the value of `id -g`
+        # on your HOST
+        - USER_GID=${USER_GID}
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
     # FIXME: Enable yggdrasil (somehow)
