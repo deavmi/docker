@@ -1,4 +1,4 @@
-secrets:
+services:
   builder:
     container_name: builder
     build:
