@@ -1,0 +1,29 @@
+secrets:
+  builder:
+    container_name: builder
+    build:
+      context: image/
+    restart: unless-stopped
+    environment:
+      # Fixes issue with the Python babel package
+      # used by mkdocs
+      - TZ=UTC
+
+      # Authentication token
+      - GITEA_WEBHOOK_AUTH=${BUILDER_AUTH_TOKEN}
+    volumes:
+      # Where the generated websites our output to
+      - "${BUILDER_OUTPUT}:/home/builder/dump"
+
+      # Source to build websites from
+      - "${BUILDER_SOURCE}:/home/builder/src"
+
+      # Makes timezone and time information available
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+      # Mount in our own `commands.json` over whatever
+      # the image provides
+      - ./commands.json:/scripts/commands.json:z
+    networks:
+      - mainNet

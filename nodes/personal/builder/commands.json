@@ -1,0 +1,57 @@
+{
+	"homepage" : {
+		"dir": "/home/builder/src/homepage",
+		"pre-command": ["git", "pull"],
+		"command": ["hugo", "-d", "/home/builder/dump/"]
+	},
+	"crxn" : {
+		"dir": "/home/builder/src/crxn",
+		"pre-command": ["git", "pull"],
+		"command": ["python3", "-m", "mkdocs", "build", "-d", "/home/builder/dump/projects/crxn"]
+	},
+	"bnet": {
+		"dir": "/home/builder/src/bnet",
+		"pre-command": ["git", "pull"],
+		"command": ["python3", "-m", "mkdocs", "build", "-d", "/home/builder/dump/projects/bonobonet"]
+	},
+	"libtun": {
+		"dir": "/home/builder/src/libtun",
+		"pre-command": ["git", "pull"],
+		"command": ["python3", "-m", "mkdocs", "build", "-d", "/home/builder/dump/projects/libtun"]
+	},
+	"dlog": {
+		"dir": "/home/builder/src/dlog",
+		"pre-command": ["git", "pull"],
+		"command": ["python3", "-m", "mkdocs", "build", "-d", "/home/builder/dump/projects/dlog"]
+	},
+	"eventy": {
+		"dir": "/home/builder/src/eventy",
+		"pre-command": ["git", "pull"],
+		"command": ["python3", "-m", "mkdocs", "build", "-d", "/home/builder/dump/projects/eventy"]
+	},
+	"tasky": {
+		"dir": "/home/builder/src/tasky",
+		"pre-command": ["git", "pull"],
+		"command": ["python3", "-m", "mkdocs", "build", "-d", "/home/builder/dump/projects/tasky"]
+	},
+	"dnet": {
+		"dir": "/home/builder/src/dnet",
+		"pre-command": ["git", "pull"],
+		"command": ["python3", "-m", "mkdocs", "build", "-d", "/home/builder/dump/projects/dnet"]
+	},
+	"tlang": {
+		"dir": "/home/builder/src/tlang",
+		"pre-command": ["git", "pull"],
+		"command": ["bash", "doall_relative.sh", "/home/builder/dump/projects/tlang"]
+	},
+	"libpb": {
+		"dir": "/home/builder/src/libpb",
+		"pre-command": ["git", "pull"],
+		"command": ["python3", "-m", "mkdocs", "build", "-d", "/home/builder/dump/projects/libpb"]
+	},
+	"jstruct": {
+		"dir": "/home/builder/src/jstruct",
+		"pre-command": ["git", "pull"],
+		"command": ["python3", "-m", "mkdocs", "build", "-d", "/home/builder/dump/projects/jstruct"]
+	}
+}

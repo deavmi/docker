@@ -5,7 +5,18 @@ include:
   # Services
   - quassel.yml
   - bots.yml
-  - builder.yml
+
+  # Builder
+  - path: builder/builder.yml
+    env_file:
+      # Defaults
+      - .env
+
+      # Defaults (builder)
+      - ./builder/.builder.env
+
+      # Secrets (builder)
+      - ./builder/.builder.env.secrets
   - i2p.yml
 
 services:
