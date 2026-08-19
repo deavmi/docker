@@ -33,15 +33,6 @@ RUN apt install nano -y
 # We start here
 FROM base AS builder
 
-# Copy run script
-COPY --chown=builder:builder run.sh .
-RUN chmod +x /run.sh
-
-# Switch to the effective uid/gid
-ENV USER_UID=1000
-ENV USER_GID=1003
-USER ${USER_UID}:${USER_GID}
-
 
 # Bring in the source code for
 # the gitea-webhook-commaner

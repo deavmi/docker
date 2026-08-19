@@ -4,6 +4,7 @@ services:
     build:
       context: image/
     restart: unless-stopped
+    user: ${USER_UID}:${USER_GID}
     environment:
       # Fixes issue with the Python babel package
       # used by mkdocs
