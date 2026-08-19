@@ -37,7 +37,7 @@ FROM base AS builder
 # Bring in the source code for
 # the gitea-webhook-commaner
 # and change directory into it
-ADD https://github.com/deavmi/gitea-webhook-commander#master  /scripts
+ADD https://github.com/deavmi/gitea-webhook-commander.git#master  /scripts
 WORKDIR /scripts
 
 # Make the script executable
