@@ -11,6 +11,7 @@ services:
         ipv6_address: ${BNET_MIRROR_YGG_ADDR}
     environment:
       # - "WHERE_TO_ADDR=ipv6.deavmi.org"
-      - "WHERE_TO_ADDR=[2a04:5b81:2010:100a:da3a:ddff:fe28:a2d6]"
+      # - "WHERE_TO_ADDR=[2a04:5b81:2010:100a:da3a:ddff:fe28:a2d6]"
+      - "WHERE_TO_ADDR=2a04:5b81:2010:100a:da3a:ddff:fe28:a2d6"
       - "WHERE_TO_PORT=80"
       - "DEBUG_LEVEL=INFO"
