@@ -2,6 +2,15 @@ secrets:
   HTTP_CONSOLE_PASSWORD:
     file: i2pd.secret
 
+include:
+  - path: bnet_mirror/bnet_mirror.yml
+    env_file:
+      # Default values
+      - ../.env
+
+      # Specific values
+      - bnet_mirror/.env
+
 services:
   i2pd:
     extends:

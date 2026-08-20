@@ -1,0 +1,15 @@
+services:
+  bnet_mirror:
+    build:
+      context: image/
+    restart: unless-stopped
+    container_name: bnet_mirror
+    networks:
+      ipv6_pool_net_isr:
+        ipv6_address: ${BNET_MIRROR_IPV6_ADDR}
+      ygg_pool_net_isr:
+        ipv6_address: ${BNET_MIRROR_YGG_ADDR}
+    environment:
+      - "WHERE_TO_ADDR=deavmi.org"
+      - "WHERE_TO_PORT=80"
+      - "DEBUG_LEVEL=INFO"
