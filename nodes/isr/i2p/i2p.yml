@@ -19,8 +19,8 @@ services:
     build:
       args:
         # If running on Rothbard then we can do
-        # two parallel build tasks
-        - NPROC=2
+        # four parallel build tasks
+        - NPROC=4
 
         # Change these to the value of `id -u`
         # on your HOST
