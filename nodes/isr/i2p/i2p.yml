@@ -18,7 +18,9 @@ services:
       service: i2pd
     build:
       args:
-        - NPROC=1
+        # If running on Rothbard then we can do
+        # two parallel build tasks
+        - NPROC=2
 
         # Change these to the value of `id -u`
         # on your HOST
