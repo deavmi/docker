@@ -29,7 +29,9 @@ FROM buildbase as i2pd_build
 
 # Clone sources (i2pd)
 WORKDIR /tmp
-ADD https://github.com/PurpleI2P/i2pd.git#openssl src/
+# Change the below branch when an upgrade is needed
+ARG BRANCH=635b013a612ff47278ef02acf8580a28e10e26c5
+ADD https://github.com/PurpleI2P/i2pd.git#$BRANCH src/
 #RUN git checkout $BRANCH # TODO: Add support for this
 WORKDIR src/
 
@@ -48,7 +50,7 @@ WORKDIR src/
 
 # Bring in i2pd to the i2pd directory (needed tfor
 # building)
-ADD https://github.com/PurpleI2P/i2pd.git#openssl i2pd/
+ADD https://github.com/PurpleI2P/i2pd.git#$BRANCH i2pd/
 
 # Build, move binary to homedir, clean build
 ARG NPROC
