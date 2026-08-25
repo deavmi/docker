@@ -35,9 +35,9 @@
 	personal = r:all, s:all, adm:thonkpad, adm:xps, adm:desktop
 
 	# Mirrors are only readable and stat viewable
-	# (I don't need to push to them as mirroring handles
-	# that)
-	mirrors = r:all, s:all
+	#
+	# I need admin rights to be able to setup the mirrors
+	mirrors = r:all, s:all, adm:thonkpad, adm:xps, adm:desktop
 
 [pages]
 	# Announce a NomadNet destination
