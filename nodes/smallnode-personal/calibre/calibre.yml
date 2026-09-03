@@ -1,7 +1,7 @@
 services:
   calibre:
     extends:
-      file: ../../../services/calibre/calibre.yml
+      file: ../../../services/calibre/compose.yml
       service: calibre
 
         
