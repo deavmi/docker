@@ -38,6 +38,18 @@ include:
       # Gpodder secrets
       - .env.gpodder.secrets
 
+  # Calibre service
+  - path: calibre/compose.yml
+    env_file:
+      # Default env file
+      - .env
+
+      # Calibre specifics
+      - calibre/.env.calibre
+
+      # Calibre secrets
+      - calibre/.env.calibre.secrets
+
   # Services
   - ntfy.yml
   - cryptpad/compose.yml
