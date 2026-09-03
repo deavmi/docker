@@ -1,18 +1,19 @@
 services:
-  image: lscr.io/linuxserver/calibre:latest
-  container_name: calibre
-  restart: unless-stopped
+  calibre:
+    image: lscr.io/linuxserver/calibre:latest
+    container_name: calibre
+    restart: unless-stopped
 
-  # TODO: Could specify `user` but these
-  # linuxserver images don't need it
-  environment:
-    # Effective User ID and Group ID
-    # to use
-    - PUID=${USER_UID}
-    - PGID=${USER_GID}
+    # TODO: Could specify `user` but these
+    # linuxserver images don't need it
+    environment:
+      # Effective User ID and Group ID
+      # to use
+      - PUID=${USER_UID}
+      - PGID=${USER_GID}
 
-    # Password (for logging in)
-    - PASSWORD=${CALIBRE_PASSWORD} 
-  volumes:
-    # Data storage path
-    - ${CALIBRE_DATA_PATH}:/config:z
+      # Password (for logging in)
+      - PASSWORD=${CALIBRE_PASSWORD} 
+    volumes:
+      # Data storage path
+      - ${CALIBRE_DATA_PATH}:/config:z
