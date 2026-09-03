@@ -39,7 +39,7 @@ include:
       - .env.gpodder.secrets
 
   # Calibre service
-  - path: calibre/compose.yml
+  - path: calibre/calibre.yml
     env_file:
       # Default env file
       - .env
