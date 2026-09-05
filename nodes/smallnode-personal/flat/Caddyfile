@@ -1,5 +1,5 @@
 {
-	http_port "801"
+	http_port "80"
 	https_port "443"
 
 	log default {
@@ -13,7 +13,7 @@
 
 
 # Domain name for automatic SSL
-{$DOMAIN}:443, {$DOMAIN_1}:443, {$DOMAIN_2}:443 {
+:80, {$DOMAIN}:443, {$DOMAIN_1}:443, {$DOMAIN_2}:443 {
 	# Handle metrics
 	handle /caddymetrics {
 	    metrics
