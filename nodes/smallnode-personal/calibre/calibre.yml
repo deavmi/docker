@@ -3,7 +3,7 @@ services:
     extends:
       file: ../../../services/calibre/compose.yml
       service: calibre
-
+    network: service:calibre_ui_proxy
         
 
   # Reverse proxy with HTTPS for `calibre`
