@@ -1,0 +1,36 @@
+services:
+  bitwarden:
+    image: vaultwarden/server:latest
+    container_name: bitwarden
+    restart: unless-stopped
+    network_mode: service:bitwarden_ui_proxy
+    user: ${USER_UID}:${USER_GID}
+    volumes:
+      # Where credentials are stored
+      - ${BITWARDEN_DATA_PATH}:/data:z
+
+  # TODO: Consider whether or not we want
+  # to expose this to the normie-net
+
+  # Reverse proxy with HTTPS for `bitwarden`
+  bitwarden_ui_proxy:
+    build:
+      context: ../flat/
+    container_name: bitwarden_ui_proxy
+    restart: unless-stopped
+    environment:
+      - "DOMAIN=${BITWARDEN_DOMAIN}"
+      - "DOMAIN_1=${BITWARDEN_DOMAIN_1}"
+      - "DOMAIN_2=${BITWARDEN_DOMAIN_2}"
+      - "WHERE_TO_ADDR=[::1]"
+      - "WHERE_TO_PORT=80"
+      - "DEBUG_LEVEL=INFO"
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${BITWARDEN_IPV6_ADDR}
+      ygg_pool_net:
+        ipv6_address: ${BITWARDEN_YGG_ADDR}
+    ports:
+      # Expose https and http
+      - 443/tcp
+      - 80/tcp

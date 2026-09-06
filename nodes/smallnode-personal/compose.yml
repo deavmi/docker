@@ -50,6 +50,18 @@ include:
       # Calibre secrets
       - calibre/.env.calibre.secrets
 
+  # Bitwarden service
+  - path: bitwarden/bitwarden.yml
+    env_file:
+      # Default env file
+      - .env
+
+      # Bitwarden specifics
+      - bitwarden/.env.bitwarden
+
+      # Calibre secrets
+      # - calibre/.env.calibre.secrets
+
   # Services
   - ntfy.yml
   - cryptpad/compose.yml
