@@ -1,4 +1,8 @@
 {
+	# Note that Bitwarden is binding on port 80
+	# so if you want to enable port 80 again then
+	# Bitwarden will need a copy of `flat` with
+	# port 80 disabled
 	http_port "801"
 	https_port "443"
 
