@@ -4,7 +4,7 @@ services:
     container_name: bitwarden
     restart: unless-stopped
     network_mode: service:bitwarden_ui_proxy
-    user: ${USER_UID}:${USER_GID}
+    # user: ${USER_UID}:${USER_GID}
     volumes:
       # Where credentials are stored
       - ${BITWARDEN_DATA_PATH}:/data:z
