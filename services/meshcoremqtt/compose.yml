@@ -1,11 +1,11 @@
 services:
   meshcoremqtt:
     image: ghcr.io/deavmi/meshcoretomqtt:latest
-    container_name: yggdrasil
+    container_name: meshcoremqtt
     restart: unless-stopped
     volumes:
-     # Copy in configuration file to container
-     # - "${YGGDRASIL_CONF_PATH}:/etc/yggdrasil.conf:ro,z"
+     # Copy in configuration file
+     - ${MESHCOREMQTT_CONFIG_FILE_PATH}:config.ini:ro,z"
 
      # Access to TUN/TAP control device node
      - ${MESHCOREMQTT_DEVICE_SERIAL}:/dev/ttyACM0:z
