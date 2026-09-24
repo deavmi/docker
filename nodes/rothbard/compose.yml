@@ -25,6 +25,15 @@ include:
   # Nostr related
   - nostr/nostr.yml
 
+  # Radio-related
+  - path: radio/radio.yml
+    env_file:
+      # Defaults
+      - .env
+
+      # Radio (specifics)
+      - ./radio/.env
+
 services:
   host-statistics:
     extends:
