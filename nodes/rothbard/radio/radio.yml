@@ -1,12 +1,12 @@
-services:
-  meshcoremqtt:
-    extends:
-      file: ../../services/meshcoremqtt/compose.yml
-      service: meshcoremqtt
-    container_name: meshcoremqtt
-    
-    networks:
-      ipv6_pool_net:
-        ipv6_address: ${MESHCOREMQTT_IPV6_ADDR}
-      yggdrasil_net:
-        ipv6_address: ${MESHCOREMQTT_YGG_IPV6_ADDR}
+# services:
+#   meshcoremqtt:
+#     extends:
+#       file: ../../services/meshcoremqtt/compose.yml
+#       service: meshcoremqtt
+#     container_name: meshcoremqtt
+#     
+#     networks:
+#       ipv6_pool_net:
+#         ipv6_address: ${MESHCOREMQTT_IPV6_ADDR}
+#       yggdrasil_net:
+#         ipv6_address: ${MESHCOREMQTT_YGG_IPV6_ADDR}
