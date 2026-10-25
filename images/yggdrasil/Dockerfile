@@ -1,5 +1,4 @@
 # Base image
-# TODO: Change to debian
 FROM ubuntu:latest AS build
 MAINTAINER "Tristan Brice Velloza Kildaire" "deavmi@redxen.eu"
 
