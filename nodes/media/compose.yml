@@ -9,10 +9,10 @@ include:
       - .env
 
       # Defaults (funkwhale)
-      - ./funkwhale/.env
+      # - ./funkwhale/.env
 
       # Secrets (funkwhale)
-      - ./funkwhale/.env.secrets
+  .    - ./funkwhale/.env.secrets
 
   # Copyparty
   - path: copyparty/compose.yml
