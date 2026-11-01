@@ -1,0 +1,57 @@
+include:
+  # Network definitions
+  - networks.yml
+
+  # Funkwhale
+  - path: funkwhale/compose.yml
+    env_file:
+      # Defaults
+      - .env
+
+      # Defaults (funkwhale)
+      - ./funkwhale/.env
+
+      # Secrets (funkwhale)
+      - ./funkwhale/.env.secrets
+
+services:
+  host-statistics:
+    extends:
+      file: ../../services/node_exporter/compose.yml
+      service: statistics
+    container_name: host_statistics
+
+  yggdrasil:
+    extends:
+      file: ../../services/yggdrasil/compose.yml
+      service: yggdrasil
+    container_name: yggdrasil
+    network_mode: "host"
+
+  mycelium:
+    extends:
+      file: ../../services/mycelium/compose.yml
+      service: mycelium
+    container_name: mycelium
+    network_mode: "host"
+
+  # web:
+  #   container_name: web
+  #   build:
+  #     context: web/
+  #   restart: unless-stopped
+  #   networks:
+  #     - mainNet
+  #   volumes:
+  #     # Data directory to serve static site files
+  #     # from
+  #     - /mnt/datadisk/volumes/web:/webroot:z
+  #   environment:
+  #     - "DOMAIN=${CADDY_DOMAIN}"
+  #     - "DOMAIN_1=${CADDY_DOMAIN_1}"
+  #     - "DOMAIN_2=${CADDY_DOMAIN_2}"
+  #   ports:
+  #     - "[::]:80:80/tcp"
+  #     - "[::]:80:80/udp" # TODO: Does quick run on non-HTTPS?
+  #     - "[::]:443:443/tcp"
+  #     - "[::]:443:443/udp"
