@@ -12,7 +12,7 @@ include:
       # - ./funkwhale/.env
 
       # Secrets (funkwhale)
-  .    - ./funkwhale/.env.secrets
+      # - ./funkwhale/.env.secrets
 
   # Copyparty
   - path: copyparty/compose.yml
