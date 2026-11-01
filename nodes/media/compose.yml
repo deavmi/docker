@@ -16,11 +16,12 @@ include:
 
   # Copyparty
   - path: copyparty/compose.yml
-    # Defaults
-    - .env
+    env_file:
+      # Defaults
+      - .env
 
-    # Defaults (copyparty)
-    - ./copyparty/.env
+      # Defaults (copyparty)
+      - ./copyparty/.env
 
 services:
   host-statistics:
