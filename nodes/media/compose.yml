@@ -3,10 +3,10 @@ include:
   - networks.yml
 
   # Funkwhale
-  - path: funkwhale/compose.yml
-    env_file:
+  # - path: funkwhale/compose.yml
+    # env_file:
       # Defaults
-      - .env
+    # .  - .env
 
       # Defaults (funkwhale)
       # - ./funkwhale/.env
