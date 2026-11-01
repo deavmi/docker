@@ -1,0 +1,15 @@
+services:
+  copyparty:
+    image: copyparty/ac:latest
+    container_name: copyparty
+    networks:
+      - mainNet
+    user: ${USER_UID}:${USER_GID}
+    volumes:
+      # Configuration directory
+      - ${COPYPARTY_CFG_DIR}:/cfg:z
+
+      # Data storage directory
+      - ${COPYPARTY_MEDIA_DIR}:/w:z
+    environment:
+      - PYTHONUNBUFFERED=1
