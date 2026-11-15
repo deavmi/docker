@@ -5,6 +5,10 @@ MAINTAINER "Tristan Brice Velloza Kildaire" "deavmi@redxen.eu"
 # Don't allow interactive prompts when using apt
 ARG DEBIAN_FRONTEND=noninteractive
 
+# Update system
+RUN apt update
+RUN apt upgrade -y
+
 # Install ncat (useful tool)
 RUN apt install ncat -y
 RUN apt install picocom -y
