@@ -1,0 +1,32 @@
+{
+  "name": "NovasRedes Partyline",
+  "motd": "Welcome to the NovasRedes RRC Hub 1! - (Rules: http://deavmi.org/novasredes/reticulum/partyline/)",
+  "profile": "opus-med",
+  "max_members": 30,
+  "require_identity": true,
+
+  "password": null,
+  "hidden": false,
+  "allow": [],
+  "allowed_file": null,
+
+	"_comment1": "TODO: Set this to all my Partyline identities",
+  "ops": ["7415d76547d727468682a0fc92295c07"],
+
+  "_comment_dialin_": "Answer rnphone calls to this server's identity hash and put callers in a room.",
+  "dialin": {"enabled": true, "room": "LowLobby", "name": "phone", "allow": [], "gate_db": -50},
+  
+  "_comment_profiles_": "Codec profiles are: opus-high, opus-med, opus-low, c2-3200, c2-2400, c2-1200, c2-700, music-low, music-med, music-high",
+
+  "rooms": [
+    {"name": "Lobby", "require_identity": true, "description": "Open to everyone, default room"},
+    {"name": "LowLobby", "require_identity": true, "profile": "c2-1200", "description": "Low bitrate room for slow links"},
+
+    {"name": "BonoboNET", "require_identity": true, "description": "Home to the bonobos from bnet.eu.org"},
+    {"name": "RedXen", "require_identity": true, "description": "Users of RedXen.eu"},
+    {"name": "Programmers", "require_identity": true, "description": "Programming community"},
+    {"name": "NetOps", "require_identity": true, "description": "Network operators"},
+
+    {"name": "Broadcast", "require_identity": true, "profile": "music-med", "music": ["a510b26a334f1718c6ee636be343791b"], "description": "Local FM listener"}
+  ]
+}

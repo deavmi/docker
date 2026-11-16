@@ -1,0 +1,40 @@
+services:
+  partyline_reticulum:
+    container_name: partyline_reticulum
+    restart: unless-stopped
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${RETICULUM_IPV6_ADDR}
+      ygg_pool_net:
+        ipv6_address: ${RETICULUM_YGG_ADDR}
+    volumes:
+      # Mount in the (RNS) configuration file (as read-only)
+      - ./configs/rns:/rns/config:z,ro
+
+	partyline:
+	  build:
+	    context: ../../images/partyline
+	  container_name: partyline
+	  restart: unless-stopped
+	  user: ${USER_UID}:${USER_GID}
+	  # Run on same network stack, so it will have
+	  # access to loopback interface and can connect
+	  # to the reticulum router's "SharedInstance"
+	  # port
+    network: service:partyline_reticulum
+    volumes:
+      # Mount in the (Partyline) configuration file (as read-only)
+      - ./configs/partyline:/config/config.json:z,ro
+
+      # Mount in the Partyline state directory (identity
+      # and other dynamically-created files will go here)
+      - ${PARTYLINE_STATE_DIR}:/state:z
+    environment:
+      # Interval to send announcement of the partyline
+      # service
+      - ANNOUNCE_INTERVAL=${PARTYLINE_ANNOUNCE_INTERVAL}
+
+      # Interval for statistics (TODO: Not sure what this is)
+      - STATS_INTERVAL=${PARTYLINE_STATS_INTERVAL}
+
+      
