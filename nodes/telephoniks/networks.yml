@@ -10,7 +10,7 @@ networks:
 
   retNet:
     driver: bridge
-    name: mainNet
+    name: retNet
     enable_ipv6: true
     enable_ipv4: false
     ipam:
