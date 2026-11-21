@@ -1,0 +1,12 @@
+services:
+  mumble:
+    build:
+      context: image/
+    container_name: mumble
+    restart: unless-stopped
+    user: ${USER_UID}:${USER_GID}
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${MUMBLE_IPV6_ADDR}
+      ygg_pool_net:
+        ipv6_address: ${MUMBLE_YGG_ADDR}
