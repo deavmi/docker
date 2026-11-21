@@ -13,7 +13,7 @@ services:
         ipv6_address: ${RETICULUM_YGG_ADDR}
     volumes:
       # Mount in the (RNS) configuration file (as read-only)
-      - ./configs/rns:/rns/config:z,ro
+      - ./configs/rns:/data/config:z,ro
 
       # Reticulum state dir
       - ${RETICULUM_RET_DIR}:/data:z
