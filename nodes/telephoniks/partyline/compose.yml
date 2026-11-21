@@ -11,17 +11,17 @@ services:
       # Mount in the (RNS) configuration file (as read-only)
       - ./configs/rns:/rns/config:z,ro
 
-	partyline:
-	  build:
-	    context: ../../images/partyline
-	  container_name: partyline
-	  restart: unless-stopped
-	  user: ${USER_UID}:${USER_GID}
+  partyline:
+    build:
+      context: ../../images/partyline
+    container_name: partyline
+    restart: unless-stopped
+    user: ${USER_UID}:${USER_GID}
 	  # Run on same network stack, so it will have
 	  # access to loopback interface and can connect
 	  # to the reticulum router's "SharedInstance"
 	  # port
-    network: service:partyline_reticulum
+    network_mode: service:partyline_reticulum
     volumes:
       # Mount in the (Partyline) configuration file (as read-only)
       - ./configs/partyline:/config/config.json:z,ro

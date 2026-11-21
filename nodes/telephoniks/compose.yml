@@ -11,17 +11,17 @@ include:
       # Defaults (partyline)
       - ./partyline/.env
 
-  # Builder
-  - path: builder/builder.yml
-    env_file:
-      # Defaults
-      - .env
-
-      # Defaults (builder)
-      - ./builder/.builder.env
-
-      # Secrets (builder)
-      - ./builder/.builder.env.secrets
+#   # Builder
+#   - path: builder/builder.yml
+#     env_file:
+#       # Defaults
+#       - .env
+# 
+#       # Defaults (builder)
+#       - ./builder/.builder.env
+# 
+#       # Secrets (builder)
+#       - ./builder/.builder.env.secrets
   - i2p.yml
 
 services:
