@@ -13,7 +13,6 @@ RUN pip install . --break-system-packages
 
 RUN apt install python3-tk -y
 RUN apt install python3-pyaudio codec2 -y
-RUN apt install libopus -y
 
 ENV CONFIG_FILE_PATH=/config/config.json
 ENV ANNOUNCE_INTERVAL=60
