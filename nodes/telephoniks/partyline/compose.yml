@@ -13,6 +13,9 @@ services:
       # Mount in the (RNS) configuration file (as read-only)
       - ./configs/rns:/rns/config:z,ro
 
+      # Reticulum state dir
+      - ${PARTYLINE_RETICULUM_RET_DIR}:/.reticulum:z
+
   partyline:
     build:
       context: ../../../images/partyline
