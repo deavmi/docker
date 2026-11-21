@@ -10,3 +10,15 @@ include:
 
       # Reticulum
       - reticulum/.env
+
+  # Yggdrasil
+  - path: yggdrasil/yggdrasil.yml
+    env_file:
+      # Defaults
+      - ../.env
+
+      # Defaults
+      - .env
+
+      # Yggdrasil
+      - yggdrasil/.env

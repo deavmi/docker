@@ -1,0 +1,7 @@
+services:
+  yggdrasil:
+    extends:
+      file: ../../../../services/yggdrasil/compose.yml
+      service: yggdrasil
+    container_name: yggdrasil
+    network_mode: "host"
