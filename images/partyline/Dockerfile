@@ -17,4 +17,4 @@ ENV CONFIG_FILE_PATH=/config/config.json
 ENV ANNOUNCE_INTERVAL=60
 ENV STATS_INTERVAL=60
 ENV STATE_DIR=/state
-CMD ["partyline", "--config", "$CONFIG_FILE_PATH", "--announce", "$ANNOUNCE_INTERVAL", "--stats-interval", "$STATS_INTERVAL", "--statedir", "$STATE_DIR"]
+CMD partyline --config "$CONFIG_FILE_PATH" --announce $ANNOUNCE_INTERVAL --stats-interval "$STATS_INTERVAL" --statedir "$STATE_DIR"
