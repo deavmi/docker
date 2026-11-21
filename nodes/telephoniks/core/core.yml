@@ -1,0 +1,12 @@
+include:
+  # Reticulum
+  - path: reticulum/reticulum.yml
+    env_file:
+      # Defaults
+      - ../.env
+
+      # Defaults
+      - .env
+
+      # Reticulum
+      - reticulum/.env

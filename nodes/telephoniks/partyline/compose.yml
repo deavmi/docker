@@ -1,23 +1,4 @@
 services:
-  partyline_reticulum:
-    build:
-      context: ../../../images/reticulum
-    container_name: partyline_reticulum
-    restart: unless-stopped
-    networks:
-      - retNet
-    # networks:
-    #   ipv6_pool_net:
-    #     ipv6_address: ${PARTYLINE_RETICULUM_IPV6_ADDR}
-    #   ygg_pool_net:
-    #     ipv6_address: ${PARTYLINE_RETICULUM_YGG_ADDR}
-    volumes:
-      # Mount in the (RNS) configuration file (as read-only)
-      - ./configs/rns:/rns/config:z,ro
-
-      # Reticulum state dir
-      - ${PARTYLINE_RETICULUM_RET_DIR}:/.reticulum:z
-
   partyline:
     build:
       context: ../../../images/partyline

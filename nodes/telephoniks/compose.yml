@@ -2,6 +2,9 @@ include:
   # Network definitions
   - networks.yml
 
+  # Core services
+  - path: core/core.yml
+
   # Partyline
   - path: partyline/compose.yml
     env_file:
