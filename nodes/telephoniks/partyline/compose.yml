@@ -19,10 +19,10 @@ services:
     container_name: partyline
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
-	  # Run on same network stack, so it will have
-	  # access to loopback interface and can connect
-	  # to the reticulum router's "SharedInstance"
-	  # port
+      # Run on same network stack, so it will have
+      # access to loopback interface and can connect
+      # to the reticulum router's "SharedInstance"
+      # port
     network_mode: service:partyline_reticulum
     volumes:
       # Mount in the (Partyline) configuration file (as read-only)
