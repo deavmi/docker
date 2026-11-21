@@ -5,10 +5,12 @@ services:
     container_name: partyline_reticulum
     restart: unless-stopped
     networks:
-      ipv6_pool_net:
-        ipv6_address: ${PARTYLINE_RETICULUM_IPV6_ADDR}
-      ygg_pool_net:
-        ipv6_address: ${PARTYLINE_RETICULUM_YGG_ADDR}
+      - retNet
+    # networks:
+    #   ipv6_pool_net:
+    #     ipv6_address: ${PARTYLINE_RETICULUM_IPV6_ADDR}
+    #   ygg_pool_net:
+    #     ipv6_address: ${PARTYLINE_RETICULUM_YGG_ADDR}
     volumes:
       # Mount in the (RNS) configuration file (as read-only)
       - ./configs/rns:/rns/config:z,ro
@@ -26,7 +28,9 @@ services:
       # access to loopback interface and can connect
       # to the reticulum router's "SharedInstance"
       # port
-    network_mode: service:partyline_reticulum
+    # network_mode: service:partyline_reticulum
+    networks:
+      - retNet
     volumes:
       # Mount in the (Partyline) configuration file (as read-only)
       - ./configs/partyline:/config/config.json:z,ro
