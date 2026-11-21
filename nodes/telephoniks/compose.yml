@@ -3,7 +3,7 @@ include:
   - networks.yml
 
   # Partyline
-  - path: partyline/partyline.yml
+  - path: partyline/compose.yml
     env_file:
       # Defaults
       - .env
