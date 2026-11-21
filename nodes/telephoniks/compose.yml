@@ -12,13 +12,13 @@ include:
       - ./partyline/.env
 
   # Mumble
-  - path: mumble/compose.yml
-    env_file:
-      # Defaults
-      - .env
-
-      # Defaults (mumble)
-      - ./mumble/.env
+#   - path: mumble/compose.yml
+#     env_file:
+#       # Defaults
+#       - .env
+# 
+#       # Defaults (mumble)
+#       - ./mumble/.env
 
 services:
   host-statistics:
