@@ -31,6 +31,9 @@ services:
       # Mount in the Partyline state directory (identity
       # and other dynamically-created files will go here)
       - ${PARTYLINE_STATE_DIR}:/state:z
+
+      # Reticulum state dir
+      - ${PARTYLINE_RET_DIR}:/.reticulum:z
     environment:
       # Interval to send announcement of the partyline
       # service
@@ -38,5 +41,7 @@ services:
 
       # Interval for statistics (TODO: Not sure what this is)
       - STATS_INTERVAL=${PARTYLINE_STATS_INTERVAL}
+
+      
 
       
