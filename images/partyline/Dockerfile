@@ -11,7 +11,7 @@ RUN ls -la && sleep 5
 
 RUN pip install . --break-system-packages
 
-RUN apt install python3-tkinter
+RUN apt install python3-tk
 
 ENV CONFIG_FILE_PATH=/config/config.json
 ENV ANNOUNCE_INTERVAL=60
