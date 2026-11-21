@@ -18,3 +18,7 @@
     enabled = true
     target_host = rns.rothbard.lab.networks.deavmi.assigned.network
     target_port = 4242
+
+	[[AutoInterface]]
+		type = AutoInterface
+		enabled = true
