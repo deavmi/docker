@@ -15,7 +15,7 @@ services:
 
   partyline:
     build:
-      context: ../../images/partyline
+      context: ../../../images/partyline
     container_name: partyline
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
