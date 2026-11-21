@@ -1,5 +1,7 @@
 services:
   partyline_reticulum:
+    build:
+      context: ../../images/reticulum
     container_name: partyline_reticulum
     restart: unless-stopped
     networks:

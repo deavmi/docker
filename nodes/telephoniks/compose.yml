@@ -22,7 +22,7 @@ include:
 # 
 #       # Secrets (builder)
 #       - ./builder/.builder.env.secrets
-  - i2p.yml
+  # - i2p.yml.
 
 services:
   host-statistics:
