@@ -13,7 +13,11 @@ RUN pip install . --break-system-packages
 
 RUN apt install python3-tk -y
 RUN apt install python3-pyaudio codec2 -y
-RUN apt install libopusenc-dev -y
+
+# Thanks to `kalradivyanshu` on https://github.com/TeamPyOgg/PyOgg/issues/112
+# for this. He just pointed to the fact that Ogg-Opus's documentation states
+# that you need these packages: https://pyogg.readthedocs.io/en/latest/installation.html#linux
+RUN apt install libogg-dev libopusenc-dev libflac-dev libopusfile-dev libopus-dev libvorbis-dev -y
 
 ENV CONFIG_FILE_PATH=/config/config.json
 ENV ANNOUNCE_INTERVAL=60
