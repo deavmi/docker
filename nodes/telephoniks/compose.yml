@@ -4,7 +4,7 @@ include:
 
   # Partyline
   - path: partyline/partyline.yml
-   env_file:
+    env_file:
       # Defaults
       - .env
 
