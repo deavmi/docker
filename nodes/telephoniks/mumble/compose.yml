@@ -31,3 +31,6 @@ services:
       # Logging directory (needed for supervisord
       # when using the ACME image variant)
       - ${MUMBLE_LOG_DIR}:/var/log:z
+
+      # ACME directory
+      - ${MUMBLE_ACME_DIR}:/etc/acme:z
