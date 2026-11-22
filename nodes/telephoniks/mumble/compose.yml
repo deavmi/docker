@@ -17,3 +17,6 @@ services:
       # have no home directory in the debian base image used?
       # I would need to figure that out
       - ${MUMBLE_DATABSE_DIR}:/root/.local/share/Mumble/:z
+
+      # Configuration file
+      - ${MUMBLE_CONFIG_FILE}:/config.ini:ro,z
