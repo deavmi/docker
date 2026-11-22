@@ -27,3 +27,7 @@ services:
     volumes:
       # State directory and configuration file
       - ${MUMBLE_STATE_DIR}:/data:z
+
+      # Logging directory (needed for supervisord
+      # when using the ACME image variant)
+      - ${MUMBLE_LOG_DIR}:/var/log:z
