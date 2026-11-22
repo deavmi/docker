@@ -15,7 +15,7 @@ services:
       
       # TLS ceritifcate generation
       - ACME_DOMAIN=mumble.telekom.deavmi.org
-      - ACME_ACCOUNT_EMAIL=deavmi@redxen.eu
+      - ACME_ACCOUNT_MAIL=deavmi@redxen.eu
       - ACME_HTTP=1
     ports:
       # Allow through firewall
