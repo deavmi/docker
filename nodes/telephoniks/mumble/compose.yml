@@ -1,10 +1,11 @@
 services:
   mumble:
-    build:
-      context: ../../../images/mumble
-      args:
-        - USER_UID=1000
-        - USER_GID=1000
+    # build:
+    #   context: ../../../images/mumble
+    #   args:
+    #     - USER_UID=1000
+    #     - USER_GID=1000
+    image: mumblevoip/mumble-server:latest
     container_name: mumble
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
@@ -13,16 +14,20 @@ services:
         ipv6_address: ${MUMBLE_IPV6_ADDR}
       ygg_pool_net:
         ipv6_address: ${MUMBLE_YGG_ADDR}
-    volumes:
+    ports:
+      # Allow through firewall
+      - 64738/tcp # Control port
+      - 64738/udp # Voice port
+    # volumes:
       # A `mumble.sqlite` file will be plced here as per https://www.mumble.info/documentation/user/settings-storage-location/
       #
       # TODO: We change effective UID but I mean we probably
       # have no home directory in the debian base image used?
       # I would need to figure that out
-      - ${MUMBLE_DATABSE_DIR}:/root/.local/share/Mumble/:z
-
-      # Configuration file
-      - ${MUMBLE_CONFIG_FILE}:/config.ini:ro,z
-
-      # mumble-server.log
-      - ${MUMBLE_STATE_DIR}:/home/user:z
+#       - ${MUMBLE_DATABSE_DIR}:/root/.local/share/Mumble/:z
+# 
+#       # Configuration file
+#       - ${MUMBLE_CONFIG_FILE}:/config.ini:ro,z
+# 
+#       # mumble-server.log
+#       - ${MUMBLE_STATE_DIR}:/home/user:z
