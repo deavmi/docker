@@ -6,4 +6,6 @@ RUN apt upgrade -y
 
 RUN apt install mumble-server -y
 
+WORKDIR /
+
 CMD ["mumble-server", "-fg", "-v", "-ini", "/config.ini"]
