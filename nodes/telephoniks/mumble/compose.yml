@@ -27,7 +27,7 @@ services:
 #       - ${MUMBLE_DATABSE_DIR}:/root/.local/share/Mumble/:z
 # 
       # Configuration file
-      - ${MUMBLE_CONFIG_FILE}:/data/mumble_server_config.ini:ro,z
+      # - ${MUMBLE_CONFIG_FILE}:/data/mumble_server_config.ini:z
 # 
-#       # mumble-server.log
-#       - ${MUMBLE_STATE_DIR}:/home/user:z
+      # mumble-server.log
+      - ${MUMBLE_STATE_DIR}:/data:z
