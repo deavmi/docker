@@ -16,6 +16,8 @@ services:
     
       # Welcome text
       - "MUMBLE_CONFIG_WELCOMETEXT=Welcome to the NovasRedes VOIP conference server!"
+
+      - "MUMBLE_CONFIG_HOST=::"
       
       # TLS ceritifcate generation
       # - ACME_DOMAIN=mumble.telekom.deavmi.org
