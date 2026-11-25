@@ -6,10 +6,12 @@ services:
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
     networks:
-      ipv6_pool_net:
-        ipv6_address: ${MUMBLE_IPV6_ADDR}
-      ygg_pool_net:
-        ipv6_address: ${MUMBLE_YGG_ADDR}
+      - mainNet
+      # FIXME: Disabled for now because I couldn't get it accessible via both
+      # ipv6_pool_net:
+        # ipv6_address: ${MUMBLE_IPV6_ADDR}
+      # ygg_pool_net:
+        # ipv6_address: ${MUMBLE_YGG_ADDR}
     environment:
       # - PUID=${USER_UID}
       # - PGID=${USER_GID}
@@ -25,11 +27,13 @@ services:
       # - ACME_HTTP=1
     ports:
       # Allow through firewall
-      - 64738/tcp # Control port
-      - 64738/udp # Voice port
+      - 64738:64738/tcp # Control port
+      # - 64738/tcp # Control port
+      - 64738:64738/udp # Voice port
+      # - 64738/udp # Voice port
 
       # For ACME verification
-      - 80/tcp
+      # - 80/tcp
     volumes:
       # State directory and configuration file
       - ${MUMBLE_STATE_DIR}:/data:z
