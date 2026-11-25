@@ -8,6 +8,9 @@ services:
     networks:
       - mainNet
       # FIXME: Disabled for now because I couldn't get it accessible via both
+      #
+      # Find a way to fix this as I like having things directly addressable
+      # rather than having to use a proxy
       # ipv6_pool_net:
         # ipv6_address: ${MUMBLE_IPV6_ADDR}
       # ygg_pool_net:
