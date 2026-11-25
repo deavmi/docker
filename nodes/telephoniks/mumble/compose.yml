@@ -1,25 +1,26 @@
 services:
   mumble:
-    image: mumblevoip/mumble-server:latest-acme
+    image: mumblevoip/mumble-server:latest
+    # image: mumblevoip/mumble-server:latest-acme
     container_name: mumble
     restart: unless-stopped
-    # user: ${USER_UID}:${USER_GID}
+    user: ${USER_UID}:${USER_GID}
     networks:
       ipv6_pool_net:
         ipv6_address: ${MUMBLE_IPV6_ADDR}
       ygg_pool_net:
         ipv6_address: ${MUMBLE_YGG_ADDR}
     environment:
-      - PUID=${USER_UID}
-      - PGID=${USER_GID}
+      # - PUID=${USER_UID}
+      # - PGID=${USER_GID}
     
       # Welcome text
       - "MUMBLE_CONFIG_WELCOMETEXT=Welcome to the NovasRedes VOIP conference server!"
       
       # TLS ceritifcate generation
-      - ACME_DOMAIN=mumble.telekom.deavmi.org
-      - ACME_ACCOUNT_MAIL=deavmi@redxen.eu
-      - ACME_HTTP=1
+      # - ACME_DOMAIN=mumble.telekom.deavmi.org
+      # - ACME_ACCOUNT_MAIL=deavmi@redxen.eu
+      # - ACME_HTTP=1
     ports:
       # Allow through firewall
       - 64738/tcp # Control port
