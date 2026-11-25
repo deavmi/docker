@@ -6,11 +6,7 @@ services:
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
     networks:
-      retNet:
-      ipv6_pool_net:
-        ipv6_address: ${RETICULUM_IPV6_ADDR}
-      ygg_pool_net:
-        ipv6_address: ${RETICULUM_YGG_ADDR}
+      - retNet
     volumes:
       # Mount in the (RNS) configuration file (as read-only)
       - ./configs/rns:/data/config:z,ro
