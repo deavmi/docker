@@ -27,6 +27,15 @@ WORKDIR /tmp
 ADD https://github.com/yggdrasil-network/yggdrasil-go.git#$BRANCH yggdrasil
 WORKDIR /tmp/yggdrasil
 
+# Thanks to Neil Alexander, Rany (from BonoboNET IRC)
+# for this recommendation.
+#
+# Also mentioning: https://weaviate.io/blog/gomemlimit-a-game-changer-for-high-memory-applications#gomemlimit--no-more-need-for-a-workaround
+#
+# We set a target of memory usage so that, if we
+# reach it, the GC will kick in
+ARG GOMEMLIMIT=200MiB
+
 # Perform checkout and build
 RUN ./build
 
