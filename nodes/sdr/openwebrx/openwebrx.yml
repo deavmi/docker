@@ -15,7 +15,7 @@ services:
     # FIXME: Remove ports and setup
     # caddy on the same network namespace
     # and then use that rather
-    network_mode: service:openwebrx
+    network_mode: service:openwebrx_web
 
   openwebrx_web:
     build:
