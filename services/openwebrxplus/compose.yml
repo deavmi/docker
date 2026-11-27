@@ -1,0 +1,23 @@
+services:
+  openwebrx:
+    image: 'slechev/openwebrxplus-softmbe:latest'
+    container_name: openwebrc
+    restart: unless-stopped
+    user: ${USER_UID}:${USER_GID}
+    environment:
+      - OPENWEBRX_ADMIN_USER=${OPENWEBRX_USERNAME}
+      - OPENWEBRX_ADMIN_PASSWORD=${OPENWEBRX_PASSWORD}
+    volumes:
+      - ${OPENWEBRX_STORAGE_ETC}:/etc/openwebrx:z
+      - ${OPENWEBRX_STORAGE_VAR}:/var/lib/openwebrx:z
+      - ${OPENWEBRX_STORAGE_PLUGINS}:/usr/lib/python3/dist-packages/htdocs/plugins:z
+    # Device mounting is left to the user as more than
+    # one device may be wanted to be mounted
+
+    # For RPi devices it is recommended, as per (),
+    # that you mount your tmp fs in. I presume without
+    # overlaying/mounting-this-over that the tmpfs
+    # in the image _may_ be one that writes to disk
+    # and not a legitimate tmpsfs (ram-based fs)
+    tmpfs:
+      - /tmp:mode=1777
