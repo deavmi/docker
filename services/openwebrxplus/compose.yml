@@ -1,6 +1,7 @@
 services:
   openwebrx:
-    image: 'slechev/openwebrxplus-softmbe:latest'
+    # image: 'slechev/openwebrxplus-softmbe:latest'
+    image: 'jketterl/openwebrx:stable'
     container_name: openwebrc
     restart: unless-stopped
     user: ${USER_UID}:${USER_GID}
