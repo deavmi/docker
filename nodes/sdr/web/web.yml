@@ -11,7 +11,7 @@ services:
     networks:
       - mainNet
     ports:
-      - "80/tcp"
+      - "80:80/tcp"
       - "80:80/udp" # TODO: Does quick run on non-HTTPS?
-      - "443/tcp"
+      - "443:443/tcp"
       - "443:443/udp"
