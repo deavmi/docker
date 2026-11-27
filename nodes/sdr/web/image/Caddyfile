@@ -19,8 +19,8 @@
 	    metrics
 	}
 	
-	# Reverse proxy to
-	handle /* {
-		reverse_proxy {$WHERE_TO_ADDR}:{$WHERE_TO_PORT}
+	# Reverse proxy to OpenWebRX
+	handle /sdr* {
+		reverse_proxy openwebrx:8073
 	}
 }
