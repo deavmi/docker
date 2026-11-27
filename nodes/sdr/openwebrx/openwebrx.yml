@@ -15,8 +15,6 @@ services:
     # FIXME: Remove ports and setup
     # caddy on the same network namespace
     # and then use that rather
-    ports:
-      - 8073:8073/tcp
     network_mode: service:openwebrx
 
   openwebrx_web:
@@ -29,6 +27,7 @@ services:
       - "DOMAIN=${OPENWEBRX_DOMAIN_1}"
       - "DOMAIN_1=${OPENWEBRX_DOMAIN_2}"
       - "DOMAIN_2=${OPENWEBRX_DOMAIN_3}"
+      - "MAP_TO_PORT=8073"
     networks:
       ipv6_pool_net:
         ipv6_address: ${OPENWEBRX_IPV6_ADDR}
