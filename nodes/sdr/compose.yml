@@ -4,6 +4,7 @@ include:
 
   # Core services
   - path: core/core.yml
+    env_file:
       # Defaults
       - .env
 
