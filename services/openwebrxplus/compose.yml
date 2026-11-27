@@ -4,7 +4,7 @@ services:
     image: 'jketterl/openwebrx:stable'
     container_name: openwebrc
     restart: unless-stopped
-    user: ${USER_UID}:${USER_GID}
+    # user: ${USER_UID}:${USER_GID}
     environment:
       - OPENWEBRX_ADMIN_USER=${OPENWEBRX_USERNAME}
       - OPENWEBRX_ADMIN_PASSWORD=${OPENWEBRX_PASSWORD}
