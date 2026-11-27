@@ -21,6 +21,7 @@
 	
 	# Reverse proxy to OpenWebRX
 	handle /sdr* {
+		
 		reverse_proxy openwebrx:8073
 	}
 }
