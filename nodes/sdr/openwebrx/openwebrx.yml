@@ -6,7 +6,7 @@ services:
     devices:
       - ${OPENWEBRX_DEVICE_1}:/dev/sdr0
       # TODO: According to https://fms.komkon.org/OWRX/#INSTALL-DOCKER
-      - /dev/:/dev/
+      - /dev/bus/usb:/dev/bus/usb
 
     # FIXME: Remove ports and setup
     # caddy on the same network namespace
