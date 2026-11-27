@@ -1,0 +1,12 @@
+include:
+  # Yggdrasil
+  - path: yggdrasil/yggdrasil.yml
+    env_file:
+      # Defaults
+      - ../.env
+
+      # Defaults
+      - .env
+
+      # Yggdrasil
+      - yggdrasil/.env

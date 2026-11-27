@@ -1,0 +1,15 @@
+services:
+  yggdrasil:
+    extends:
+      file: ../../../../services/yggdrasil/compose.yml
+      service: yggdrasil
+    build:
+      args:
+        # make the Golang GC trigger everytime we hit
+        # 100MiB so that we free up memory quicker.
+        # Otherwise this never builds on my 400MiB
+        # machine as I run out of memory quicker than
+        # the GC decides to perform a sweep.
+        - GOMEMLIMIT=100MiB
+    container_name: yggdrasil
+    network_mode: "host"
