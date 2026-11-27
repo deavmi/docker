@@ -28,6 +28,6 @@
 	# OpenWebRX
 	handle /* {
 		# uri strip_prefix /builder
-		reverse_proxy http://{$MAP_TO_ADDR}:{$MAP_TO_PORT}
+		reverse_proxy {$MAP_TO_ADDR}:{$MAP_TO_PORT}
 	}
 }
