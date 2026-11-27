@@ -39,9 +39,9 @@ services:
         ipv6_address: ${OPENWEBRX_YGG_ADDR}
     ports:
       - "80/tcp"
-      - "80:80/udp" # TODO: Does quick run on non-HTTPS?
+      - "80/udp" # TODO: Does quick run on non-HTTPS?
       - "443/tcp"
-      - "443:443/udp"
+      - "443/udp"
 
   openwebrx_web_clear:
     build:
@@ -59,6 +59,6 @@ services:
         ipv6_address: ${OPENWEBRX_IPV6_ADDR}
     ports:
       - "80/tcp"
-      - "80:80/udp" # TODO: Does quick run on non-HTTPS?
+      - "80/udp" # TODO: Does quick run on non-HTTPS?
       - "443/tcp"
-      - "443:443/udp"
+      - "443/udp"
