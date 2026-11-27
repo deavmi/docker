@@ -4,7 +4,7 @@ services:
       file: ../../../services/openwebrxplus/compose.yml
       service: openwebrx
     devices:
-      - ${OPENWEBRX_DEVICE_1}:/dev/sdr0
+      # - ${OPENWEBRX_DEVICE_1}:/dev/sdr0
       # TODO: According to https://fms.komkon.org/OWRX/#INSTALL-DOCKER
       - /dev/bus/usb:/dev/bus/usb
 
