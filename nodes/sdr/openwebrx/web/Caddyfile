@@ -26,8 +26,8 @@
 	}
 
 	# OpenWebRX
-	handle /* {
+	handle /sdr* {
 		# uri strip_prefix /builder
-		reverse_proxy {$MAP_TO_ADDR}:{$MAP_TO_PORT}
+		reverse_proxy openwebrc:8073
 	}
 }
