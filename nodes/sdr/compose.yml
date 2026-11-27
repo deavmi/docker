@@ -3,7 +3,7 @@ include:
   - networks.yml
 
   # Core services
-  - path: core/core.yml
+  # - path: core/core.yml
 
   # OpenWebRX
   - path: openwebrx/openwebrx.yml
