@@ -8,6 +8,10 @@ services:
       # TODO: According to https://fms.komkon.org/OWRX/#INSTALL-DOCKER
       - /dev/bus/usb:/dev/bus/usb
 
+    # TODO: Move this to the service definition
+    # (Use priveileged: https://www.reddit.com/r/synology/comments/rjs1k9/rtlsdr_device_not_visible_inside_openwebrx_docker/)
+    privileged: true
+
     # FIXME: Remove ports and setup
     # caddy on the same network namespace
     # and then use that rather
