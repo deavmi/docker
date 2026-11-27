@@ -1,0 +1,13 @@
+services:
+  openwrbrx:
+    extends:
+      file: ../../../services/openwebrxplus/openwebrx.yml
+      service: openwebrx
+    devices:
+      - ${OPENWEBRX_DEVICE_1}:/dev/sdr0
+
+    # FIXME: Remove ports and setup
+    # caddy on the same network namespace
+    # and then use that rather
+    ports:
+      - 8073:8073/tcp
