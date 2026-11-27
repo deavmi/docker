@@ -27,7 +27,7 @@
 
 	# OpenWebRX
 	handle /sdr* {
-		# uri strip_prefix /builder
+		uri strip_prefix /sdr
 		reverse_proxy openwebrc:8073
 	}
 }
