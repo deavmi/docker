@@ -17,8 +17,8 @@ services:
     # and then use that rather
     # network_mode: service:openwebrx_web
     networks:
-      # ipv6_pool_net:
-        # ipv6_address: ${OPENWEBRX_IPV6_ADDR}
+      ipv6_pool_net:
+        ipv6_address: ${OPENWEBRX_IPV6_ADDR}
       ygg_pool_net:
         ipv6_address: ${OPENWEBRX_YGG_ADDR}
     ports:
@@ -39,8 +39,8 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${OPENWEBRX_IPV6_ADDR}
-      # ygg_pool_net:
-        # ipv6_address: ${OPENWEBRX_YGG_ADDR}
+      ygg_pool_net:
+        ipv6_address: ${OPENWEBRX_YGG_ADDR}
     ports:
       - "80/tcp"
       - "80:80/udp" # TODO: Does quick run on non-HTTPS?

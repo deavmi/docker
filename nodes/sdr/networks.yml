@@ -8,15 +8,6 @@ networks:
       config:
         - subnet: fde4:493b:fc7f::/48
 
-  retNet:
-    driver: bridge
-    name: retNet
-    enable_ipv6: true
-    enable_ipv4: false
-    ipam:
-      config:
-        - subnet: fde4:493b:fd7f::/48
-
   ipv6_pool_net:
     name: ipv6_pool_net
     driver: bridge
