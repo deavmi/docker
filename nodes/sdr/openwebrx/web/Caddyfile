@@ -1,0 +1,69 @@
+
+{
+	http_port "80"
+	https_port "443"
+
+	log default {
+			output stdout
+			level INFO
+	}
+
+	# Don't tell HTTP clients to upgrade to HTTPS
+	auto_https disable_redirects
+
+  metrics {
+	 	per_host
+  }
+}
+
+
+# Domain name for automatic SSL
+:80, {$DOMAIN}:443, {$DOMAIN_1}:443, {$DOMAIN_2}:443 {
+
+	# Handle metrics
+	handle /metrics {
+	    metrics
+	}
+
+	# Sets the root of where we look
+	# for files (with relative paths)
+	root * /webroot
+
+	# Serve directories in root
+	handle /* {
+		file_server
+	}
+	
+	# If we hit `/files`
+	# then server root/files`
+	# with a file browser
+	handle /files* {
+		file_server browse
+	}
+
+	# Builder
+	handle /builder* {
+		uri strip_prefix /builder
+		reverse_proxy builder:5000
+	}
+
+	# Gitea service (new)
+	handle /git* {
+		reverse_proxy git.deavmi.assigned.network
+	}
+
+	# Gitea service (old)
+	handle /git_old* {
+		reverse_proxy old.git.deavmi.assigned.network
+	}
+
+	# Go meta-tag imports server
+	handle /go* {
+		reverse_proxy go_proxy:80
+	}
+
+	# Forward to services.deavmi.assigned.network
+	handle /novasredes* {
+		reverse_proxy services.deavmi.assigned.network:80
+	}
+}

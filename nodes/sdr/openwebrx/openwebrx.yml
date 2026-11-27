@@ -17,3 +17,25 @@ services:
     # and then use that rather
     ports:
       - 8073:8073/tcp
+    network_mode: service:openwebrx
+
+  openwebrx_web:
+    build:
+      context: web/
+    restart: unless-stopped
+    container_name: openwebrx_web  
+      networks:
+    environment:
+      - "DOMAIN=${OPENWEBRX_DOMAIN_1}"
+      - "DOMAIN_1=${OPENWEBRX_DOMAIN_2}"
+      - "DOMAIN_2=${OPENWEBRX_DOMAIN_3}"
+    networks:
+      ipv6_pool_net:
+        ipv6_address: ${OPENWEBRX_IPV6_ADDR}
+      ygg_pool_net:
+        ipv6_address: ${OPENWEBRX_YGG_ADDR}
+    ports:
+      - "80/tcp"
+      - "80:80/udp" # TODO: Does quick run on non-HTTPS?
+      - "443/tcp"
+      - "443:443/udp"
