@@ -15,7 +15,15 @@ services:
     # FIXME: Remove ports and setup
     # caddy on the same network namespace
     # and then use that rather
-    network_mode: service:openwebrx_web
+    # network_mode: service:openwebrx_web
+    networks:
+      # ipv6_pool_net:
+        # ipv6_address: ${OPENWEBRX_IPV6_ADDR}
+      ygg_pool_net:
+        ipv6_address: ${OPENWEBRX_YGG_ADDR}
+    ports:
+      # Allow through firewall
+      - 8073/tcp
 
   openwebrx_web:
     build:
@@ -27,11 +35,12 @@ services:
       - "DOMAIN_1=${OPENWEBRX_DOMAIN_2}"
       - "DOMAIN_2=${OPENWEBRX_DOMAIN_3}"
       - "MAP_TO_PORT=8073"
+      - "MAP_TO_ADDR="
     networks:
       ipv6_pool_net:
         ipv6_address: ${OPENWEBRX_IPV6_ADDR}
-      ygg_pool_net:
-        ipv6_address: ${OPENWEBRX_YGG_ADDR}
+      # ygg_pool_net:
+        # ipv6_address: ${OPENWEBRX_YGG_ADDR}
     ports:
       - "80/tcp"
       - "80:80/udp" # TODO: Does quick run on non-HTTPS?
