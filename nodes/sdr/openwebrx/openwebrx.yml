@@ -1,7 +1,7 @@
 services:
   openwrbrx:
     extends:
-      file: ../../../services/openwebrxplus/openwebrx.yml
+      file: ../../../services/openwebrxplus/compose.yml
       service: openwebrx
     devices:
       - ${OPENWEBRX_DEVICE_1}:/dev/sdr0
