@@ -1,5 +1,5 @@
 services:
-  openwrbrx:
+  openwebrx:
     extends:
       file: ../../../services/openwebrxplus/compose.yml
       service: openwebrx
