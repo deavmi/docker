@@ -21,8 +21,7 @@ services:
     build:
       context: web/
     restart: unless-stopped
-    container_name: openwebrx_web  
-      networks:
+    container_name: openwebrx_web
     environment:
       - "DOMAIN=${OPENWEBRX_DOMAIN_1}"
       - "DOMAIN_1=${OPENWEBRX_DOMAIN_2}"
