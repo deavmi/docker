@@ -18,14 +18,32 @@ services:
     # network_mode: service:openwebrx_web
     networks:
       ipv6_pool_net:
-        ipv6_address: ${OPENWEBRX_IPV6_ADDR}
-      ygg_pool_net:
-        ipv6_address: ${OPENWEBRX_YGG_ADDR}
+        ipv6_address: ${OPENWEBRX_IPV6_ADDR_INTERNAL}
     ports:
       # Allow through firewall
       - 8073/tcp
 
-  openwebrx_web:
+  openwebrx_web_ygg:
+    build:
+      context: web/
+    restart: unless-stopped
+    container_name: openwebrx_web
+    environment:
+      - "DOMAIN="
+      - "DOMAIN_1="
+      - "DOMAIN_2="
+      - "MAP_TO_PORT=8073"
+      - "MAP_TO_ADDR=${OPENWEBRX_IPV6_ADDR_INTERNAL}"
+    networks:
+      ygg_pool_net:
+        ipv6_address: ${OPENWEBRX_YGG_ADDR}
+    ports:
+      - "80/tcp"
+      - "80:80/udp" # TODO: Does quick run on non-HTTPS?
+      - "443/tcp"
+      - "443:443/udp"
+
+  openwebrx_web_clear:
     build:
       context: web/
     restart: unless-stopped
@@ -35,12 +53,10 @@ services:
       - "DOMAIN_1=${OPENWEBRX_DOMAIN_2}"
       - "DOMAIN_2=${OPENWEBRX_DOMAIN_3}"
       - "MAP_TO_PORT=8073"
-      - "MAP_TO_ADDR="
+      - "MAP_TO_ADDR=${OPENWEBRX_IPV6_ADDR_INTERNAL}"
     networks:
       ipv6_pool_net:
         ipv6_address: ${OPENWEBRX_IPV6_ADDR}
-      ygg_pool_net:
-        ipv6_address: ${OPENWEBRX_YGG_ADDR}
     ports:
       - "80/tcp"
       - "80:80/udp" # TODO: Does quick run on non-HTTPS?
