@@ -56,6 +56,8 @@ services:
       - "DOMAIN_2=${OPENWEBRX_DOMAIN_3}"
       - "MAP_TO_PORT=8073"
       - "MAP_TO_ADDR=openwebrx"
+      - "ADDR_1=[${OPENWEBRX_IPV6_ADDR}]"
+      - "ADDR_2=[${OPENWEBRX_YGG_ADDR}]"
     networks:
       # mainNet:
       ipv6_pool_net:
