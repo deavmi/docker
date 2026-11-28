@@ -17,14 +17,10 @@ services:
     # and then use that rather
     # network_mode: service:openwebrx_web
     networks:
-      # - mainNet
       ipv6_pool_net:
         ipv6_address: ${OPENWEBRX_IPV6_ADDR_INTERNAL}
       ygg_pool_net:
         ipv6_address: ${OPENWEBRX_YGG_ADDR_INTERNAL}
-    # ports:
-      # Port mapping
-      # - 8073:8073/tcp
 
   openwebrx_web_ygg:
     build:
@@ -37,15 +33,9 @@ services:
       - "DOMAIN_2="
       - "MAP_TO_PORT=8073"
       - "MAP_TO_ADDR=openwebrx"
-    # Because this is not on the `ipv6_pool_net` it won't
-    # resolve container name's (services). Hence we must
-    # force a mapping
-    # extra_hosts:
-      # - openwebrx=${OPENWEBRX_IPV6_ADDR_INTERNAL}
     networks:
       ygg_pool_net:
         ipv6_address: ${OPENWEBRX_YGG_ADDR}
-      # mainNet:
     ports:
       - "80/tcp"
       - "80/udp" # TODO: Does quick run on non-HTTPS?
@@ -66,7 +56,6 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${OPENWEBRX_IPV6_ADDR}
-      # mainNet:
     ports:
       - "80/tcp"
       - "80/udp" # TODO: Does quick run on non-HTTPS?
