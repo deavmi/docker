@@ -36,7 +36,7 @@ services:
       - "MAP_TO_PORT=8073"
       - "MAP_TO_ADDR=openwebrx"
     networks:
-      - mainNet
+      mainNet:
       ygg_pool_net:
         ipv6_address: ${OPENWEBRX_YGG_ADDR}
     ports:
@@ -57,7 +57,7 @@ services:
       - "MAP_TO_PORT=8073"
       - "MAP_TO_ADDR=openwebrx"
     networks:
-      - mainNet
+      mainNet:
       ipv6_pool_net:
         ipv6_address: ${OPENWEBRX_IPV6_ADDR}
     ports:
