@@ -17,7 +17,7 @@ services:
     # and then use that rather
     # network_mode: service:openwebrx_web
     networks:
-      mainNet:
+      # - mainNet
       ipv6_pool_net:
         ipv6_address: ${OPENWEBRX_IPV6_ADDR_INTERNAL}
     # ports:
