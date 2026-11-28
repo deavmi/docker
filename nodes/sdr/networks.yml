@@ -24,7 +24,6 @@ networks:
         # the containers attached to said bridge (with
         # IPv6 addresses in this range)
         - subnet: ${IPV6_POOL_SUBNET}
-        - subnet: ${YGG_POOL_SUBNET}
     driver_opts:
       # Disables any NAT and make this behave as if the
       # containers are simply on the bridge (nothing
@@ -34,13 +33,13 @@ networks:
       # access to expose `ports` (although these will
       # not be using the docker proxy now)
       com.docker.network.bridge.gateway_mode_ipv6: routed
-  # ygg_pool_net:
-  #   name: ygg_pool_net
-  #   driver: bridge
-  #   enable_ipv4: false
-  #   enable_ipv6: true
-  #   ipam:
-  #     config:
-  #       - subnet: ${YGG_POOL_SUBNET}
-  #   driver_opts:
-  #     com.docker.network.bridge.gateway_mode_ipv6: routed
+  ygg_pool_net:
+    name: ygg_pool_net
+    driver: bridge
+    enable_ipv4: false
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: ${YGG_POOL_SUBNET}
+    driver_opts:
+      com.docker.network.bridge.gateway_mode_ipv6: routed
