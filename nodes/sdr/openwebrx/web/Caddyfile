@@ -18,9 +18,6 @@
 
 # Domain name for automatic SSL
 :80, {$DOMAIN}:443, {$DOMAIN_1}:443, {$DOMAIN_2}:443 {
-
-	bind {$ADDR_1}
-	bind {$ADDR_2}
 	
 	# Handle metrics
 	handle /metrics {
