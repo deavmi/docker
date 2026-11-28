@@ -35,6 +35,11 @@ services:
       - "DOMAIN_2="
       - "MAP_TO_PORT=8073"
       - "MAP_TO_ADDR=openwebrx"
+    # Because this is not on the `ipv6_pool_net` it won't
+    # resolve container name's (services). Hence we must
+    # force a mapping
+    extra_hosts:
+      - openwebrx=${OPENWEBRX_IPV6_ADDR_INTERNAL}
     networks:
       ygg_pool_net:
         ipv6_address: ${OPENWEBRX_YGG_ADDR}
