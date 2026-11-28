@@ -1,11 +1,10 @@
-
 {
 	http_port "80"
 	https_port "443"
 
 	log default {
 			output stdout
-			level TRACE
+			level DEBUG
 	}
 
 	# Don't tell HTTP clients to upgrade to HTTPS
