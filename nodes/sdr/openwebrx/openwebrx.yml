@@ -20,6 +20,8 @@ services:
       # - mainNet
       ipv6_pool_net:
         ipv6_address: ${OPENWEBRX_IPV6_ADDR_INTERNAL}
+      ygg_pool_net:
+        ipv6_address: ${OPENWEBRX_YGG_ADDR_INTERNAL}
     # ports:
       # Port mapping
       # - 8073:8073/tcp
@@ -43,7 +45,7 @@ services:
     networks:
       ygg_pool_net:
         ipv6_address: ${OPENWEBRX_YGG_ADDR}
-      mainNet:
+      # mainNet:
     ports:
       - "80/tcp"
       - "80/udp" # TODO: Does quick run on non-HTTPS?
@@ -64,7 +66,7 @@ services:
     networks:
       ipv6_pool_net:
         ipv6_address: ${OPENWEBRX_IPV6_ADDR}
-      mainNet:
+      # mainNet:
     ports:
       - "80/tcp"
       - "80/udp" # TODO: Does quick run on non-HTTPS?
