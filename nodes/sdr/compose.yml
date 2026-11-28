@@ -20,14 +20,14 @@ include:
       # Defaults (openwebrx)
       - ./openwebrx/.env
 
-  # Web frontend
-  - path: web/web.yml
-    env_file:
-      # Defaults
-      - .env
-
-      # Defaults (web)
-      - ./web/.env
+#   # Web frontend
+#   - path: web/web.yml
+#     env_file:
+#       # Defaults
+#       - .env
+# 
+#       # Defaults (web)
+#       - ./web/.env
 
 services:
   host-statistics:
